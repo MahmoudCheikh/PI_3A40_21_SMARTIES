@@ -12,12 +12,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/Commande")
+ * @Route("/commande")
  */
 class CommandeController extends AbstractController
 {
     /**
-     * @Route("/", name="Commande_index", methods={"GET"})
+     * @Route("/", name="commande_index", methods={"GET"})
      */
     public function index(CommandeRepository $CommandeRepository): Response
     {
@@ -27,7 +27,7 @@ class CommandeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="Commande_new", methods={"GET", "POST"})
+     * @Route("/new", name="commande_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -49,7 +49,7 @@ class CommandeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="Commande_show", methods={"GET"})
+     * @Route("/{id}", name="commande_show", methods={"GET"})
      */
     public function show(Commande $Commande): Response
     {
@@ -59,7 +59,7 @@ class CommandeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="Commande_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="commande_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Commande $Commande, EntityManagerInterface $entityManager): Response
     {
@@ -79,7 +79,7 @@ class CommandeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="Commande_delete", methods={"POST"})
+     * @Route("/{id}", name="commande_delete", methods={"POST"})
      */
     public function delete(Request $request, Commande $Commande, EntityManagerInterface $entityManager): Response
     {
