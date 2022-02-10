@@ -43,7 +43,7 @@ class CommandeController extends AbstractController
         }
 
         return $this->render('Commande/new.html.twig', [
-            'Commande' => $Commande,
+            'commande' => $Commande,
             'form' => $form->createView(),
         ]);
     }
@@ -54,7 +54,7 @@ class CommandeController extends AbstractController
     public function show(Commande $Commande): Response
     {
         return $this->render('Commande/show.html.twig', [
-            'Commande' => $Commande,
+            'commande' => $Commande,
         ]);
     }
 
@@ -73,7 +73,7 @@ class CommandeController extends AbstractController
         }
 
         return $this->render('Commande/edit.html.twig', [
-            'Commande' => $Commande,
+            'commande' => $Commande,
             'form' => $form->createView(),
         ]);
     }
