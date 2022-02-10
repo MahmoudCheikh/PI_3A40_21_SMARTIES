@@ -39,7 +39,7 @@ class CommandeController extends AbstractController
             $entityManager->persist($Commande);
             $entityManager->flush();
 
-            return $this->redirectToRoute('Commande_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Commande/new.html.twig', [
@@ -69,7 +69,7 @@ class CommandeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('Commande_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Commande/edit.html.twig', [
@@ -88,6 +88,6 @@ class CommandeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('Commande_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
     }
 }
