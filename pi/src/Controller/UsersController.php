@@ -39,7 +39,7 @@ class UsersController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('Users_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Users/new.html.twig', [
@@ -69,7 +69,7 @@ class UsersController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('Users_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Users/edit.html.twig', [
@@ -88,6 +88,6 @@ class UsersController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('Users_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
     }
 }
