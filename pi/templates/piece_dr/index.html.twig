@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PieceDR index{% endblock %}
+
+{% block body %}
+    <h1>PieceDR index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Quantite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for piece_d_r in piece_d_rs %}
+            <tr>
+                <td>{{ piece_d_r.id }}</td>
+                <td>{{ piece_d_r.nom }}</td>
+                <td>{{ piece_d_r.quantite }}</td>
+                <td>
+                    <a href="{{ path('piece_d_r_show', {'id': piece_d_r.id}) }}">show</a>
+                    <a href="{{ path('piece_d_r_edit', {'id': piece_d_r.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('piece_d_r_new') }}">Create new</a>
+{% endblock %}
