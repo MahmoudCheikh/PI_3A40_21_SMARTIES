@@ -43,7 +43,7 @@ class VeloController extends AbstractController
         }
 
         return $this->render('Velo/new.html.twig', [
-            'Velo' => $Velo,
+            'velo' => $Velo,
             'form' => $form->createView(),
         ]);
     }
@@ -54,7 +54,7 @@ class VeloController extends AbstractController
     public function show(Velo $Velo): Response
     {
         return $this->render('Velo/show.html.twig', [
-            'Velo' => $Velo,
+            'velo' => $Velo,
         ]);
     }
 
@@ -73,7 +73,7 @@ class VeloController extends AbstractController
         }
 
         return $this->render('Velo/edit.html.twig', [
-            'Velo' => $Velo,
+            'velo' => $Velo,
             'form' => $form->createView(),
         ]);
     }
