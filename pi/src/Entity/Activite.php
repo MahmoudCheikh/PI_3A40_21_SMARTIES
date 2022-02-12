@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ActiviteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ActiviteRepository::class)
@@ -19,16 +20,31 @@ class Activite
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="nom de l'activité is required")
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "50",
+     *      minMessage = "le nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "le nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="description de l'activité is required")
+     * @Assert\Length(
+     *      min = "20",
+     *      max = "200",
+     *      minMessage = "la description doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "la description ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="l'image de l'activité is required")
      */
     private $image;
 

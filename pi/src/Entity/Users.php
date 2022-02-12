@@ -6,6 +6,7 @@ use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
@@ -21,36 +22,45 @@ class Users
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="id user is required")
+     * @Assert\Positive(message="id user  doit etre positive")
      */
     private $idUser;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="nom user is required")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="prenom user is required")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="adresse user is required")
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="email is required")
+     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="image is required")
      */
     private $image;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="role user is required")
      */
     private $role;
 

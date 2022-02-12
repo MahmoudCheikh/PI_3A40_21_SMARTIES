@@ -6,6 +6,7 @@ use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EvenementRepository::class)
@@ -21,36 +22,53 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="nom de l'evenement is required")
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "50",
+     *      minMessage = "le nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "le nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $nom;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThan("today")
      */
     private $dateD;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\Expression(
+     *     "this.getdateD() < this.getdateF()",
+     *     message="La date fin ne doit pas être antérieure à la date début")
      */
     private $dateF;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="lieu is required")
      */
     private $lieu;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="type is required")
      */
     private $type;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank(message="nb participants is required")
+     * @Assert\Positive(message="nb participants doit etre positive")
      */
     private $nb_participants;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank(message="nb_places is required")
+     * @Assert\Positive(message="nb places doit etre positive")
      */
     private $nb_places;
 

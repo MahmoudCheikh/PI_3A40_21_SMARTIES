@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AbonnementRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AbonnementRepository::class)
@@ -19,21 +20,28 @@ class Abonnement
 
     /**
      * @ORM\Column(type="string", length=255)
+     *@Assert\NotBlank(message="type is required")
      */
     private $type;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThan("today")
      */
     private $dated;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\Expression(
+     *     "this.getdated() < this.getdatef()",
+     *     message="La date fin ne doit pas être antérieure à la date début")
      */
     private $datef;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="prix is required")
+     * @Assert\Positive(message="le prix doit etre positive")
      */
     private $prix;
 

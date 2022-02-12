@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\LocationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=LocationRepository::class)
@@ -24,11 +25,13 @@ class Location
 
     /**
      * @ORM\Column(type="time")
+     * @Assert\NotBlank(message="heure is required")
      */
     private $heure;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="duree is required")
      */
     private $duree;
 
