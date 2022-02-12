@@ -37,7 +37,7 @@ class Achat
     private $numeroClient;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Commande::class)
+     * @ORM\ManyToOne(targetEntity=Users::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $idUser;
