@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AccessoireRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AccessoireRepository::class)
@@ -19,6 +20,8 @@ class Accessoire
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="quantite d'accessoire is required")
+     * @Assert\Positive(message="nb d'accessoire doit etre positive")
      */
     private $quantite;
 

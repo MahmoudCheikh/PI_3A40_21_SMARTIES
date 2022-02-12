@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\VeloRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=VeloRepository::class)
@@ -19,26 +20,33 @@ class Velo
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="type de velo is required")
      */
     private $type;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="age de velo is required")
+     * @Assert\Positive(message="age doit etre positive")
      */
     private $age;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="couleur de velo is required")
      */
     private $couleur;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="etat de velo is required")
      */
     private $etat;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="quantite de velo is required")
+     * @Assert\Positive(message="quantite doit etre positive")
      */
     private $quantite;
 

@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PieceDRRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=PieceDRRepository::class)
  */
@@ -19,11 +19,14 @@ class PieceDR
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="nom de la piéce de rechange is required")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="quantite de piéces de rechanges is required")
+     * @Assert\Positive(message="nb de quantite de piéces doit etre positive")
      */
     private $quantite;
 

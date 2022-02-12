@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AchatRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=AchatRepository::class)
  */
@@ -19,16 +19,20 @@ class Achat
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThan("today")
      */
     private $date;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="nom du client is required")
      */
     private $nomClient;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="numero de l'opération is required")
+     * @Assert\Positive(message="nb de l'opération doit etre positive")
      */
     private $numeroClient;
 
