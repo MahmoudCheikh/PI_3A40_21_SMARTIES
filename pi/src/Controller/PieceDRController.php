@@ -21,7 +21,11 @@ class PieceDRController extends AbstractController
      */
     public function index(PieceDRRepository $pieceDRRepository): Response
     {
-        return $this->render('piece_dr/index.html.twig', [
+/*        return $this->render('piece_dr/index.html.twig', [
+            'piece_d_rs' => $pieceDRRepository->findAll(),
+        ]);
+*/
+        return $this->render('piece_dr/hazem.html.twig', [
             'piece_d_rs' => $pieceDRRepository->findAll(),
         ]);
     }

@@ -13,7 +13,7 @@ class SiteController extends AbstractController
      */
     public function test(): Response
     {
-        return $this->render('/base_back.html.twig');
+        return $this->render('/test.html.twig');
     }
 
     /**
@@ -21,7 +21,7 @@ class SiteController extends AbstractController
      */
     public function ahmed(): Response
     {
-        return $this->render('/base_back.html.twig');
+        return $this->render('/ahmed.html.twig');
     }
 
     /**
@@ -29,7 +29,7 @@ class SiteController extends AbstractController
      */
     public function fadwa(): Response
     {
-        return $this->render('/base_back.html.twig');
+        return $this->render('/fadwa.html.twig');
     }
 
     /**
@@ -37,7 +37,7 @@ class SiteController extends AbstractController
      */
     public function aziz(): Response
     {
-        return $this->render('/base_back.html.twig');
+        return $this->render('/aziz.html.twig');
     }
 
     /**
@@ -45,7 +45,7 @@ class SiteController extends AbstractController
      */
     public function mariem(): Response
     {
-        return $this->render('/base_back.html.twig');
+        return $this->render('/mariem.html.twig');
     }
 
     /**
@@ -61,7 +61,7 @@ class SiteController extends AbstractController
      */
     public function hazem(): Response
     {
-        return $this->render('/base_back.html.twig');
+        return $this->render('/hazem.html.twig');
     }
 
     /**
@@ -69,7 +69,7 @@ class SiteController extends AbstractController
      */
     public function autre(): Response
     {
-        return $this->render('/base_back.html.twig');
+        return $this->render('/autre.html.twig');
     }
 
 

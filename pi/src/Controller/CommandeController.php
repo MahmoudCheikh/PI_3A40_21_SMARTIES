@@ -21,9 +21,13 @@ class CommandeController extends AbstractController
      */
     public function index(CommandeRepository $CommandeRepository): Response
     {
-        return $this->render('Commande/index.html.twig', [
+       /* return $this->render('Commande/index.html.twig', [
+            'Commandes' => $CommandeRepository->findAll(),
+        ]);*/
+        return $this->render('Commande/ahmed.html.twig', [
             'Commandes' => $CommandeRepository->findAll(),
         ]);
+
     }
 
     /**
