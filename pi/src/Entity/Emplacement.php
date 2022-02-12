@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EmplacementRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=EmplacementRepository::class)
  */
@@ -19,11 +19,14 @@ class Emplacement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="lieu de l'emplacement is required")
      */
     private $lieu;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive(message="capacité doit etre positive")
+     * @Assert\NotBlank(message="nom de la capacité is required")
      */
     private $capacite;
 
