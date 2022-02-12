@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\StockRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=StockRepository::class)
@@ -19,21 +20,28 @@ class Stock
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="libelle de stock is required")
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="nom de l'activité is required")
+     * @Assert\Positive(message="prix du stock doit etre positive")
      */
     private $prix;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="quantite de stock is required")
+     * @Assert\Positive(message="quntite du stock doit etre positive")
      */
     private $quantite;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="disponibilité is required")
+     * @Assert\Choice(choices = {"disponible", "non-disponible"}, message = "Choisire disponibilite soit disponible soit non-disponible." )
      */
     private $disponibilite;
 

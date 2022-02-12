@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ReclamationRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=ReclamationRepository::class)
  */
@@ -25,16 +25,19 @@ class Reclamation
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="description de la reclamation is required")
      */
     private $description;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThan("today")
      */
     private $date;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="objet de réclamation is required")
      */
     private $objet;
 
