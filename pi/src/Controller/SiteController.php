@@ -21,7 +21,7 @@ class SiteController extends AbstractController
      */
     public function ahmed(): Response
     {
-        return $this->render('/ahmed.html.twig');
+        return $this->render('/commande/ahmed.html.twig');
     }
 
     /**
@@ -29,7 +29,7 @@ class SiteController extends AbstractController
      */
     public function fadwa(): Response
     {
-        return $this->render('/fadwa.html.twig');
+        return $this->render('/abonnement/fadwa.html.twig');
     }
 
     /**
@@ -37,7 +37,7 @@ class SiteController extends AbstractController
      */
     public function aziz(): Response
     {
-        return $this->render('/aziz.html.twig');
+        return $this->render('/evenement/aziz.html.twig');
     }
 
     /**
@@ -45,7 +45,7 @@ class SiteController extends AbstractController
      */
     public function mariem(): Response
     {
-        return $this->render('/mariem.html.twig');
+        return $this->render('/produit/mariem.html.twig');
     }
 
     /**
@@ -61,7 +61,7 @@ class SiteController extends AbstractController
      */
     public function hazem(): Response
     {
-        return $this->render('/hazem.html.twig');
+        return $this->render('/piecedr/hazem.html.twig');
     }
 
     /**

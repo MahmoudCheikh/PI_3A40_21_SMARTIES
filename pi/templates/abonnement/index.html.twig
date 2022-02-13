@@ -3,9 +3,13 @@
 {% block title %}Abonnement index{% endblock %}
 
 {% block body %}
-    <h1>Abonnement index</h1>
-
-    <table class="table">
+<h3><i class="fa fa-angle-right"></i> Users index</h3>
+<a href="{{ path('abonnement_new') }}">Create new</a>
+<div class="row mb">
+    <!-- page start-->
+    <div class="content-panel">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
         <thead>
             <tr>
                 <th>Id</th>
@@ -35,7 +39,10 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-    <a href="{{ path('abonnement_new') }}">Create new</a>
+            </table>
+        </div>
+    </div>
+    <!-- page end-->
+</div>
+    <!-- /row -->
 {% endblock %}
