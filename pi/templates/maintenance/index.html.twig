@@ -1,16 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_back.html.twig' %}
 
 {% block title %}Maintenance index{% endblock %}
 
-{% block body %}
-    <h1>Maintenance index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>actions</th>
-            </tr>
+{% block main %}
+<h3><i class="fa fa-angle-right"></i> Maintenance index</h3>
+<a href="{{ path('maintenance_new') }}">Create new</a>
+<div class="row mb">
+    <!-- page start-->
+    <div class="content-panel">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
         </thead>
         <tbody>
         {% for maintenance in maintenances %}
@@ -27,7 +26,10 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-    <a href="{{ path('maintenance_new') }}">Create new</a>
+            </table>
+        </div>
+    </div>
+    <!-- page end-->
+</div>
+    <!-- /row -->
 {% endblock %}

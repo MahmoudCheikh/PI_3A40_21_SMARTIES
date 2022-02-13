@@ -1,11 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_back.html.twig' %}
 
 {% block title %}Stock index{% endblock %}
 
-{% block body %}
-    <h1>Stock index</h1>
-
-    <table class="table">
+{% block main %}
+<h3><i class="fa fa-angle-right"></i> Stock index</h3>
+<a href="{{ path('stock_new') }}">Create new</a>
+<div class="row mb">
+    <!-- page start-->
+    <div class="content-panel">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
         <thead>
             <tr>
                 <th>Id</th>
@@ -35,7 +39,10 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-    <a href="{{ path('stock_new') }}">Create new</a>
+            </table>
+        </div>
+    </div>
+    <!-- page end-->
+</div>
+    <!-- /row -->
 {% endblock %}
