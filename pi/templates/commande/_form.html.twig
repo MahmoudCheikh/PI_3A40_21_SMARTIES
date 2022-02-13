@@ -1,4 +1,16 @@
 {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
-    {{ form_widget(form) }}
+
+   {{ form_errors(form.nbProduits) }}
+    {{ form_label(form.nbProduits, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.nbProduits, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.idUser) }}
+    {{ form_label(form.idUser, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.idUser, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.idProduit) }}
+    {{ form_label(form.idProduit, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.idProduit, {'attr': {'class': 'form-control'}}) }}
+<br>
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
