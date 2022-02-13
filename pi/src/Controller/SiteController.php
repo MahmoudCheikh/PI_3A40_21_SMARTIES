@@ -13,7 +13,7 @@ class SiteController extends AbstractController
      */
     public function test(): Response
     {
-        return $this->render('/test.html.twig');
+        return $this->render('/base_back.html.twig');
     }
 
     /**
@@ -53,7 +53,7 @@ class SiteController extends AbstractController
      */
     public function mahmoud(): Response
     {
-        return $this->render('/mahmoud.html.twig');
+        return $this->render('/users/mahmoud.html.twig');
     }
 
     /**
