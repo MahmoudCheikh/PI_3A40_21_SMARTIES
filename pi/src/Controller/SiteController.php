@@ -49,11 +49,11 @@ class SiteController extends AbstractController
     }
 
     /**
-     * @Route("/mariem/", name="mariem")
+     * @Route("/produit_front/", name="mariem")
      */
     public function mariem(): Response
     {
-        return $this->render('/produit/mariem.html.twig');
+        return $this->render('/produit/mariem_front.html.twig');
     }
 
     /**
