@@ -94,7 +94,7 @@ class Achat
         return $this->idUser;
     }
 
-    public function setIdUser(?Commande $idUser): self
+    public function setIdUser(?Users $idUser): self
     {
         $this->idUser = $idUser;
 
