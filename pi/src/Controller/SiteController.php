@@ -17,6 +17,14 @@ class SiteController extends AbstractController
     }
 
     /**
+     * @Route("/front/", name="site")
+     */
+    public function front(): Response
+    {
+        return $this->render('/base_front.html.twig');
+    }
+
+    /**
      * @Route("/ahmed/", name="ahmed")
      */
     public function ahmed(): Response
