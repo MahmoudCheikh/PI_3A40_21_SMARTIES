@@ -43,14 +43,7 @@ class SiteController extends AbstractController
         return $this->render('/abonnement/fadwa.html.twig');
     }
 
-    /**
-     * @Route("/aziz/", name="aziz")
-     */
-    public function aziz(): Response
-    {
-        return $this->render('/evenement/aziz.html.twig');
-    }
-
+    
 
 
     /**

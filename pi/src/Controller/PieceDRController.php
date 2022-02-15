@@ -16,15 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PieceDRController extends AbstractController
 {
+
     /**
      * @Route("/", name="piece_d_r_index", methods={"GET"})
      */
     public function index(PieceDRRepository $pieceDRRepository): Response
     {
-/*        return $this->render('piece_dr/index.html.twig', [
-            'piece_d_rs' => $pieceDRRepository->findAll(),
-        ]);
-*/
+        /*        return $this->render('piece_dr/index.html.twig', [
+                    'piece_d_rs' => $pieceDRRepository->findAll(),
+                ]);
+        */
         return $this->render('piece_dr/hazem.html.twig', [
             'piece_d_rs' => $pieceDRRepository->findAll(),
         ]);

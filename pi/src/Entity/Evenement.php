@@ -174,9 +174,9 @@ class Evenement
     /**
      * @return Collection|Activite[]
      */
-    public function getActivites(): Collection
+    public function getActivites(): Array
     {
-        return $this->activites;
+        return $this->activites->toArray();
     }
 
     public function addActivite(Activite $activite): self
