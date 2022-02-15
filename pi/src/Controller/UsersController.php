@@ -23,15 +23,17 @@ class UsersController extends AbstractController
     public function index(UsersRepository $UsersRepository): Response
     {
 
-/*
-        return $this->render('Users/index.html.twig', [
-            'Users' => $UsersRepository->findAll(),
-        ]);
-*/
+        /*
+                return $this->render('Users/index.html.twig', [
+                    'Users' => $UsersRepository->findAll(),
+                ]);
+        */
         return $this->render('Users/mahmoud.html.twig', [
             'Users' => $UsersRepository->findAll(),
         ]);
     }
+
+
 
     /**
      * @Route("/new", name="users_new", methods={"GET", "POST"})
@@ -50,6 +52,28 @@ class UsersController extends AbstractController
         }
 
         return $this->render('Users/new.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/creation", name="users_new_front", methods={"GET", "POST"})
+     */
+    public function creation(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = new Users();
+        $form = $this->createForm(UsersType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('Users/createfront.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);

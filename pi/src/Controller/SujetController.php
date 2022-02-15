@@ -27,6 +27,15 @@ class SujetController extends AbstractController
     }
 
     /**
+     * @Route("/front", name="sujet_front", methods={"GET"})
+     */
+    public function indexfront(SujetRepository $sujetRepository): Response
+    {
+        return $this->render('sujet/sujettest.html.twig', [
+            'sujets' => $sujetRepository->findAll(),
+        ]);
+    }
+    /**
      * @Route("/new", name="sujet_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response

@@ -16,6 +16,9 @@ class SiteController extends AbstractController
         return $this->render('/base_back.html.twig');
     }
 
+
+
+
     /**
      * @Route("/front/", name="site")
      */

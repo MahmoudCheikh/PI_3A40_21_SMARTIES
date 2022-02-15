@@ -21,9 +21,8 @@ class Users
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="id user is required")
-     * @Assert\Positive(message="id user  doit etre positive")
      */
     private $idUser;
 
@@ -54,13 +53,11 @@ class Users
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="image is required")
-     */
+    */
     private $image;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="role user is required")
      */
     private $role;
 

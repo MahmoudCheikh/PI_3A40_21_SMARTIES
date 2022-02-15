@@ -14,6 +14,7 @@
     <link rel='dns-prefetch' href='../s.w.org/index.html' />
     <link rel="alternate" type="application/rss+xml" title="Ergo | The ergonomic bike of urban journey &raquo; Feed" href="feed/index.html" />
     <link rel="alternate" type="application/rss+xml" title="Ergo | The ergonomic bike of urban journey &raquo; Comments Feed" href="comments/feed/index.html" />
+    {% block cssjs %}
     <script type="text/javascript">
         window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/ergo.creativezeune.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.8.2"}};
         !function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
@@ -64,7 +65,7 @@
     <link rel='stylesheet' id='elementor-frontend-legacy-css'  href={{asset('wp-content/plugins/elementor/assets/css/frontend-legacy.minb045.css')}} type='text/css' media='all' />
     <link rel='stylesheet' id='elementor-frontend-css'  href={{asset('wp-content/plugins/elementor/assets/css/frontend.minb045.css')}} type='text/css' media='all' />
     <style id='elementor-frontend-inline-css' type='text/css'>
-        @font-face{font-family:eicons;src:url(wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons0b93.eot?5.10.0);src:url(https://ergo.creativezeune.com/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.eot?5.10.0#iefix) format("embedded-opentype"),url(https://ergo.creativezeune.com/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.woff2?5.10.0) format("woff2"),url(https://ergo.creativezeune.com/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.woff?5.10.0) format("woff"),url(https://ergo.creativezeune.com/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.ttf?5.10.0) format("truetype"),url(https://ergo.creativezeune.com/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.svg?5.10.0#eicon) format("svg");font-weight:400;font-style:normal}
+        @font-face{font-family:eicons;src:url({{ asset("wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons0b93.eot")}}?5.10.0);src:url(https://ergo.creativezeune.com/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.eot?5.10.0#iefix) format("embedded-opentype"),url(https://ergo.creativezeune.com/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.woff2?5.10.0) format("woff2"),url(https://ergo.creativezeune.com/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.woff?5.10.0) format("woff"),url(https://ergo.creativezeune.com/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.ttf?5.10.0) format("truetype"),url(https://ergo.creativezeune.com/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.svg?5.10.0#eicon) format("svg");font-weight:400;font-style:normal}
     </style>
     <link rel='stylesheet' id='elementor-post-14-css'  href={{asset('wp-content/uploads/sites/7/elementor/css/post-1452b6.css')}} type='text/css' media='all' />
     <link rel='stylesheet' id='powerpack-frontend-css'  href={{asset('wp-content/plugins/powerpack-lite-for-elementor/assets/css/min/frontend.mind315.css')}} type='text/css' media='all' />
@@ -87,7 +88,7 @@
     <link rel='stylesheet' id='woo-variation-swatches-tooltip-css'  href={{asset('wp-content/plugins/woo-variation-swatches/assets/css/frontend-tooltip.min573a.css')}} type='text/css' media='all' />
     <link rel='stylesheet' id='ekit-widget-styles-css'  href={{asset('wp-content/plugins/elementskit-lite/widgets/init/assets/css/widget-styles8d5a.css')}} type='text/css' media='all' />
     <link rel='stylesheet' id='ekit-responsive-css'  href={{asset('wp-content/plugins/elementskit-lite/widgets/init/assets/css/responsive8d5a.css')}} type='text/css' media='all' />
-    <link crossorigin="anonymous" rel='stylesheet' id='google-fonts-1-css'  href={{asset('../fonts.googleapis.com/css964c.css?family=Montserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CWork+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&amp;display=auto&amp;ver=5.8.2')}} type='text/css' media='all' />
+    <link crossorigin="anonymous" rel='stylesheet' id='google-fonts-1-css'  href={{asset('fonts.googleapis.com/css964c.css')}} type='text/css' media='all' />
     <link rel='stylesheet' id='elementor-icons-shared-0-css'  href={{asset('wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min52d5.css')}} type='text/css' media='all' />
     <link rel='stylesheet' id='elementor-icons-fa-solid-css'  href={{asset('wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min52d5.css')}} type='text/css' media='all' />
     <link rel='stylesheet' id='elementor-icons-fa-regular-css'  href={{asset('wp-content/plugins/elementor/assets/lib/font-awesome/css/regular.min52d5.css')}} type='text/css' media='all' />
@@ -103,7 +104,7 @@
     <script type='text/javascript' src={{asset('wp-includes/js/jquery/jquery.minaf6c.js')}} id='jquery-core-js'></script>
     <script type='text/javascript' src={{asset('wp-includes/js/jquery/jquery-migrate.mind617.js')}} id='jquery-migrate-js'></script>
     <script type='text/javascript' src={{asset('wp-content/plugins/template-kit-export/public/assets/js/template-kit-export-public.min365c.js')}} id='template-kit-export-js'></script>
-    <script defer type='text/javascript' src={{asset('../stats.wp.com/s-202206.js')}} id='woocommerce-analytics-js'></script>
+    <script defer type='text/javascript' src={{asset('s-202206.js')}} id='woocommerce-analytics-js'></script>
     <script type='text/javascript' src={{asset('wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.minb045.js')}} id='font-awesome-4-shim-js'></script>
     <link rel="https://api.w.org/" href="wp-json/index.html" /><link rel="alternate" type="application/json" href="wp-json/wp/v2/pages/2.json" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc0db0.php?rsd" />
     <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" />
@@ -203,6 +204,7 @@
         }
 
         /** End Checkout **/		</style>
+    {% endblock %}
 </head>
 <body class="home page-template-default page page-id-2 theme-hello-elementor woocommerce-no-js woolementor wl woo-variation-swatches wvs-theme-hello-elementor wvs-theme-child-hello-elementor wvs-style-squared wvs-attr-behavior-blur wvs-tooltip wvs-css wvs-show-label elementor-default elementor-kit-14 elementor-page elementor-page-2 elementor-page-46">
 
@@ -219,7 +221,7 @@
                                 <div class="elementor-element elementor-element-233dbb6 elementor-widget elementor-widget-image" data-id="233dbb6" data-element_type="widget" data-widget_type="image.default">
                                     <div class="elementor-widget-container">
                                         <div class="elementor-image">
-                                            <img width="80" height="80" src="wp-content/uploads/sites/7/2021/02/Ergo-logo.png" class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" />														</div>
+                                            <img width="80" height="80" src={{ asset("wp-content/uploads/sites/7/2021/02/Ergo-logo.png")}} class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" />														</div>
                                     </div>
                                 </div>
                             </div>
@@ -241,11 +243,13 @@
                                                         <ul class="elementskit-dropdown elementskit-submenu-panel">
                                                             <li id="menu-item-933" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-933 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="news/index.html" class=" dropdown-item">News</a>	<li id="menu-item-1161" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1161 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="2021/03/09/cycling-on-your-period-harness-the-power-of-your-hormones/index.html" class=" dropdown-item">Single Post</a>	<li id="menu-item-1167" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1167 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="product/r-works-stuns-xc-01/index.html" class=" dropdown-item">Single Product</a>	<li id="menu-item-690" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-690 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="testimonials/index.html" class=" dropdown-item">Testimonials</a>	<li id="menu-item-691" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-691 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="rent-a-bike/index.html" class=" dropdown-item">Rent a Bike</a>	<li id="menu-item-692" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-692 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="events/index.html" class=" dropdown-item">Events</a>	<li id="menu-item-695" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-695 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="contact/index.html" class=" dropdown-item">Contact</a>	<li id="menu-item-688" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-688 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="find-retailers/index.html" class=" dropdown-item">Find Retailers</a>	<li id="menu-item-687" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-687 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="careers/index.html" class=" dropdown-item">Careers</a>	<li id="menu-item-686" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-686 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="help-center/index.html" class=" dropdown-item">Help Center</a>	<li id="menu-item-685" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-685 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="privacy-policy/index.html" class=" dropdown-item">Privacy Policy</a>	<li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="error-404/index.html" class=" dropdown-item">Error 404</a></ul>
                                                     </li>
+                                                    <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="maintenance/index.html" class="ekit-menu-nav-link">Login</a></li>
+
                                                 </ul>
                                                 <div class="elementskit-nav-identity-panel">
                                                     <div class="elementskit-site-title">
                                                         <a class="elementskit-nav-logo" href="index.html" target="_self" rel="">
-                                                            <img width="80" height="80" src="wp-content/uploads/sites/7/2021/02/Ergo-logo-darks.png" class="attachment-full size-full" alt="" loading="lazy" />
+                                                            <img width="80" height="80" src={{ asset("wp-content/uploads/sites/7/2021/02/Ergo-logo-darks.png")}} class="attachment-full size-full" alt="" loading="lazy" />
                                                         </a>
                                                     </div>
                                                     <button class="elementskit-menu-close elementskit-menu-toggler" type="button">X</button>
@@ -314,7 +318,7 @@
     </div>
 </div>
 {% endblock %}
-
+{% block body %}
 <div data-elementor-type="single-page" data-elementor-id="46" class="elementor elementor-46 elementor-location-single post-2 page type-page status-publish hentry" data-elementor-settings="[]">
     <div class="elementor-section-wrap">
 
@@ -443,19 +447,19 @@
                                     <div class="elementor-widget-container">
                                         <div class="woocommerce columns-4 "><ul class="products columns-4">
                                                 <li class="product type-product post-1099 status-publish first instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                                    <a href="product/genius-trail-jx-100/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300" height="300" src="wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">Genius Trail JX-100</h2>
+                                                    <a href="product/genius-trail-jx-100/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300" height="300" src={{ asset("wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png")}} class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">Genius Trail JX-100</h2>
                                                         <span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>1,850.00</bdi></span></span>
                                                     </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">Add to cart</a></li>
                                                 <li class="product type-product post-1098 status-publish instock product_cat-ergo-mtb product_cat-ergo-r-bike has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                                    <a href="product/erg-fuel-carbon-fe/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300" height="300" src="wp-content/uploads/sites/7/2021/03/Ergobike-03-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">ERG-Fuel Carbon FE</h2>
+                                                    <a href="product/erg-fuel-carbon-fe/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300" height="300" src={{ asset("wp-content/uploads/sites/7/2021/03/Ergobike-03-300x300.png")}} class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-03.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">ERG-Fuel Carbon FE</h2>
                                                         <span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>2,175.00</bdi></span></span>
                                                     </a><a href="indexd57a.html?add-to-cart=1098" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1098" data-product_sku="SKU.01-EX450-1-1" aria-label="Add &ldquo;ERG-Fuel Carbon FE&rdquo; to your cart" rel="nofollow">Add to cart</a></li>
                                                 <li class="product type-product post-1097 status-publish instock product_cat-ergo-r-bike has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                                    <a href="product/r-works-stuns-xc-01/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300" height="300" src="wp-content/uploads/sites/7/2021/03/Ergobike-02-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">R-Works Stuns XC-01</h2>
+                                                    <a href="product/r-works-stuns-xc-01/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300" height="300" src={{ asset("wp-content/uploads/sites/7/2021/03/Ergobike-02-300x300.png")}} class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-02.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">R-Works Stuns XC-01</h2>
                                                         <span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>6,950.00</bdi></span></span>
                                                     </a><a href="indexe783.html?add-to-cart=1097" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1097" data-product_sku="SKU.01-EX450-2-1" aria-label="Add &ldquo;R-Works Stuns XC-01&rdquo; to your cart" rel="nofollow">Add to cart</a></li>
                                                 <li class="product type-product post-1096 status-publish last instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                                    <a href="product/ergo-trax-trl-3-0/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300" height="300" src="wp-content/uploads/sites/7/2021/03/Ergobike-01-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">Ergo Trax TRL 3.0</h2>
+                                                    <a href="product/ergo-trax-trl-3-0/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300" height="300" src={{ asset("wp-content/uploads/sites/7/2021/03/Ergobike-01-300x300.png")}} class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-01.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">Ergo Trax TRL 3.0</h2>
                                                         <span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>5,450.00</bdi></span></span>
                                                     </a><a href="indexa5d8.html?add-to-cart=1096" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1096" data-product_sku="SKU.01-EX450-3-1" aria-label="Add &ldquo;Ergo Trax TRL 3.0&rdquo; to your cart" rel="nofollow">Add to cart</a></li>
                                             </ul>
@@ -631,7 +635,7 @@
                                     <div class="elementor-widget-container">
                                         <div class="ekit-wid-con" >        <div class="ekit-image-accordion elementskit-image-accordion-wraper">
                                                 <input type="radio" name="ekit_ia_8e3fba7" id="ekit_ia_8e3fba7_0" class="elementskit-single-image-accordion--input"  hidden>
-                                                <label for="ekit_ia_8e3fba7_0" class="elementskit-single-image-accordion ekit-image-accordion-item" style="background-image: url(wp-content/uploads/sites/7/2021/02/MTB01.jpg)">
+                                                <label for="ekit_ia_8e3fba7_0" class="elementskit-single-image-accordion ekit-image-accordion-item" style="background-image: url({{ asset("wp-content/uploads/sites/7/2021/02/MTB01.jpg")}})">
                 <span class="elementskit-accordion-content">
                                        <span class="elementskit-accordion-title-wraper">
                         <span class="elementskit-accordion-title ">
@@ -646,7 +650,7 @@
                                     </span>
                                                 </label>
                                                 <input type="radio" name="ekit_ia_8e3fba7" id="ekit_ia_8e3fba7_1" class="elementskit-single-image-accordion--input" checked hidden>
-                                                <label for="ekit_ia_8e3fba7_1" class="elementskit-single-image-accordion ekit-image-accordion-item" style="background-image: url(wp-content/uploads/sites/7/2021/02/MTB03.jpg)">
+                                                <label for="ekit_ia_8e3fba7_1" class="elementskit-single-image-accordion ekit-image-accordion-item" style="background-image: url({{ asset("wp-content/uploads/sites/7/2021/02/MTB03.jpg")}})">
                 <span class="elementskit-accordion-content">
                                        <span class="elementskit-accordion-title-wraper">
                         <span class="elementskit-accordion-title ">
@@ -661,7 +665,7 @@
                                     </span>
                                                 </label>
                                                 <input type="radio" name="ekit_ia_8e3fba7" id="ekit_ia_8e3fba7_2" class="elementskit-single-image-accordion--input"  hidden>
-                                                <label for="ekit_ia_8e3fba7_2" class="elementskit-single-image-accordion ekit-image-accordion-item" style="background-image: url(wp-content/uploads/sites/7/2021/02/Roadbike2.jpg)">
+                                                <label for="ekit_ia_8e3fba7_2" class="elementskit-single-image-accordion ekit-image-accordion-item" style="background-image: url({{ asset("wp-content/uploads/sites/7/2021/02/Roadbike2.jpg")}})">
                 <span class="elementskit-accordion-content">
                                        <span class="elementskit-accordion-title-wraper">
                         <span class="elementskit-accordion-title ">
@@ -676,7 +680,7 @@
                                     </span>
                                                 </label>
                                                 <input type="radio" name="ekit_ia_8e3fba7" id="ekit_ia_8e3fba7_3" class="elementskit-single-image-accordion--input"  hidden>
-                                                <label for="ekit_ia_8e3fba7_3" class="elementskit-single-image-accordion ekit-image-accordion-item" style="background-image: url(wp-content/uploads/sites/7/2021/02/MTB02.jpg)">
+                                                <label for="ekit_ia_8e3fba7_3" class="elementskit-single-image-accordion ekit-image-accordion-item" style="background-image: url({{ asset("wp-content/uploads/sites/7/2021/02/MTB02.jpg")}})">
                 <span class="elementskit-accordion-content">
                                        <span class="elementskit-accordion-title-wraper">
                         <span class="elementskit-accordion-title ">
@@ -761,7 +765,7 @@
                                                     <div class="premium-blog-post-container premium-blog-skin-classic">
                                                         <div class="premium-blog-thumb-effect-wrapper">
                                                             <div class="premium-blog-thumbnail-container premium-blog-zoomin-effect">
-                                                                <img width="1200" height="800" src="wp-content/uploads/sites/7/2021/02/Full-Bike.jpg" class="attachment-full size-full" alt="" loading="lazy" />						</div>
+                                                                <img width="1200" height="800" src={{ asset("wp-content/uploads/sites/7/2021/02/Full-Bike.jpg")}} class="attachment-full size-full" alt="" loading="lazy" />						</div>
                                                             <div class="premium-blog-thumbnail-overlay">
                                                                 <a class="elementor-icon" href="2021/03/09/focus-ergo-mx514-gravel-bike-review/index.html" target="_blank"></a>
                                                             </div>
@@ -796,7 +800,7 @@
                                                     <div class="premium-blog-post-container premium-blog-skin-classic">
                                                         <div class="premium-blog-thumb-effect-wrapper">
                                                             <div class="premium-blog-thumbnail-container premium-blog-zoomin-effect">
-                                                                <img width="1200" height="800" src="wp-content/uploads/sites/7/2021/02/Bike-Race.jpg" class="attachment-full size-full" alt="" loading="lazy" />						</div>
+                                                                <img width="1200" height="800" src={{ asset("wp-content/uploads/sites/7/2021/02/Bike-Race.jpg")}} class="attachment-full size-full" alt="" loading="lazy" />						</div>
                                                             <div class="premium-blog-thumbnail-overlay">
                                                                 <a class="elementor-icon" href="2021/03/09/cycling-on-your-period-harness-the-power-of-your-hormones/index.html" target="_blank"></a>
                                                             </div>
@@ -831,7 +835,7 @@
                                                     <div class="premium-blog-post-container premium-blog-skin-classic">
                                                         <div class="premium-blog-thumb-effect-wrapper">
                                                             <div class="premium-blog-thumbnail-container premium-blog-zoomin-effect">
-                                                                <img width="1200" height="800" src="wp-content/uploads/sites/7/2021/02/Bike-handle-bar.jpg" class="attachment-full size-full" alt="" loading="lazy" />						</div>
+                                                                <img width="1200" height="800" src={{ asset("wp-content/uploads/sites/7/2021/02/Bike-handle-bar.jpg")}} class="attachment-full size-full" alt="" loading="lazy" />						</div>
                                                             <div class="premium-blog-thumbnail-overlay">
                                                                 <a class="elementor-icon" href="2021/02/16/ergo-switchblade/index.html" target="_blank"></a>
                                                             </div>
@@ -874,6 +878,7 @@
         </section>
     </div>
 </div>
+{% endblock %}
 <div data-elementor-type="footer" data-elementor-id="468" class="elementor elementor-468 elementor-location-footer" data-elementor-settings="[]">
     <div class="elementor-section-wrap">
         <section class="elementor-section elementor-top-section elementor-element elementor-element-54a57321 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="54a57321" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -892,7 +897,7 @@
                                                             <div class="elementor-widget-container">
                                                                 <div class="elementor-image">
                                                                     <a href="../products.wpmet.com/elementskit/index.html">
-                                                                        <img width="80" height="80" src="wp-content/uploads/sites/7/2021/02/Ergo-logo.png" class="attachment-full size-full" alt="" loading="lazy" />								</a>
+                                                                        <img width="80" height="80" src={{ asset("wp-content/uploads/sites/7/2021/02/Ergo-logo.png")}} class="attachment-full size-full" alt="" loading="lazy" />								</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1082,45 +1087,45 @@
         document.body.className = c;
     })();
 </script>
-<link rel='stylesheet' id='premium-addons-css'  href='wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-css/premium-addons.min1c9b.css?ver=4.6.1' type='text/css' media='all' />
-<link rel='stylesheet' id='e-animations-css'  href='wp-content/plugins/elementor/assets/lib/animations/animations.minb045.css?ver=3.4.8' type='text/css' media='all' />
-<script type='text/javascript' src='wp-content/plugins/betterdocs/admin/assets/js/promotioned19.js?ver=1.9.7' id='betterdocs-el-promotion-js'></script>
-<script type='text/javascript' src='wp-content/plugins/betterdocs/admin/assets/js/betterdocs-el-editored19.js?ver=1.9.7' id='betterdocs-el-editor-js'></script>
+<link rel='stylesheet' id='premium-addons-css'  href={{ asset('wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-css/premium-addons.min1c9b.css')}} type='text/css' media='all' />
+<link rel='stylesheet' id='e-animations-css'  href={{ asset('wp-content/plugins/elementor/assets/lib/animations/animations.minb045.css')}} type='text/css' media='all' />
+<script type='text/javascript' src={{ asset('wp-content/plugins/betterdocs/admin/assets/js/promotioned19.js')}} id='betterdocs-el-promotion-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/betterdocs/admin/assets/js/betterdocs-el-editored19.js')}} id='betterdocs-el-editor-js'></script>
 <script type='text/javascript' id='betterdocs-js-extra'>
     /* <![CDATA[ */
     var betterdocspublic = {"ajax_url":"https:\/\/ergo.creativezeune.com\/wp-admin\/admin-ajax.php","post_id":"2","copy_text":"Copied","sticky_toc_offset":"100","nonce":"37af09e1ff"};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/betterdocs/public/js/betterdocs-public8a54.js?ver=1.0.0' id='betterdocs-js'></script>
-<script type='text/javascript' src='wp-includes/js/clipboard.min080f.js?ver=5.8.2' id='clipboard-js'></script>
-<script type='text/javascript' src='wp-includes/js/dist/vendor/regenerator-runtime.minb36a.js?ver=0.13.7' id='regenerator-runtime-js'></script>
-<script type='text/javascript' src='wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0' id='wp-polyfill-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/betterdocs/public/js/betterdocs-public8a54.js')}} id='betterdocs-js'></script>
+<script type='text/javascript' src={{ asset('wp-includes/js/clipboard.min080f.js')}} id='clipboard-js'></script>
+<script type='text/javascript' src={{ asset('wp-includes/js/dist/vendor/regenerator-runtime.minb36a.js')}} id='regenerator-runtime-js'></script>
+<script type='text/javascript' src={{ asset('wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js')}} id='wp-polyfill-js'></script>
 <script type='text/javascript' id='contact-form-7-js-extra'>
     /* <![CDATA[ */
     var wpcf7 = {"api":{"root":"https:\/\/ergo.creativezeune.com\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/contact-form-7/includes/js/index4245.js?ver=5.5.2' id='contact-form-7-js'></script>
-<script type='text/javascript' src='wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min272a.js?ver=2.7.0-wc.5.9.0' id='jquery-blockui-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/contact-form-7/includes/js/index4245.js')}} id='contact-form-7-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min272a.js')}} id='jquery-blockui-js'></script>
 <script type='text/javascript' id='wc-add-to-cart-js-extra'>
     /* <![CDATA[ */
     var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/ergo.creativezeune.com\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.minad76.js?ver=5.9.0' id='wc-add-to-cart-js'></script>
-<script type='text/javascript' src='wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min00bc.js?ver=2.1.4-wc.5.9.0' id='js-cookie-js'></script>
+<script type='text/javascript' src={{ asset("wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.minad76.js")}} id='wc-add-to-cart-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min00bc.js')}} id='js-cookie-js'></script>
 <script type='text/javascript' id='woocommerce-js-extra'>
     /* <![CDATA[ */
     var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.minad76.js?ver=5.9.0' id='woocommerce-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.minad76.js')}} id='woocommerce-js'></script>
 <script type='text/javascript' id='wc-cart-fragments-js-extra'>
     /* <![CDATA[ */
     var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_1db6204c8250c8a71f9e23242e48ca54","fragment_name":"wc_fragments_1db6204c8250c8a71f9e23242e48ca54","request_timeout":"5000"};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.minad76.js?ver=5.9.0' id='wc-cart-fragments-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.minad76.js')}} id='wc-cart-fragments-js'></script>
 <script type='text/javascript' id='wc-cart-fragments-js-after'>
     jQuery( 'body' ).bind( 'wc_fragments_refreshed', function() {
         var jetpackLazyImagesLoadEvent;
@@ -1142,10 +1147,10 @@
     var WOOLEMENTOR = {"ajaxurl":"https:\/\/ergo.creativezeune.com\/wp-admin\/admin-ajax.php","_nonce":"513d6c024b","icon":";;;;;;;;;;;;;;;;;;;,,:;;;;;;;;;;;;;;;;;;\n;;;;;;;;;;;;;;;;'.    .,;;;;;;;;;;;;;;;;\n;;;;;;;;;;;;;.            .;;;;;;;;;;;;;\n;;;;;;;;;'.                  .';;;;;;;;;\n;;;;;:.                          .;;;;;;\n;;:.                                .:;;\n;;.                                  .;;\n;;.   .;;;;;;;;;;;:. .;;;,. .:;;;.   .;;\n;;.    ;;;;;;;;;;;;;;;;;,  .;;;;;    .;;\n;;.     ';;;;;; ':;;;;;. .:;;;.      ;;;\n;;.      .;;;;:..;;;;;;..:;;;;.      .;;\n;;.       .;;;;;;;;;;;;:;;;;;.       .;;\n;;.        .;;;;;;;:.;;;;;;;.        .;;\n;;.          ;;;;;,  ';;;;;          .;;\n;;.           ';;.    .;;'           .;;\n;;;.            ..    ..            .;;;\n;;;;;,.                          .,;;;;;\n;;;;;;;;:..                  ..:;;;;;;;;\n;;;;;;;;;;;;,.            .,;;;;;;;;;;;;\n;;;;;;;;;;;;;;;:..     .:;;;;;;;;;;;;;;;\n;;;;;;;;;;;;;;;;;;,..';;;;;;;;;;;;;;;;;;","widgets":["shop-classic","shop-standard","shop-curvy","shop-slider","filter-horizontal","product-title","product-breadcrumbs","product-short-description","product-variations","product-add-to-cart","product-sku","product-categories","product-tags","product-thumbnail","product-add-to-wishlist","pricing-table-advanced","pricing-table-basic","related-products-classic","related-products-standard","related-products-curvy","gallery-fancybox","gallery-lc-lightbox","gallery-box-slider","cart-items","cart-overview","coupon-form","my-account","customer-reviews-classic","tabs-basic","tabs-classic","tabs-fancy","tabs-beauty","gradient-button"],"min_price":"1850","max_price":"6950","cart_url":"https:\/\/ergo.creativezeune.com\/cart\/","crnt_min":"1850","crnt_max":"6950","pro_installed":"","pro_activated":""};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/woolementor/assets/js/front.min41fe.js?ver=3.0.1' id='woolementor-js'></script>
-<script type='text/javascript' src='wp-includes/js/jquery/ui/core.min35d0.js?ver=1.12.1' id='jquery-ui-core-js'></script>
-<script type='text/javascript' src='wp-includes/js/jquery/ui/tabs.min35d0.js?ver=1.12.1' id='jquery-ui-tabs-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementskit-lite/libs/framework/assets/js/frontend-script8d5a.js?ver=2.4.0' id='elementskit-framework-js-frontend-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/woolementor/assets/js/front.min41fe.js')}} id='woolementor-js'></script>
+<script type='text/javascript' src={{ asset('wp-includes/js/jquery/ui/core.min35d0.js')}} id='jquery-ui-core-js'></script>
+<script type='text/javascript' src={{ asset('wp-includes/js/jquery/ui/tabs.min35d0.js')}} id='jquery-ui-tabs-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementskit-lite/libs/framework/assets/js/frontend-script8d5a.js')}} id='elementskit-framework-js-frontend-js'></script>
 <script type='text/javascript' id='elementskit-framework-js-frontend-js-after'>
     var elementskit = {
         resturl: 'https://ergo.creativezeune.com/wp-json/elementskit/v1/',
@@ -1153,50 +1158,50 @@
 
 
 </script>
-<script type='text/javascript' src='wp-content/plugins/elementskit-lite/widgets/init/assets/js/widget-scripts8d5a.js?ver=2.4.0' id='ekit-widget-scripts-js'></script>
-<script type='text/javascript' src='wp-includes/js/underscore.min0028.js?ver=1.13.1' id='underscore-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementskit-lite/widgets/init/assets/js/widget-scripts8d5a.js')}} id='ekit-widget-scripts-js'></script>
+<script type='text/javascript' src={{ asset('wp-includes/js/underscore.min0028.js')}} id='underscore-js'></script>
 <script type='text/javascript' id='wp-util-js-extra'>
     /* <![CDATA[ */
     var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-includes/js/wp-util.min080f.js?ver=5.8.2' id='wp-util-js'></script>
+<script type='text/javascript' src={{ asset('wp-includes/js/wp-util.min080f.js?ver=5.8.2')}} id='wp-util-js'></script>
 <script type='text/javascript' id='wc-add-to-cart-variation-js-extra'>
     /* <![CDATA[ */
     var wc_add_to_cart_variation_params = {"wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_no_matching_variations_text":"Sorry, no products matched your selection. Please choose a different combination.","i18n_make_a_selection_text":"Please select some product options before adding this product to your cart.","i18n_unavailable_text":"Sorry, this product is unavailable. Please choose a different combination."};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.minad76.js?ver=5.9.0' id='wc-add-to-cart-variation-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.minad76.js?ver=5.9.0')}} id='wc-add-to-cart-variation-js'></script>
 <script type='text/javascript' id='woo-variation-swatches-js-extra'>
     /* <![CDATA[ */
     var woo_variation_swatches_options = {"is_product_page":"","show_variation_label":"1","variation_label_separator":":","wvs_nonce":"9cd2465f73"};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/woo-variation-swatches/assets/js/frontend.min573a.js?ver=1.1.19' id='woo-variation-swatches-js'></script>
-<script type='text/javascript' src='wp-includes/js/wp-embed.min080f.js?ver=5.8.2' id='wp-embed-js'></script>
-<script type='text/javascript' src='wp-includes/js/jquery/ui/mouse.min35d0.js?ver=1.12.1' id='jquery-ui-mouse-js'></script>
-<script type='text/javascript' src='wp-includes/js/jquery/ui/draggable.min35d0.js?ver=1.12.1' id='jquery-ui-draggable-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/woo-variation-swatches/assets/js/frontend.min573a.js')}} id='woo-variation-swatches-js'></script>
+<script type='text/javascript' src={{ asset('wp-includes/js/wp-embed.min080f.js')}} id='wp-embed-js'></script>
+<script type='text/javascript' src={{ asset('wp-includes/js/jquery/ui/mouse.min35d0.js')}} id='jquery-ui-mouse-js'></script>
+<script type='text/javascript' src={{ asset('wp-includes/js/jquery/ui/draggable.min35d0.js?ver=1.12.1')}} id='jquery-ui-draggable-js'></script>
 <script type='text/javascript' id='premium-addons-js-extra'>
     /* <![CDATA[ */
     var PremiumSettings = {"ajaxurl":"https:\/\/ergo.creativezeune.com\/wp-admin\/admin-ajax.php","nonce":"52b404fc2c"};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/premium-addons.min1c9b.js?ver=4.6.1' id='premium-addons-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min05da.js?ver=4.0.2' id='elementor-waypoints-js'></script>
-<script type='text/javascript' src='wp-includes/js/imagesloaded.mineda1.js?ver=4.1.4' id='imagesloaded-js'></script>
-<script type='text/javascript' src='wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/isotope.min1c9b.js?ver=4.6.1' id='isotope-js-js'></script>
-<script type='text/javascript' src='wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/slick.min1c9b.js?ver=4.6.1' id='pa-slick-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min324d.js?ver=3.1.0' id='elementor-pro-webpack-runtime-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/js/webpack.runtime.minb045.js?ver=3.4.8' id='elementor-webpack-runtime-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/js/frontend-modules.minb045.js?ver=3.4.8' id='elementor-frontend-modules-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min324d.js?ver=3.1.0' id='elementor-sticky-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/premium-addons.min1c9b.js?ver=4.6.1')}} id='premium-addons-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min05da.js?ver=4.0.2')}} id='elementor-waypoints-js'></script>
+<script type='text/javascript' src={{ asset('wp-includes/js/imagesloaded.mineda1.js?ver=4.1.4')}} id='imagesloaded-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/isotope.min1c9b.js?ver=4.6.1')}} id='isotope-js-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/slick.min1c9b.js?ver=4.6.1')}} id='pa-slick-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min324d.js?ver=3.1.0')}} id='elementor-pro-webpack-runtime-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor/assets/js/webpack.runtime.minb045.js?ver=3.4.8')}} id='elementor-webpack-runtime-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor/assets/js/frontend-modules.minb045.js?ver=3.4.8')}} id='elementor-frontend-modules-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min324d.js?ver=3.1.0')}} id='elementor-sticky-js'></script>
 <script type='text/javascript' id='elementor-pro-frontend-js-before'>
     var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/ergo.creativezeune.com\/wp-admin\/admin-ajax.php","nonce":"d4aade10b0","urls":{"assets":"https:\/\/ergo.creativezeune.com\/wp-content\/plugins\/elementor-pro\/assets\/"},"i18n":{"toc_no_headings_found":"No headings were found on this page."},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"google":{"title":"Google+","has_counter":true},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"menu_cart":{"cart_page_url":"https:\/\/ergo.creativezeune.com\/cart\/","checkout_page_url":"https:\/\/ergo.creativezeune.com\/checkout\/"},"facebook_sdk":{"lang":"en_US","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/ergo.creativezeune.com\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
 </script>
-<script type='text/javascript' src='wp-content/plugins/elementor-pro/assets/js/frontend.min324d.js?ver=3.1.0' id='elementor-pro-frontend-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/lib/swiper/swiper.min48f5.js?ver=5.3.6' id='swiper-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/lib/share-link/share-link.minb045.js?ver=3.4.8' id='share-link-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/lib/dialog/dialog.mina288.js?ver=4.8.1' id='elementor-dialog-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor-pro/assets/js/frontend.min324d.js?ver=3.1.0')}} id='elementor-pro-frontend-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor/assets/lib/swiper/swiper.min48f5.js?ver=5.3.6')}} id='swiper-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor/assets/lib/share-link/share-link.minb045.js?ver=3.4.8')}} id='share-link-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor/assets/lib/dialog/dialog.mina288.js?ver=4.8.1')}} id='elementor-dialog-js'></script>
 <script type='text/javascript' id='elementor-frontend-js-extra'>
     /* <![CDATA[ */
     var PaModulesSettings = {"equalHeight_url":"https:\/\/ergo.creativezeune.com\/wp-content\/plugins\/premium-addons-for-elementor\/assets\/frontend\/min-js\/premium-eq-height.min.js"};
@@ -1205,7 +1210,7 @@
 <script type='text/javascript' id='elementor-frontend-js-before'>
     var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Extra","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Extra","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},"version":"3.4.8","is_static":false,"experimentalFeatures":{"e_import_export":true,"landing-pages":true,"elements-color-picker":true,"admin-top-bar":true},"urls":{"assets":"https:\/\/ergo.creativezeune.com\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"editorPreferences":[]},"kit":{"body_background_background":"classic","active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":2,"title":"Ergo%20%7C%20The%20ergonomic%20bike%20of%20urban%20journey%20%E2%80%93%20The%20ergonomic%20bike%20of%20urban%20journey","excerpt":"","featuredImage":false}};
 </script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/js/frontend.minb045.js?ver=3.4.8' id='elementor-frontend-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor/assets/js/frontend.minb045.js?ver=3.4.8')}} id='elementor-frontend-js'></script>
 <script type='text/javascript' id='elementor-frontend-js-after'>
     window.scopes_array = {};
     window.backend = 0;
@@ -1256,17 +1261,17 @@
         jQuery.cachedAssets( url );
     });
 </script>
-<script type='text/javascript' src='wp-content/plugins/elementor-pro/assets/js/preloaded-elements-handlers.min324d.js?ver=3.1.0' id='pro-preloaded-elements-handlers-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementskit-lite/widgets/init/assets/js/animate-circle8d5a.js?ver=2.4.0' id='animate-circle-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementskit-lite/widgets/init/assets/js/elementor8d5a.js?ver=2.4.0' id='elementskit-elementor-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/js/preloaded-modules.minb045.js?ver=3.4.8' id='preloaded-modules-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor-pro/assets/js/preloaded-elements-handlers.min324d.js?ver=3.1.0')}} id='pro-preloaded-elements-handlers-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementskit-lite/widgets/init/assets/js/animate-circle8d5a.js?ver=2.4.0')}} id='animate-circle-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementskit-lite/widgets/init/assets/js/elementor8d5a.js?ver=2.4.0')}} id='elementskit-elementor-js'></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/elementor/assets/js/preloaded-modules.minb045.js?ver=3.4.8')}} id='preloaded-modules-js'></script>
 <script type='text/javascript' id='wpforms-elementor-js-extra'>
     /* <![CDATA[ */
     var wpformsElementorVars = {"captcha_provider":"recaptcha","recaptcha_type":"v2"};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/wpforms-lite/assets/js/integrations/elementor/frontend.mind7e2.js?ver=1.7.1.1' id='wpforms-elementor-js'></script>
-<script src='../stats.wp.com/e-202206.js' defer></script>
+<script type='text/javascript' src={{ asset('wp-content/plugins/wpforms-lite/assets/js/integrations/elementor/frontend.mind7e2.js?ver=1.7.1.1')}} id='wpforms-elementor-js'></script>
+<script src={{ asset('e-202206.js')}} defer></script>
 <script>
     _stq = window._stq || [];
     _stq.push([ 'view', {v:'ext',j:'1:10.3',blog:'191619163',post:'2',tz:'0',srv:'ergo.creativezeune.com'} ]);
