@@ -1,11 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_back.html.twig' %}
 
 {% block title %}Reclamation index{% endblock %}
 
-{% block body %}
-    <h1>Reclamation index</h1>
-
-    <table class="table">
+{% block main %}
+    <h3><i class="fa fa-angle-right"></i> Reclamation index</h3>
+    <a href="{{ path('reclamation_new') }}">Create new</a>
+    <div class="row mb">
+        <!-- page start-->
+        <div class="content-panel">
+            <div class="adv-table">
+                <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
         <thead>
             <tr>
                 <th>Id</th>
@@ -34,6 +38,9 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('reclamation_new') }}">Create new</a>
+    </div>
+    </div>
+    <!-- page end-->
+    </div>
+    <!-- /row -->
 {% endblock %}

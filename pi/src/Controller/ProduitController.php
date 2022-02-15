@@ -31,6 +31,16 @@ class ProduitController extends AbstractController
     }
 
     /**
+     * @Route("/produitfront/", name="mariem")
+     */
+    public function mariem(ProduitRepository $ProduitRepository): Response
+    {
+        return $this->render('/produit/mariem_front.html.twig', [
+            'Produits' => $ProduitRepository->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/new", name="produit_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
