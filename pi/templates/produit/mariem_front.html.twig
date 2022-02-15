@@ -818,7 +818,7 @@
                                 <div class="elementor-element elementor-element-233dbb6 elementor-widget elementor-widget-image" data-id="233dbb6" data-element_type="widget" data-widget_type="image.default">
                                     <div class="elementor-widget-container">
                                         <div class="elementor-image">
-                                            <img width="80" height="80" src={{asset('wp-content/uploads/sites/7/2021/02/Ergo-logo.png')}} class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" />														</div>
+                                            <img width="250" height="500" src={{asset('wp-content/uploads/sites/7/2021/02/logo.png')}} class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" />														</div>
                                     </div>
                                 </div>
                             </div>
@@ -844,7 +844,7 @@
                                                 <div class="elementskit-nav-identity-panel">
                                                     <div class="elementskit-site-title">
                                                         <a class="elementskit-nav-logo" href="../index.html" target="_self" rel="">
-                                                            <img width="80" height="80" src={{asset('wp-content/uploads/sites/7/2021/02/Ergo-logo-darks.png')}}  class="attachment-full size-full" alt="" loading="lazy" />
+                                                            <img width="80" height="80" src={{asset('wp-content/uploads/sites/7/2021/02/logo.png')}}  class="attachment-full size-full" alt="" loading="lazy" />
                                                         </a>
                                                     </div>
                                                     <button class="elementskit-menu-close elementskit-menu-toggler" type="button">X</button>
@@ -912,6 +912,7 @@
         </section>
     </div>
 </div>
+{# ######################################################################### LES PRODUITS ############################################################################ #}
 
 <div data-elementor-type="product-archive" data-elementor-id="903" class="elementor elementor-903 elementor-location-archive product" data-elementor-settings="[]">
     <div class="elementor-section-wrap">
@@ -927,14 +928,156 @@
 
                                         <div class="premium-dual-header-container">
                                             <div class="premium-dual-header-first-container">
-                                                <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient"><span class="premium-dual-header-first-span">ERGO BIKES </span><span class="premium-dual-header-second-header "></span></h2> 		</div>
+                                                <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient"><span class="premium-dual-header-first-span">Ça ROULE </span><span class="premium-dual-header-second-header "></span></h2> 		</div>
                                         </div>
 
                                     </div>
                                 </div>
                                 <div class="elementor-element elementor-element-7165d4a elementor-widget elementor-widget-heading" data-id="7165d4a" data-element_type="widget" data-widget_type="heading.default">
                                     <div class="elementor-widget-container">
-                                        <h2 class="elementor-heading-title elementor-size-default">EXPLORE OUR BIKE COLLECTION</h2>		</div>
+                                        <h2 class="elementor-heading-title elementor-size-default">Consulter Nos Produits</h2>		</div>
+                                </div>
+                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-f32afa8 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f32afa8" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                    <div class="elementor-background-overlay"></div>
+                                    <div class="elementor-container elementor-column-gap-default">
+                                        <div class="elementor-row">
+                                            <div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-f171a75" data-id="f171a75" data-element_type="column">
+                                                <div class="elementor-column-wrap">
+                                                    <div class="elementor-widget-wrap">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-469786a" data-id="469786a" data-element_type="column">
+                                                <div class="elementor-column-wrap elementor-element-populated">
+                                                    <div class="elementor-widget-wrap">
+                                                        <div class="elementor-element elementor-element-7bb1a04c elementor-widget elementor-widget-text-editor" data-id="7bb1a04c" data-element_type="widget" data-widget_type="text-editor.default">
+                                                            <div class="elementor-widget-container">
+                                                                <div class="elementor-text-editor elementor-clearfix">
+                                                                    <p>Lorem ipsum dolor sit amet, elta consectetur adipiscing elit ut elit tellus&nbsp;Maecenas sed diam eget risus varius blandit sit amet</p>					</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-e27f73c" data-id="e27f73c" data-element_type="column">
+                                                <div class="elementor-column-wrap">
+                                                    <div class="elementor-widget-wrap">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            <section class="elementor-section elementor-top-section elementor-element elementor-element-2488794 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2488794" data-element_type="section">
+                <div class="elementor-element elementor-element-a19bd8d elementor-product-loop-item--align-center elementor-products-columns-4 elementor-products-grid elementor-wc-products elementor-show-pagination-border-yes elementor-widget elementor-widget-woocommerce-products" data-id="a19bd8d" data-element_type="widget" data-widget_type="woocommerce-products.default">
+                    <div class="elementor-widget-container">
+                        <div class="woocommerce columns-4 "><div class="woocommerce-notices-wrapper"></div><ul class="products columns-4">
+
+                                {% for produit in Produits %}
+                                <li class="product type-product post-1099 status-publish first instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
+                                    <img width="300" height="300" src="../wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">{{ produit.libelle }}</h2>
+                                        <span class="price"><span class="woocommerce-Price-amount amount"></span>{{ produit.libelle }}</bdi></span></span>
+                                    </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">{{ produit.description }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </section>
+
+        {# ######################################################################### LES VELOS ############################################################################ #}
+
+        <section class="elementor-section elementor-top-section elementor-element elementor-element-60f0b6b elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="60f0b6b" data-element_type="section">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-row">
+                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-2bb768e" data-id="2bb768e" data-element_type="column">
+                        <div class="elementor-column-wrap elementor-element-populated">
+                            <div class="elementor-widget-wrap">
+                                <div class="elementor-element elementor-element-e9d5c94 premium-header-block animated-slow elementor-hidden-phone elementor-invisible elementor-widget elementor-widget-premium-addon-dual-header" data-id="e9d5c94" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="premium-addon-dual-header.default">
+                                    <div class="elementor-widget-container">
+
+                                        <div class="premium-dual-header-container">
+                                            <div class="premium-dual-header-first-container">
+                                                <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient"><span class="premium-dual-header-first-span">Ça ROULE </span><span class="premium-dual-header-second-header "></span></h2> 		</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-80f44c3 elementor-widget elementor-widget-heading" data-id="80f44c3" data-element_type="widget" data-widget_type="heading.default">
+                                    <div class="elementor-widget-container">
+                                        <h2 class="elementor-heading-title elementor-size-default">Les Velos de Ça ROULE</h2>		</div>
+                                </div>
+                                <div class="elementor-element elementor-element-f3d7f5f elementor-widget elementor-widget-text-editor" data-id="f3d7f5f" data-element_type="widget" data-widget_type="text-editor.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-text-editor elementor-clearfix">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus <br>nec ullamcorper mattis, pulvinar dapibus.</p>					</div>
+                                    </div>
+                                </div>
+
+
+
+                                        <section class="elementor-section elementor-top-section elementor-element elementor-element-2488794 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2488794" data-element_type="section">
+                                            <div class="elementor-element elementor-element-a19bd8d elementor-product-loop-item--align-center elementor-products-columns-4 elementor-products-grid elementor-wc-products elementor-show-pagination-border-yes elementor-widget elementor-widget-woocommerce-products" data-id="a19bd8d" data-element_type="widget" data-widget_type="woocommerce-products.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="woocommerce columns-4 "><div class="woocommerce-notices-wrapper"></div><ul class="products columns-4">
+
+                                                            {% for velo in velos %}
+                                                                <li class="product type-product post-1099 status-publish first instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
+                                                                    <img width="300" height="300" src="../wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">{{ velo.etat }}</h2>
+                                                                    <span class="price"><span class="woocommerce-Price-amount amount">Quantite :</span>{{ velo.quantite }}</bdi></span></span>
+                                                                    </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">{{ velo.age }}</a></li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+{# ######################################################################### ACCESSOIRES ############################################################################ #}
+<div data-elementor-type="product-archive" data-elementor-id="903" class="elementor elementor-903 elementor-location-archive product" data-elementor-settings="[]">
+    <div class="elementor-section-wrap">
+        <section class="elementor-section elementor-top-section elementor-element elementor-element-684848e1 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="684848e1" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-background-overlay"></div>
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-row">
+                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-d87b389" data-id="d87b389" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                        <div class="elementor-column-wrap elementor-element-populated">
+                            <div class="elementor-widget-wrap">
+                                <div class="elementor-element elementor-element-3976de38 premium-header-block animated-slow elementor-hidden-phone elementor-invisible elementor-widget elementor-widget-premium-addon-dual-header" data-id="3976de38" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:500}" data-widget_type="premium-addon-dual-header.default">
+                                    <div class="elementor-widget-container">
+
+                                        <div class="premium-dual-header-container">
+                                            <div class="premium-dual-header-first-container">
+                                                <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient"><span class="premium-dual-header-first-span">Ça ROULE </span><span class="premium-dual-header-second-header "></span></h2> 		</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-7165d4a elementor-widget elementor-widget-heading" data-id="7165d4a" data-element_type="widget" data-widget_type="heading.default">
+                                    <div class="elementor-widget-container">
+                                        <h2 class="elementor-heading-title elementor-size-default">Nos Accessoires</h2>		</div>
                                 </div>
                                 <section class="elementor-section elementor-inner-section elementor-element elementor-element-f32afa8 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f32afa8" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                     <div class="elementor-background-overlay"></div>
@@ -974,861 +1117,24 @@
             </div>
         </section>
         <section class="elementor-section elementor-top-section elementor-element elementor-element-2488794 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2488794" data-element_type="section">
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-row">
-                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-fbb9140" data-id="fbb9140" data-element_type="column">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-73df811 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="73df811" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2065ad2" data-id="2065ad2" data-element_type="column">
-                                                <div class="elementor-column-wrap">
-                                                    <div class="elementor-widget-wrap">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                {% for produit in Produits %}
-                                <div class="elementor-element elementor-element-a19bd8d elementor-product-loop-item--align-center elementor-products-columns-4 elementor-products-grid elementor-wc-products elementor-show-pagination-border-yes elementor-widget elementor-widget-woocommerce-products" data-id="a19bd8d" data-element_type="widget" data-widget_type="woocommerce-products.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="woocommerce columns-4 "><div class="woocommerce-notices-wrapper"></div><ul class="products columns-4">
-                                                <li class="product type-product post-1099 status-publish first instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                                    <a href="../product/genius-trail-jx-100/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300" height="300" src="../wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">{{ produit.libelle }}</h2>
-                                                        <span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>1,850.00</bdi></span></span>
-                                                    </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">{{ produit.description }}</a></li>
+            <div class="elementor-element elementor-element-a19bd8d elementor-product-loop-item--align-center elementor-products-columns-4 elementor-products-grid elementor-wc-products elementor-show-pagination-border-yes elementor-widget elementor-widget-woocommerce-products" data-id="a19bd8d" data-element_type="widget" data-widget_type="woocommerce-products.default">
+                <div class="elementor-widget-container">
+                    <div class="woocommerce columns-4 "><div class="woocommerce-notices-wrapper"></div><ul class="products columns-4">
 
-                                            </ul>
-                                        </div>		</div>
-                                </div>
-                            </div>
-                        </div>
+                            {% for accessoire in accessoires %}
+                                <li class="product type-product post-1099 status-publish first instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
+                                    <img width="300" height="300" src="../wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title"></h2>
+                                    <span class="price"><span class="woocommerce-Price-amount amount">Quantité :</span>{{ accessoire.quantite }}</bdi></span></span>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>
-            {% endfor %}
+
+
+
         </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-9697fad elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="9697fad" data-element_type="section">
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-row">
-                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-081af82" data-id="081af82" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-background-overlay"></div>
-                            <div class="elementor-widget-wrap">
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-b0d6205 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="b0d6205" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7a6dbb8" data-id="7a6dbb8" data-element_type="column">
-                                                <div class="elementor-column-wrap">
-                                                    <div class="elementor-widget-wrap">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-41f1bd1" data-id="41f1bd1" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-e7f003b elementor-widget elementor-widget-heading" data-id="e7f003b" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h3 class="elementor-heading-title elementor-size-default">ERGO GEARS SALE</h3>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-025d534 elementor-widget elementor-widget-text-editor" data-id="025d534" data-element_type="widget" data-widget_type="text-editor.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur Ut elit tellus luctus nec.</p>					</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-1bb467f elementor-align-right elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="1bb467f" data-element_type="widget" data-widget_type="button.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-button-wrapper">
-                                                                    <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon elementor-align-icon-right">
-				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-						<span class="elementor-button-text">EXPLORE</span>
-		</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-18db9e0" data-id="18db9e0" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-background-overlay"></div>
-                            <div class="elementor-widget-wrap">
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-1073f77 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="1073f77" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-040cffa" data-id="040cffa" data-element_type="column">
-                                                <div class="elementor-column-wrap">
-                                                    <div class="elementor-widget-wrap">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-0c854a3" data-id="0c854a3" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-fb7023e elementor-widget elementor-widget-heading" data-id="fb7023e" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h3 class="elementor-heading-title elementor-size-default">GET 40% DISCOUNT </br>
-                                                                    DURING THIS SUMMER</h3>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-ffaa481 elementor-widget elementor-widget-text-editor" data-id="ffaa481" data-element_type="widget" data-widget_type="text-editor.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix">
-                                                                    <p>*APPLIED TO ERGOFLUX ONLY</p>					</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-f87e81f elementor-align-right elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="f87e81f" data-element_type="widget" data-widget_type="button.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-button-wrapper">
-                                                                    <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon elementor-align-icon-right">
-				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-						<span class="elementor-button-text">EXPLORE</span>
-		</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-ef40464 elementor-hidden-tablet elementor-hidden-phone elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ef40464" data-element_type="section">
-            <div class="elementor-background-overlay"></div>
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-row">
-                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-a68f435" data-id="a68f435" data-element_type="column">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-4742921 premium-header-block animated-slow elementor-invisible elementor-widget elementor-widget-premium-addon-dual-header" data-id="4742921" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:500}" data-widget_type="premium-addon-dual-header.default">
-                                    <div class="elementor-widget-container">
 
-                                        <div class="premium-dual-header-container">
-                                            <div class="premium-dual-header-first-container">
-                                                <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient"><span class="premium-dual-header-first-span">CONCEPT </span><span class="premium-dual-header-second-header "></span></h2> 		</div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-58dc3b7 elementor-widget elementor-widget-image" data-id="58dc3b7" data-element_type="widget" data-widget_type="image.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-image">
-                                            <img width="1000" height="523" src="../wp-content/uploads/sites/7/2021/03/Bike-Electric-2.png" class="attachment-full size-full" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Bike-Electric-2.png 1000w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Bike-Electric-2-300x157.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Bike-Electric-2-768x402.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Bike-Electric-2-800x418.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Bike-Electric-2-600x314.png 600w" sizes="(max-width: 1000px) 100vw, 1000px" />														</div>
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-ba03e54 elementor-flip-box--effect-fade elementor-widget__width-initial elementor-absolute elementor-hidden-tablet elementor-hidden-phone elementor-invisible elementor-widget elementor-widget-flip-box" data-id="ba03e54" data-element_type="widget" data-settings="{&quot;motion_fx_motion_fx_mouse&quot;:&quot;yes&quot;,&quot;motion_fx_mouseTrack_effect&quot;:&quot;yes&quot;,&quot;motion_fx_mouseTrack_speed&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0.1,&quot;sizes&quot;:[]},&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:500,&quot;motion_fx_mouseTrack_direction&quot;:&quot;negative&quot;}" data-widget_type="flip-box.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-flip-box">
-                                            <div class="elementor-flip-box__layer elementor-flip-box__front">
-                                                <div class="elementor-flip-box__layer__overlay">
-                                                    <div class="elementor-flip-box__layer__inner">
-                                                        <div class="elementor-icon-wrapper elementor-view-default">
-                                                            <div class="elementor-icon">
-                                                                <i class="fas fa-circle-notch"></i>								</div>
-                                                        </div>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-flip-box__layer elementor-flip-box__back">
-                                                <div class="elementor-flip-box__layer__overlay">
-                                                    <div class="elementor-flip-box__layer__inner">
-                                                        <h3 class="elementor-flip-box__layer__title">
-                                                            FRAME SET						</h3>
-
-                                                        <div class="elementor-flip-box__layer__description">
-                                                            ERGO-TECH MXR CARBON /ALUMUNIUM						</div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-9fa394f elementor-flip-box--effect-fade elementor-widget__width-initial elementor-absolute elementor-hidden-tablet elementor-hidden-phone elementor-invisible elementor-widget elementor-widget-flip-box" data-id="9fa394f" data-element_type="widget" data-settings="{&quot;motion_fx_motion_fx_mouse&quot;:&quot;yes&quot;,&quot;motion_fx_mouseTrack_effect&quot;:&quot;yes&quot;,&quot;motion_fx_mouseTrack_speed&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0.1,&quot;sizes&quot;:[]},&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:500}" data-widget_type="flip-box.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-flip-box">
-                                            <div class="elementor-flip-box__layer elementor-flip-box__front">
-                                                <div class="elementor-flip-box__layer__overlay">
-                                                    <div class="elementor-flip-box__layer__inner">
-                                                        <div class="elementor-icon-wrapper elementor-view-default">
-                                                            <div class="elementor-icon">
-                                                                <i class="fas fa-circle-notch"></i>								</div>
-                                                        </div>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-flip-box__layer elementor-flip-box__back">
-                                                <div class="elementor-flip-box__layer__overlay">
-                                                    <div class="elementor-flip-box__layer__inner">
-                                                        <h3 class="elementor-flip-box__layer__title">
-                                                            HANDLE BAR						</h3>
-
-                                                        <div class="elementor-flip-box__layer__description">
-                                                            E-CURVE SMART ALLOY
-                                                            31.88 MM						</div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-359cf82 elementor-flip-box--effect-fade elementor-widget__width-initial elementor-absolute elementor-hidden-tablet elementor-hidden-phone elementor-invisible elementor-widget elementor-widget-flip-box" data-id="359cf82" data-element_type="widget" data-settings="{&quot;motion_fx_motion_fx_mouse&quot;:&quot;yes&quot;,&quot;motion_fx_mouseTrack_effect&quot;:&quot;yes&quot;,&quot;motion_fx_mouseTrack_speed&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0.1,&quot;sizes&quot;:[]},&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:500}" data-widget_type="flip-box.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-flip-box">
-                                            <div class="elementor-flip-box__layer elementor-flip-box__front">
-                                                <div class="elementor-flip-box__layer__overlay">
-                                                    <div class="elementor-flip-box__layer__inner">
-                                                        <div class="elementor-icon-wrapper elementor-view-default">
-                                                            <div class="elementor-icon">
-                                                                <i class="fas fa-circle-notch"></i>								</div>
-                                                        </div>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-flip-box__layer elementor-flip-box__back">
-                                                <div class="elementor-flip-box__layer__overlay">
-                                                    <div class="elementor-flip-box__layer__inner">
-                                                        <h3 class="elementor-flip-box__layer__title">
-                                                            GROUPSET						</h3>
-
-                                                        <div class="elementor-flip-box__layer__description">
-                                                            ERGO SHIMANA TIAGRA 451						</div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-05e038c elementor-hidden-tablet elementor-hidden-phone elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="05e038c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-row">
-                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6fc6da9" data-id="6fc6da9" data-element_type="column">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-b656a1b elementor-hidden-tablet elementor-hidden-phone elementor-widget elementor-widget-spacer" data-id="b656a1b" data-element_type="widget" data-widget_type="spacer.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-spacer">
-                                            <div class="elementor-spacer-inner"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-cea5e23 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="cea5e23" data-element_type="section">
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-row">
-                    <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-023176a elementor-hidden-tablet" data-id="023176a" data-element_type="column">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-c5ae221 elementor-widget elementor-widget-heading" data-id="c5ae221" data-element_type="widget" data-widget_type="heading.default">
-                                    <div class="elementor-widget-container">
-                                        <h3 class="elementor-heading-title elementor-size-default">HOW ERGO
-                                            BIKES ARE MADE
-                                            AND ESTABLISHED</h3>		</div>
-                                </div>
-                                <div class="elementor-element elementor-element-266257c elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="266257c" data-element_type="widget" data-widget_type="button.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-button-wrapper">
-                                            <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-text">MORE ABOUT US</span>
-		</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-6534310" data-id="6534310" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-ba990bf elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ba990bf" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-f1ec4c5" data-id="f1ec4c5" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-4a0ef40 elementor-widget elementor-widget-heading" data-id="4a0ef40" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h2 class="elementor-heading-title elementor-size-default">01</h2>		</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-2d60db2" data-id="2d60db2" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-b519cba elementor-widget elementor-widget-heading" data-id="b519cba" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h4 class="elementor-heading-title elementor-size-default">EXPERT RESEARCH</h4>		</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <div class="elementor-element elementor-element-bdaeaa4 elementor-widget elementor-widget-text-editor" data-id="bdaeaa4" data-element_type="widget" data-widget_type="text-editor.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-text-editor elementor-clearfix">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sit lumet, consectetur.</p>					</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-e096f7d" data-id="e096f7d" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-0de246a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="0de246a" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-94519af" data-id="94519af" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-d72b609 elementor-widget elementor-widget-heading" data-id="d72b609" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h2 class="elementor-heading-title elementor-size-default">02</h2>		</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-c693230" data-id="c693230" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-9fd6391 elementor-widget elementor-widget-heading" data-id="9fd6391" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h4 class="elementor-heading-title elementor-size-default">DESIGN &amp; DEVELOP</h4>		</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <div class="elementor-element elementor-element-885a5fa elementor-widget elementor-widget-text-editor" data-id="885a5fa" data-element_type="widget" data-widget_type="text-editor.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-text-editor elementor-clearfix">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sit lumet, consectetur.</p>					</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-b37f6b4" data-id="b37f6b4" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-06bafe7 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="06bafe7" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-1664f54" data-id="1664f54" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-ef4e65f elementor-widget elementor-widget-heading" data-id="ef4e65f" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h2 class="elementor-heading-title elementor-size-default">03</h2>		</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-6ad5b92" data-id="6ad5b92" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-28c9995 elementor-widget elementor-widget-heading" data-id="28c9995" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h4 class="elementor-heading-title elementor-size-default">TESTED BY PRO</h4>		</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <div class="elementor-element elementor-element-74117e6 elementor-widget elementor-widget-text-editor" data-id="74117e6" data-element_type="widget" data-widget_type="text-editor.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-text-editor elementor-clearfix">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sit lumet, consectetur.</p>					</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-1929d95 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="1929d95" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-row">
-                    <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-d249881" data-id="d249881" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-background-overlay"></div>
-                            <div class="elementor-widget-wrap">
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-4342b71 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="4342b71" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-cbcd74b" data-id="cbcd74b" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-background-overlay"></div>
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-499cdd8 elementor-widget elementor-widget-spacer" data-id="499cdd8" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-spacer">
-                                                                    <div class="elementor-spacer-inner"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-438f298 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="438f298" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-e04b89d" data-id="e04b89d" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-f58cdaa elementor-widget elementor-widget-heading" data-id="f58cdaa" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h3 class="elementor-heading-title elementor-size-default">ERGO TRAILS</h3>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-477278a elementor-align-right elementor-widget elementor-widget-button" data-id="477278a" data-element_type="widget" data-widget_type="button.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-button-wrapper">
-                                                                    <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon elementor-align-icon-right">
-				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-						<span class="elementor-button-text">EXPLORE</span>
-		</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-715be78" data-id="715be78" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-fc5f8f9 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="fc5f8f9" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-58ee23a" data-id="58ee23a" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-background-overlay"></div>
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-c4f060c elementor-widget elementor-widget-heading" data-id="c4f060c" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h3 class="elementor-heading-title elementor-size-default">ERGO ROAD BIKE</h3>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-4d14c7a elementor-align-right elementor-widget elementor-widget-button" data-id="4d14c7a" data-element_type="widget" data-widget_type="button.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-button-wrapper">
-                                                                    <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon elementor-align-icon-right">
-				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-						<span class="elementor-button-text">EXPLORE</span>
-		</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-655c4fd elementor-widget elementor-widget-spacer" data-id="655c4fd" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-spacer">
-                                                                    <div class="elementor-spacer-inner"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-6f8b628 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="6f8b628" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-a8f61f4" data-id="a8f61f4" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-background-overlay"></div>
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-27f9c3c elementor-widget elementor-widget-heading" data-id="27f9c3c" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h3 class="elementor-heading-title elementor-size-default">ERGO GEARS</h3>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-27f94b5 elementor-align-right elementor-widget elementor-widget-button" data-id="27f94b5" data-element_type="widget" data-widget_type="button.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-button-wrapper">
-                                                                    <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon elementor-align-icon-right">
-				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-						<span class="elementor-button-text">EXPLORE</span>
-		</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-30044a6 elementor-widget elementor-widget-spacer" data-id="30044a6" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-spacer">
-                                                                    <div class="elementor-spacer-inner"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-eda661f" data-id="eda661f" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-445d3f3 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="445d3f3" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-8908f64" data-id="8908f64" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-background-overlay"></div>
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-160f89b elementor-widget elementor-widget-heading" data-id="160f89b" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h3 class="elementor-heading-title elementor-size-default">ERGO E-BIKE</h3>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-06c7073 elementor-align-right elementor-widget elementor-widget-button" data-id="06c7073" data-element_type="widget" data-widget_type="button.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-button-wrapper">
-                                                                    <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon elementor-align-icon-right">
-				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-						<span class="elementor-button-text">EXPLORE</span>
-		</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-8c39cf3 elementor-widget elementor-widget-spacer" data-id="8c39cf3" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-spacer">
-                                                                    <div class="elementor-spacer-inner"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-5ac71fa elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="5ac71fa" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-4cc8ff3" data-id="4cc8ff3" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-background-overlay"></div>
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-270b426 elementor-widget elementor-widget-heading" data-id="270b426" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h3 class="elementor-heading-title elementor-size-default">ACCESSORIES</h3>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-fac62d7 elementor-align-right elementor-widget elementor-widget-button" data-id="fac62d7" data-element_type="widget" data-widget_type="button.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-button-wrapper">
-                                                                    <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon elementor-align-icon-right">
-				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-						<span class="elementor-button-text">EXPLORE</span>
-		</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-acdc4e4 elementor-widget elementor-widget-spacer" data-id="acdc4e4" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-spacer">
-                                                                    <div class="elementor-spacer-inner"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-7eaae99 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7eaae99" data-element_type="section">
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-row">
-                    <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-5a0caee" data-id="5a0caee" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-background-overlay"></div>
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-d1398fe elementor-view-default elementor-widget elementor-widget-icon" data-id="d1398fe" data-element_type="widget" data-widget_type="icon.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-icon-wrapper">
-                                            <div class="elementor-icon">
-                                                <i aria-hidden="true" class="fas fa-shipping-fast"></i>			</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-52d8dbb elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="52d8dbb" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-9d17043" data-id="9d17043" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-32f6a5f elementor-widget elementor-widget-heading" data-id="32f6a5f" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h4 class="elementor-heading-title elementor-size-default">FREE SHIPPING
-                                                                    FOR USA &amp; UK</h4>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-8c4b604 elementor-widget elementor-widget-text-editor" data-id="8c4b604" data-element_type="widget" data-widget_type="text-editor.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur ut elit&nbsp;Nullam id dolor id nibh ultricies vehicula.</p>					</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-2189cd3" data-id="2189cd3" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-background-overlay"></div>
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-737ca7b elementor-view-default elementor-widget elementor-widget-icon" data-id="737ca7b" data-element_type="widget" data-widget_type="icon.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-icon-wrapper">
-                                            <div class="elementor-icon">
-                                                <i aria-hidden="true" class="fas fa-crown"></i>			</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-9f29259 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="9f29259" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-f757203" data-id="f757203" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-6338cc1 elementor-widget elementor-widget-heading" data-id="6338cc1" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h4 class="elementor-heading-title elementor-size-default">5 YEARS GUARANTEE FOR ALL PARTS</h4>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-726715c elementor-widget elementor-widget-text-editor" data-id="726715c" data-element_type="widget" data-widget_type="text-editor.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur ut elit&nbsp;Nullam id dolor id nibh ultricies vehicula.</p>					</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-f9e967d" data-id="f9e967d" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-background-overlay"></div>
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-3aa0676 elementor-view-default elementor-widget elementor-widget-icon" data-id="3aa0676" data-element_type="widget" data-widget_type="icon.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-icon-wrapper">
-                                            <div class="elementor-icon">
-                                                <i aria-hidden="true" class="fas fa-globe-asia"></i>			</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-03b3cd8 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="03b3cd8" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-88caa96" data-id="88caa96" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-f766d8f elementor-widget elementor-widget-heading" data-id="f766d8f" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h4 class="elementor-heading-title elementor-size-default">INTERNATIONAL RETAILERS</h4>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-80852ff elementor-widget elementor-widget-text-editor" data-id="80852ff" data-element_type="widget" data-widget_type="text-editor.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur ut elit&nbsp;Nullam id dolor id nibh ultricies vehicula.</p>					</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-13ec44c" data-id="13ec44c" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-background-overlay"></div>
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-90c1620 elementor-view-default elementor-widget elementor-widget-icon" data-id="90c1620" data-element_type="widget" data-widget_type="icon.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-icon-wrapper">
-                                            <div class="elementor-icon">
-                                                <i aria-hidden="true" class="fas fa-plane"></i>			</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-eb519cd elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="eb519cd" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-11a002d" data-id="11a002d" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-45aa477 elementor-widget elementor-widget-heading" data-id="45aa477" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h4 class="elementor-heading-title elementor-size-default">FREE RETURNS ELIGIBLE PARTS</h4>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-d631ad0 elementor-widget elementor-widget-text-editor" data-id="d631ad0" data-element_type="widget" data-widget_type="text-editor.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur ut elit&nbsp;Nullam id dolor id nibh ultricies vehicula.</p>					</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-60f0b6b elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="60f0b6b" data-element_type="section">
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-row">
-                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-2bb768e" data-id="2bb768e" data-element_type="column">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-e9d5c94 premium-header-block animated-slow elementor-hidden-phone elementor-invisible elementor-widget elementor-widget-premium-addon-dual-header" data-id="e9d5c94" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="premium-addon-dual-header.default">
-                                    <div class="elementor-widget-container">
-
-                                        <div class="premium-dual-header-container">
-                                            <div class="premium-dual-header-first-container">
-                                                <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient"><span class="premium-dual-header-first-span">NEWSLETTER </span><span class="premium-dual-header-second-header "></span></h2> 		</div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-80f44c3 elementor-widget elementor-widget-heading" data-id="80f44c3" data-element_type="widget" data-widget_type="heading.default">
-                                    <div class="elementor-widget-container">
-                                        <h2 class="elementor-heading-title elementor-size-default">LET'S CONNECT WITH US</h2>		</div>
-                                </div>
-                                <div class="elementor-element elementor-element-f3d7f5f elementor-widget elementor-widget-text-editor" data-id="f3d7f5f" data-element_type="widget" data-widget_type="text-editor.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-text-editor elementor-clearfix">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus <br>nec ullamcorper mattis, pulvinar dapibus.</p>					</div>
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-de08879 elementor-button-align-center elementor-widget elementor-widget-form" data-id="de08879" data-element_type="widget" data-settings="{&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}" data-widget_type="form.default">
-                                    <div class="elementor-widget-container">
-                                        <form class="elementor-form" method="post" name="Ergo Subscribe Form">
-                                            <input type="hidden" name="post_id" value="903"/>
-                                            <input type="hidden" name="form_id" value="de08879"/>
-
-
-                                            <div class="elementor-form-fields-wrapper elementor-labels-above">
-                                                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
-                                                    <input size="1" type="text" name="form_fields[name]" id="form-field-name" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Type your email">				</div>
-                                                <div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
-                                                    <button type="submit" class="elementor-button elementor-size-sm">
-						<span >
-															<span class=" elementor-button-icon">
-																										</span>
-																						<span class="elementor-button-text">SUBSCRIBE</span>
-													</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
 <div data-elementor-type="footer" data-elementor-id="468" class="elementor elementor-468 elementor-location-footer" data-elementor-settings="[]">
     <div class="elementor-section-wrap">
         <section class="elementor-section elementor-top-section elementor-element elementor-element-54a57321 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="54a57321" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">

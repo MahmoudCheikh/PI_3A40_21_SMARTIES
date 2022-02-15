@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Produit;
 use App\Form\ProduitType;
+use App\Repository\AccessoireRepository;
 use App\Repository\ProduitRepository;
+use App\Repository\VeloRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,12 +35,15 @@ class ProduitController extends AbstractController
     /**
      * @Route("/produitfront/", name="mariem")
      */
-    public function mariem(ProduitRepository $ProduitRepository): Response
+    public function mariem(ProduitRepository $ProduitRepository,VeloRepository $veloRepository,AccessoireRepository $accessoireRepository): Response
     {
         return $this->render('/produit/mariem_front.html.twig', [
             'Produits' => $ProduitRepository->findAll(),
+            'velos' => $veloRepository->findAll(),
+            'accessoires' => $accessoireRepository->findAll(),
         ]);
     }
+    /*l fou9 l 7ketya lkol*/
 
     /**
      * @Route("/new", name="produit_new", methods={"GET", "POST"})
