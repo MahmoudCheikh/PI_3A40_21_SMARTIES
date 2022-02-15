@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UsersType extends AbstractType
+class UsersFrontType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -18,8 +18,6 @@ class UsersType extends AbstractType
             ->add('prenom')
             ->add('adresse')
             ->add('email')
-            ->add('image')
-            ->add('role')
         ;
     }
 

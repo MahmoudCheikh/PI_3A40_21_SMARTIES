@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\UsersType;
+use App\Form\UsersFrontType;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -48,7 +49,7 @@ class UsersController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('site', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Users/new.html.twig', [
@@ -63,7 +64,7 @@ class UsersController extends AbstractController
     public function creation(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = new Users();
-        $form = $this->createForm(UsersType::class, $user);
+        $form = $this->createForm(UsersFrontType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

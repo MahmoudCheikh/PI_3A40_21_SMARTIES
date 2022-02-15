@@ -106,12 +106,12 @@ class Users
         return $this->id;
     }
 
-    public function getIdUser(): ?int
+    public function getIdUser(): ?string
     {
         return $this->idUser;
     }
 
-    public function setIdUser(int $idUser): self
+    public function setIdUser(string $idUser): self
     {
         $this->idUser = $idUser;
 

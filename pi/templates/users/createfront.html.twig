@@ -37,46 +37,35 @@
                                             <input type="hidden" name="form_id" value="784be66"/>
 
                                             <input type="hidden" name="queried_id" value="528"/>
-                                            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                                            {{ form_start(form ) }}
                                             <div class="elementor-form-fields-wrapper elementor-labels-above">
                                                 <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
                                                     {{ form_errors(form.email) }}
-                                                    {{ form_widget(form.email, {'attr': {'size':"1", 'type':"text", 'name':"form_fields[name]" ,'id':"form-field-name", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Email"}}) }}
+                                                    {{ form_widget(form.email, {'attr': {'size':"1", 'type':"text",  'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Email"}}) }}
 
                                                 </div>
                                                 <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
                                                     {{ form_errors(form.idUser) }}
-                                                    {{ form_widget(form.idUser, {'attr': {'size':"1", 'type':"password", 'name':"form_fields[name]" ,'id':"form-field-name", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Mot de passe"}}) }}
+                                                    {{ form_widget(form.idUser, {'attr': {'size':"1", 'type':"password",  'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Mot de passe"}}) }}
 
                                                 </div>
                                                 <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
                                                          {{ form_errors(form.nom) }}
-                                                        {{ form_widget(form.nom, {'attr': {'size':"1", 'type':"text", 'name':"form_fields[name]" ,'id':"form-field-name", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Nom"}}) }}
+                                                        {{ form_widget(form.nom, {'attr': {'size':"1", 'type':"text", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Nom"}}) }}
                                                     </div>
                                                     <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
                                                         {{ form_errors(form.prenom) }}
-                                                        {{ form_widget(form.prenom, {'attr': {'size':"1", 'type':"text", 'name':"form_fields[name]" ,'id':"form-field-name", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Prenom"}}) }}
+                                                        {{ form_widget(form.prenom, {'attr': {'size':"1", 'type':"text", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Prenom"}}) }}
                                                     </div>
 
                                                     <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
                                                         {{ form_errors(form.adresse) }}
-                                                        {{ form_widget(form.adresse, {'attr': {'size':"1", 'type':"text", 'name':"form_fields[name]" ,'id':"form-field-name", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Adresse"}}) }}
+                                                        {{ form_widget(form.adresse, {'attr': {'size':"1", 'type':"text", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Adresse"}}) }}
                                                     </div>
-                                                    <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
-                                                        {{ form_errors(form.image) }}
-                                                        {{ form_widget(form.image, {'attr': {'novalidate': 'novalidate' ,'size':"1", 'type':"text" ,'id':"form-field-name", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Image"}}) }}
-                                                    </div>
-                                                    <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
-                                                        {{ form_errors(form.role) }}
-                                                        {{ form_widget(form.role, {'attr': {'novalidate': 'novalidate' ,'size':"1", 'type':"text" ,'id':"form-field-name", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Role"}}) }}
-                                                    </div>
+
 
 															 <button class="btn">{{ button_label|default('Save') }}</button>
-
-
                                                 </div>
-
-
                                             </div>
                                         {{ form_end(form) }}
                                     </div>
