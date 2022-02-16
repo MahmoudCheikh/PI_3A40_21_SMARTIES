@@ -1,0 +1,60 @@
+{% extends 'base_front.html.twig' %}
+{% block body %}
+
+
+    <link rel='stylesheet' id='hello-elementor-css'  href='../wp-content/themes/hello-elementor/style.min8066.css?ver=2.4.1' type='text/css' media='all' />
+
+    <main class="site-main post-5 page type-page status-publish hentry" role="main">
+        <header class="page-header">
+
+            <div class="page-content">
+
+                <div class="woocommerce"><div class="woocommerce-notices-wrapper"></div>
+                    <form class="woocommerce-cart-form" action="https://ergo.creativezeune.com/cart/" method="post">
+
+
+
+                        <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+                            <thead>
+                            <thead>
+                            <tr>
+                                <td>L'Id D'Achat</td>
+                                <td>Date D'Achat</td>
+                                <td>Nom Du Client</td>
+                                <td>Numero De Client</td>
+                            </tr>
+                            </thead>
+                                <tr>
+                                    {% for achat in achats %}
+
+                                    <th class="Numero Du Commande">{{achat.id}}</th>
+                                    <th class="Date">{{achat.date ? achat.date|date('Y-m-d') : '' }}</th>
+                                    <th class="name">{{achat.nomClient}}</th>
+                                    <th class="numeroClient">{{achat.numeroClient}}</th>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">no records found</td>
+                                    </tr>
+                                {% endfor %}
+
+
+                            <tbody>
+
+                            <tr class="woocommerce-cart-form__cart-item cart_item">
+
+
+
+
+
+
+
+                            <tr>
+                                <td colspan="6" class="actions">
+
+
+
+            </section><!-- .comments-area -->
+    </main>
+
+{% endblock %}

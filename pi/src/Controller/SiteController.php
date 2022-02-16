@@ -2,6 +2,12 @@
 
 namespace App\Controller;
 
+use App\Repository\AchatRepository;
+use App\Repository\CommandeRepository;
+use App\Repository\AccessoireRepository;
+use App\Repository\EmplacementRepository;
+use App\Repository\ProduitRepository;
+use App\Repository\VeloRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,13 +33,20 @@ class SiteController extends AbstractController
         return $this->render('/base_front.html.twig');
     }
 
+
+
     /**
-     * @Route("/ahmed/", name="ahmed")
+     * @Route("/commandefront", name="ahmed" , methods={"GET"})
      */
-    public function ahmed(): Response
+
+    public function ahmed_b(CommandeRepository $CommandeRepository): Response
     {
-        return $this->render('/commande/ahmed.html.twig');
+        return $this->render('/commande/commandeFront.html.twig', [
+            'Commandes' => $CommandeRepository->findAll(),
+
+        ]);
     }
+
 
     /**
      * @Route("/fadwa/", name="fadwa")
@@ -44,14 +57,25 @@ class SiteController extends AbstractController
     }
 
     /**
-     * @Route("/aziz/", name="aziz")
+     * @Route("/siteF", name="mariem", methods={"GET"})
      */
-    public function aziz(): Response
+    public function mariem(EmplacementRepository $emplacementRepository): Response
     {
-        return $this->render('/evenement/aziz.html.twig');
+        return $this->render('/emplacement/site_front.html.twig', [
+            'emplacements' => $emplacementRepository->findAll(),
+        ]);
     }
-
-
+    /**
+     * @Route("/produitfront", name="marieme")
+     */
+    public function mariem_e(ProduitRepository $ProduitRepository,VeloRepository $veloRepository,AccessoireRepository $accessoireRepository): Response
+    {
+        return $this->render('/produit/mariem_front.html.twig', [
+            'Produits' => $ProduitRepository->findAll(),
+            'velos' => $veloRepository->findAll(),
+            'accessoires' => $accessoireRepository->findAll(),
+        ]);
+    }
 
     /**
      * @Route("/mahmoud/", name="mahmoud")

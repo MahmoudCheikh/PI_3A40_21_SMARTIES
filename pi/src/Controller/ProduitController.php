@@ -4,12 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Produit;
 use App\Form\ProduitType;
+use App\Repository\AccessoireRepository;
 use App\Repository\ProduitRepository;
+use App\Repository\VeloRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * @Route("/produit")
@@ -17,6 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProduitController extends AbstractController
 {
     /**
+     *
      * @Route("/", name="produit_index", methods={"GET"})
      */
     public function index(ProduitRepository $ProduitRepository): Response
@@ -30,15 +34,8 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/produitfront/", name="mariem")
-     */
-    public function mariem(ProduitRepository $ProduitRepository): Response
-    {
-        return $this->render('/produit/mariem_front.html.twig', [
-            'Produits' => $ProduitRepository->findAll(),
-        ]);
-    }
+
+    /*l fou9 l 7ketya lkol*/
 
     /**
      * @Route("/new", name="produit_new", methods={"GET", "POST"})
@@ -50,6 +47,21 @@ class ProduitController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $new=$form->getData();
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = $originalFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+                try {
+                    $imageFile->move(
+                        'img\bike',
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                }
+                $Produit->setImage($newFilename);
+            }
             $entityManager->persist($Produit);
             $entityManager->flush();
 
@@ -81,6 +93,25 @@ class ProduitController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $new=$form->getData();
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = $originalFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+                try {
+                    $imageFile->move(
+                        'img\bike',
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                }
+                $Produit->setImage($newFilename);
+            }
+
+
+
+
             $entityManager->flush();
 
             return $this->redirectToRoute('produit_index', [], Response::HTTP_SEE_OTHER);

@@ -16,6 +16,8 @@
                 <th>Libelle</th>
                 <th>Image</th>
                 <th>Description</th>
+                <th>prix</th>
+                <th>type</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,8 +26,10 @@
             <tr>
                 <td>{{ produit.id }}</td>
                 <td>{{ produit.libelle }}</td>
-                <td>{{ produit.image }}</td>
+                <td><img style="width: 100%" src="{{asset('img/bike/') ~ produit.image }}" class="img-responsive" alt="Image"></td>
                 <td>{{ produit.description }}</td>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.type }}</td>
                 <td>
                     <a href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
                     <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>

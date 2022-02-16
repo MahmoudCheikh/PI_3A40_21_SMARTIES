@@ -6,6 +6,7 @@ use App\Entity\Activite;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ActiviteType extends AbstractType
 {
@@ -14,7 +15,12 @@ class ActiviteType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('image')
+            ->add('image', FileType::class, [
+                'label' => false,
+                'multiple' => true,
+                'mapped'=> false,
+                'required' =>false
+            ])
             ->add('idEvenement')
         ;
     }

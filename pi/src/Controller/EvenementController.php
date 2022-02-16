@@ -29,6 +29,15 @@ class EvenementController extends AbstractController
             'evenements' => $EvenementRepository->findAll(),
         ]);
     }
+    /**
+     * @Route("/evenement_front/", name="aziz" , methods={"GET"})
+     */
+    public function aziz(EvenementRepository $EvenementRepository): Response
+    {
+        return $this->render('/evenement/eventindex.html.twig',[
+            'evenements' => $EvenementRepository->findAll(),
+        ]);
+    }
 
     /**
      * @Route("/new", name="evenement_new", methods={"GET", "POST"})
@@ -51,6 +60,7 @@ class EvenementController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 
     /**
      * @Route("/{id}", name="evenement_show", methods={"GET"})

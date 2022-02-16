@@ -935,7 +935,7 @@
                                 </div>
                                 <div class="elementor-element elementor-element-7165d4a elementor-widget elementor-widget-heading" data-id="7165d4a" data-element_type="widget" data-widget_type="heading.default">
                                     <div class="elementor-widget-container">
-                                        <h2 class="elementor-heading-title elementor-size-default">Consulter Nos Produits</h2>		</div>
+                                        <h2 class="elementor-heading-title elementor-size-default">Consulter les Sites de Location</h2>		</div>
                                 </div>
                                 <section class="elementor-section elementor-inner-section elementor-element elementor-element-f32afa8 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f32afa8" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                     <div class="elementor-background-overlay"></div>
@@ -973,173 +973,79 @@
                     </div>
                 </div>
             </div>
-        </section>
-            <section class="elementor-section elementor-top-section elementor-element elementor-element-2488794 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2488794" data-element_type="section">
-                <div class="elementor-element elementor-element-a19bd8d elementor-product-loop-item--align-center elementor-products-columns-4 elementor-products-grid elementor-wc-products elementor-show-pagination-border-yes elementor-widget elementor-widget-woocommerce-products" data-id="a19bd8d" data-element_type="widget" data-widget_type="woocommerce-products.default">
-                    <div class="elementor-widget-container">
-                        <div class="woocommerce columns-4 "><div class="woocommerce-notices-wrapper"></div><ul class="products columns-4">
-
-                                {% for produit in Produits %}
-                                    {% if produit.type=="Accessoire" %}
-                                <li class="product type-product post-1099 status-publish first instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                    <img style="width: 300%" src="{{asset('img/bike/') ~ produit.image }}" class="img-responsive" alt="Image">
-                                    <span class="price"><span class="woocommerce-Price-amount amount"></span>{{ produit.libelle }}</bdi></span></span>
-                                    </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">{{ produit.description }}</a></li>
-                                {% endif %}
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
 
 
-            </section>
-
-        {# ######################################################################### LES VELOS ############################################################################ #}
-
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-60f0b6b elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="60f0b6b" data-element_type="section">
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-row">
-                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-2bb768e" data-id="2bb768e" data-element_type="column">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-e9d5c94 premium-header-block animated-slow elementor-hidden-phone elementor-invisible elementor-widget elementor-widget-premium-addon-dual-header" data-id="e9d5c94" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="premium-addon-dual-header.default">
-                                    <div class="elementor-widget-container">
-
-                                        <div class="premium-dual-header-container">
-                                            <div class="premium-dual-header-first-container">
-                                                <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient"><span class="premium-dual-header-first-span">Ça ROULE </span><span class="premium-dual-header-second-header "></span></h2> 		</div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-80f44c3 elementor-widget elementor-widget-heading" data-id="80f44c3" data-element_type="widget" data-widget_type="heading.default">
-                                    <div class="elementor-widget-container">
-                                        <h2 class="elementor-heading-title elementor-size-default">Les Velos de Ça ROULE</h2>		</div>
-                                </div>
-                                <div class="elementor-element elementor-element-f3d7f5f elementor-widget elementor-widget-text-editor" data-id="f3d7f5f" data-element_type="widget" data-widget_type="text-editor.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-text-editor elementor-clearfix">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus <br>nec ullamcorper mattis, pulvinar dapibus.</p>					</div>
-                                    </div>
-                                </div>
-
-
-
-                                        <section class="elementor-section elementor-top-section elementor-element elementor-element-2488794 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2488794" data-element_type="section">
-                                            <div class="elementor-element elementor-element-a19bd8d elementor-product-loop-item--align-center elementor-products-columns-4 elementor-products-grid elementor-wc-products elementor-show-pagination-border-yes elementor-widget elementor-widget-woocommerce-products" data-id="a19bd8d" data-element_type="widget" data-widget_type="woocommerce-products.default">
-                                                <div class="elementor-widget-container">
-                                                    <div class="woocommerce columns-4 "><div class="woocommerce-notices-wrapper"></div><ul class="products columns-4">
-
-                                                            {% for produit in Produits %}
-                                                                {% if produit.type=="Velo" %}
-                                                                <li class="product type-product post-1099 status-publish first instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                                                    <img width="300" height="300" src="../wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">{{ produit.prix }}</h2>
-                                                                    <span class="price"><span class="woocommerce-Price-amount amount">Quantite :</span>{{ produit.prix }}</bdi></span></span>
-                                                                    </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">{{ produit.prix }}</a></li>
-                                                            {% endif %}
-                                                            {% endfor %}
-                                                        </ul>
+                                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-ab676cd elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ab676cd" data-element_type="section">
+                                        {% for emplacement in emplacements %}
+                                        <div class="elementor-container elementor-column-gap-default">
+                                            <div class="elementor-row">
+                                                <div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-f358211 animated fadeInUp" data-id="f358211" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:1000}">
+                                                    <div class="elementor-column-wrap elementor-element-populated">
+                                                        <div class="elementor-widget-wrap">
+                                                            <div class="elementor-element elementor-element-dd01210 elementor-view-default elementor-widget elementor-widget-icon" data-id="dd01210" data-element_type="widget" data-widget_type="icon.default">
+                                                                <div class="elementor-widget-container">
+                                                                    <div class="elementor-icon-wrapper">
+                                                                        <div class="elementor-icon">
+                                                                            <i aria-hidden="true" class="fas fa-map-marker-alt"></i>			</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="elementor-element elementor-element-ce311bc elementor-widget elementor-widget-text-editor" data-id="ce311bc" data-element_type="widget" data-widget_type="text-editor.default">
+                                                                <div class="elementor-widget-container">
+                                                                    <div class="elementor-text-editor elementor-clearfix">
+                                                                        <p>{{ emplacement.lieu }}</p>					</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="elementor-element elementor-element-2a13c47 elementor-widget elementor-widget-text-editor" data-id="2a13c47" data-element_type="widget" data-widget_type="text-editor.default">
+                                                                <div class="elementor-widget-container">
+                                                                    <div class="elementor-text-editor elementor-clearfix">
+                                                                        <p>Capacite :<br>{{ emplacement.capacite }}</p>					</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="elementor-element elementor-element-b0cd84a elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="b0cd84a" data-element_type="widget" data-widget_type="icon-list.default">
+                                                                <div class="elementor-widget-container">
+                                                                    <ul class="elementor-icon-list-items">
+                                                                        <li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="icon icon-envelope"></i>						</span>
+                                                                            <span class="elementor-icon-list-text">çaroule@esprit.tn    </span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="elementor-element elementor-element-0065453 elementor-align-left elementor-widget elementor-widget-button animated fadeInLeft" data-id="0065453" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:500}" data-widget_type="button.default">
+                                                                <div class="elementor-widget-container">
+                                                                    <div class="elementor-button-wrapper">
+                                                                        <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon elementor-align-icon-right">
+				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
+						<span class="elementor-button-text">Loué</span>
+		</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </section>
+                                                {% endfor %}
 
 
-                                    </div>
+                                    </section>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+
 
     </div>
 </div>
 
-{# ######################################################################### ACCESSOIRES ############################################################################ #}
-<div data-elementor-type="product-archive" data-elementor-id="903" class="elementor elementor-903 elementor-location-archive product" data-elementor-settings="[]">
-    <div class="elementor-section-wrap">
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-684848e1 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="684848e1" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-            <div class="elementor-background-overlay"></div>
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-row">
-                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-d87b389" data-id="d87b389" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-3976de38 premium-header-block animated-slow elementor-hidden-phone elementor-invisible elementor-widget elementor-widget-premium-addon-dual-header" data-id="3976de38" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:500}" data-widget_type="premium-addon-dual-header.default">
-                                    <div class="elementor-widget-container">
-
-                                        <div class="premium-dual-header-container">
-                                            <div class="premium-dual-header-first-container">
-                                                <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient"><span class="premium-dual-header-first-span">Ça ROULE </span><span class="premium-dual-header-second-header "></span></h2> 		</div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-7165d4a elementor-widget elementor-widget-heading" data-id="7165d4a" data-element_type="widget" data-widget_type="heading.default">
-                                    <div class="elementor-widget-container">
-                                        <h2 class="elementor-heading-title elementor-size-default">Nos Accessoires</h2>		</div>
-                                </div>
-                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-f32afa8 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f32afa8" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                    <div class="elementor-background-overlay"></div>
-                                    <div class="elementor-container elementor-column-gap-default">
-                                        <div class="elementor-row">
-                                            <div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-f171a75" data-id="f171a75" data-element_type="column">
-                                                <div class="elementor-column-wrap">
-                                                    <div class="elementor-widget-wrap">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-469786a" data-id="469786a" data-element_type="column">
-                                                <div class="elementor-column-wrap elementor-element-populated">
-                                                    <div class="elementor-widget-wrap">
-                                                        <div class="elementor-element elementor-element-7bb1a04c elementor-widget elementor-widget-text-editor" data-id="7bb1a04c" data-element_type="widget" data-widget_type="text-editor.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix">
-                                                                    <p>Lorem ipsum dolor sit amet, elta consectetur adipiscing elit ut elit tellus&nbsp;Maecenas sed diam eget risus varius blandit sit amet</p>					</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-e27f73c" data-id="e27f73c" data-element_type="column">
-                                                <div class="elementor-column-wrap">
-                                                    <div class="elementor-widget-wrap">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-2488794 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2488794" data-element_type="section">
-            <div class="elementor-element elementor-element-a19bd8d elementor-product-loop-item--align-center elementor-products-columns-4 elementor-products-grid elementor-wc-products elementor-show-pagination-border-yes elementor-widget elementor-widget-woocommerce-products" data-id="a19bd8d" data-element_type="widget" data-widget_type="woocommerce-products.default">
-                <div class="elementor-widget-container">
-                    <div class="woocommerce columns-4 "><div class="woocommerce-notices-wrapper"></div><ul class="products columns-4">
-
-                            {% for produit in Produits %}
-                            {% if produit.type=="Piece de Rechange" %}
-                                <li class="product type-product post-1099 status-publish first instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                    <img width="300" height="300" src="../wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title"></h2>
-                                    <span class="price"><span class="woocommerce-Price-amount amount">Quantité :</span>{{ produit.prix }}</bdi></span></span>
-                            {% endif %}
-                                    {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </section>
 
 <div data-elementor-type="footer" data-elementor-id="468" class="elementor elementor-468 elementor-location-footer" data-elementor-settings="[]">
     <div class="elementor-section-wrap">
