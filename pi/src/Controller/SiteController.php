@@ -55,6 +55,7 @@ class SiteController extends AbstractController
     {
         return $this->render('/abonnement/fadwa.html.twig');
     }
+
     /**
      * @Route("/siteF", name="mariem", methods={"GET"})
      */
@@ -65,7 +66,7 @@ class SiteController extends AbstractController
         ]);
     }
     /**
-     * @Route("/produitfront", name="mariem")
+     * @Route("/produitfront", name="marieme")
      */
     public function mariem_e(ProduitRepository $ProduitRepository,VeloRepository $veloRepository,AccessoireRepository $accessoireRepository): Response
     {
