@@ -6,6 +6,7 @@ use App\Entity\PieceDR;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class PieceDRType extends AbstractType
 {
@@ -14,6 +15,8 @@ class PieceDRType extends AbstractType
         $builder
             ->add('nom')
             ->add('quantite')
+            ->add('description')
+            ->add('image',FileType::class,array('label'=>'inserer une imamge'))
         ;
     }
 
