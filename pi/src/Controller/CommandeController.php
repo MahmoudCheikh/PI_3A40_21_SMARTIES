@@ -33,6 +33,20 @@ class CommandeController extends AbstractController
 
     }
 
+
+    /**
+     * @Route("/commandefront", name="commandefront" , methods={"GET"})
+     */
+
+    public function ahmed_a(CommandeRepository $CommandeRepository): Response
+    {
+        return $this->render('/commande/commandefront.html.twig', [
+            'Commandes' => $CommandeRepository->findAll(),
+
+        ]);
+    }
+
+
     /**
      * @Route("/new", name="commande_new", methods={"GET", "POST"})
      */
@@ -54,6 +68,32 @@ class CommandeController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/newFront", name="commande_newFront", methods={"GET", "POST"})
+     */
+    public function newF(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $Commande = new Commande();
+        $form = $this->createForm(CommandeType::class, $Commande);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($Commande);
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('commandefront', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('Commande/newFront.html.twig', [
+            'commande' => $Commande,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+
 
     /**
      * @Route("/{id}", name="commande_show", methods={"GET"})
@@ -88,7 +128,7 @@ class CommandeController extends AbstractController
     /**
      * @Route("/{id}", name="commande_delete", methods={"POST"})
      */
-    public function delete(Request $request, Commande $Commande, EntityManagerInterface $entityManager): Response
+    public function deleteback(Request $request, Commande $Commande, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$Commande->getId(), $request->request->get('_token'))) {
             $entityManager->remove($Commande);
@@ -97,5 +137,60 @@ class CommandeController extends AbstractController
 
         return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    /**
+     * @Route("/commandef/{id}", name="commande_delete_front", methods={"POST" , "GET"})
+     */
+    public function deletefront(Request $request, Commande $Commande, EntityManagerInterface $entityManager , int $id): Response
+    {
+        $entityManager->remove($Commande);
+        $entityManager->flush();
+
+
+        return $this->redirectToRoute('commandefront', [], Response::HTTP_SEE_OTHER);
+    }
+/*
+    /**
+     * @Route("/commandeupdate/{id}", name="commande_update_front", methods={"POST" , "GET"})
+     */
+  //  public function updatefront(int $nb,CommandeRepository  $commandeRepository,Request $request, Commande $Commande, EntityManagerInterface $entityManager , int $id): Response
+//    {
+
+        //$test = $commandeRepository->find($id);
+       // $test->setNbProduits($nb);
+      //  $entityManager->persist($test);
+    //    $entityManager->flush();
+
+
+  //      return $this->redirectToRoute('commandefront', [], Response::HTTP_SEE_OTHER);
+//    }
+
+
+    /**
+     * @Route("/{id}/editF", name="commande_update_front", methods={"GET", "POST"})
+     */
+    public function updatefront(Request $request, Commande $Commande, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(CommandeType::class, $Commande);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('commandefront', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('Commande/updateFront.html.twig', [
+            'commande' => $Commande,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+
 }
+
+
+
+
 

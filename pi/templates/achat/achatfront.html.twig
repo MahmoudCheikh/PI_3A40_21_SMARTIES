@@ -2,6 +2,7 @@
 {% block body %}
 
 
+
     <link rel='stylesheet' id='hello-elementor-css'  href='../wp-content/themes/hello-elementor/style.min8066.css?ver=2.4.1' type='text/css' media='all' />
 
     <main class="site-main post-5 page type-page status-publish hentry" role="main">
@@ -10,20 +11,20 @@
             <div class="page-content">
 
                 <div class="woocommerce"><div class="woocommerce-notices-wrapper"></div>
-                    <form class="woocommerce-cart-form" action="https://ergo.creativezeune.com/cart/" method="post">
 
 
 
-                        <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
-                            <thead>
-                            <thead>
-                            <tr>
+                    <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+
+                        <thead>
+
+                        <tr>
                                 <td>L'Id D'Achat</td>
                                 <td>Date D'Achat</td>
                                 <td>Nom Du Client</td>
                                 <td>Numero De Client</td>
+
                             </tr>
-                            </thead>
                                 <tr>
                                     {% for achat in achats %}
 
@@ -31,6 +32,9 @@
                                     <th class="Date">{{achat.date ? achat.date|date('Y-m-d') : '' }}</th>
                                     <th class="name">{{achat.nomClient}}</th>
                                     <th class="numeroClient">{{achat.numeroClient}}</th>
+                                    <th><a href={{ path('achat_delete_front' , {'id' : achat.id , 'Achat': achat}) }}>delete</th>
+
+
                                 </tr>
                                 {% else %}
                                     <tr>

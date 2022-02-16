@@ -101,4 +101,18 @@ class AchatController extends AbstractController
 
         return $this->redirectToRoute('achat_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    /**
+     * @Route("/achatf/{id}", name="achat_delete_front", methods={"POST" , "GET"})
+     */
+    public function deletefront(Request $request, Achat $achat, EntityManagerInterface $entityManager , int $id): Response
+    {
+        $entityManager->remove($achat);
+        $entityManager->flush();
+
+
+        return $this->redirectToRoute('achatfront', [], Response::HTTP_SEE_OTHER);
+    }
+
+
 }

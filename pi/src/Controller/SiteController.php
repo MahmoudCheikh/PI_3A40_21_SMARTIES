@@ -36,25 +36,20 @@ class SiteController extends AbstractController
 
 
     /**
-     * @Route("/commandefront", name="ahmed" , methods={"GET"})
-     */
-
-    public function ahmed_b(CommandeRepository $CommandeRepository): Response
-    {
-        return $this->render('/commande/commandeFront.html.twig', [
-            'Commandes' => $CommandeRepository->findAll(),
-
-        ]);
-    }
-
-
-    /**
      * @Route("/fadwa/", name="fadwa")
      */
     public function fadwa(): Response
     {
         return $this->render('/abonnement/fadwa.html.twig');
     }
+        /**
+         * @Route("/ahmed/", name="ahmed")
+         */
+        public function ahmed(): Response
+    {
+        return $this->render('/commande/newFront.html.twig');
+    }
+
     /**
      * @Route("/siteF", name="mariem", methods={"GET"})
      */

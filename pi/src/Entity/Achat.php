@@ -89,7 +89,7 @@ class Achat
         return $this;
     }
 
-    public function getIdUser(): ?Commande
+    public function getIdUser(): ?Users
     {
         return $this->idUser;
     }
