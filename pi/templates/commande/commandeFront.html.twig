@@ -1,0 +1,114 @@
+{% extends 'base_front.html.twig' %}
+{% block body %}
+
+
+    <link rel='stylesheet' id='hello-elementor-css'  href='../wp-content/themes/hello-elementor/style.min8066.css?ver=2.4.1' type='text/css' media='all' />
+
+    <main class="site-main post-5 page type-page status-publish hentry" role="main">
+        <header class="page-header">
+
+            <div class="page-content">
+
+            <div class="woocommerce"><div class="woocommerce-notices-wrapper"></div>
+                <form class="woocommerce-cart-form" action="https://ergo.creativezeune.com/cart/" method="post">
+
+
+
+                    <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+                        <thead>
+
+                        <tr>
+                            <td>Numero De Commande</td>
+                            <td>Id Utilisateur</td>
+                            <td>Id Du Produit</td>
+                            <td>Nombre De Produit</td>
+                        </tr>
+                        </>
+                        <tr>
+                            {% for commande in Commandes %}
+                        <tr>
+
+                            <th class="product-id">{{commande.id}}</th>
+                            <th class="product-thumbnail">{{commande.idUser}}</th>
+                            <th class="product-name">{{commande.idProduit}}</th>
+                            <th class="product-price">{{commande.nbProduits}}</th>
+                        </tr>
+                        {% endfor %}
+
+
+
+
+                        <tbody>
+
+
+
+                        <tr class="woocommerce-cart-form__cart-item cart_item">
+
+
+
+
+                            <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="c00af5c8b7" /><input type="hidden" name="_wp_http_referer" value="/cart/" />				</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </form>
+
+
+                <div class="cart-collaterals">
+                    <div class="cart_totals ">
+
+
+                        <button type="submit" class="button" name="update_cart" value="Update cart">Update cart</button>
+                        <tr></tr>
+                        <div class="coupon">
+                            <label for="coupon_code">Coupon:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code" /> <button type="submit" class="button" name="apply_coupon" value="Apply coupon">Apply coupon</button>
+                        </div>
+                        <h2>Cart totals</h2>
+
+                        <table cellspacing="0" class="shop_table shop_table_responsive">
+
+                            <tr class="cart-subtotal">
+                                <th>Subtotal</th>
+                                <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>entrain</bdi></span></td>
+                            </tr>
+
+
+
+
+
+
+                            <tr class="order-total">
+                                <th>Total</th>
+                                <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>entrain</bdi></span></strong> </td>
+                            </tr>
+
+
+                        </table>
+
+                        <div class="wc-proceed-to-checkout">
+
+                            <a href="https://ergo.creativezeune.com/checkout/" class="checkout-button button alt wc-forward">
+                                Proceed to checkout</a>
+                        </div>
+
+
+
+
+                        <tr>
+                            <td colspan="6" class="actions">
+
+
+
+
+
+
+
+
+
+
+
+                            </section><!-- .comments-area -->
+    </main>
+<header/>
+{% endblock %}

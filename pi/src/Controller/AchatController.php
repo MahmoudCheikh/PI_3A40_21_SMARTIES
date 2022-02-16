@@ -27,6 +27,17 @@ class AchatController extends AbstractController
     }
 
     /**
+     * @Route("/achatfront", name="achatfront",  methods={"GET"})
+     */
+    public function ahmed(AchatRepository $achatRepository): Response
+    {
+        return $this->render('/achat/achatfront.html.twig', [
+            'achats' => $achatRepository->findAll(),
+        ]);
+    }
+
+
+    /**
      * @Route("/new", name="achat_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response

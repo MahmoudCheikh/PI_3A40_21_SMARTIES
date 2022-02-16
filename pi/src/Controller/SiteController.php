@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\AchatRepository;
+use App\Repository\CommandeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,13 +29,20 @@ class SiteController extends AbstractController
         return $this->render('/base_front.html.twig');
     }
 
+
+
     /**
-     * @Route("/ahmed/", name="ahmed")
+     * @Route("/commandefront", name="ahmed" , methods={"GET"})
      */
-    public function ahmed(): Response
+
+    public function ahmed_b(CommandeRepository $CommandeRepository): Response
     {
-        return $this->render('/commande/ahmed.html.twig');
+        return $this->render('/commande/commandeFront.html.twig', [
+            'Commandes' => $CommandeRepository->findAll(),
+
+        ]);
     }
+
 
     /**
      * @Route("/fadwa/", name="fadwa")
