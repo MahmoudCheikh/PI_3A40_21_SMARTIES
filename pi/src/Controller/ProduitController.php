@@ -32,17 +32,7 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/produitfront/", name="mariem")
-     */
-    public function mariem(ProduitRepository $ProduitRepository,VeloRepository $veloRepository,AccessoireRepository $accessoireRepository): Response
-    {
-        return $this->render('/produit/mariem_front.html.twig', [
-            'Produits' => $ProduitRepository->findAll(),
-            'velos' => $veloRepository->findAll(),
-            'accessoires' => $accessoireRepository->findAll(),
-        ]);
-    }
+
     /*l fou9 l 7ketya lkol*/
 
     /**

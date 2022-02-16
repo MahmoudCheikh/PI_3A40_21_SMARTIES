@@ -4,7 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Emplacement;
 use App\Form\EmplacementType;
+use App\Repository\AccessoireRepository;
 use App\Repository\EmplacementRepository;
+use App\Repository\ProduitRepository;
+use App\Repository\VeloRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +28,7 @@ class EmplacementController extends AbstractController
             'emplacements' => $emplacementRepository->findAll(),
         ]);
     }
+
 
     /**
      * @Route("/new", name="emplacement_new", methods={"GET", "POST"})
