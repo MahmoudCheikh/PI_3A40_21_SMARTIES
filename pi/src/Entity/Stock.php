@@ -41,7 +41,7 @@ class Stock
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="disponibilité is required")
-     * @Assert\Choice(choices = {"disponible", "non-disponible"}, message = "Choisire disponibilite soit disponible soit non-disponible." )
+     * @Assert\Choice(choices = {"Disponible", "Non Disponible"}, message = "Choisire disponibilite soit 'Disponible' soit 'Non Disponible'." )
      */
     private $disponibilite;
 

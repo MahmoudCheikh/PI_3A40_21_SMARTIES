@@ -49,7 +49,7 @@ class Produit
     private $achats;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $prix;
 
