@@ -84,7 +84,7 @@
                                     <div class="elementor-element elementor-element-99bd057 elementor-align-center elementor-widget elementor-widget-button" data-id="99bd057" data-element_type="widget" data-widget_type="button.default">
                                         <div class="elementor-widget-container">
                                             <div class="elementor-button-wrapper">
-                                                <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+                                                <a href="{{ path("sujet_new_front") }}" class="elementor-button-link elementor-button elementor-size-sm" role="button">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-text">CREER UN POST</span>
 		</span>
@@ -164,7 +164,26 @@
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon elementor-align-icon-right">
 				<i aria-hidden="true" class="fas fa-arrow-alt-circle-right"></i>			</span>
-						<span class="elementor-button-text">Voir sujet </span>
+						<a href="{{ path('sujet_show_front', {'id': sujet.id}) }}"><span class="elementor-button-text">Voir sujet </span></a>
+		</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-widget-wrap">
+                                    <div class="elementor-element elementor-element-7ceb8cb elementor-align-center elementor-widget elementor-widget-button" data-id="7ceb8cb" data-element_type="widget" data-widget_type="button.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="elementor-button-wrapper">
+                                                <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon elementor-align-icon-right">
+				<i aria-hidden="true" class="fas fa-arrow-alt-circle-right"></i>			</span>
+						<form method="post" action="{{ path('sujet_delete_front', {'id': sujet.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ sujet.id) }}">
+    <button class="btn">Supprimer</button>
+</form>
+
 		</span>
                                                 </a>
                                             </div>

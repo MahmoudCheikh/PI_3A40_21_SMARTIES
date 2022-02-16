@@ -92,7 +92,7 @@ class Sujet
         return $this->Date;
     }
 
-    public function setDate(\DateTimeInterface $Date): self
+    public function setDate(?\DateTimeInterface $Date): self
     {
         $this->Date = $Date;
 
@@ -126,9 +126,9 @@ class Sujet
     /**
      * @return Collection|Message[]
      */
-    public function getMessages(): Collection
+    public function getMessages(): Array
     {
-        return $this->messages;
+        return $this->messages->toArray();
     }
 
     public function addMessage(Message $message): self
