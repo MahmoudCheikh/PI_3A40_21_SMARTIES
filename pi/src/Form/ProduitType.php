@@ -21,6 +21,7 @@ class ProduitType extends AbstractType
             ->add('prix')
             ->add('type', ChoiceType::class, array(
                 'choices'  => array(
+                    ''=>'',
                     'Piece de Rechange' => "Piece de Rechange",
                     'Accessoire' => "Accessoire",
                     'Velo' => "Velo",

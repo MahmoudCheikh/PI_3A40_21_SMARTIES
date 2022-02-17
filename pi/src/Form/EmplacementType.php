@@ -13,6 +13,7 @@ class EmplacementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('Stock')
             ->add('lieu', ChoiceType::class, array(
                 'choices'  => array(
                                         'Ariana'=>'Ariana',
@@ -41,6 +42,7 @@ class EmplacementType extends AbstractType
                                         'Zaghouan'=>'Zaghouan',
                 )))
             ->add('capacite')
+
         ;
     }
 

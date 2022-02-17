@@ -19,6 +19,19 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
  */
 class ProduitController extends AbstractController
 {
+
+    /**
+     * @Route("/produitfront", name="marieme")
+     */
+    public function mariem_e(ProduitRepository $ProduitRepository,VeloRepository $veloRepository,AccessoireRepository $accessoireRepository): Response
+    {
+        return $this->render('/produit/mariem_front.html.twig', [
+            'Produits' => $ProduitRepository->findAll(),
+            'velos' => $veloRepository->findAll(),
+            'accessoires' => $accessoireRepository->findAll(),
+        ]);
+    }
+
     /**
      *
      * @Route("/", name="produit_index", methods={"GET"})
