@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Stock;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +16,12 @@ class StockType extends AbstractType
             ->add('libelle')
             ->add('prix')
             ->add('quantite')
-            ->add('disponibilite')
+            ->add('disponibilite', ChoiceType::class, array(
+                'choices'  => array(
+                    ''=>'',
+                    'Disponible' => "Disponible",
+                    'Non Disponible' => "Non Disponible",
+                )))
             ->add('idProduit')
         ;
     }

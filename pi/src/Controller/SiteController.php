@@ -42,6 +42,7 @@ class SiteController extends AbstractController
     {
         return $this->render('/abonnement/fadwa.html.twig');
     }
+
         /**
          * @Route("/ahmed/", name="ahmed")
          */
@@ -70,6 +71,7 @@ class SiteController extends AbstractController
             'accessoires' => $accessoireRepository->findAll(),
         ]);
     }
+
 
     /**
      * @Route("/mahmoud/", name="mahmoud")

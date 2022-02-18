@@ -912,7 +912,7 @@
         </section>
     </div>
 </div>
-{# ######################################################################### LES PRODUITS ############################################################################ #}
+{# ######################################################################### LES Velos ############################################################################ #}
 
 <div data-elementor-type="product-archive" data-elementor-id="903" class="elementor elementor-903 elementor-location-archive product" data-elementor-settings="[]">
     <div class="elementor-section-wrap">
@@ -935,7 +935,7 @@
                                 </div>
                                 <div class="elementor-element elementor-element-7165d4a elementor-widget elementor-widget-heading" data-id="7165d4a" data-element_type="widget" data-widget_type="heading.default">
                                     <div class="elementor-widget-container">
-                                        <h2 class="elementor-heading-title elementor-size-default">Consulter Nos Produits</h2>		</div>
+                                        <h2 class="elementor-heading-title elementor-size-default">Consulter La section des Velos</h2>		</div>
                                 </div>
                                 <section class="elementor-section elementor-inner-section elementor-element elementor-element-f32afa8 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f32afa8" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                     <div class="elementor-background-overlay"></div>
@@ -980,10 +980,22 @@
                         <div class="woocommerce columns-4 "><div class="woocommerce-notices-wrapper"></div><ul class="products columns-4">
 
                                 {% for produit in Produits %}
+                                    {% if produit.type=="Velo" %}
                                 <li class="product type-product post-1099 status-publish first instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                    <img width="300" height="300" src="../wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">{{ produit.libelle }}</h2>
-                                        <span class="price"><span class="woocommerce-Price-amount amount"></span>{{ produit.libelle }}</bdi></span></span>
-                                    </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">{{ produit.description }}</a></li>
+                                    <img style="width: 300%" src="{{asset('img/bike/') ~ produit.image }}" class="img-responsive" alt="Image">
+                                    <span class="price"><span class="woocommerce-Price-amount amount"><bdi></span>{{ produit.prix }}</bdi> Dt</span></span>
+                                    <h2 class="woocommerce-loop-product__title">{{ produit.libelle }}</h2>
+                                    </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">{{ produit.description }}</a>
+                                    <br>
+                                    <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon elementor-align-icon-right">
+				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
+						<span class="elementor-button-text">EXPLORE</span>
+		</span>
+                                    </a>
+                                </li>
+                        {% endif %}
                                 {% endfor %}
                             </ul>
                         </div>
@@ -994,7 +1006,7 @@
 
             </section>
 
-        {# ######################################################################### LES VELOS ############################################################################ #}
+        {# ######################################################################### LES Accessoires ############################################################################ #}
 
         <section class="elementor-section elementor-top-section elementor-element elementor-element-60f0b6b elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="60f0b6b" data-element_type="section">
             <div class="elementor-container elementor-column-gap-default">
@@ -1014,7 +1026,7 @@
                                 </div>
                                 <div class="elementor-element elementor-element-80f44c3 elementor-widget elementor-widget-heading" data-id="80f44c3" data-element_type="widget" data-widget_type="heading.default">
                                     <div class="elementor-widget-container">
-                                        <h2 class="elementor-heading-title elementor-size-default">Les Velos de Ça ROULE</h2>		</div>
+                                        <h2 class="elementor-heading-title elementor-size-default">Consulter La section<br> des Accessoires</h2>		</div>
                                 </div>
                                 <div class="elementor-element elementor-element-f3d7f5f elementor-widget elementor-widget-text-editor" data-id="f3d7f5f" data-element_type="widget" data-widget_type="text-editor.default">
                                     <div class="elementor-widget-container">
@@ -1030,11 +1042,25 @@
                                                 <div class="elementor-widget-container">
                                                     <div class="woocommerce columns-4 "><div class="woocommerce-notices-wrapper"></div><ul class="products columns-4">
 
-                                                            {% for velo in velos %}
+                                                            {% for produit in Produits %}
+                                                                {% if produit.type=="Accessoire" %}
                                                                 <li class="product type-product post-1099 status-publish first instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                                                    <img width="300" height="300" src="../wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">{{ velo.etat }}</h2>
-                                                                    <span class="price"><span class="woocommerce-Price-amount amount">Quantite :</span>{{ velo.quantite }}</bdi></span></span>
-                                                                    </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">{{ velo.age }}</a></li>
+                                                                    <img style="width: 300%" src="{{asset('img/bike/') ~ produit.image }}" class="img-responsive" alt="Image">
+                                                                    <span class="price"><span class="woocommerce-Price-amount amount"><bdi></span>{{ produit.prix }}</bdi> Dt</span></span>
+                                                                    <h2 class="woocommerce-loop-product__title">{{ produit.libelle }}</h2>
+                                                                    </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">{{ produit.description }}</a>
+
+                                                                   <br> <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon elementor-align-icon-right">
+				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
+						<span class="elementor-button-text">EXPLORE</span>
+		</span>
+                                                                    </a>
+
+                                                                </li>
+
+                                                            {% endif %}
                                                             {% endfor %}
                                                         </ul>
                                                     </div>
@@ -1077,7 +1103,7 @@
                                 </div>
                                 <div class="elementor-element elementor-element-7165d4a elementor-widget elementor-widget-heading" data-id="7165d4a" data-element_type="widget" data-widget_type="heading.default">
                                     <div class="elementor-widget-container">
-                                        <h2 class="elementor-heading-title elementor-size-default">Nos Accessoires</h2>		</div>
+                                        <h2 class="elementor-heading-title elementor-size-default">Consulter La section <br>des Piéces de rechange</h2>		</div>
                                 </div>
                                 <section class="elementor-section elementor-inner-section elementor-element elementor-element-f32afa8 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f32afa8" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                     <div class="elementor-background-overlay"></div>
@@ -1121,11 +1147,25 @@
                 <div class="elementor-widget-container">
                     <div class="woocommerce columns-4 "><div class="woocommerce-notices-wrapper"></div><ul class="products columns-4">
 
-                            {% for accessoire in accessoires %}
+                            {% for produit in Produits %}
+                            {% if produit.type=="Piece de Rechange" %}
                                 <li class="product type-product post-1099 status-publish first instock product_cat-ergo-mtb has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                    <img width="300" height="300" src="../wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-300x300.png 300w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-150x150.png 150w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-768x768.png 768w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-800x800.png 800w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-600x600.png 600w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04-100x100.png 100w, https://ergo.creativezeune.com/wp-content/uploads/sites/7/2021/03/Ergobike-04.png 900w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title"></h2>
-                                    <span class="price"><span class="woocommerce-Price-amount amount">Quantité :</span>{{ accessoire.quantite }}</bdi></span></span>
-                            {% endfor %}
+                                <img style="width: 300%" src="{{asset('img/bike/') ~ produit.image }}" class="img-responsive" alt="Image">
+                                <span class="price"><span class="woocommerce-Price-amount amount"><bdi></span>{{ produit.prix }}</bdi> Dt</span></span>
+                                <h2 class="woocommerce-loop-product__title">{{ produit.libelle }}</h2>
+                                </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">{{ produit.description }}</a>
+
+
+                                    <br><a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon elementor-align-icon-right">
+				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
+						<span class="elementor-button-text">EXPLORE</span>
+		</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                                    {% endfor %}
                         </ul>
                     </div>
                 </div>

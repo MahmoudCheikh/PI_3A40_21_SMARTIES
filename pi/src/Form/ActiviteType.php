@@ -15,12 +15,7 @@ class ActiviteType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('image', FileType::class, [
-                'label' => false,
-                'multiple' => true,
-                'mapped'=> false,
-                'required' =>false
-            ])
+            ->add('image',FileType::class,array('label'=>'inserer une image','data_class' => null))
             ->add('idEvenement')
         ;
     }

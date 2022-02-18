@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Message;
+use App\Form\MessageFrontType;
 use App\Form\MessageType;
 use App\Repository\MessageRepository;
+use App\Repository\SujetRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,6 +45,31 @@ class MessageController extends AbstractController
         }
 
         return $this->render('message/new.html.twig', [
+            'message' => $message,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/newfront/{id}", name="message_new_front", methods={"GET", "POST"})
+     */
+    public function newFront(Request $request, EntityManagerInterface $entityManager , int $id , SujetRepository $sujetRepository): Response
+    {
+        $message = new Message();
+        $form = $this->createForm(MessageFrontType::class, $message);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $test = $sujetRepository->find($id);
+            $message->setIdSujet($test );
+            $message->setDate(new \DateTime());
+            $entityManager->persist($message);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('message_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('message/msgNewFront.html.twig', [
             'message' => $message,
             'form' => $form->createView(),
         ]);

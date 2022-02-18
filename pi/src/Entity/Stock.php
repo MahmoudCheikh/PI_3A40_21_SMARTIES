@@ -41,7 +41,7 @@ class Stock
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="disponibilité is required")
-     * @Assert\Choice(choices = {"disponible", "non-disponible"}, message = "Choisire disponibilite soit disponible soit non-disponible." )
+     * @Assert\Choice(choices = {"Disponible", "Non Disponible"}, message = "Choisire disponibilite soit 'Disponible' soit 'Non Disponible'." )
      */
     private $disponibilite;
 
@@ -50,6 +50,7 @@ class Stock
      * @ORM\JoinColumn(nullable=false)
      */
     private $idProduit;
+
 
     public function getId(): ?int
     {
@@ -103,16 +104,36 @@ class Stock
 
         return $this;
     }
-
     public function getIdProduit(): ?Produit
     {
         return $this->idProduit;
     }
 
-    public function setIdProduit(?Produit $idProduit): self
+    public function setIdProduit(?Produit $produit): self
     {
-        $this->idProduit = $idProduit;
+        $this->idProduit = $produit;
 
         return $this;
     }
+
+    public function getEmplacement(): ?Emplacement
+    {
+        return $this->emplacement;
+    }
+
+    public function setEmplacement(Emplacement $emplacement): self
+    {
+        // set the owning side of the relation if necessary
+        if ($emplacement->getStock() !== $this) {
+            $emplacement->setStock($this);
+        }
+
+        $this->emplacement = $emplacement;
+
+        return $this;
+    }
+    public function __toString() {
+        return $this->libelle;
+    }
+
 }

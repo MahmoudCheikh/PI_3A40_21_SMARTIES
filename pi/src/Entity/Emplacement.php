@@ -30,6 +30,13 @@ class Emplacement
      */
     private $capacite;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Stock::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Stock;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -58,4 +65,31 @@ class Emplacement
 
         return $this;
     }
+
+    public function getIdProduit(): ?Produit
+    {
+        return $this->idProduit;
+    }
+
+    public function setIdProduit(?Produit $idProduit): self
+    {
+        $this->idProduit = $idProduit;
+
+        return $this;
+    }
+
+    public function getStock(): ?Stock
+    {
+        return $this->Stock;
+    }
+
+    public function setStock(Stock $Stock): self
+    {
+        $this->Stock = $Stock;
+
+        return $this;
+    }
+
+
+
 }

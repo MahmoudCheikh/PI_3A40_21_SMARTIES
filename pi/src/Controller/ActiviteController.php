@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 /**
  * @Route("/activite")
  */
@@ -36,47 +36,77 @@ class ActiviteController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($activite);
-            $entityManager->flush();
+            $new = $form->getData();
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+                try {
+                    $imageFile->move(
+                        'img\bike',
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                }
+                $activite->setImage($newFilename);
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($activite);
+                $entityManager->flush();
 
-            return $this->redirectToRoute('activite_index', [], Response::HTTP_SEE_OTHER);
+                return $this->redirectToRoute('activite_index', [], Response::HTTP_SEE_OTHER);
+            }}
+
+            return $this->render('activite/new.html.twig', [
+                'activite' => $activite,
+                'form' => $form->createView(),
+            ]);
         }
 
-        return $this->render('activite/new.html.twig', [
-            'activite' => $activite,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="activite_show", methods={"GET"})
-     */
-    public function show(Activite $activite): Response
-    {
-        return $this->render('activite/show.html.twig', [
-            'activite' => $activite,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="activite_edit", methods={"GET", "POST"})
-     */
-    public function edit(Request $request, Activite $activite, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(ActiviteType::class, $activite);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('activite_index', [], Response::HTTP_SEE_OTHER);
+        /**
+         * @Route("/{id}", name="activite_show", methods={"GET"})
+         */
+        public
+        function show(Activite $activite): Response
+        {
+            return $this->render('activite/show.html.twig', [
+                'activite' => $activite,
+            ]);
         }
 
-        return $this->render('activite/edit.html.twig', [
-            'activite' => $activite,
-            'form' => $form->createView(),
-        ]);
-    }
+        /**
+         * @Route("/{id}/edit", name="activite_edit", methods={"GET", "POST"})
+         */
+        public
+        function edit(Request $request, Activite $activite, EntityManagerInterface $entityManager): Response
+        {
+            $form = $this->createForm(ActiviteType::class, $activite);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $new = $form->getData();
+                $imageFile = $form->get('image')->getData();
+                if ($imageFile) {
+                    $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+                    try {
+                        $imageFile->move(
+                            'img\bike',
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                    }
+                    $activite->setImage($newFilename);
+                }
+                $entityManager->flush();
+
+                return $this->redirectToRoute('activite_index', [], Response::HTTP_SEE_OTHER);
+            }
+
+            return $this->render('activite/edit.html.twig', [
+                'activite' => $activite,
+                'form' => $form->createView(),
+            ]);
+        }
 
     /**
      * @Route("/{id}", name="activite_delete", methods={"POST"})
@@ -90,4 +120,5 @@ class ActiviteController extends AbstractController
 
         return $this->redirectToRoute('activite_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }

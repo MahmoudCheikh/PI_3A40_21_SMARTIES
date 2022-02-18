@@ -19,6 +19,14 @@
                 <th>Quantite</th>
                 <td>{{ piece_d_r.quantite }}</td>
             </tr>
+            <tr>
+                <th>description:</th>
+                <td>{{ piece_d_r.description }}</td>
+            </tr>
+            <tr>
+                <th>image</th>
+                <td><img style="width: 100%" src="{{asset('img/bike/') ~ piece_d_r.image }}" class="img-responsive" alt="Image"></td>
+            </tr>
         </tbody>
     </table>
 

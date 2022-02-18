@@ -49,7 +49,7 @@ class UsersController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('site', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Users/new.html.twig', [
@@ -71,7 +71,7 @@ class UsersController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('site', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Users/createfront.html.twig', [

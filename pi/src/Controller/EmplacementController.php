@@ -20,6 +20,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class EmplacementController extends AbstractController
 {
     /**
+     * @Route("/siteF", name="mariem", methods={"GET"})
+     */
+    public function mariem(EmplacementRepository $emplacementRepository): Response
+    {
+        return $this->render('/emplacement/site_front.html.twig', [
+            'emplacements' => $emplacementRepository->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/", name="emplacement_index", methods={"GET"})
      */
     public function index(EmplacementRepository $emplacementRepository): Response

@@ -3,33 +3,33 @@
 {% block title %}Maintenance index{% endblock %}
 
 {% block main %}
-<h3><i class="fa fa-angle-right"></i> Maintenance index</h3>
-<a href="{{ path('maintenance_new') }}">Create new</a>
-<div class="row mb">
-    <!-- page start-->
-    <div class="content-panel">
-        <div class="adv-table">
-            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-        </thead>
-        <tbody>
-        {% for maintenance in maintenances %}
-            <tr>
-                <td>{{ maintenance.id }}</td>
-                <td>
-                    <a href="{{ path('maintenance_show', {'id': maintenance.id}) }}">show</a>
-                    <a href="{{ path('maintenance_edit', {'id': maintenance.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="2">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-            </table>
+    <h3><i class="fa fa-angle-right"></i> Maintenance index</h3>
+    <a href="{{ path('maintenance_new') }}">Create new</a>
+    <div class="row mb">
+        <!-- page start-->
+        <div class="content-panel">
+            <div class="adv-table">
+                <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                    </thead>
+                    <tbody>
+                    {% for maintenance in maintenances %}
+                        <tr>
+                            <td>{{ maintenance.id }}</td>
+                            <td>
+                                <a href="{{ path('maintenance_show', {'id': maintenance.id}) }}">show</a>
+                                <a href="{{ path('maintenance_edit', {'id': maintenance.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="2">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <!-- page end-->
     </div>
-    <!-- page end-->
-</div>
     <!-- /row -->
 {% endblock %}

@@ -4,13 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Evenement;
 use App\Form\EvenementType;
+use App\Repository\ActiviteRepository;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 /**
  * @Route("/evenement")
  */
@@ -38,6 +38,19 @@ class EvenementController extends AbstractController
             'evenements' => $EvenementRepository->findAll(),
         ]);
     }
+
+    /**
+     * @Route("/activite_front/{id}", name="aziz1" , methods={"GET"})
+     */
+    public function aziz1(Evenement $Evenement,ActiviteRepository $ActiviteRepository): Response
+    {
+        return $this->render('/evenement/activiteindex.html.twig',[
+            'evenement' => $Evenement,
+            'activites' => $ActiviteRepository->findAll(),
+        ]);
+    }
+
+
 
     /**
      * @Route("/new", name="evenement_new", methods={"GET", "POST"})
@@ -104,4 +117,6 @@ class EvenementController extends AbstractController
 
         return $this->redirectToRoute('evenement_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }

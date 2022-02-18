@@ -3,14 +3,19 @@
 {% block title %}Emplacement index{% endblock %}
 
 {% block main %}
-    <h1>Emplacement index</h1>
-
-    <table class="table">
+<h3><i class="fa fa-angle-right"></i> Emplacement index</h3>
+<a href="{{ path('emplacement_new') }}">Create new</a>
+<div class="row mb">
+    <!-- page start-->
+    <div class="content-panel">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Lieu</th>
                 <th>Capacite</th>
+                <th>stock</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,6 +25,7 @@
                 <td>{{ emplacement.id }}</td>
                 <td>{{ emplacement.lieu }}</td>
                 <td>{{ emplacement.capacite }}</td>
+                <td>{{ emplacement.stock }}</td>
                 <td>
                     <a href="{{ path('emplacement_show', {'id': emplacement.id}) }}">show</a>
                     <a href="{{ path('emplacement_edit', {'id': emplacement.id}) }}">edit</a>
@@ -31,7 +37,10 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-    <a href="{{ path('emplacement_new') }}">Create new</a>
+            </table>
+        </div>
+    </div>
+    <!-- page end-->
+</div>
+    <!-- /row -->
 {% endblock %}

@@ -16,16 +16,25 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PieceDRController extends AbstractController
 {
+    /**
+     * @Route("/piecedr_front/", name="hazem" , methods={"GET"})
+     */
+    public function hazem(PieceDRRepository $pieceDRRepository): Response
+    {
+        return $this->render('/piece_dr/piecedr_front.html.twig',[
+            'piece_d_rs' => $pieceDRRepository->findAll(),
+        ]);
+    }
 
     /**
      * @Route("/", name="piece_d_r_index", methods={"GET"})
      */
     public function index(PieceDRRepository $pieceDRRepository): Response
     {
-        /*        return $this->render('piece_dr/index.html.twig', [
-                    'piece_d_rs' => $pieceDRRepository->findAll(),
-                ]);
-        */
+/*        return $this->render('piece_dr/index.html.twig', [
+            'piece_d_rs' => $pieceDRRepository->findAll(),
+        ]);
+*/
         return $this->render('piece_dr/hazem.html.twig', [
             'piece_d_rs' => $pieceDRRepository->findAll(),
         ]);
@@ -41,6 +50,25 @@ class PieceDRController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $new=$form->getData();
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = $originalFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+                try {
+                    $imageFile->move(
+                        'img',
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                }
+                $pieceDR->setImage($newFilename);
+            }
+            $entityManager->persist($pieceDR);
+            $entityManager->flush();
+
+
             $entityManager->persist($pieceDR);
             $entityManager->flush();
 
