@@ -35,7 +35,7 @@ class Activite
      * @Assert\NotBlank(message="description de l'activité is required")
      * @Assert\Length(
      *      min = "20",
-     *      max = "200",
+     *      max = "1500",
      *      minMessage = "la description doit faire au moins {{ limit }} caractères",
      *      maxMessage = "la description ne peut pas être plus long que {{ limit }} caractères"
      * )

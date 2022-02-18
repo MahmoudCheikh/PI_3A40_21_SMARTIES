@@ -940,7 +940,7 @@
                                 <div class="elementor-element elementor-element-4119e08 elementor-widget elementor-widget-text-editor" data-id="4119e08" data-element_type="widget" data-widget_type="text-editor.default">
                                     <div class="elementor-widget-container">
                                         <div class="elementor-text-editor elementor-clearfix">
-                                            <h2>EVENEMENTS</h2>					</div>
+                                            <h2>ACTIVITES DE L'EVENEMENT:{{ evenement.nom }}</h2>					</div>
                                     </div>
                                 </div>
                             </div>
@@ -980,11 +980,7 @@
                                                         <div class="elementor-element elementor-element-7242c06 elementor-widget elementor-widget-text-editor" data-id="7242c06" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">
                                                                 <div class="elementor-text-editor elementor-clearfix">
-                                                                    <label for="site-search">Search event:</label>
-                                                                    <input type="search" id="site-search" name="q"
-                                                                           aria-label="Search through site content">
-                                                                    <button>search</button>
-                                                                </div>
+                                                                    <h3>LISTE DES ACTIVITES</h3>					</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1016,7 +1012,7 @@
                 </div>
             </div>
         </section>
-        {% for evenement in evenements %}
+        {% for activite in evenement.getActivites() %}
 
         <section class="elementor-section elementor-top-section elementor-element elementor-element-f54bb5c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f54bb5c" data-element_type="section">
             <div class="elementor-background-overlay"></div>
@@ -1035,33 +1031,8 @@
                                                         <div class="elementor-element elementor-element-4d47dc3 elementor-widget elementor-widget-text-editor" data-id="4d47dc3" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">
                                                                 <div class="elementor-text-editor elementor-clearfix">
-                                                                    <h2>{{ evenement.nom }}</h2>
-                                                                  <h3><span style="color: var( --e-global-color-secondary );">{{ evenement.lieu }}</span></h3>
+                                                                    <h2>  <img style="width: 300%" src="{{asset('img/bike/') ~ activite.image }}" class="img-responsive" alt="Image"> </h2>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-80a5bad elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="80a5bad" data-element_type="widget" data-widget_type="icon-list.default">
-                                                            <div class="elementor-widget-container">
-                                                                <ul class="elementor-icon-list-items">
-                                                                    <li class="elementor-icon-list-item">
-											<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="far fa-calendar-alt"></i>						</span>
-                                                                        <span class="elementor-icon-list-text">Date debut: </span>
-                                                                        <span class="elementor-icon-list-text">{{ evenement.dateD|date("d/m/Y")  }} </span>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-80a5bad elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="80a5bad" data-element_type="widget" data-widget_type="icon-list.default">
-                                                            <div class="elementor-widget-container">
-                                                                <ul class="elementor-icon-list-items">
-                                                                    <li class="elementor-icon-list-item">
-											<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="far fa-calendar-alt"></i>						</span>
-                                                                        <span class="elementor-icon-list-text">Date Fin: </span>
-                                                                        <span class="elementor-icon-list-text">{{ evenement.dateF|date("d/m/Y")  }} </span>
-                                                                    </li>
-                                                                </ul>
                                                             </div>
                                                         </div>
 
@@ -1081,10 +1052,8 @@
                                 <div class="elementor-element elementor-element-0b625cd elementor-widget elementor-widget-text-editor" data-id="0b625cd" data-element_type="widget" data-widget_type="text-editor.default">
                                     <div class="elementor-widget-container">
                                         <div class="elementor-text-editor elementor-clearfix">
-                                            <h4><span style="color: var( --e-global-color-secondary );">type event :{{ evenement.type }}</span></h4>
-                                            <h4><span style="color: var( --e-global-color-secondary );">le nombre de participants est:{{ evenement.nbParticipants }}</span></h4>
-                                            <h4><span style="color: var( --e-global-color-secondary );">le nombre de places est:{{ evenement.nbPlaces }}</span></h4>
-
+                                            <h2><span style="color: var( --e-global-color-secondary );">{{ activite.nom }}</span></h2>
+                                            <h4><span style="color: var( --e-global-color-secondary );"> {{ activite.description }}</span></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -1098,11 +1067,7 @@
                                     <div class="elementor-widget-container">
                                         <div class="elementor-button-wrapper">
                                             <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon elementor-align-icon-right">
-				<i aria-hidden="true" class="fas fa-arrow-alt-circle-right"></i>			</span>
-					<button onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/evenement/activite_front/{{evenement.id}}'"><span class="elementor-button-text" >afficher les activités  </span></button>
-		</span>
+
                                             </a>
                                         </div>
                                     </div>
@@ -1126,9 +1091,15 @@
                                             <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon elementor-align-icon-right">
-							</span>
-						<span class="elementor-button-text">evenements disponible pour le monment</span>
-		</span>
+						</span>
+					{% if evenement.getActivites() %}
+                            <span class="elementor-button-text">on vous propose {{ evenement.getActivites()|length() }} activité(s)</span>
+
+                      {% else %}
+                              <span class="elementor-button-text">pas d'activités disponible pour le moment</span>
+
+                                                {% endif %}
+                                           </span>
                                             </a>
                                         </div>
                                     </div>
