@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Commande;
 use App\Form\CommandeType;
+use App\Form\CommandeFrontType;
 use App\Repository\CommandeRepository;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -72,13 +74,15 @@ class CommandeController extends AbstractController
     /**
      * @Route("/newFront", name="commande_newFront", methods={"GET", "POST"})
      */
-    public function newF(Request $request, EntityManagerInterface $entityManager): Response
+    public function newF(Request $request, EntityManagerInterface $entityManager,UsersRepository $usersRepository): Response
     {
         $Commande = new Commande();
-        $form = $this->createForm(CommandeType::class, $Commande);
+        $form = $this->createForm(CommandeFrontType::class, $Commande);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $usersRepository->find(2);
+            $Commande->setIdUser($user);
             $entityManager->persist($Commande);
 
             $entityManager->flush();
