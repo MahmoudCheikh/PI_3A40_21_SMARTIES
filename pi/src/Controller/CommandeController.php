@@ -175,7 +175,7 @@ class CommandeController extends AbstractController
      */
     public function updatefront(Request $request, Commande $Commande, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(CommandeType::class, $Commande);
+        $form = $this->createForm(CommandeFrontType::class, $Commande);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
