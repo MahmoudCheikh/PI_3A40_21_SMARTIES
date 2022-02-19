@@ -8,7 +8,6 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <h3><i class="fa fa-angle-right"></i> Users index</h3>
-            <a href="{{ path('users_new') }}">Create new</a>
             <div class="row mb">
                 <!-- page start-->
                 <div class="content-panel">
@@ -17,7 +16,6 @@
                             <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>IdUser</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
                                 <th>Adresse</th>
@@ -31,7 +29,6 @@
                             {% for user in Users %}
                                 <tr>
                                     <td>{{ user.id }}</td>
-                                    <td>{{ user.idUser }}</td>
                                     <td>{{ user.nom }}</td>
                                     <td>{{ user.prenom }}</td>
                                     <td>{{ user.adresse }}</td>

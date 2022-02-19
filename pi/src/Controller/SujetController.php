@@ -6,6 +6,7 @@ use App\Entity\Sujet;
 use App\Form\SujetFrontType;
 use App\Form\SujetType;
 use App\Repository\SujetRepository;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -63,15 +64,19 @@ class SujetController extends AbstractController
     /**
      * @Route("/newfront", name="sujet_new_front", methods={"GET", "POST"})
      */
-    public function newFront(Request $request, EntityManagerInterface $entityManager): Response
+    public function newFront(Request $request, EntityManagerInterface $entityManager , UsersRepository $usersRepository): Response
     {
         $sujet = new Sujet();
         $form = $this->createForm(SujetFrontType::class, $sujet);
         $form->handleRequest($request);
         $sujet->setDate(new \DateTime());
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $user = $usersRepository->find($this->getUser()->getId());
 
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $sujet->setIdUser($user);
+            $sujet->setIdPost(1);
             $entityManager->persist($sujet);
             $entityManager->flush();
 

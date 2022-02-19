@@ -22,7 +22,6 @@ class Sujet
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="id is required")
      */
     private $IdPost;
 

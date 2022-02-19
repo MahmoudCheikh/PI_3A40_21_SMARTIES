@@ -13,7 +13,6 @@ class UsersFrontType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('idUser',PasswordType::class)
             ->add('nom')
             ->add('prenom')
             ->add('adresse')

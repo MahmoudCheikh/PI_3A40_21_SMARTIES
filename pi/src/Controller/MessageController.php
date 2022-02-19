@@ -7,6 +7,7 @@ use App\Form\MessageFrontType;
 use App\Form\MessageType;
 use App\Repository\MessageRepository;
 use App\Repository\SujetRepository;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,16 +54,18 @@ class MessageController extends AbstractController
     /**
      * @Route("/newfront/{id}", name="message_new_front", methods={"GET", "POST"})
      */
-    public function newFront(Request $request, EntityManagerInterface $entityManager , int $id , SujetRepository $sujetRepository): Response
+    public function newFront(Request $request, EntityManagerInterface $entityManager , int $id , SujetRepository $sujetRepository, UsersRepository $usersRepository): Response
     {
         $message = new Message();
         $form = $this->createForm(MessageFrontType::class, $message);
         $form->handleRequest($request);
+        $user = $usersRepository->find($this->getUser()->getId());
 
         if ($form->isSubmitted() && $form->isValid()) {
             $test = $sujetRepository->find($id);
-            $message->setIdSujet($test );
+            $message->setIdSujet($test);
             $message->setDate(new \DateTime());
+            $message->setIdUser($user);
             $entityManager->persist($message);
             $entityManager->flush();
 

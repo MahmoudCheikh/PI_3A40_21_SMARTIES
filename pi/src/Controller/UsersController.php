@@ -34,8 +34,6 @@ class UsersController extends AbstractController
         ]);
     }
 
-
-
     /**
      * @Route("/new", name="users_new", methods={"GET", "POST"})
      */

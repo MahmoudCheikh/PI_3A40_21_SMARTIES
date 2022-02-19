@@ -13,8 +13,6 @@ class MessageFrontType extends AbstractType
     {
         $builder
             ->add('contenu')
-            ->add('idUser')
-
         ;
     }
 

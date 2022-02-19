@@ -22,9 +22,6 @@ class SiteController extends AbstractController
         return $this->render('/base_back.html.twig');
     }
 
-
-
-
     /**
      * @Route("/front/", name="site")
      */
@@ -33,7 +30,17 @@ class SiteController extends AbstractController
         return $this->render('/base_front.html.twig');
     }
 
+    /**
+     * @Route("/commandefront", name="ahmed" , methods={"GET"})
+     */
 
+    public function ahmed_b(CommandeRepository $CommandeRepository): Response
+    {
+        return $this->render('/commande/commandeFront.html.twig', [
+            'Commandes' => $CommandeRepository->findAll(),
+
+        ]);
+    }
 
     /**
      * @Route("/fadwa/", name="fadwa")
@@ -60,6 +67,7 @@ class SiteController extends AbstractController
             'emplacements' => $emplacementRepository->findAll(),
         ]);
     }
+
     /**
      * @Route("/produitfront", name="mariem")
      */
@@ -96,6 +104,5 @@ class SiteController extends AbstractController
     {
         return $this->render('/autre.html.twig');
     }
-
 
 }

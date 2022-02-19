@@ -25,63 +25,19 @@
                                                 <h4>Repondre au sujet</h4></div>
                                         </div>
                                     </div>
-                                    <div class="elementor-element elementor-element-bd7762c elementor-button-align-start elementor-widget elementor-widget-form"
-                                         data-id="bd7762c" data-element_type="widget"
-                                         data-settings="{&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}"
-                                         data-widget_type="form.default">
+                                    <div class="elementor-element elementor-element-bd7762c elementor-button-align-start elementor-widget elementor-widget-form" data-element_type="widget">
                                         <div class="elementor-widget-container">
-
-
                                                 {{ form_start(form ) }}
-                                                <br>
                                                 {{ form_errors(form.contenu) }}
-                                                {{ form_label(form.contenu, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+                                                {{ form_label(form.contenu, NULL, {'label_attr': {'class': 'control-label col-lg-2 '}}) }}
                                                 {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
-                                                <br>
-                                                {{ form_errors(form.idUser) }}
-                                                {{ form_label(form.idUser, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
-                                                {{ form_widget(form.idUser, {'attr': {'class': 'form-control'}}) }}
-                                                <br>
-                                                <button class="btn">{{ button_label|default('Save') }}</button>
-                                                {{ form_end(form) }}
                                                 <div class="elementor-form-fields-wrapper elementor-labels-above">
-                                                    <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_9da7361 elementor-col-100">
-                                                        <label for="form-field-field_9da7361"
-                                                               class="elementor-field-label">Name</label><input size="1"
-                                                                                                                type="text"
-                                                                                                                name="form_fields[field_9da7361]"
-                                                                                                                id="form-field-field_9da7361"
-                                                                                                                class="elementor-field elementor-size-lg  elementor-field-textual"
-                                                                                                                placeholder="Name">
-                                                    </div>
-                                                    <div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100 elementor-field-required">
-                                                        <label for="form-field-email" class="elementor-field-label">Email</label><input
-                                                                size="1" type="email" name="form_fields[email]"
-                                                                id="form-field-email"
-                                                                class="elementor-field elementor-size-lg  elementor-field-textual"
-                                                                placeholder="Email" required="required"
-                                                                aria-required="true"></div>
-                                                    <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
-                                                        <label for="form-field-name" class="elementor-field-label">BOOKING
-                                                            DATE</label><input size="1" type="text"
-                                                                               name="form_fields[name]"
-                                                                               id="form-field-name"
-                                                                               class="elementor-field elementor-size-lg  elementor-field-textual"
-                                                                               placeholder="BOOKING DATE"></div>
                                                     <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-message elementor-col-100">
                                                         <label for="form-field-message" class="elementor-field-label">Message</label><textarea
-                                                                class="elementor-field-textual elementor-field  elementor-size-lg"
-                                                                name="form_fields[message]" id="form-field-message"
-                                                                rows="4" placeholder="Message"></textarea></div>
+                                                                class="elementor-field-textual elementor-field  elementor-size-lg" name="form_fields[message]" id="form-field-message" rows="4" placeholder="Message"></textarea></div>
                                                     <div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
-                                                        <button type="submit"
-                                                                class="elementor-button elementor-size-sm">
-						<span>
-															<span class=" elementor-button-icon">
-																										</span>
-																						<span class="elementor-button-text">Send</span>
-													</span>
-                                                        </button>
+                                                        <button class="btn">{{ button_label|default('Save') }}</button>
+                                                        {{ form_end(form) }}
                                                     </div>
                                                 </div>
 

@@ -12,10 +12,8 @@ class SujetFrontType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('IdPost')
             ->add('titre')
             ->add('contenu')
-            ->add('idUser')
         ;
     }
 
