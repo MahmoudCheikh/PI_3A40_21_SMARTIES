@@ -1009,13 +1009,18 @@
                                                         <i style="width: 500" aria-hidden="true" class="fas fa-map-marker-alt"></i>
                                                         <span class="price"><span class="woocommerce-Price-amount amount"><bdi></span></bdi> {{ emplacement.lieu }}</span></span>
                                                         <h2 class="woocommerce-loop-product__title">capacite : {{ emplacement.capacite }}</h2>
-                                                        </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">stock disponible: {{ emplacement.stock }}</a>
 
+                                                        {% if emplacement.stock.disponibilite=="Disponible" %}
+                                                        </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">Quantité Disponible: {{ emplacement.stock.quantite }}</a>
+                                                        {% endif %}
+                                                        {% if emplacement.stock.disponibilite=="Non Disponible" %}
+                                                            </a><a href="index639b.html?add-to-cart=1099" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1099" data-product_sku="SKU.01-EX450-5" aria-label="Add &ldquo;Genius Trail JX-100&rdquo; to your cart" rel="nofollow">stock Non Disponible!</a>
+                                                        {% endif %}
                                                         <br> <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon elementor-align-icon-right">
 				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-						<span class="elementor-button-text">EXPLORE</span>
+                              <span onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/emplacement/explore_site/{{emplacement.id}}'"><span class="elementor-button-text">EXPLORE</span></span>
 		</span>
                                                         </a>
 

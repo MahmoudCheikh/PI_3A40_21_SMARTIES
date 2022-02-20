@@ -58,15 +58,7 @@ class SiteController extends AbstractController
         return $this->render('/commande/newFront.html.twig');
     }
 
-    /**
-     * @Route("/siteF", name="mariem", methods={"GET"})
-     */
-    public function mariem(EmplacementRepository $emplacementRepository): Response
-    {
-        return $this->render('/emplacement/site_front.html.twig', [
-            'emplacements' => $emplacementRepository->findAll(),
-        ]);
-    }
+
 
     /**
      * @Route("/produitfront", name="mariem")

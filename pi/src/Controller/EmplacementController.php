@@ -19,15 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class EmplacementController extends AbstractController
 {
-    /**
-     * @Route("/siteF", name="mariem", methods={"GET"})
-     */
-    public function mariem(EmplacementRepository $emplacementRepository): Response
-    {
-        return $this->render('/emplacement/site_front.html.twig', [
-            'emplacements' => $emplacementRepository->findAll(),
-        ]);
-    }
+
 
     /**
      * @Route("/", name="emplacement_index", methods={"GET"})
@@ -38,8 +30,25 @@ class EmplacementController extends AbstractController
             'emplacements' => $emplacementRepository->findAll(),
         ]);
     }
-
-
+    /**
+     * @Route("/siteF", name="mariem_f", methods={"GET"})
+     */
+    public function mariem_f(EmplacementRepository $emplacementRepository): Response
+    {
+        return $this->render('/emplacement/site_front.html.twig', [
+            'emplacements' => $emplacementRepository->findAll(),
+        ]);
+    }
+    /**
+     * @Route("/explore_site/{id}", name="explore1" , methods={"GET"})
+     */
+    public function explore1(EmplacementRepository $emplacementRepository,$id): Response
+    {
+        $emplacement = $emplacementRepository->find($id);
+        return $this->render('/emplacement/ExploreSite.html.twig', [
+            'emplacement' => $emplacement,
+        ]);
+    }
     /**
      * @Route("/new", name="emplacement_new", methods={"GET", "POST"})
      */

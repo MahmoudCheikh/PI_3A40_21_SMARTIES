@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Repository\AccessoireRepository;
+use App\Repository\EmplacementRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\VeloRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -49,6 +50,18 @@ class ProduitController extends AbstractController
 
 
     /*l fou9 l 7ketya lkol*/
+    /**
+     * @Route("/explore_produit/{id}", name="explore2" , methods={"GET"})
+     */
+    public function explore2(ProduitRepository $ProduitRepository,VeloRepository $veloRepository,AccessoireRepository $accessoireRepository,$id): Response
+    {
+        $produit=$ProduitRepository->find($id);
+
+        return $this->render('/produit/ExploreProduit.html.twig', [
+                'produit'=> $produit,
+            'velos' => $veloRepository->findAll(),
+        ]);
+    }
 
     /**
      * @Route("/new", name="produit_new", methods={"GET", "POST"})
