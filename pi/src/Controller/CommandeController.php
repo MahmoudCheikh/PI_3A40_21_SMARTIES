@@ -2,11 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Achat;
 use App\Entity\Commande;
+use App\Entity\Produit;
 use App\Form\CommandeType;
 use App\Form\CommandeFrontType;
+use App\Repository\AchatRepository;
 use App\Repository\CommandeRepository;
+use App\Repository\ProduitRepository;
 use App\Repository\UsersRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,13 +45,54 @@ class CommandeController extends AbstractController
      * @Route("/commandefront", name="commandefront" , methods={"GET"})
      */
 
-    public function ahmed_a(CommandeRepository $CommandeRepository): Response
+    public function ahmed_a(CommandeRepository $CommandeRepository , ProduitRepository $produitRepository): Response
     {
         return $this->render('/commande/commandefront.html.twig', [
             'Commandes' => $CommandeRepository->findAll(),
+            'Produits' => $produitRepository->findAll(),
 
         ]);
     }
+
+    /**
+     * @Route("/achatfront/{id}", name="achatfront",  methods={"GET"})
+     */
+    public function achatfront(UsersRepository $usersRepository,AchatRepository $achatRepository, CommandeRepository $commandeRepository, ProduitRepository $produitRepository ,EntityManagerInterface $entityManager , int $id): Response
+    {
+        $commande = $commandeRepository->find($id);
+        $produit = $produitRepository->find($commande->getIdProduit());
+        $user = $usersRepository->find(2);
+        $achat = new Achat();
+        $achat->setIdUser($user);
+        $achat->setDate(new \DateTime());
+        $achat->setIdProduit($produit);
+        $achat->setNomClient("test");
+        $achat->setNumeroClient(1);
+        $entityManager->persist($achat);
+        $entityManager->flush();
+
+        return $this->render('/commande/achatfront.html.twig', [
+            'achats' => $achatRepository->findAll(),
+            'Produits' => $produitRepository->findAll(),
+            'commande' => $commande,
+
+        ]);
+    }
+
+    /**
+     * @Route("/achatf/{id}", name="achat_delete_front", methods={"POST" , "GET"})
+     */
+    public function achat_delete_front(Request $request, Achat $achat, EntityManagerInterface $entityManager , int $id , Commande $commande): Response
+    {
+        $entityManager->remove($achat);
+        $entityManager->flush();
+        $idC = $commande->getId();
+        dump($commande);
+        dump($idC);
+        return $this->redirectToRoute('achatfront', array('id' => $idC), Response::HTTP_SEE_OTHER);
+    }
+
+
 
 
     /**

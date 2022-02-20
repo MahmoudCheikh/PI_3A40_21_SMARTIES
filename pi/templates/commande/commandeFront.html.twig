@@ -9,7 +9,7 @@
 
             <div class="page-content">
 
-            <div class="woocommerce"><div class="woocommerce-notices-wrapper"></div>
+            <div class="woocommerce-notices-wrapper"></div>
 
 
 
@@ -19,24 +19,35 @@
 
                     <tr>
                         <td>Numero De Commande</td>
-                        <td>Id Utilisateur</td>
-                        <td>Id Du Produit</td>
                         <td>Nombre De Produit</td>
+                        <td>Prix Du Produit</td>
+                        <td>Votre Produit</td>
+
                     </tr>
 
                     <tr>
                         {% for commande in Commandes %}
+
                     <tr>
 
                         <th class="product-id">{{commande.id}}</th>
-                        <th class="product-thumbnail">{{commande.idUser}}</th>
-                        <th class="product-name">{{commande.idProduit}}</th>
                         <th class="product-price">{{commande.nbProduits}}</th>
+
+                        <th class="product-Prix">{{commande.idProduit.prix}}</th>
+                            <td><img  style="height: 10%;width: 10%" src="{{asset('img/bike/') ~ commande.idProduit.image }}"></td>
+
+
                         <th><a href={{ path('commande_delete_front' , {'id' : commande.id , 'Commande': commande}) }}>delete</th>
                         <th><a href={{ path('commande_update_front' , {'id' : commande.id , 'Commande': commande}) }}>Modifier</th>
-                    </tr>
+                        <th><a href={{ path('achatfront' , {'id' : commande.id , 'Commande': commande}) }}>Achat</th>
 
+
+
+                    </tr>
                     {% endfor %}
+
+
+
 
 
 
@@ -61,38 +72,9 @@
                     <div class="cart_totals ">
 
 
-                        <button type="submit" class="button" name="update_cart" value="Update cart">Update cart</button>
-                        <tr></tr>
-                        <div class="coupon">
-                            <label for="coupon_code">Coupon:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code" /> <button type="submit" class="button" name="apply_coupon" value="Apply coupon">Apply coupon</button>
-                        </div>
-                        <h2>Cart totals</h2>
-
-                        <table cellspacing="0" class="shop_table shop_table_responsive">
-
-                            <tr class="cart-subtotal">
-                                <th>Subtotal</th>
-                                <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>entrain</bdi></span></td>
-                            </tr>
-
-
-
-
-
-
-                            <tr class="order-total">
-                                <th>Total</th>
-                                <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>entrain</bdi></span></strong> </td>
-                            </tr>
-
 
                         </table>
 
-                        <div class="wc-proceed-to-checkout">
-
-                            <a href="https://ergo.creativezeune.com/checkout/" class="checkout-button button alt wc-forward">
-                                Proceed to checkout</a>
-                        </div>
 
 
 

@@ -17,9 +17,9 @@
                     <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
 
                         <thead>
-
+                        {{ dump(commande) }}
                         <tr>
-                                <td>L'Id D'Achat</td>
+                                <td>Numero De Commande</td>
                                 <td>Date D'Achat</td>
                                 <td>Nom Du Client</td>
                                 <td>Numero De Client</td>
@@ -32,8 +32,6 @@
                                     <th class="Date">{{achat.date ? achat.date|date('Y-m-d') : '' }}</th>
                                     <th class="name">{{achat.nomClient}}</th>
                                     <th class="numeroClient">{{achat.numeroClient}}</th>
-                                    <th><a href={{ path('achat_delete_front' , {'id' : achat.id , 'Achat': achat}) }}>delete</th>
-
 
                                 </tr>
                                 {% else %}
@@ -55,6 +53,32 @@
 
                             <tr>
                                 <td colspan="6" class="actions">
+
+                                    <button type="submit" class="button" name="update_cart" value="Update cart">Confirmer L'achat</button>
+                            <tr></tr>
+                            <div class="coupon">
+                                <label for="coupon_code">Coupon:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code" /> <button type="submit" class="button" name="apply_coupon" value="Apply coupon">Apply coupon</button>
+                            </div>
+                            <h2>Cart totals</h2>
+
+                            <table cellspacing="0" class="shop_table shop_table_responsive">
+
+                                <tr class="cart-subtotal">
+                                    <th>Subtotal</th>
+                                    <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>entrain</bdi></span></td>
+                                </tr>
+
+
+
+
+
+
+                                <tr class="order-total">
+                                    <th>Total</th>
+                                    <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>entrain</bdi></span></strong> </td>
+                                </tr>
+
+
 
 
 
