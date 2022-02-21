@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_back.html.twig' %}
 
 {% block title %}Users index{% endblock %}
 
-{% block body %}
+{% block main %}
 
     <div class="row">
         <div class="col-lg-1"></div>
@@ -12,7 +12,8 @@
                 <!-- page start-->
                 <div class="content-panel">
                     <div class="adv-table">
-                        <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                        <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered"
+                               id="hidden-table-info">
                             <thead>
                             <tr>
                                 <th>Id</th>
@@ -55,8 +56,37 @@
 
         </div>
 
-
     </div>
     <div class="col-lg-1"></div>
 
+{% endblock %}
+        {% block jstable %}
+<script type="text/javascript" language="javascript" src={{ asset("lib/advanced-datatable/js/jquery.js")}}></script>
+<script type="text/javascript" language="javascript" src={{ asset("lib/advanced-datatable/js/jquery.dataTables.js")}}></script>
+<script type="text/javascript" src={{ asset("lib/advanced-datatable/js/DT_bootstrap.js")}}></script>
+<script type="text/javascript">
+    function fnFormatDetails(oTable, nTr) {
+        var aData = oTable.fnGetData(nTr);
+        return sOut;
+    }
+
+    $(document).ready(function() {
+        var nCloneTh = document.createElement('th');
+        var nCloneTd = document.createElement('td');
+        nCloneTd.innerHTML = '<img src={{ asset("lib/advanced-datatable/images/details_open.png")}}>';
+        nCloneTd.className = "center";
+
+        var oTable = $('#hidden-table-info').dataTable({
+            "aoColumnDefs": [{
+                "bSortable": false,
+                "searchable":false,
+                "aTargets": [7]
+            }],
+            "aaSorting": [
+                [0, 'asc']
+            ]
+        });
+
+    });
+</script>
 {% endblock %}

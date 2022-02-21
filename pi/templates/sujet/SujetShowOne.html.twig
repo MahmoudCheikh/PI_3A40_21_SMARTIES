@@ -111,7 +111,7 @@
                                                                             itemprop="author">
 
 														<span class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-author">
-										                    {{ sujet.IdPost }}					</span>
+										                    {{ sujet.IdUser.email }}					</span>
 
                                                                         </li>
                                                                         <li class="elementor-icon-list-item elementor-repeater-item-4cb5314 elementor-inline-item"
@@ -128,17 +128,19 @@
                                             </div>
                                         </div>
                                     </section>
+
                                     <div class="elementor-element elementor-element-15407e5 elementor-widget elementor-widget-theme-post-content"
                                          data-id="15407e5" data-element_type="widget"
                                          data-widget_type="theme-post-content.default">
                                         <div class="elementor-widget-container">
                                             <p>{{ sujet.contenu }}</p>
                                         </div>
+                                        {% if app.user %}
                                         <a href={{ path('message_new_front', { 'sujet': sujet , 'id' : sujet.id }) }}>
                                             <span class="elementor-icon-list-text">Repondre</span>
                                         </a>
                                     </div>
-
+                                        {% endif %}
 
                                     <div data-elementor-type="single-page" data-elementor-id="602"
                                          class="elementor elementor-602 elementor-location-single post-524 page type-page status-publish hentry"
@@ -188,8 +190,18 @@
                                                                                         </div>
 
                                                                                         <div class="elementor-testimonial-details">
-                                                                                            <div class="elementor-testimonial-name">{{ msg.idUser }}</div>
+                                                                                            <div class="elementor-testimonial-name">{{ msg.idUser.email }}</div>
                                                                                             <div class="elementor-testimonial-job">{{ msg.date|date("d/m/y") }}</div>
+                                                                                            {% if app.user %}
+                                                                                                {% if app.user.id == msg.IdUser.id %}
+                                                                                                    <span class="elementor-button-icon elementor-align-icon-right"></span>
+                                                                                                    <form method="post" action="{{ path('message_front_delete', {'id': msg.id}) }}"
+                                                                                                          onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                                                                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ msg.id) }}">
+                                                                                                        <button class="btn">Supprimer</button>
+                                                                                                    </form>
+                                                                                                {% endif %}
+                                                                                            {% endif %}
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>

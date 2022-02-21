@@ -29,7 +29,7 @@ class UsersController extends AbstractController
                     'Users' => $UsersRepository->findAll(),
                 ]);
         */
-        return $this->render('Users/mahmoud.html.twig', [
+        return $this->render('Users/index.html.twig', [
             'Users' => $UsersRepository->findAll(),
         ]);
     }

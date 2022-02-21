@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Message;
+use App\Entity\Sujet;
 use App\Form\MessageFrontType;
 use App\Form\MessageType;
 use App\Repository\MessageRepository;
@@ -69,7 +70,7 @@ class MessageController extends AbstractController
             $entityManager->persist($message);
             $entityManager->flush();
 
-            return $this->redirectToRoute('message_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('sujet_show_front', array(  'id'=> $test->getId()), Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('message/msgNewFront.html.twig', [
@@ -120,4 +121,19 @@ class MessageController extends AbstractController
 
         return $this->redirectToRoute('message_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    /**
+     * @Route("/deletefront/{id}", name="message_front_delete", methods={"POST"})
+     */
+    public function deleteFront(Request $request, Message $message, EntityManagerInterface $entityManager): Response
+    {
+        $sujet = $message->getIdSujet()->getId();
+        if ($this->isCsrfTokenValid('delete'.$message->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($message);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('sujet_show_front', array(  'id'=> $sujet), Response::HTTP_SEE_OTHER);
+    }
 }
+

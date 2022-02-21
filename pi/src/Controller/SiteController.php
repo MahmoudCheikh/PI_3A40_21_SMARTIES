@@ -23,7 +23,7 @@ class SiteController extends AbstractController
     }
 
     /**
-     * @Route("/front/", name="site")
+     * @Route("/", name="site")
      */
     public function front(): Response
     {

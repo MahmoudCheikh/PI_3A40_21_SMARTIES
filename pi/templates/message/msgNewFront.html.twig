@@ -29,13 +29,8 @@
                                         <div class="elementor-widget-container">
                                                 {{ form_start(form ) }}
                                                 {{ form_errors(form.contenu) }}
-                                                {{ form_label(form.contenu, NULL, {'label_attr': {'class': 'control-label col-lg-2 '}}) }}
-                                                {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
+                                                {{ form_widget(form.contenu, {'attr': {'class': 'form-control elementor-field-textual elementor-field  elementor-size-lg' , 'placeholder':'Message'}}) }}
                                                 <div class="elementor-form-fields-wrapper elementor-labels-above">
-                                                    <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-message elementor-col-100">
-                                                        <label for="form-field-message" class="elementor-field-label">Message</label><textarea
-                                                                class="elementor-field-textual elementor-field  elementor-size-lg" name="form_fields[message]" id="form-field-message" rows="4" placeholder="Message"></textarea></div>
-                                                    <div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
                                                         <button class="btn">{{ button_label|default('Save') }}</button>
                                                         {{ form_end(form) }}
                                                     </div>

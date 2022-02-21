@@ -12,7 +12,6 @@ class SujetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('IdPost')
             ->add('Date')
             ->add('titre')
             ->add('contenu')
