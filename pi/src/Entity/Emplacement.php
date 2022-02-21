@@ -19,14 +19,20 @@ class Emplacement
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="lieu de l'emplacement is required")
+     * @Assert\NotBlank(message="l'emplacement est requis")
      */
     private $lieu;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\Positive(message="capacité doit etre positive")
-     * @Assert\NotBlank(message="nom de la capacité is required")
+     * @Assert\LessThanOrEqual(
+     *     message="trés grande quantité !",
+     *     value=10)
+     * @Assert\GreaterThanOrEqual(
+     *     message="trés peut !",
+     *     value=10000)
+     * @Assert\NotBlank(message="la capacité du site est requis")
      */
     private $capacite;
 

@@ -23,7 +23,7 @@ class ProduitController extends AbstractController
 {
 
     /**
-     * @Route("/produitfront", name="marieme")
+     * @Route("/produitfront", name="produitfront")
      */
     public function mariem_e(ProduitRepository $ProduitRepository,VeloRepository $veloRepository,AccessoireRepository $accessoireRepository): Response
     {
@@ -44,7 +44,7 @@ class ProduitController extends AbstractController
             'Produits' => $ProduitRepository->findAll(),
         ]);*/
 
-        return $this->render('Produit/mariem.html.twig', [
+        return $this->render('produit/index.html.twig', [
             'Produits' => $ProduitRepository->findAll(),
         ]);
     }

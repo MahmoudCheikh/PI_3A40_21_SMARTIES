@@ -22,19 +22,19 @@ class Produit
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="libelle du produit is required")
+     * @Assert\NotBlank(message="libelle du produit est requis")
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="image du produit is required")
+     * @Assert\NotBlank(message="image du produit est requis")
      */
     private $image;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="description du produit is required")
+     * @Assert\NotBlank(message="description du produit est requis")
      */
     private $description;
 

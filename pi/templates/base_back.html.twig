@@ -10,7 +10,7 @@
     <title>{% block title %}Backoffice {% endblock %}</title>
 
     <!-- Favicons -->
-    <link href={{ asset('img/favicon.png') }} rel="icon">
+    <link href={{ asset('img/favicon1.png') }} rel="icon">
     <link href={{ asset('img/apple-touch-icon.png') }} rel="apple-touch-icon">
 
     <!-- Bootstrap core CSS -->
@@ -45,7 +45,7 @@
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
         <!--logo start-->
-        <a href="index.html" class="logo"><b>DASH<span>IO</span></b></a>
+        <a href="index.html" class="logo"><b>ça<span>ROULE</span></b></a>
         <!--logo end-->
         <div class="nav notify-row" id="top_menu">
         </div>
@@ -70,7 +70,12 @@
                 <li><a href="{{ path('users_index') }}"><i class="fa fa-cogs"></i>Users</a></li>
                 <li><a href="{{ path('sujet_index') }}"><i class="fa fa-cogs"></i>Sujets</a></li>
                 <li><a href="{{ path('message_index') }}"><i class="fa fa-cogs"></i>Messages</a></li>
-                <li><a href="{{ path('produit_index') }}"><i class="fa fa-cogs"></i>MARIEM</a></li>
+                <li><a href="{{ path('produit_index') }}"><i class="fa fa-cogs"></i>MARIEM</a>
+                    <ul class="sub-menu"><li><a href="{{ path('produit_index') }}"><i class="fa fa-edit"></i>Gestion des Produits</a></li></ul>
+                    <ul class="sub-menu"><li><a href="{{ path('stock_index') }}"><i class="fa fa-archive"></i>Gestion de stockage</a></li></ul>
+                    <ul class="sub-menu"><li><a href="{{ path('emplacement_index') }}"><i class="fa fa-map-marker"></i>Gestion d'emplacement</a></li></ul>
+                </li>
+
                 <li><a href="{{ path('abonnement_index') }}"><i class="fa fa-cogs"></i>FADWA</a></li>
                 <li><a href="{{ path('evenement_index') }}"><i class="fa fa-cogs"></i>AZIZ</a></li>
 

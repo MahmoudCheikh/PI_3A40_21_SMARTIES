@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="../../gmpg.org/xfn/11.html">
     <title>{% block title %}Produits &#8211; | çaRoule{% endblock %}</title>
+    <link href={{ asset('img/favicon1.png') }} rel="icon">
+
     <meta name='robots' content='max-image-preview:large' />
     <script>window._wca = window._wca || [];</script>
     <link rel='dns-prefetch' href='../../stats.wp.com/index.html' />
@@ -805,8 +807,7 @@
 
         /** End Checkout **/		</style>
 </head>
-<body class="archive post-type-archive post-type-archive-product theme-hello-elementor woocommerce-shop woocommerce woocommerce-page woocommerce-no-js woolementor wl woo-variation-swatches wvs-theme-hello-elementor wvs-theme-child-hello-elementor wvs-style-squared wvs-attr-behavior-blur wvs-tooltip wvs-css wvs-show-label elementor-default elementor-template-full-width elementor-kit-14 elementor-page-903">
-
+<body class="home page-template-default page page-id-2 theme-hello-elementor woocommerce-no-js woolementor wl woo-variation-swatches wvs-theme-hello-elementor wvs-theme-child-hello-elementor wvs-style-squared wvs-attr-behavior-blur wvs-tooltip wvs-css wvs-show-label elementor-default elementor-kit-14 elementor-page elementor-page-2 elementor-page-46">
 <div data-elementor-type="header" data-elementor-id="40" class="elementor elementor-40 elementor-location-header" data-elementor-settings="[]">
     <div class="elementor-section-wrap">
         <section class="elementor-section elementor-top-section elementor-element elementor-element-f512b72 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f512b72" data-element_type="section">
@@ -818,7 +819,7 @@
                                 <div class="elementor-element elementor-element-233dbb6 elementor-widget elementor-widget-image" data-id="233dbb6" data-element_type="widget" data-widget_type="image.default">
                                     <div class="elementor-widget-container">
                                         <div class="elementor-image">
-                                            <img width="250" height="500" src={{asset('wp-content/uploads/sites/7/2021/02/logo.png')}} class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" />														</div>
+                                            <img width="80" height="80" src={{ asset("wp-content/uploads/sites/7/2021/02/Ergo-logo.png")}} class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" />														</div>
                                     </div>
                                 </div>
                             </div>
@@ -832,86 +833,39 @@
                                         <div class="ekit-wid-con ekit_menu_responsive_tablet" data-hamburger-icon="" data-hamburger-icon-type="icon" data-responsive-breakpoint="1024">            <button class="elementskit-menu-hamburger elementskit-menu-toggler">
                                                 <span class="elementskit-menu-hamburger-icon"></span><span class="elementskit-menu-hamburger-icon"></span><span class="elementskit-menu-hamburger-icon"></span>
                                             </button>
-                                            <div id="ekit-megamenu-ergo-main-menu" class="elementskit-menu-container elementskit-menu-offcanvas-elements elementskit-navbar-nav-default elementskit_line_arrow ekit-nav-menu-one-page-yes"><ul id="menu-ergo-main-menu" class="elementskit-navbar-nav elementskit-menu-po-center submenu-click-on-icon"><li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-29 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../index.html" class="ekit-menu-nav-link">Homepage</a></li>
-                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item menu-item-31 nav-item elementskit-mobile-builder-content active" data-vertical-menu=750px><a href="index.html" class="ekit-menu-nav-link active">Produits</a></li>
-                                                    <li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../about/index.html" class="ekit-menu-nav-link">About</a></li>
-                                                    <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../maintenance/index.html" class="ekit-menu-nav-link">Service</a></li>
-                                                    <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a href="#" class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Pages<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
+                                            <div id="ekit-megamenu-ergo-main-menu" class="elementskit-menu-container elementskit-menu-offcanvas-elements elementskit-navbar-nav-default elementskit_line_arrow ekit-nav-menu-one-page-yes">
+                                                <ul id="menu-ergo-main-menu" class="elementskit-navbar-nav elementskit-menu-po-center submenu-click-on-icon">
+                                                    <li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-29 nav-item elementskit-mobile-builder-content active" data-vertical-menu=750px><a href={{ path(("site")) }} class="ekit-menu-nav-link active">Homepage</a></li>
+                                                    <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path(("produitfront")) }} class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Produits<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
                                                         <ul class="elementskit-dropdown elementskit-submenu-panel">
-                                                            <li id="menu-item-933" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-933 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../news/index.html" class=" dropdown-item">News</a>	<li id="menu-item-1161" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1161 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../2021/03/09/cycling-on-your-period-harness-the-power-of-your-hormones/index.html" class=" dropdown-item">Single Post</a>	<li id="menu-item-1167" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1167 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../product/r-works-stuns-xc-01/index.html" class=" dropdown-item">Single Product</a>	<li id="menu-item-690" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-690 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../testimonials/index.html" class=" dropdown-item">Testimonials</a>	<li id="menu-item-691" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-691 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../rent-a-bike/index.html" class=" dropdown-item">Rent a Bike</a>	<li id="menu-item-692" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-692 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../events/index.html" class=" dropdown-item">Events</a>	<li id="menu-item-695" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-695 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../contact/index.html" class=" dropdown-item">Contact</a>	<li id="menu-item-688" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-688 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../find-retailers/index.html" class=" dropdown-item">Find Retailers</a>	<li id="menu-item-687" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-687 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../careers/index.html" class=" dropdown-item">Careers</a>	<li id="menu-item-686" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-686 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../help-center/index.html" class=" dropdown-item">Help Center</a>	<li id="menu-item-685" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-685 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../privacy-policy/index.html" class=" dropdown-item">Privacy Policy</a>	<li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="../error-404/index.html" class=" dropdown-item">Error 404</a></ul>
-                                                    </li>
-                                                </ul>
-                                                <div class="elementskit-nav-identity-panel">
-                                                    <div class="elementskit-site-title">
-                                                        <a class="elementskit-nav-logo" href="../index.html" target="_self" rel="">
-                                                            <img width="80" height="80" src={{asset('wp-content/uploads/sites/7/2021/02/logo.png')}}  class="attachment-full size-full" alt="" loading="lazy" />
-                                                        </a>
-                                                    </div>
-                                                    <button class="elementskit-menu-close elementskit-menu-toggler" type="button">X</button>
-                                                </div>
-                                            </div><div class="elementskit-menu-overlay elementskit-menu-offcanvas-elements elementskit-menu-toggler ekit-nav-menu--overlay"></div></div>		</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-d16debf" data-id="d16debf" data-element_type="column">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-b363086 toggle-icon--cart-solid elementor-menu-cart--empty-indicator-hide elementor-menu-cart--items-indicator-bubble elementor-menu-cart--show-divider-yes elementor-menu-cart--show-remove-button-yes elementor-menu-cart--buttons-inline elementor-widget elementor-widget-woocommerce-menu-cart" data-id="b363086" data-element_type="widget" data-widget_type="woocommerce-menu-cart.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="elementor-menu-cart__wrapper">
-                                            <div class="elementor-menu-cart__container elementor-lightbox" aria-expanded="false">
-                                                <div class="elementor-menu-cart__main" aria-expanded="false">
-                                                    <div class="elementor-menu-cart__close-button"></div>
-                                                    <div class="widget_shopping_cart_content"></div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-menu-cart__toggle elementor-button-wrapper">
-                                                <a id="elementor-menu-cart__toggle_button" href="#" class="elementor-button elementor-size-sm">
-                                                    <span class="elementor-button-text"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>0.00</bdi></span></span>
-                                                    <span class="elementor-button-icon" data-counter="0">
-					<i class="eicon" aria-hidden="true"></i>
-					<span class="elementor-screen-only">Cart</span>
-				</span>
-                                                </a>
-                                            </div>
+                                                            <li id="menu-item-692" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-692 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path(("mariem_f")) }}" class=" dropdown-item">LES SITES</a>
+                                                            <li id="menu-item-695" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-693 current_page_item menu-item-695 nav-item elementskit-mobile-builder-content active" data-vertical-menu=750px><a href="{{ path(("produitfront")) }}" class=" dropdown-item active">LES PRODUITS</a>
 
-                                        </div> <!-- close elementor-menu-cart__wrapper -->
+                                                        </ul>
+                                                    </li>
+                                                    <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("sujet_front") }} class="ekit-menu-nav-link">Forum</a></li>
+                                                    {% if app.user %}
+                                                        <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px>
+                                                            <a href="" class="ekit-menu-nav-link">
+                                                                {{ app.user.username }}</a></li>
+                                                        <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path('app_logout') }}">Logout</a></li>
+                                                    {% else %}
+                                                        <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("app_login") }} class="ekit-menu-nav-link">Login</a></li>
+                                                    {% endif %}
+
+                                                </ul>
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-5b48f7d elementor-hidden-tablet elementor-hidden-phone" data-id="5b48f7d" data-element_type="column">
-                        <div class="elementor-column-wrap elementor-element-populated">
-                            <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-7e53071 elementor-widget elementor-widget-elementskit-header-search" data-id="7e53071" data-element_type="widget" data-widget_type="elementskit-header-search.default">
-                                    <div class="elementor-widget-container">
-                                        <div class="ekit-wid-con" >        <a href="#ekit_modal-popup-7e53071" class="ekit_navsearch-button ekit-modal-popup">
-                                                <i aria-hidden="true" class="icon icon-search11"></i>        </a>
-                                            <!-- language switcher strart -->
-                                            <!-- xs modal -->
-                                            <div class="zoom-anim-dialog mfp-hide ekit_modal-searchPanel" id="ekit_modal-popup-7e53071">
-                                                <div class="ekit-search-panel">
-                                                    <!-- Polylang search - thanks to Alain Melsens -->
-                                                    <form role="search" method="get" class="ekit-search-group" action="https://ergo.creativezeune.com/">
-                                                        <input type="search" class="ekit_search-field" placeholder="Search..." value="" name="s" />
-                                                        <button type="submit" class="ekit_search-button">
-                                                            <i aria-hidden="true" class="icon icon-search11"></i>                    </button>
-                                                    </form>
-                                                </div>
-                                            </div><!-- End xs modal -->
-                                            <!-- end language switcher strart -->
-                                        </div>		</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
     </div>
 </div>
+
 {# ######################################################################### LES Velos ############################################################################ #}
 
 <div data-elementor-type="product-archive" data-elementor-id="903" class="elementor elementor-903 elementor-location-archive product" data-elementor-settings="[]">
@@ -990,8 +944,9 @@
                                     <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon elementor-align-icon-right">
-				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-                              <span onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/produit/explore_produit/{{produit.id}}"><span class="elementor-button-text">EXPLORE</span></span>
+				<i aria-hidden="true" class="fas fa-arrow-right"></i>
+                        </span>
+                              <span onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/produit/explore_produit/{{produit.id}}'"><span class="elementor-button-text">EXPLORE</span></span>
 
 		</span>
                                     </a>
@@ -1055,7 +1010,7 @@
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon elementor-align-icon-right">
 				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-                              <span onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/produit/explore_produit/{{produit.id}}"><span class="elementor-button-text">EXPLORE</span></span>
+                              <span onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/produit/explore_produit/{{produit.id}}'"><span class="elementor-button-text">EXPLORE</span></span>
 
 		</span>
                                                                     </a>
@@ -1162,7 +1117,7 @@
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon elementor-align-icon-right">
 				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-                              <span onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/produit/explore_produit/{{produit.id}}"><span class="elementor-button-text">EXPLORE</span></span>
+                              <span onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/produit/explore_produit/{{produit.id}}'"><span class="elementor-button-text">EXPLORE</span></span>
 
 		</span>
                                     </a>

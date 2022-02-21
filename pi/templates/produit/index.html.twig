@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_back.html.twig' %}
 
 {% block title %}Produit index{% endblock %}
 
-{% block body %}
+{% block main %}
 <h3><i class="fa fa-angle-right"></i> Produit index</h3>
 <a href="{{ path('produit_new') }}">Create new</a>
 <div class="row mb">
@@ -26,13 +26,13 @@
             <tr>
                 <td>{{ produit.id }}</td>
                 <td>{{ produit.libelle }}</td>
-                <td><img  style="height: 10%;width: 10%" src="{{asset('img/bike/') ~ produit.image }}"></td>
+                <td><img  style="height: 100px;width: 100px" src="{{asset('img/bike/') ~ produit.image }}"></td>
                 <td>{{ produit.description }}</td>
                 <td>{{ produit.prix }}</td>
                 <td>{{ produit.type }}</td>
                 <td>
-                    <a href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
-                    <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
+                    <a href="{{ path('produit_show', {'id': produit.id}) }}"><i class="fa  fa-eye"></i></a>
+                    <a href="{{ path('produit_edit', {'id': produit.id}) }}"><i class="fa fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -47,4 +47,34 @@
     <!-- page end-->
 </div>
     <!-- /row -->
+{% endblock %}
+{% block jstable %}
+    <script type="text/javascript" language="javascript" src={{ asset("lib/advanced-datatable/js/jquery.js")}}></script>
+    <script type="text/javascript" language="javascript" src={{ asset("lib/advanced-datatable/js/jquery.dataTables.js")}}></script>
+    <script type="text/javascript" src={{ asset("lib/advanced-datatable/js/DT_bootstrap.js")}}></script>
+    <script type="text/javascript">
+        function fnFormatDetails(oTable, nTr) {
+            var aData = oTable.fnGetData(nTr);
+            return sOut;
+        }
+
+        $(document).ready(function() {
+            var nCloneTh = document.createElement('th');
+            var nCloneTd = document.createElement('td');
+            nCloneTd.innerHTML = '<img src={{ asset("lib/advanced-datatable/images/details_open.png")}}>';
+            nCloneTd.className = "center";
+
+            var oTable = $('#hidden-table-info').dataTable({
+                "aoColumnDefs": [{
+                    "bSortable": false,
+                    "searchable":false,
+                    "aTargets": [4]
+                }],
+                "aaSorting": [
+                    [0, 'asc']
+                ]
+            });
+
+        });
+    </script>
 {% endblock %}

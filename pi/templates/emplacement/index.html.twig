@@ -27,13 +27,13 @@
                 <td>{{ emplacement.capacite }}</td>
                 <td>{{ emplacement.stock }}</td>
                 <td>
-                    <a href="{{ path('emplacement_show', {'id': emplacement.id}) }}">show</a>
-                    <a href="{{ path('emplacement_edit', {'id': emplacement.id}) }}">edit</a>
+                    <a href="{{ path('emplacement_show', {'id': emplacement.id}) }}"><i class="fa fa-eye"> show </i> &nbsp; &nbsp; &nbsp;   </a>
+                    <a href="{{ path('emplacement_edit', {'id': emplacement.id}) }}"><i class="fa fa-edit"> edit </i>  </a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -43,4 +43,34 @@
     <!-- page end-->
 </div>
     <!-- /row -->
+{% endblock %}
+{% block jstable %}
+    <script type="text/javascript" language="javascript" src={{ asset("lib/advanced-datatable/js/jquery.js")}}></script>
+    <script type="text/javascript" language="javascript" src={{ asset("lib/advanced-datatable/js/jquery.dataTables.js")}}></script>
+    <script type="text/javascript" src={{ asset("lib/advanced-datatable/js/DT_bootstrap.js")}}></script>
+    <script type="text/javascript">
+        function fnFormatDetails(oTable, nTr) {
+            var aData = oTable.fnGetData(nTr);
+            return sOut;
+        }
+
+        $(document).ready(function() {
+            var nCloneTh = document.createElement('th');
+            var nCloneTd = document.createElement('td');
+            nCloneTd.innerHTML = '<img src={{ asset("lib/advanced-datatable/images/details_open.png")}}>';
+            nCloneTd.className = "center";
+
+            var oTable = $('#hidden-table-info').dataTable({
+                "aoColumnDefs": [{
+                    "bSortable": false,
+                    "searchable":false,
+                    "aTargets": [4]
+                }],
+                "aaSorting": [
+                    [0, 'asc']
+                ]
+            });
+
+        });
+    </script>
 {% endblock %}
