@@ -17,6 +17,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class MaintenanceController extends AbstractController
 {
     /**
+     * @Route("/maintenance_front", name="maintenance_index" , methods={"GET"})
+     */
+    public function hazem(MaintenanceRepository $maintenanceRepository): Response
+    {
+        return $this->render('/maintenance/maintenance_front.html.twig',[
+            'maintenances' => $maintenanceRepository->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/", name="maintenance_index", methods={"GET"})
      */
     public function index(MaintenanceRepository $maintenanceRepository): Response
