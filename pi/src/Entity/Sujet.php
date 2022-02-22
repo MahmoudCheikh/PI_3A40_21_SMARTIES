@@ -51,7 +51,7 @@ class Sujet
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
      *      min = "20",
-     *      max = "30",
+     *      max = "200",
      *      minMessage = "le contenu doit faire au moins {{ limit }} caractères",
      *      maxMessage = "le contenu ne peut pas être plus long que {{ limit }} caractères"
      * )

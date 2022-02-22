@@ -130,6 +130,26 @@ class SujetController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/{id}/edit/front", name="sujet_front_edit", methods={"GET", "POST"})
+     */
+    public function editFront(Request $request, Sujet $sujet, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(SujetFrontType::class, $sujet);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('sujet_front', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('sujet/edit_front.html.twig', [
+            'sujet' => $sujet,
+            'form' => $form->createView(),
+        ]);
+    }
+
 
     /**
      * @Route("/{id}", name="sujet_delete", methods={"POST"})

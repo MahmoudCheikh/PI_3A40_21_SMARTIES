@@ -26,7 +26,6 @@ class Message
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\GreaterThan("today")
      */
     private $Date;
 
