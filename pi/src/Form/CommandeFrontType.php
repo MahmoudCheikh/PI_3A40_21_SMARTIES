@@ -13,7 +13,6 @@ class CommandeFrontType extends AbstractType
     {
         $builder
             ->add('nbProduits')
-            ->add('idProduit')
         ;
     }
 

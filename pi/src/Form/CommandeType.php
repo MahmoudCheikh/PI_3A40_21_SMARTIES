@@ -13,7 +13,6 @@ class CommandeType extends AbstractType
     {
         $builder
             ->add('nbProduits')
-            ->add('idUser')
             ->add('idProduit')
         ;
     }

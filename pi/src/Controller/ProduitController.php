@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
 use App\Entity\Produit;
+use App\Form\CommandeFrontType;
 use App\Form\ProduitType;
 use App\Repository\AccessoireRepository;
 use App\Repository\EmplacementRepository;
@@ -52,15 +54,30 @@ class ProduitController extends AbstractController
 
     /*l fou9 l 7ketya lkol*/
     /**
-     * @Route("/explore_produit/{id}", name="explore2" , methods={"GET"})
+     * @Route("/explore_produit/{id}", name="explore2" , methods={"GET","POST"})
      */
-    public function explore2(ProduitRepository $ProduitRepository,VeloRepository $veloRepository,AccessoireRepository $accessoireRepository,$id): Response
+    public function explore2(Request $request, EntityManagerInterface $entityManager, UsersRepository $usersRepository , ProduitRepository $ProduitRepository,VeloRepository $veloRepository,AccessoireRepository $accessoireRepository,$id): Response
     {
         $produit=$ProduitRepository->find($id);
+        $Commande = new Commande();
+        $form = $this->createForm(CommandeFrontType::class, $Commande);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $usersRepository->find($this->getuser()->getid());
+            $Commande->setIdUser($user);
+            $Commande->setIdProduit($produit);
+            $entityManager->persist($Commande);
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('commandefront', [], Response::HTTP_SEE_OTHER);
+        }
 
         return $this->render('/produit/ExploreProduit.html.twig', [
                 'produit'=> $produit,
             'velos' => $veloRepository->findAll(),
+            'commande' => $Commande,
+            'form' => $form->createView(),
         ]);
     }
 

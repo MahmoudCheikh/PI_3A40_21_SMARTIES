@@ -65,7 +65,10 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <h5 class="centered">Admin</h5>
-                <li><a href="{{ path('commande_index') }}"><i class="fa fa-cogs"></i>AHMED</a></li>
+                <li><a href="{{ path('commande_index') }}"><i class="fa fa-cogs"></i>AHMED</a>
+                <ul class="sub-menu"><li><a href="{{ path('commande_index') }}"><i class="fa fa-edit"></i>Gestion De Commande</a></li></ul>
+                <ul class="sub-menu"><li><a href="{{ path('achat_index') }}"><i class="fa fa-edit"></i>Gestion D'Achat</a></li></ul>
+                </li>
                 <li><a href="{{ path('piece_d_r_index') }}"><i class="fa fa-cogs"></i>HAZEM</a></li>
                 <li><a href="{{ path('users_index') }}"><i class="fa fa-cogs"></i>Users</a></li>
                 <li><a href="{{ path('sujet_index') }}"><i class="fa fa-cogs"></i>Sujets</a></li>

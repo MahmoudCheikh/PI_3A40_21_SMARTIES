@@ -938,29 +938,20 @@
                                         <div class="elementor-add-to-cart elementor-product-simple">
 
 
-                                            <form class="cart" action="https://ergo.creativezeune.com/product/camello-carbon-axs-54/" method="post" enctype='multipart/form-data'>
+                                                {{ form_start(form) }}
+                                                {{ form_errors(form.nbProduits) }}
+                                                {{ form_widget(form.nbProduits, {'attr': {'class': 'form-control , elementor-field elementor-size-lg  elementor-field-textual' , 'placeholder':'Nombre produit'}}) }}
+                                                <br>
+                                                <br>
+                                                <button class="btn">{{ button_label|default('Ajouter') }}</button>
 
-                                                <div class="quantity">
-                                                    <label class="screen-reader-text" for="quantity_6203d3f4ca72a">Camello Carbon X54 quantity</label>
-                                                    <input
-                                                            type="number"
-                                                            id="quantity_6203d3f4ca72a"
-                                                            class="input-text qty text"
-                                                            step="1"
-                                                            min="1"
-                                                            max=""
-                                                            name="quantity"
-                                                            value="1"
-                                                            title="Qty"
-                                                            size="4"
-                                                            placeholder=""
-                                                            inputmode="numeric" />
-                                                </div>
+
+                                                {{ form_end(form) }}
 
 
 
-                                            </form>
-                                            <center><button type="submit" name="add-to-cart" value="1095" class="single_add_to_cart_button button alt" onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/commande/newFront/'">Ajouter au Panier</button></center><br>
+
+
                                             <center><button type="submit" name="add-to-cart" value="1095" class="single_add_to_cart_button button alt" onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/location/new/'">location du produit</button></center><br>
 
                                         </div>

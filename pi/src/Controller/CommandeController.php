@@ -34,7 +34,7 @@ class CommandeController extends AbstractController
        /* return $this->render('Commande/index.html.twig', [
             'Commandes' => $CommandeRepository->findAll(),
         ]);*/
-        return $this->render('Commande/ahmed.html.twig', [
+        return $this->render('Commande/index.html.twig', [
             'Commandes' => $CommandeRepository->findAll(),
         ]);
 
@@ -54,28 +54,16 @@ class CommandeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/achatfront/{id}", name="achatfront",  methods={"GET"})
-     */
-    public function achatfront(UsersRepository $usersRepository,AchatRepository $achatRepository, CommandeRepository $commandeRepository, ProduitRepository $produitRepository ,EntityManagerInterface $entityManager , int $id): Response
-    {
-        $commande = $commandeRepository->find($id);
-        $produit = $produitRepository->find($commande->getIdProduit());
-        $user = $usersRepository->find(2);
-        $achat = new Achat();
-        $achat->setIdUser($user);
-        $achat->setDate(new \DateTime());
-        $achat->setIdProduit($produit);
-        $achat->setNomClient("test");
-        $achat->setNumeroClient(1);
-        $entityManager->persist($achat);
-        $entityManager->flush();
 
+
+    /**
+     * @Route("/achatfront", name="achatfront",  methods={"GET"})
+     */
+    public function achatfront(AchatRepository $achatRepository, CommandeRepository $commandeRepository, ProduitRepository $produitRepository ,EntityManagerInterface $entityManager): Response
+    {
         return $this->render('/commande/achatfront.html.twig', [
             'achats' => $achatRepository->findAll(),
             'Produits' => $produitRepository->findAll(),
-            'commande' => $commande,
-
         ]);
     }
 
@@ -98,13 +86,15 @@ class CommandeController extends AbstractController
     /**
      * @Route("/new", name="commande_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager ,UsersRepository $usersRepository ): Response
     {
         $Commande = new Commande();
         $form = $this->createForm(CommandeType::class, $Commande);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $usersRepository->find($this->getuser()->getid());
+            $Commande->setIdUser($user);
             $entityManager->persist($Commande);
             $entityManager->flush();
 
@@ -127,7 +117,7 @@ class CommandeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user = $usersRepository->find(2);
+            $user = $usersRepository->find($this->getuser()->getid());
             $Commande->setIdUser($user);
             $entityManager->persist($Commande);
 

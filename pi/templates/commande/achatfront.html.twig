@@ -13,20 +13,19 @@
                 <div class="woocommerce"><div class="woocommerce-notices-wrapper"></div>
 
 
-
+                    {% if app.user %}
                     <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
-
                         <thead>
-                        {{ dump(commande) }}
                         <tr>
                                 <td>Numero De Commande</td>
                                 <td>Date D'Achat</td>
                                 <td>Nom Du Client</td>
-                                <td>Numero De Client</td>
+                                <td>Nombre Achetée</td>
 
                             </tr>
                                 <tr>
                                     {% for achat in achats %}
+                                    {% if achat.IdUser.id == app.user.id %}
 
                                     <th class="Numero Du Commande">{{achat.id}}</th>
                                     <th class="Date">{{achat.date ? achat.date|date('Y-m-d') : '' }}</th>
@@ -34,10 +33,8 @@
                                     <th class="numeroClient">{{achat.numeroClient}}</th>
 
                                 </tr>
-                                {% else %}
-                                    <tr>
-                                        <td colspan="5">no records found</td>
-                                    </tr>
+
+                                    {% endif %}
                                 {% endfor %}
 
 
@@ -50,10 +47,8 @@
 
 
 
-
                             <tr>
                                 <td colspan="6" class="actions">
-
                                     <button type="submit" class="button" name="update_cart" value="Update cart">Confirmer L'achat</button>
                             <tr></tr>
                             <div class="coupon">
@@ -67,19 +62,14 @@
                                     <th>Subtotal</th>
                                     <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>entrain</bdi></span></td>
                                 </tr>
-
-
-
-
-
-
                                 <tr class="order-total">
                                     <th>Total</th>
                                     <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>entrain</bdi></span></strong> </td>
                                 </tr>
 
 
-
+                            {% else %} <h1>veuillez vous connecter</h1>
+                            {% endif %}
 
 
             </section><!-- .comments-area -->

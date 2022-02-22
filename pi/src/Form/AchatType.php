@@ -15,7 +15,6 @@ class AchatType extends AbstractType
             ->add('date')
             ->add('nomClient')
             ->add('numeroClient')
-            ->add('idUser')
             ->add('idProduit')
         ;
     }

@@ -1,10 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_back.html.twig' %}
 
 {% block title %}Commande index{% endblock %}
 
-{% block body %}
+{% block main %}
 <h3><i class="fa fa-angle-right"></i> Commande index</h3>
 <a href="{{ path('commande_new') }}">Create new</a>
+          <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
 <div class="row mb">
     <!-- page start-->
     <div class="content-panel">
@@ -13,6 +16,8 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Id User</th>
+                <th>Id Produit</th>
                 <th>NbProduits</th>
                 <th>actions</th>
             </tr>
@@ -21,6 +26,8 @@
         {% for commande in Commandes %}
             <tr>
                 <td>{{ commande.id }}</td>
+                <td>{{ commande.idUser }}</td>
+                <td>{{ commande.idProduit }}</td>
                 <td>{{ commande.nbProduits }}</td>
                 <td>
                     <a href="{{ path('commande_show', {'id': commande.id}) }}">show</a>
@@ -39,4 +46,34 @@
     <!-- page end-->
 </div>
     <!-- /row -->
+{% endblock %}
+{% block jstable %}
+    <script type="text/javascript" language="javascript" src={{ asset("lib/advanced-datatable/js/jquery.js")}}></script>
+    <script type="text/javascript" language="javascript" src={{ asset("lib/advanced-datatable/js/jquery.dataTables.js")}}></script>
+    <script type="text/javascript" src={{ asset("lib/advanced-datatable/js/DT_bootstrap.js")}}></script>
+    <script type="text/javascript">
+        function fnFormatDetails(oTable, nTr) {
+            var aData = oTable.fnGetData(nTr);
+            return sOut;
+        }
+
+        $(document).ready(function() {
+            var nCloneTh = document.createElement('th');
+            var nCloneTd = document.createElement('td');
+            nCloneTd.innerHTML = '<img src={{ asset("lib/advanced-datatable/images/details_open.png")}}>';
+            nCloneTd.className = "center";
+
+            var oTable = $('#hidden-table-info').dataTable({
+                "aoColumnDefs": [{
+                    "bSortable": false,
+                    "searchable":false,
+                    "aTargets": [1]
+                }],
+                "aaSorting": [
+                    [0, 'asc']
+                ]
+            });
+
+        });
+    </script>
 {% endblock %}
