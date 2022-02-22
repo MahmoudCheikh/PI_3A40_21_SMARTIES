@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Abonnement;
+use App\Form\AbonnementFrontType;
 use App\Form\AbonnementType;
 use App\Repository\AbonnementRepository;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,6 +48,43 @@ class AbonnementController extends AbstractController
         }
 
         return $this->render('abonnement/new.html.twig', [
+            'abonnement' => $abonnement,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/front", name="abonnement_front_index", methods={"GET"})
+     */
+    public function indexFront(AbonnementRepository $abonnementRepository): Response
+    {
+        return $this->render('abonnement/front.html.twig', [
+            'abonnements' => $abonnementRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/newfront", name="abonnement_front_new", methods={"GET", "POST"})
+     */
+    public function newFront(Request $request, EntityManagerInterface $entityManager ,UsersRepository  $usersRepository): Response
+    {
+        $abonnement = new Abonnement();
+        $form = $this->createForm(AbonnementFrontType::class, $abonnement);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $abonnement->setIdUser($this->getUser());
+            $abonnement->setDated(new \DateTime());
+
+            $abonnement->setPrix(20);
+
+            $entityManager->persist($abonnement);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('abonnement_front_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('abonnement/newfront.html.twig', [
             'abonnement' => $abonnement,
             'form' => $form->createView(),
         ]);

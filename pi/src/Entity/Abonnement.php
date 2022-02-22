@@ -40,8 +40,6 @@ class Abonnement
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\NotBlank(message="prix is required")
-     * @Assert\Positive(message="le prix doit etre positive")
      */
     private $prix;
 
@@ -97,7 +95,7 @@ class Abonnement
         return $this->prix;
     }
 
-    public function setPrix(float $prix): self
+    public function setPrix(string $prix): self
     {
         $this->prix = $prix;
 
@@ -114,5 +112,8 @@ class Abonnement
         $this->idUser = $idUser;
 
         return $this;
+    }
+    public function __toString() {
+        return $this->type;
     }
 }

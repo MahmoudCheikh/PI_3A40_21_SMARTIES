@@ -41,6 +41,12 @@ class Location
      */
     private $idUser;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Abonnement::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idAbonnement;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +96,18 @@ class Location
     public function setIdUser(?Users $idUser): self
     {
         $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    public function getIdAbonnement(): ?Abonnement
+    {
+        return $this->idAbonnement;
+    }
+
+    public function setIdAbonnement(?Abonnement $idAbonnement): self
+    {
+        $this->idAbonnement = $idAbonnement;
 
         return $this;
     }

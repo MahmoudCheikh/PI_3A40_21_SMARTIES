@@ -2,28 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\Location;
+use App\Entity\Abonnement;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LocationType extends AbstractType
+class AbonnementFrontType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('date')
-            ->add('heure')
-            ->add('duree')
-            ->add('idUser')
-            ->add('idAbonnement')
+            ->add('type')
+            ->add('datef' ,DateType::class , [
+                'widget' => 'single_text',
+            ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Location::class,
+            'data_class' => Abonnement::class,
         ]);
     }
 }
