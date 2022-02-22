@@ -17,6 +17,7 @@
                 <th>Prix</th>
                 <th>Quantite</th>
                 <th>Disponibilite</th>
+                <th>Produits</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                 <td>{{ stock.prix }}</td>
                 <td>{{ stock.quantite }}</td>
                 <td>{{ stock.disponibilite }}</td>
+                <td>{{ stock.idProduit }}</td>
                 <td>
                     <a href="{{ path('stock_show', {'id': stock.id}) }}">show</a>
                     <a href="{{ path('stock_edit', {'id': stock.id}) }}">edit</a>
