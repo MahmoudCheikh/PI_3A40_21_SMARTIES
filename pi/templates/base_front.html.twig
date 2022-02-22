@@ -6,7 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="profile" href="../gmpg.org/xfn/11.html">
     <title>{% block title %}Ergo | The ergonomic bike of urban journey &#8211; The ergonomic bike of urban journey {% endblock %}</title>
     <meta name='robots' content='max-image-preview:large' />
@@ -270,6 +269,15 @@
                                                         </ul>
                                                         </li>
 
+
+                                                        <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a class="ekit-menu-nav-link ekit-menu-dropdown-toggle">SAV<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i>
+
+                                                                <ul class="elementskit-dropdown elementskit-submenu-panel">
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('reclamation_front') }} class="ekit-menu-nav-link">Réclamation</a></li>
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('maintenance_front') }} class="ekit-menu-nav-link">Maintenance</a></li>
+
+                                                                </ul>
+                                                        </li>
                                                         <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path('app_logout') }}">Logout</a></li>
                                                     {% else %}
                                                         <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("app_login") }} class="ekit-menu-nav-link">Login</a></li>

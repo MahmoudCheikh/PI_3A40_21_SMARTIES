@@ -27,6 +27,16 @@ class MaintenanceController extends AbstractController
     }
 
     /**
+     * @Route("/front", name="maintenance_front" , methods={"GET"})
+     */
+    public function front(MaintenanceRepository $maintenanceRepository): Response
+    {
+        return $this->render('/maintenance/front.html.twig',[
+            'maintenances' => $maintenanceRepository->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/", name="maintenance_index", methods={"GET"})
      */
     public function index(MaintenanceRepository $maintenanceRepository): Response
@@ -101,4 +111,6 @@ class MaintenanceController extends AbstractController
 
         return $this->redirectToRoute('maintenance_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }

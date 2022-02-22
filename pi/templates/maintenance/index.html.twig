@@ -10,11 +10,31 @@
         <div class="content-panel">
             <div class="adv-table">
                 <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                    <thead>
+                    <td>id</td>
+                    <td>id user </td>
+                    <td>Piece de rechange</td>
+                    <td>date debut </td>
+                    <td>date fin</td>
+                    <td>adresse SAV</td>
+                    <td>id reclamation</td>
+                    <td>description</td>
+                    <td>etat</td>
+
                     </thead>
+
                     <tbody>
                     {% for maintenance in maintenances %}
                         <tr>
                             <td>{{ maintenance.id }}</td>
+                            <td>{{ maintenance.relation }}</td>
+                            <td>{{ maintenance.idProduit }}</td>
+                            <td>{{ maintenance.DateDebut ? maintenance.DateDebut|date('Y-m-d') : ''  }}</td>
+                            <td>{{ maintenance.DateFin ? maintenance.DateFin|date('Y-m-d') : '' }}</td>
+                            <td>{{ maintenance.adresse }}</td>
+                            <td>{{ maintenance.reclamation }}</td>
+                            <td>{{ maintenance.description }}</td>
+                            <td>{{ maintenance.etat }}</td>
                             <td>
                                 <a href="{{ path('maintenance_show', {'id': maintenance.id}) }}">show</a>
                                 <a href="{{ path('maintenance_edit', {'id': maintenance.id}) }}">edit</a>
