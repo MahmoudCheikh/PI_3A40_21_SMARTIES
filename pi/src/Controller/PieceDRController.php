@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PieceDRController extends AbstractController
 {
     /**
-     * @Route("/piecedr_front/", name="hazem" , methods={"GET"})
+     * @Route("/piecedr_front", name="pieceder" , methods={"GET"})
      */
     public function hazem(PieceDRRepository $pieceDRRepository): Response
     {
@@ -39,6 +39,9 @@ class PieceDRController extends AbstractController
             'piece_d_rs' => $pieceDRRepository->findAll(),
         ]);
     }
+
+
+
 
     /**
      * @Route("/new", name="piece_d_r_new", methods={"GET", "POST"})

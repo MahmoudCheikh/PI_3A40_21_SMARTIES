@@ -1112,8 +1112,8 @@
                                     <div class="elementor-widget-container">
                                         <div class="elementor-image">
                                             <img width="80" height="80"
-                                                 src="../wp-content/uploads/sites/7/2021/02/Ergo-logo.png"
-                                                 class="attachment-thumbnail size-thumbnail" alt="" loading="lazy"/>
+                                                 src={{asset('wp-content/uploads/sites/7/2021/02/Ergo-logo.png')}}
+                                                 class="attachment-thumbnailsize-thumbnail" alt="" loading="lazy"/>
                                         </div>
                                     </div>
                                 </div>
@@ -1157,7 +1157,7 @@
                                                     <li id="menu-item-689"
                                                         class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-526 current_page_item menu-item-689 nav-item elementskit-mobile-builder-content active"
                                                         data-vertical-menu=750px><a href="index.html"
-                                                                                    class="ekit-menu-nav-link active">Service</a>
+                                                                                    class="ekit-menu-nav-link active">Pieces de rechange</a>
                                                     </li>
                                                     <li id="menu-item-32"
                                                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content"
@@ -1540,44 +1540,46 @@
         </div>
     </section>
     {% for piecedr in piece_d_rs %}
-    <div class="elementor-section elementor-top-section elementor-element elementor-element-6492856 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="6492856" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-        <div class="elementor-container elementor-column-gap-default">
-            <div class="elementor-row">
-                <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-6f12d80" data-id="6f12d80" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                    <div class="elementor-column-wrap elementor-element-populated">
-                        <div class="elementor-widget-wrap">
-                            <div class="elementor-element elementor-element-d453381 elementor-widget elementor-widget-text-editor" data-id="d453381" data-element_type="widget" data-widget_type="text-editor.default">
-                                <div class="elementor-widget-container">
-                                    <div class="elementor-text-editor elementor-clearfix">
-                                        <h4>{{piecedr.nom}}</h4>					</div>
+        <div class="elementor-section elementor-top-section elementor-element elementor-element-6492856 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="6492856" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-row">
+                    <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-6f12d80" data-id="6f12d80" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                        <div class="elementor-column-wrap elementor-element-populated">
+                            <div class="elementor-widget-wrap">
+                                <div class="elementor-element elementor-element-d453381 elementor-widget elementor-widget-text-editor" data-id="d453381" data-element_type="widget" data-widget_type="text-editor.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-text-editor elementor-clearfix">
+                                            <h4>{{piecedr.nom}}</h4>
+                                            <h5>{{piecedr.image}}</h5></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="elementor-element elementor-element-dad9d3a elementor-widget elementor-widget-text-editor" data-id="dad9d3a" data-element_type="widget" data-widget_type="text-editor.default">
-                                <div class="elementor-widget-container">
-                                    <div class="elementor-text-editor elementor-clearfix">
-                                        <h5>quantité: {{piecedr.quantite}}</h5>					</div>
+                                <div class="elementor-element elementor-element-dad9d3a elementor-widget elementor-widget-text-editor" data-id="dad9d3a" data-element_type="widget" data-widget_type="text-editor.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-text-editor elementor-clearfix">
+                                            <h5>quantité: {{piecedr.quantite}}</h5>					</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="elementor-element elementor-element-86eecb1 elementor-widget elementor-widget-text-editor" data-id="86eecb1" data-element_type="widget" data-widget_type="text-editor.default">
-                                <div class="elementor-widget-container">
-                                    <div class="elementor-text-editor elementor-clearfix">
-                                        <p>Lorem ipsum dolor sit amet, ella consectetur adipiscing elit. Ut elita tellus, luctus nec ullamcorper edsa mattis, pulvinar dapibus vestibula ligula porta felis euismod&nbsp;</p>					</div>
+                                <div class="elementor-element elementor-element-86eecb1 elementor-widget elementor-widget-text-editor" data-id="86eecb1" data-element_type="widget" data-widget_type="text-editor.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-text-editor elementor-clearfix">
+                                            <h5>{{piecedr.description}}</h5></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="elementor-element elementor-element-35e4f61 elementor-hidden-tablet elementor-hidden-phone elementor-widget elementor-widget-text-editor" data-id="35e4f61" data-element_type="widget" data-widget_type="text-editor.default">
-                                <div class="elementor-widget-container">
-                                    <div class="elementor-text-editor elementor-clearfix">
-                                        <p>Lorem ipsum dolor sit amet, ella consectetur adipiscing elit. Ut elita tellus.</p>					</div>
+                                <div class="elementor-element elementor-element-35e4f61 elementor-hidden-tablet elementor-hidden-phone elementor-widget elementor-widget-text-editor" data-id="35e4f61" data-element_type="widget" data-widget_type="text-editor.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-text-editor elementor-clearfix">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="elementor-element elementor-element-4ca50f5 elementor-widget elementor-widget-button" data-id="4ca50f5" data-element_type="widget" data-widget_type="button.default">
-                                <div class="elementor-widget-container">
-                                    <div class="elementor-button-wrapper">
-                                        <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+                                <div class="elementor-element elementor-element-4ca50f5 elementor-widget elementor-widget-button" data-id="4ca50f5" data-element_type="widget" data-widget_type="button.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-button-wrapper">
+                                            <a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button">
 						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-text">APPLY NOW</span>
+						<span class="elementor-button-text">Commander</span>
 		</span>
-                                        </a>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1586,7 +1588,6 @@
                 </div>
             </div>
         </div>
-    </div>
     {% endfor %}
 </div>
 <script type="text/javascript">
