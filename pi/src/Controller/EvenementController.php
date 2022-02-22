@@ -25,7 +25,7 @@ class EvenementController extends AbstractController
             'evenements' => $EvenementRepository->findAll(),
         ]);
 */
-        return $this->render('Evenement/aziz.html.twig', [
+        return $this->render('Evenement/index.html.twig', [
             'evenements' => $EvenementRepository->findAll(),
         ]);
     }

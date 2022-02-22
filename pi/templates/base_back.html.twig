@@ -77,7 +77,10 @@
                 </li>
 
                 <li><a href="{{ path('abonnement_index') }}"><i class="fa fa-cogs"></i>FADWA</a></li>
-                <li><a href="{{ path('evenement_index') }}"><i class="fa fa-cogs"></i>AZIZ</a></li>
+                <li><a href="{{ path('evenement_index') }}"><i class="fa fa-cogs"></i>AZIZ</a>
+                    <ul class="sub-menu"><li><a href="{{ path('evenement_index') }}"><i class="fa fa-bullhorn"></i>Les Evenements</a></li></ul>
+                    <ul class="sub-menu"><li><a href="{{ path('activite_index') }}"><i class="fa fa-calendar-check-o"></i>Les Activités</a></li></ul>
+                </li>
 
 
             </ul>
