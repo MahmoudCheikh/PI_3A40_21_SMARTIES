@@ -70,12 +70,22 @@
                 <ul class="sub-menu"><li><a href="{{ path('achat_index') }}"><i class="fa fa-edit"></i>Gestion D'Achat</a></li></ul>
                 </li>
                 <li><a href="{{ path('piece_d_r_index') }}"><i class="fa fa-cogs"></i>HAZEM</a></li>
-                <li><a href="{{ path('users_index') }}"><i class="fa fa-cogs"></i>Users</a></li>
-                <li><a href="{{ path('sujet_index') }}"><i class="fa fa-cogs"></i>Sujets</a></li>
-                <li><a href="{{ path('message_index') }}"><i class="fa fa-cogs"></i>Messages</a></li>
+
+                <li><a href="{{ path('produit_index') }}"><i class="fa fa-cogs"></i>Mahmoud</a>
+                    <ul class="sub-menu"><li>
+                <li><a href="{{ path('users_index') }}"><i class="fa fa-user"></i>Users</a></li>
+                    </ul>
+                        <ul class="sub-menu"><li>
+                <li><a href="{{ path('sujet_index') }}"><i class="fa fa-comments"></i>Sujets</a></li>
+                        </ul>
+                            <ul class="sub-menu"><li>
+                <li><a href="{{ path('message_index') }}"><i class="fa fa-comment"></i>Messages</a></li>
+                            </ul>
+                </li>
+
                 <li><a href="{{ path('produit_index') }}"><i class="fa fa-cogs"></i>MARIEM</a>
                     <ul class="sub-menu"><li><a href="{{ path('produit_index') }}"><i class="fa fa-edit"></i>Gestion des Produits</a></li></ul>
-                    <ul class="sub-menu"><li><a href="{{ path('stock_index') }}"><i class="fa fa-archive"></i>Gestion de stockage</a></li></ul>
+                            <ul class="sub-menu"><li><a href="{{ path('stock_index') }}"><i class="fa fa-archive"></i>Gestion de stockage</a></li></ul>
                     <ul class="sub-menu"><li><a href="{{ path('emplacement_index') }}"><i class="fa fa-map-marker"></i>Gestion d'emplacement</a></li></ul>
                 </li>
 

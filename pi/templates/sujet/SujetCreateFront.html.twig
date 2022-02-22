@@ -20,15 +20,15 @@
                             </div>
                             <div class="elementor-element elementor-element-bd7762c elementor-button-align-start elementor-widget elementor-widget-form">
                                 <div class="elementor-widget-container">
-                                    {{ form_start(form) }}
+                                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
                                     <div class="elementor-form-fields-wrapper elementor-labels-above">
                                         <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-message elementor-col-100">
                                             {{ form_errors(form.titre) }}
-                                            {{ form_widget(form.titre, {'attr': {'class':'form-control elementor-field elementor-size-lg  elementor-field-textual','placeholder':'Titre'}}) }}
+                                            {{ form_widget(form.titre, {'attr': {'class':' elementor-field elementor-size-lg  elementor-field-textual','placeholder':'Titre'}}) }}
                                         </div>
                                         <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_9da7361 elementor-col-100">
                                             {{ form_errors(form.contenu) }}
-                                            {{ form_widget(form.contenu, {'attr': {'class':'form-control elementor-field-textual elementor-field elementor-size-lg','placeholder':'Contenu'}}) }}
+                                            {{ form_widget(form.contenu, {'attr': {'class':' elementor-field-textual elementor-field elementor-size-lg','placeholder':'Contenu'}}) }}
                                         </div>
                                         <button type="submit">Send</button>
                                     </div>
