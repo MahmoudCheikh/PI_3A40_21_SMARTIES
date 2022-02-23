@@ -1,8 +1,14 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-<br>
-<br>
-<button class="btn">{{ button_label|default('Ajouter') }}</button>
 
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
 
+   {{ form_errors(form.idProduit) }}
+    {{ form_label(form.idProduit, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.idProduit, {'attr': {'class': 'form-control'}}) }}
+<br>
+
+{{ form_errors(form.nbProduits) }}
+    {{ form_label(form.nbProduits, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.nbProduits, {'attr': {'class': 'form-control'}}) }}
+<br>
+<button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

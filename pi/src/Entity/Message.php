@@ -33,6 +33,7 @@ class Message
      * @ORM\ManyToOne(targetEntity=Sujet::class, inversedBy="messages")
      * @ORM\JoinColumn(onDelete="CASCADE")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="l'utilisateur is required")
      */
     private $idSujet;
 

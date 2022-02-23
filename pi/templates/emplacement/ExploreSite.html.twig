@@ -925,10 +925,12 @@
                                         </div>
 
                                         <div class="elementor-text-editor elementor-clearfix">
-                                            <h5>&#9733; <span style="color: #ACEB1E"> PRIX : </span><br></h5>
-                                            <span class="elementor-icon-list-text" >&map;{{ emplacement.stock.quantite }}&period;DT</span>
+                                            <h5>&#9733; <span style="color: #ACEB1E"> Prix : </span><br></h5>
+                                            <span class="elementor-icon-list-text" >&map;{{ emplacement.stock.prix }}&period;DT</span>
                                         </div>
 
+                                        {% for stock in stocks %}
+                                        {% endfor %}
                                     </div>
                                 </div>
                                 <div class="elementor-element elementor-element-427bc7a elementor-align-left animated-slow elementor-invisible elementor-widget elementor-widget-button" data-id="427bc7a" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;}" data-widget_type="button.default">

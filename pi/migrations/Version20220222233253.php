@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220222201018 extends AbstractMigration
+final class Version20220222233253 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,18 +20,13 @@ final class Version20220222201018 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE abonnement ADD prix DOUBLE PRECISION NOT NULL, DROP email');
-        $this->addSql('ALTER TABLE location ADD CONSTRAINT FK_5E9E89CB4FFF9576 FOREIGN KEY (id_abonnement_id) REFERENCES abonnement (id)');
-        $this->addSql('CREATE INDEX IDX_5E9E89CB4FFF9576 ON location (id_abonnement_id)');
-        $this->addSql('ALTER TABLE maintenance DROP FOREIGN KEY FK_2F84F8E93256915B');
-        $this->addSql('ALTER TABLE maintenance ADD etat VARCHAR(255) NOT NULL, ADD description VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE maintenance ADD CONSTRAINT FK_2F84F8E93256915B FOREIGN KEY (relation_id) REFERENCES users (id)');
         $this->addSql('ALTER TABLE maintenance ADD CONSTRAINT FK_2F84F8E9AABEFE2C FOREIGN KEY (id_produit_id) REFERENCES produit (id)');
         $this->addSql('ALTER TABLE maintenance ADD CONSTRAINT FK_2F84F8E92D6BA2D9 FOREIGN KEY (reclamation_id) REFERENCES reclamation (id)');
         $this->addSql('CREATE INDEX IDX_2F84F8E9AABEFE2C ON maintenance (id_produit_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_2F84F8E92D6BA2D9 ON maintenance (reclamation_id)');
         $this->addSql('DROP INDEX fk_2f84f8e93256915b ON maintenance');
         $this->addSql('CREATE INDEX IDX_2F84F8E93256915B ON maintenance (relation_id)');
-        $this->addSql('ALTER TABLE maintenance ADD CONSTRAINT FK_2F84F8E93256915B FOREIGN KEY (relation_id) REFERENCES users (id)');
         $this->addSql('ALTER TABLE message DROP FOREIGN KEY FK_B6BD307F2C96A5EB');
         $this->addSql('ALTER TABLE message CHANGE id_sujet_id id_sujet_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE message ADD CONSTRAINT FK_B6BD307F2C96A5EB FOREIGN KEY (id_sujet_id) REFERENCES sujet (id) ON DELETE CASCADE');
@@ -42,19 +37,18 @@ final class Version20220222201018 extends AbstractMigration
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE abonnement ADD email VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`, DROP prix, CHANGE type type VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`');
+        $this->addSql('ALTER TABLE abonnement CHANGE type type VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`');
         $this->addSql('ALTER TABLE achat CHANGE nom_client nom_client VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`');
         $this->addSql('ALTER TABLE activite CHANGE nom nom VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`, CHANGE description description VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`, CHANGE image image VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`');
         $this->addSql('ALTER TABLE emplacement CHANGE lieu lieu VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`');
         $this->addSql('ALTER TABLE evenement CHANGE nom nom VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`, CHANGE lieu lieu VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`, CHANGE type type VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`');
-        $this->addSql('ALTER TABLE location DROP FOREIGN KEY FK_5E9E89CB4FFF9576');
-        $this->addSql('DROP INDEX IDX_5E9E89CB4FFF9576 ON location');
+        $this->addSql('ALTER TABLE maintenance DROP FOREIGN KEY FK_2F84F8E93256915B');
         $this->addSql('ALTER TABLE maintenance DROP FOREIGN KEY FK_2F84F8E9AABEFE2C');
         $this->addSql('ALTER TABLE maintenance DROP FOREIGN KEY FK_2F84F8E92D6BA2D9');
         $this->addSql('DROP INDEX IDX_2F84F8E9AABEFE2C ON maintenance');
         $this->addSql('DROP INDEX UNIQ_2F84F8E92D6BA2D9 ON maintenance');
         $this->addSql('ALTER TABLE maintenance DROP FOREIGN KEY FK_2F84F8E93256915B');
-        $this->addSql('ALTER TABLE maintenance DROP etat, DROP description, CHANGE adresse adresse VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`');
+        $this->addSql('ALTER TABLE maintenance CHANGE adresse adresse VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`, CHANGE etat etat VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`, CHANGE description description VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`');
         $this->addSql('DROP INDEX idx_2f84f8e93256915b ON maintenance');
         $this->addSql('CREATE INDEX FK_2F84F8E93256915B ON maintenance (relation_id)');
         $this->addSql('ALTER TABLE maintenance ADD CONSTRAINT FK_2F84F8E93256915B FOREIGN KEY (relation_id) REFERENCES users (id)');

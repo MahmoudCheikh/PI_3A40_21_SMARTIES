@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\MaintenanceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=MaintenanceRepository::class)
@@ -19,43 +21,53 @@ class Maintenance
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class)
+     * @Assert\NotBlank(message="le champs user est requis")
      */
     private $relation;
 
     /**
      * @ORM\ManyToOne(targetEntity=Produit::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="produit is required")
      */
     private $idProduit;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThan("today")
      */
     private $DateDebut;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\Expression(
+     *     "this.getDateDebut() < this.getDateFin()",
+     *     message="La date fin ne doit pas être antérieure à la date début")
      */
     private $DateFin;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="le champs de l'adresse est requis")
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="le champs de l'etat est requis")
      */
     private $etat;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="le champs de description est requis")
      */
     private $description;
 
     /**
      * @ORM\OneToOne(targetEntity=Reclamation::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="le champs de reclamation est requis")
      */
     private $reclamation;
 

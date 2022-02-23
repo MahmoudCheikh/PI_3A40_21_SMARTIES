@@ -26,7 +26,7 @@ class AbonnementController extends AbstractController
         /*return $this->render('abonnement/index.html.twig', [
             'abonnements' => $abonnementRepository->findAll(),
         ]);*/
-        return $this->render('abonnement/fadwa.html.twig', [
+        return $this->render('abonnement/index.html.twig', [
             'abonnements' => $abonnementRepository->findAll(),
         ]);
     }

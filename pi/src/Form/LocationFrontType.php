@@ -19,7 +19,7 @@ class LocationFrontType extends AbstractType
             ])
             ->add('heure' ,TimeType::class, [
                 'widget' => 'single_text',
-       
+
                 ])
             ->add('duree')
                 ;

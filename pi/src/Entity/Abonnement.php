@@ -20,7 +20,7 @@ class Abonnement
 
     /**
      * @ORM\Column(type="string", length=255)
-     *@Assert\NotBlank(message="type is required")
+     * @Assert\NotBlank(message="type est requis")
      */
     private $type;
 
@@ -40,6 +40,7 @@ class Abonnement
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Positive(message="le prix doit etre positive")
      */
     private $prix;
 

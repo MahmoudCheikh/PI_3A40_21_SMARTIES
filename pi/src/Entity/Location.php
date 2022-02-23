@@ -20,30 +20,33 @@ class Location
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThan("today")
      */
     private $date;
 
     /**
      * @ORM\Column(type="time")
-     * @Assert\NotBlank(message="heure is required")
+     * @Assert\NotBlank(message="heure est requis")
      */
     private $heure;
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\NotBlank(message="duree is required")
+     * @Assert\NotBlank(message="duree est requis")
      */
     private $duree;
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="locations")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="user est requis")
      */
     private $idUser;
 
     /**
      * @ORM\ManyToOne(targetEntity=Abonnement::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="abonné est requis")
      */
     private $idAbonnement;
 
