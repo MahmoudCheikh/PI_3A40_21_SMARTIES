@@ -824,7 +824,7 @@
                                 <div class="elementor-element elementor-element-233dbb6 elementor-widget elementor-widget-image" data-id="233dbb6" data-element_type="widget" data-widget_type="image.default">
                                     <div class="elementor-widget-container">
                                         <div class="elementor-image">
-                                            <img width="80" height="80" src={{ asset("wp-content/uploads/sites/7/2021/02/Ergo-logo.png")}} class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" />														</div>
+                                            <a href={{ path(("site")) }}><img width="80" height="80" src={{ asset("wp-content/uploads/sites/7/2021/02/Ergo-logo.png")}} class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" />						</a>								</div>
                                     </div>
                                 </div>
                             </div>
@@ -840,7 +840,6 @@
                                             </button>
                                             <div id="ekit-megamenu-ergo-main-menu" class="elementskit-menu-container elementskit-menu-offcanvas-elements elementskit-navbar-nav-default elementskit_line_arrow ekit-nav-menu-one-page-yes">
                                                 <ul id="menu-ergo-main-menu" class="elementskit-navbar-nav elementskit-menu-po-center submenu-click-on-icon">
-                                                    <li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-29 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path(("site")) }}" class="ekit-menu-nav-link">Homepage</a></li>
                                                     <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path(("produitfront")) }} class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Produits<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
                                                         <ul class="elementskit-dropdown elementskit-submenu-panel">
                                                             <li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path(("mariem_f")) }}" class=" dropdown-item">LES SITES</a>
@@ -848,16 +847,41 @@
 
                                                         </ul>
                                                     </li>
-                                                    <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("aziz") }} class="ekit-menu-nav-link">Evenements</a></li>
+                                                    <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("aziz") }} class="ekit-menu-nav-link">Events</a></li>
 
                                                     <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("sujet_front") }} class="ekit-menu-nav-link">Forum</a></li>
                                                     {% if app.user %}
-                                                        <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px>
-                                                            <a href="" class="ekit-menu-nav-link">
-                                                                {{ app.user.nom }}</a></li>
+                                                        <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Panier<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i>
+
+                                                                <ul class="elementskit-dropdown elementskit-submenu-panel">
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('achatfront') }} class="ekit-menu-nav-link">Mes Achats</a></li>
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('commandefront') }} class="ekit-menu-nav-link">Mes commandes</a></li>
+
+                                                                </ul>
+                                                        </li>
+
+
+                                                        <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a class="ekit-menu-nav-link ekit-menu-dropdown-toggle">SAV<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i>
+
+                                                                <ul class="elementskit-dropdown elementskit-submenu-panel">
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('reclamation_front') }} class="ekit-menu-nav-link">Réclamation</a></li>
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('maintenance_front') }} class="ekit-menu-nav-link">Maintenance</a></li>
+
+                                                                </ul>
+                                                        </li>
+
+                                                        <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Services<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i>
+
+                                                                <ul class="elementskit-dropdown elementskit-submenu-panel">
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('abonnement_front_index') }} class="ekit-menu-nav-link">Abonnements</a></li>
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('location_front_index') }} class="ekit-menu-nav-link">Mes Locations</a></li>
+
+                                                                </ul>
+                                                        </li>
                                                         <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path('app_logout') }}">Logout</a></li>
                                                     {% else %}
                                                         <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("app_login") }} class="ekit-menu-nav-link">Login</a></li>
+                                                        <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("app_register") }} class="ekit-menu-nav-link">Register</a></li>
                                                     {% endif %}
 
                                                 </ul>
@@ -868,7 +892,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
         </section>
     </div>
 </div>
@@ -945,8 +968,8 @@
                                                 {{ form_widget(form.nbProduits, {'attr': {'class': 'form-control , elementor-field elementor-size-lg  elementor-field-textual' , 'placeholder':'Nombre produit'}}) }}
                                                 <br>
                                                 <br>
-                                                <button class="btn">{{ button_label|default('Ajouter') }}</button>
-
+                                                <center><button type="submit" name="add-to-cart" value="1095" class="single_add_to_cart_button button alt" class="btn">{{ button_label|default('Ajouter au Panier') }}</button>
+                                                </center><br>
 
                                                 {{ form_end(form) }}
 
@@ -954,7 +977,7 @@
 
 
 
-                                            <center><button type="submit" name="add-to-cart" value="1095" class="single_add_to_cart_button button alt" onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/location/new/'">location du produit</button></center><br>
+                                            <br><center><button type="submit" name="add-to-cart" value="1095" class="single_add_to_cart_button button alt" onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/location/frontnew/'">location du produit</button></center><br>
 
                                         </div>
 
@@ -1016,7 +1039,7 @@
                                                     <a href="genius-trail-jx-100/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
                                                         <img width="300" height="300" src="{{asset('img/bike/') ~ produit.image }}" />
 
-                                                        <h2 class="woocommerce-loop-product__title">Age du velo : {{ velo.age }}</h2>
+                                                        <h2 class="woocommerce-loop-product__title">Age : {{ velo.age }}</h2>
                                                         <span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol"></span>prix: {{ produit.prix }}</bdi>&period;DT</span></span>
                                                         <h5 class="woocommerce-loop-product__title">couleur : {{ velo.couleur }}</h5>
                                                         <h6 class="woocommerce-loop-product__title">quantite disponible : {{ velo.quantite }}</h6>
@@ -1042,19 +1065,8 @@
                                                                 <p>{{ produit.description }}</p>
                                                             </div>
                                                         </div>
-                                                        <div class="elementor-element elementor-element-9cbe1f3 elementor-widget elementor-widget-heading" data-id="9cbe1f3" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                                <h3 class="elementor-heading-title elementor-size-default">Détailles Technique</h3>		</div>
-                                                        </div>
-                                                        <div class="elementor-element elementor-element-b6a7112 elementor-widget elementor-widget-woocommerce-product-short-description" data-id="b6a7112" data-element_type="widget" data-widget_type="woocommerce-product-short-description.default">
-                                                            <div class="elementor-widget-container">
-                                                                <div class="woocommerce-product-details__short-description">
-                                                                    <p>ErgoShift 5 Speed | 27&#8243; Full Carbon | Wheelsize &#8211; 140/130 mm</p>
-                                                                    <p>Weight &#8211; 13.20 kg | Seat tube  &#8211; 445 mm | Top tube &#8211; 52 mm</p>
-                                                                    <p>Head angle &#8211; 69.5 | Seat angle &#8211; 72</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -1107,8 +1119,7 @@
                                                     <div class="elementor-widget-wrap">
                                                         <div class="elementor-element elementor-element-24134b9 elementor-widget elementor-widget-heading" data-id="24134b9" data-element_type="widget" data-widget_type="heading.default">
                                                             <div class="elementor-widget-container">
-                                                                <h4 class="elementor-heading-title elementor-size-default">FREE SHIPPING
-                                                                    FOR USA &amp; UK</h4>		</div>
+                                                                <h4 class="elementor-heading-title elementor-size-default">LIVRAISON GRATUITE POUR LE GRAND TUNIS </h4>		</div>
                                                         </div>
                                                         <div class="elementor-element elementor-element-5ffbf2e elementor-widget elementor-widget-text-editor" data-id="5ffbf2e" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">
@@ -1145,12 +1156,12 @@
                                                     <div class="elementor-widget-wrap">
                                                         <div class="elementor-element elementor-element-b939d8e elementor-widget elementor-widget-heading" data-id="b939d8e" data-element_type="widget" data-widget_type="heading.default">
                                                             <div class="elementor-widget-container">
-                                                                <h4 class="elementor-heading-title elementor-size-default">5 YEARS GUARANTEE FOR ALL PARTS</h4>		</div>
+                                                                <h4 class="elementor-heading-title elementor-size-default">1ér SITE DE LOCATION DE VELOS EN LIGNE   </h4>		</div>
                                                         </div>
                                                         <div class="elementor-element elementor-element-2d0e3fc elementor-widget elementor-widget-text-editor" data-id="2d0e3fc" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">
                                                                 <div class="elementor-text-editor elementor-clearfix">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur ut elit&nbsp;Nullam id dolor id nibh ultricies vehicula.</p>					</div>
+                                                                    <p>Exclusivement en tunisie</p>					</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1182,7 +1193,7 @@
                                                     <div class="elementor-widget-wrap">
                                                         <div class="elementor-element elementor-element-11014d8 elementor-widget elementor-widget-heading" data-id="11014d8" data-element_type="widget" data-widget_type="heading.default">
                                                             <div class="elementor-widget-container">
-                                                                <h4 class="elementor-heading-title elementor-size-default">INTERNATIONAL RETAILERS</h4>		</div>
+                                                                <h4 class="elementor-heading-title elementor-size-default">SITE TUNISIEN AVEC DES CRITERES EUROPEENS</h4>		</div>
                                                         </div>
                                                         <div class="elementor-element elementor-element-2ba8348 elementor-widget elementor-widget-text-editor" data-id="2ba8348" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">
@@ -1219,7 +1230,7 @@
                                                     <div class="elementor-widget-wrap">
                                                         <div class="elementor-element elementor-element-f8e80f1 elementor-widget elementor-widget-heading" data-id="f8e80f1" data-element_type="widget" data-widget_type="heading.default">
                                                             <div class="elementor-widget-container">
-                                                                <h4 class="elementor-heading-title elementor-size-default">FREE RETURNS ELIGIBLE PARTS</h4>		</div>
+                                                                <h4 class="elementor-heading-title elementor-size-default">RETOURS GRATUITS DES PIÈCES ADMISSIBLES</h4>		</div>
                                                         </div>
                                                         <div class="elementor-element elementor-element-e30f90d elementor-widget elementor-widget-text-editor" data-id="e30f90d" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">

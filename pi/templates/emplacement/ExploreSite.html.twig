@@ -818,7 +818,7 @@
                                 <div class="elementor-element elementor-element-233dbb6 elementor-widget elementor-widget-image" data-id="233dbb6" data-element_type="widget" data-widget_type="image.default">
                                     <div class="elementor-widget-container">
                                         <div class="elementor-image">
-                                            <img width="80" height="80" src={{ asset("wp-content/uploads/sites/7/2021/02/Ergo-logo.png")}} class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" />														</div>
+                                            <a href={{ path(("site")) }}><img width="80" height="80" src={{ asset("wp-content/uploads/sites/7/2021/02/Ergo-logo.png")}} class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" />						</a>								</div>
                                     </div>
                                 </div>
                             </div>
@@ -834,24 +834,48 @@
                                             </button>
                                             <div id="ekit-megamenu-ergo-main-menu" class="elementskit-menu-container elementskit-menu-offcanvas-elements elementskit-navbar-nav-default elementskit_line_arrow ekit-nav-menu-one-page-yes">
                                                 <ul id="menu-ergo-main-menu" class="elementskit-navbar-nav elementskit-menu-po-center submenu-click-on-icon">
-                                                    <li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-29 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path(("site")) }}" class="ekit-menu-nav-link">Homepage</a></li>
                                                     <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path(("produitfront")) }} class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Produits<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
                                                         <ul class="elementskit-dropdown elementskit-submenu-panel">
-                                                            <li id="menu-item-692" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-692 nav-item elementskit-mobile-builder-content active" data-vertical-menu=750px><a href="{{ path(("mariem_f")) }}" class=" dropdown-item active">LES SITES</a>
-                                                            <li id="menu-item-692" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-692 nav-item elementskit-mobile-builder-content active" data-vertical-menu=750px><a href="{{ path(("produitfront")) }}" class=" dropdown-item">LES PRODUITS</a>
+                                                            <li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path(("mariem_f")) }}" class=" dropdown-item">LES SITES</a>
+                                                            <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path(("produitfront")) }}" class=" dropdown-item ">LES PRODUITS</a>
 
                                                         </ul>
                                                     </li>
-                                                    <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("aziz") }} class="ekit-menu-nav-link">Evenements</a></li>
+                                                    <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("aziz") }} class="ekit-menu-nav-link">Events</a></li>
 
                                                     <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("sujet_front") }} class="ekit-menu-nav-link">Forum</a></li>
                                                     {% if app.user %}
-                                                        <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px>
-                                                            <a href="" class="ekit-menu-nav-link">
-                                                                {{ app.user.nom }}</a></li>
+                                                        <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Panier<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i>
+
+                                                                <ul class="elementskit-dropdown elementskit-submenu-panel">
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('achatfront') }} class="ekit-menu-nav-link">Mes Achats</a></li>
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('commandefront') }} class="ekit-menu-nav-link">Mes commandes</a></li>
+
+                                                                </ul>
+                                                        </li>
+
+
+                                                        <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a class="ekit-menu-nav-link ekit-menu-dropdown-toggle">SAV<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i>
+
+                                                                <ul class="elementskit-dropdown elementskit-submenu-panel">
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('reclamation_front') }} class="ekit-menu-nav-link">Réclamation</a></li>
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('maintenance_front') }} class="ekit-menu-nav-link">Maintenance</a></li>
+
+                                                                </ul>
+                                                        </li>
+
+                                                        <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Services<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i>
+
+                                                                <ul class="elementskit-dropdown elementskit-submenu-panel">
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('abonnement_front_index') }} class="ekit-menu-nav-link">Abonnements</a></li>
+                                                                    <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path('location_front_index') }} class="ekit-menu-nav-link">Mes Locations</a></li>
+
+                                                                </ul>
+                                                        </li>
                                                         <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path('app_logout') }}">Logout</a></li>
                                                     {% else %}
                                                         <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("app_login") }} class="ekit-menu-nav-link">Login</a></li>
+                                                        <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path("app_register") }} class="ekit-menu-nav-link">Register</a></li>
                                                     {% endif %}
 
                                                 </ul>
@@ -862,7 +886,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
         </section>
     </div>
 </div>
@@ -928,9 +951,6 @@
                                             <h5>&#9733; <span style="color: #ACEB1E"> Prix : </span><br></h5>
                                             <span class="elementor-icon-list-text" >&map;{{ emplacement.stock.prix }}&period;DT</span>
                                         </div>
-
-                                        {% for stock in stocks %}
-                                        {% endfor %}
                                     </div>
                                 </div>
                                 <div class="elementor-element elementor-element-427bc7a elementor-align-left animated-slow elementor-invisible elementor-widget elementor-widget-button" data-id="427bc7a" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;}" data-widget_type="button.default">
