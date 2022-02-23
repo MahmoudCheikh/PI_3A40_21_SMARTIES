@@ -20,12 +20,13 @@ class Reclamation
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="reclamations")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="user est requis")
      */
     private $idUser;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="description de la reclamation is required")
+     * @Assert\NotBlank(message="description de la reclamation est requis")
      */
     private $description;
 
@@ -37,7 +38,7 @@ class Reclamation
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="objet de réclamation is required")
+     * @Assert\NotBlank(message="objet de réclamation est requis")
      */
     private $objet;
 
@@ -92,5 +93,10 @@ class Reclamation
         $this->objet = $objet;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->id;
     }
 }

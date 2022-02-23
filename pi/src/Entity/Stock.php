@@ -34,7 +34,7 @@ class Stock
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="quantite de stock is required")
-     * @Assert\Positive(message="quntite du stock doit etre positive")
+     * @Assert\Positive(message="quantite du stock doit etre positive")
      */
     private $quantite;
 

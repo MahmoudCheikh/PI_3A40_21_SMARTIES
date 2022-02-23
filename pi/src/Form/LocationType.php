@@ -16,6 +16,7 @@ class LocationType extends AbstractType
             ->add('heure')
             ->add('duree')
             ->add('idUser')
+            ->add('idAbonnement')
         ;
     }
 

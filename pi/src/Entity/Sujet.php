@@ -38,11 +38,23 @@ class Sujet
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le titre is required")
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "15",
+     *      minMessage = "le titre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "le titre ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = "20",
+     *      max = "200",
+     *      minMessage = "le contenu doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "le contenu ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @Assert\NotBlank(message="le contenu is required")
      */
     private $contenu;

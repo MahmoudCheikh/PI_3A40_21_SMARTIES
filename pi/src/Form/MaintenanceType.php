@@ -12,7 +12,14 @@ class MaintenanceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('idVelo')
+            ->add('relation')
+            ->add('idProduit')
+            ->add('DateDebut')
+            ->add('DateFin')
+            ->add('adresse')
+            ->add('reclamation')
+            ->add('description')
+            ->add('etat')
         ;
     }
 

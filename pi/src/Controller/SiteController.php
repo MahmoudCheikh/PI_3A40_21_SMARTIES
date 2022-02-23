@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SiteController extends AbstractController
 {
     /**
-     * @Route("/test/", name="site")
+     * @Route("/test/", name="siteback")
      */
     public function test(): Response
     {
@@ -27,6 +27,14 @@ class SiteController extends AbstractController
      */
     public function front(): Response
     {
+
+        if($this->getUser()!= null){
+
+
+       if ($this->getUser()->getUsername() == "ADMIN@ADMIN.COM"){
+           return $this->redirectToRoute("siteback");
+        }
+        }
         return $this->render('/base_front.html.twig');
     }
 

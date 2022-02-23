@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Location;
+use App\Form\LocationFrontType;
 use App\Form\LocationType;
+use App\Repository\AbonnementRepository;
 use App\Repository\LocationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,6 +45,41 @@ class LocationController extends AbstractController
         }
 
         return $this->render('location/new.html.twig', [
+            'location' => $location,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/front", name="location_front_index", methods={"GET"})
+     */
+    public function indexfront(LocationRepository $locationRepository): Response
+    {
+        return $this->render('location/front.html.twig', [
+            'locations' => $locationRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/frontnew/{id}", name="location_front_new", methods={"GET", "POST"})
+     */
+    public function newfront(Request $request, EntityManagerInterface $entityManager , int $id , AbonnementRepository $abonnementRepository): Response
+    {
+        $abonnement = $abonnementRepository->find($id);
+        $location = new Location();
+        $form = $this->createForm(LocationFrontType::class, $location);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $location->setIdUser($this->getUser());
+            $location->setIdAbonnement($abonnement);
+            $entityManager->persist($location);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('location_front_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('location/newfront.html.twig', [
             'location' => $location,
             'form' => $form->createView(),
         ]);

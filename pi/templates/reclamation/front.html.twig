@@ -1,0 +1,56 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+
+    <div class="elementor-section elementor-top-section elementor-element elementor-element-5b549ae elementor-section-boxed elementor-section-height-default elementor-section-height-default">
+
+            {% if app.user %}
+        <div class="elementor-row">
+                <div class="elementor-container elementor-column-gap-default">
+
+                    <p></p><a href={{ path("reclamation_front_new") }}>Envoyer une reclamation</a>
+                </div>
+        </div>
+        <div class="elementor-container elementor-column-gap-default">
+                <table class="table">
+
+                    <thead>
+                    <th>Reference</th>
+                    <th>Date d'envoi</th>
+                    <th>Objet</th>
+                    <th>Description</th>
+                    </thead>
+                    <tbody>
+                    {% for reclamation in reclamations %}
+                        {% if reclamation.idUser.id == app.user.id %}
+                            <tr>
+                                <td>{{ reclamation.id }}</td>
+                                <td>{{ reclamation.date ? reclamation.date|date('Y-m-d') : '' }}</td>
+                                <td>{{ reclamation.objet }}</td>
+                                <td>{{ reclamation.description }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+
+
+
+
+
+            {% else %}
+                <p>Veuillez vous connecter</p>
+            {% endif %}
+
+
+        </div>
+    </div>
+
+{% endblock %}
+{% block jstable %}
+
+
+{% endblock %}

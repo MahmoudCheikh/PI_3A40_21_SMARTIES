@@ -110,6 +110,28 @@ class MessageController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/edit/front", name="message_front_edit", methods={"GET", "POST"})
+     */
+    public function editfront(Request $request, Message $message, EntityManagerInterface $entityManager , SujetRepository $sujetRepository): Response
+    {
+
+        $form = $this->createForm(MessageFrontType::class, $message);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $sujet = $message->getIdSujet();
+            $entityManager->flush();
+
+            return $this->redirectToRoute('sujet_show_front', ['id'=> $sujet->getId()], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('message/editfront.html.twig', [
+            'message' => $message,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/{id}", name="message_delete", methods={"POST"})
      */
     public function delete(Request $request, Message $message, EntityManagerInterface $entityManager): Response

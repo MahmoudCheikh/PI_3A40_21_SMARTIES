@@ -50,6 +50,7 @@ class Produit
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Positive(message="le prix doit etre positive")
      */
     private $prix;
 
