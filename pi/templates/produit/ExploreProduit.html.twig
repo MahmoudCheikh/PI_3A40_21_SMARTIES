@@ -962,17 +962,21 @@
 
                                         <div class="elementor-add-to-cart elementor-product-simple">
 
+                                            {% if app.user %}
 
-                                                {{ form_start(form) }}
-                                                {{ form_errors(form.nbProduits) }}
-                                                {{ form_widget(form.nbProduits, {'attr': {'class': 'form-control , elementor-field elementor-size-lg  elementor-field-textual' , 'placeholder':'Nombre produit'}}) }}
-                                                <br>
-                                                <br>
-                                                <center><button type="submit" name="add-to-cart" value="1095" class="single_add_to_cart_button button alt" class="btn">{{ button_label|default('Ajouter au Panier') }}</button>
-                                                </center><br>
+                                            {{ form_start(form) }}
+                                            {{ form_errors(form.nbProduits) }}
+                                            {{ form_widget(form.nbProduits, {'attr': {'class': 'form-control , elementor-field elementor-size-lg  elementor-field-textual' , 'placeholder':'Nombre produit'}}) }}
+                                            <br>
+                                            <br>
+                                            <button class="btn">{{ button_label|default('Ajouter') }}</button>
 
-                                                {{ form_end(form) }}
 
+                                            {{ form_end(form) }}
+                                            {% else %}
+
+                                                <p>Vous devez vous connecter</p>
+                                            {% endif %}
 
 
 
