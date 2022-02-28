@@ -50,6 +50,7 @@ class Activite
 
     /**
      * @ORM\ManyToOne(targetEntity=Evenement::class, inversedBy="activites")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idEvenement;

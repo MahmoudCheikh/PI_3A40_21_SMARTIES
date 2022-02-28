@@ -47,5 +47,16 @@ class EvenementRepository extends ServiceEntityRepository
         ;
     }
     */
+  /*  public  function triDateD()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = "SELECT * FROM evenement ORDER BY evenement.`dateD` DESC";
+        try {
+            $stmt = $conn->prepare($sql);
+        } catch (DBALException $e) {
+        }
+        $stmt->execute();
+        return $stmt;
+    }*/
 
 }
