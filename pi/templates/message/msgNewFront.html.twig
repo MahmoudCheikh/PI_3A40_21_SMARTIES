@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="elementor-element elementor-element-bd7762c elementor-button-align-start elementor-widget elementor-widget-form" data-element_type="widget">
                                         <div class="elementor-widget-container">
-                                                {{ form_start(form ) }}
+                                                {{ form_start(form ,{'attr': {'novalidate': 'novalidate'}} ) }}
                                                 {{ form_errors(form.contenu) }}
                                                 {{ form_widget(form.contenu, {'attr': {'class': 'form-control elementor-field-textual elementor-field  elementor-size-lg' , 'placeholder':'Message'}}) }}
                                                 <div class="elementor-form-fields-wrapper elementor-labels-above">

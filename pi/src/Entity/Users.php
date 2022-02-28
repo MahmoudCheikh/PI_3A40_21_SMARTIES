@@ -25,6 +25,8 @@ class Users implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message="email is required")
+
      */
     private $email;
 
@@ -60,12 +62,12 @@ class Users implements UserInterface
 
 
     /**
-     * @ORM\Column(type="string", length=255 ,nullable=false)
+     * @ORM\Column(type="string", length=255 ,nullable=true)
      */
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=255 ,nullable=false)
+     * @ORM\Column(type="string", length=255 ,nullable=true)
      */
     private $role;
 

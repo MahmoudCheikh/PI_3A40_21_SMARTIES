@@ -1,6 +1,6 @@
- {% extends 'base_front.html.twig' %}
+{% extends 'base_front.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Users index{% endblock %}
 
 {% block body %}
     <link rel='stylesheet' id='elementor-post-629-css'  href={{ asset('wp-content/uploads/sites/7/elementor/css/post-62942fe.css?ver=1637284150')}} type='text/css' media='all' />
@@ -19,7 +19,7 @@
 
                                             <div class="premium-dual-header-container">
                                                 <div class="premium-dual-header-first-container">
-                                                    <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient"><span class="premium-dual-header-first-span">Création </span><span class="premium-dual-header-second-header "></span></h2> 		</div>
+                                                    <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient"><span class="premium-dual-header-first-span">Modification </span><span class="premium-dual-header-second-header "></span></h2> 		</div>
                                             </div>
 
                                         </div>
@@ -27,40 +27,38 @@
                                     <div class="elementor-element elementor-element-8cb0e33 elementor-widget elementor-widget-text-editor" data-id="8cb0e33" data-element_type="widget" data-widget_type="text-editor.default">
                                         <div class="elementor-widget-container">
                                             <div class="elementor-text-editor elementor-clearfix">
-                                                <h2>Creer un compte</h2>					</div>
+                                                <h2></h2>					</div>
                                         </div>
                                     </div>
                                     <div class="elementor-element elementor-element-c0e4942 elementor-widget elementor-widget-text-editor" data-id="c0e4942" data-element_type="widget" data-widget_type="text-editor.default">
                                     </div>
                                     <div class="elementor-element elementor-element-784be66 elementor-button-align-center elementor-widget elementor-widget-form" data-id="784be66" data-element_type="widget" data-settings="{&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}" data-widget_type="form.default">
-                                        {{ form_start(registrationForm ,{'attr': {'novalidate': 'novalidate'}} ) }}
+                                        {{ form_start(form ) }}
                                         <div class="elementor-form-fields-wrapper elementor-labels-above">
                                             <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
-                                                {{ form_errors(registrationForm.email) }}
-                                                {{ form_widget(registrationForm.email, {'attr': {'size':"1", 'type':"text",  'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Email"}}) }}
+                                                {{ form_errors(form.email) }}
+                                                {{ form_widget(form.email, {'attr': {'size':"1", 'type':"text",  'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Email"}}) }}
+
                                             </div>
                                             <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
-                                                {{ form_errors(registrationForm.plainPassword) }}
-                                                {{ form_widget(registrationForm.plainPassword, {'attr': {'size':"1", 'type':"password",  'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Mot de passe"}}) }}
+                                                {{ form_errors(form.nom) }}
+                                                {{ form_widget(form.nom, {'attr': {'size':"1", 'type':"text", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Nom"}}) }}
                                             </div>
                                             <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
-                                                {{ form_errors(registrationForm.nom) }}
-                                                {{ form_widget(registrationForm.nom, {'attr': {'size':"1", 'type':"text", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Nom"}}) }}
-                                            </div>
-                                            <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
-                                                {{ form_errors(registrationForm.prenom) }}
-                                                {{ form_widget(registrationForm.prenom, {'attr': {'size':"1", 'type':"text", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Prenom"}}) }}
+                                                {{ form_errors(form.prenom) }}
+                                                {{ form_widget(form.prenom, {'attr': {'size':"1", 'type':"text", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Prenom"}}) }}
                                             </div>
 
                                             <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
-                                                {{ form_errors(registrationForm.adresse) }}
-                                                {{ form_widget(registrationForm.adresse, {'attr': {'size':"1", 'type':"text", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Adresse"}}) }}
+                                                {{ form_errors(form.adresse) }}
+                                                {{ form_widget(form.adresse, {'attr': {'size':"1", 'type':"text", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Adresse"}}) }}
                                             </div>
+
 
                                             <button class="btn">{{ button_label|default('Save') }}</button>
                                         </div>
                                     </div>
-                                    {{ form_end(registrationForm) }}
+                                    {{ form_end(form) }}
                                 </div>
                             </div>
                         </div>

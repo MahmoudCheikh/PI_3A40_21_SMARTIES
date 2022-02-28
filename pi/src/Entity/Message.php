@@ -40,6 +40,12 @@ class Message
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le contenu de votre message is required")
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "50",
+     *      minMessage = "le contenu doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "le contenu ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $contenu;
 
