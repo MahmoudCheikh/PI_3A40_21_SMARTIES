@@ -6,6 +6,7 @@ use App\Entity\Users;
 use App\Form\UsersType;
 use App\Form\UsersFrontType;
 use App\Repository\UsersRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,12 +24,6 @@ class UsersController extends AbstractController
      */
     public function index(UsersRepository $UsersRepository): Response
     {
-
-        /*
-                return $this->render('Users/index.html.twig', [
-                    'Users' => $UsersRepository->findAll(),
-                ]);
-        */
         return $this->render('Users/index.html.twig', [
             'Users' => $UsersRepository->findAll(),
         ]);
@@ -79,7 +74,7 @@ class UsersController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="users_show", methods={"GET"})
+     * @Route("/show/{id}", name="users_show", methods={"GET"})
      */
     public function show(Users $user): Response
     {
@@ -87,6 +82,37 @@ class UsersController extends AbstractController
             'user' => $user,
         ]);
     }
+
+    /**
+     * @Route("/front/", name="users_front_show", methods={"GET" , "POST"})
+     */
+    public function showFront(): Response
+    {
+        return $this->render('Users/showFront.html.twig');
+    }
+
+    /**
+     * @Route("/modifierfront", name="users_modifier_front", methods={"GET", "POST"})
+     */
+    public function modifierFront(Request $request, EntityManagerInterface $entityManager , UsersRepository $usersRepository): Response
+    {
+        $user = $usersRepository->find($this->getUser()->getId());
+        $form = $this->createForm(UsersFrontType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('users_front_show', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('Users/modifierFront.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
+
 
     /**
      * @Route("/{id}/edit", name="users_edit", methods={"GET", "POST"})

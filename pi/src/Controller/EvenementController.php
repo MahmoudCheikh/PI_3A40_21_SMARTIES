@@ -11,30 +11,39 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 /**
  * @Route("/evenement")
  */
 class EvenementController extends AbstractController
 {
+
+    /**
+     * @Route("/evenement_front/", name="aziz" , methods={"GET"})
+     */
+    public function aziz(EvenementRepository $EvenementRepository , Request $request): Response
+    {
+        dump($request->get('search'));
+        if (null !=$request->get('search')){
+            return $this->render('/evenement/eventindex.html.twig',[
+                'evenements' => $this->getDoctrine()->getRepository(Evenement::class)->findBy(['nom' => $request->get('search')]),
+            ]);
+        }
+        return $this->render('/evenement/eventindex.html.twig',[
+            'evenements' => $EvenementRepository->findAll(),
+        ]);
+    }
+
     /**
      * @Route("/", name="evenement_index", methods={"GET"})
      */
     public function index(EvenementRepository $EvenementRepository): Response
     {
-/*        return $this->render('Evenement/index.html.twig', [
-            'evenements' => $EvenementRepository->findAll(),
-        ]);
-*/
+        /*        return $this->render('Evenement/index.html.twig', [
+                    'evenements' => $EvenementRepository->findAll(),
+                ]);
+        */
         return $this->render('Evenement/index.html.twig', [
-            'evenements' => $EvenementRepository->findAll(),
-        ]);
-    }
-    /**
-     * @Route("/evenement_front/", name="aziz" , methods={"GET"})
-     */
-    public function aziz(EvenementRepository $EvenementRepository): Response
-    {
-        return $this->render('/evenement/eventindex.html.twig',[
             'evenements' => $EvenementRepository->findAll(),
         ]);
     }
@@ -42,14 +51,13 @@ class EvenementController extends AbstractController
     /**
      * @Route("/activite_front/{id}", name="aziz1" , methods={"GET"})
      */
-    public function aziz1(Evenement $Evenement,ActiviteRepository $ActiviteRepository): Response
+    public function aziz1(Evenement $Evenement, ActiviteRepository $ActiviteRepository): Response
     {
-        return $this->render('/evenement/activiteindex.html.twig',[
+        return $this->render('/evenement/activiteindex.html.twig', [
             'evenement' => $Evenement,
             'activites' => $ActiviteRepository->findAll(),
         ]);
     }
-
 
 
     /**
@@ -110,7 +118,7 @@ class EvenementController extends AbstractController
      */
     public function delete(Request $request, Evenement $Evenement, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$Evenement->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $Evenement->getId(), $request->request->get('_token'))) {
             $entityManager->remove($Evenement);
             $entityManager->flush();
         }
@@ -119,4 +127,10 @@ class EvenementController extends AbstractController
     }
 
 
+
+
+
 }
+
+
+
