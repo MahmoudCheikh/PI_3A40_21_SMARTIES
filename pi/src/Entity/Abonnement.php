@@ -32,6 +32,7 @@ class Abonnement
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThan("today")
      * @Assert\Expression(
      *     "this.getdated() < this.getdatef()",
      *     message="La date fin ne doit pas être antérieure à la date début")

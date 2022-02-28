@@ -65,40 +65,37 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <h5 class="centered">Admin</h5>
-                <li><a href="{{ path('commande_index') }}"><i class="fa fa-cogs"></i>AHMED</a>
-                <ul class="sub-menu"><li><a href="{{ path('commande_index') }}"><i class="fa fa-shopping-cart"></i>Gestion De Commande</a></li></ul>
-                <ul class="sub-menu"><li><a href="{{ path('achat_index') }}"><i class="fa fa-money"></i>Gestion D'Achat</a></li></ul>
-                </li>
-                <li><a href="{{ path('reclamation_index') }}"><i class="fa fa-cogs"></i>HAZEM</a>
-                    <ul class="sub-menu"><li><a href="{{ path('maintenance_index') }}"><i class="fa fa-cog"></i>Gestion de Maintenance</a></li></ul>
-                    <ul class="sub-menu"><li><a href="{{ path('reclamation_index') }}"><i class="fa fa-exclamation-triangle"></i>Gestion De Reclamation</a></li></ul>
-                </li>
 
-                <li><a href="{{ path('produit_index') }}"><i class="fa fa-cogs"></i>Mahmoud</a>
-                    <ul class="sub-menu"><li>
+                <li class="menu"><li><a href="{{ path('commande_index') }}"><i class="fa fa-shopping-cart"></i>Gestion De Commande</a></li></li>
+                <li class="menu"><li><a href="{{ path('achat_index') }}"><i class="fa fa-money"></i>Gestion D'Achat</a></li></li>
+
+
+                    <li class="menu"><li><a href="{{ path('maintenance_index') }}"><i class="fa fa-cog"></i>Gestion de Maintenance</a></li></li>
+                    <li class="menu"><li><a href="{{ path('reclamation_index') }}"><i class="fa fa-exclamation-triangle"></i>Gestion De Reclamation</a></li></li>
+
+
+
+                    <li class="menu"><li>
                 <li><a href="{{ path('users_index') }}"><i class="fa fa-user"></i>Users</a></li>
-                    </ul>
-                        <ul class="sub-menu"><li>
+                    </li>
+                        <li class="menu"><li>
                 <li><a href="{{ path('sujet_index') }}"><i class="fa fa-comments"></i>Sujets</a></li>
-                        </ul>
-                            <ul class="sub-menu"><li>
+                        </li>
+                            <li class="menu"><li>
                 <li><a href="{{ path('message_index') }}"><i class="fa fa-comment"></i>Messages</a></li>
-                            </ul>
+                            </li>
                 </li>
 
-                <li><a href="{{ path('produit_index') }}"><i class="fa fa-cogs"></i>MARIEM</a>
-                    <ul class="sub-menu"><li><a href="{{ path('produit_index') }}"><i class="fa fa-truck"></i>Gestion des Produits</a></li></ul>
-                            <ul class="sub-menu"><li><a href="{{ path('stock_index') }}"><i class="fa fa-archive"></i>Gestion de stockage</a></li></ul>
-                    <ul class="sub-menu"><li><a href="{{ path('emplacement_index') }}"><i class="fa fa-map-marker"></i>Gestion d'emplacement</a></li></ul>
+                    <li class="menu"><li><a href="{{ path('produit_index') }}"><i class="fa fa-truck"></i>Gestion des Produits</a></li></li>
+                    <li class="menu"><li><a href="{{ path('stock_index') }}"><i class="fa fa-archive"></i>Gestion de stockage</a></li></li>
+                    <li class="menu"><li><a href="{{ path('emplacement_index') }}"><i class="fa fa-map-marker"></i>Gestion d'emplacement</a></li></li>
                 </li>
 
-                <li><a href="{{ path('abonnement_index') }}"><i class="fa fa-cogs"></i>FADWA</a>
-                    <ul class="sub-menu"><li><a href="{{ path('abonnement_index') }}"><i class="fa fa-share"></i>Gestion des Abonnements</a></li></ul>
-                    <ul class="sub-menu"><li><a href="{{ path('location_index') }}"><i class="fa fa-location-arrow"></i>Gestion des Locations</a></li></ul>
+                    <li class="sub-menu"><li><a href="{{ path('abonnement_index') }}"><i class="fa fa-share"></i>Gestion des Abonnements</a></li></li>
+                    <li class="sub-menu"><li><a href="{{ path('location_index') }}"><i class="fa fa-location-arrow"></i>Gestion des Locations</a></li></li>
                 </li>
-                <li><a href="{{ path('evenement_index') }}"><i class="fa fa-cogs"></i>AZIZ</a>
-                    <ul class="sub-menu"><li><a href="{{ path('evenement_index') }}"><i class="fa fa-bullhorn"></i>Les Evenements</a></li></ul>
-                    <ul class="sub-menu"><li><a href="{{ path('activite_index') }}"><i class="fa fa-calendar-check-o"></i>Les Activités</a></li></ul>
+                    <li class="menu"><li><a href="{{ path('evenement_index') }}"><i class="fa fa-bullhorn"></i>Les Evenements</a></li></li>
+                    <li class="menu"><li><a href="{{ path('activite_index') }}"><i class="fa fa-calendar-check-o"></i>Les Activités</a></li></li>
                 </li>
 
 

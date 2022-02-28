@@ -20,27 +20,27 @@ class Stock
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="libelle de stock is required")
+     * @Assert\NotBlank(message="le champs de libelle de stock est requis")
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\NotBlank(message="nom de l'activité is required")
+     * @Assert\NotBlank(message="le champs de prix est requis")
      * @Assert\Positive(message="prix du stock doit etre positive")
      */
     private $prix;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="quantite de stock is required")
+     * @Assert\NotBlank(message="le champs quantite de stock est requis")
      * @Assert\Positive(message="quantite du stock doit etre positive")
      */
     private $quantite;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="disponibilité is required")
+     * @Assert\NotBlank(message="le champs de disponibilité est requis")
      * @Assert\Choice(choices = {"Disponible", "Non Disponible"}, message = "Choisire disponibilite soit 'Disponible' soit 'Non Disponible'." )
      */
     private $disponibilite;

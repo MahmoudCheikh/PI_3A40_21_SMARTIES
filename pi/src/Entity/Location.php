@@ -39,14 +39,12 @@ class Location
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="locations")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotBlank(message="user est requis")
      */
     private $idUser;
 
     /**
      * @ORM\ManyToOne(targetEntity=Abonnement::class)
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotBlank(message="abonné est requis")
      */
     private $idAbonnement;
 
