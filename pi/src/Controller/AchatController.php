@@ -14,6 +14,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 /**
  * @Route("/achat")
@@ -55,6 +58,8 @@ class AchatController extends AbstractController
         ]);
     }
 
+
+
     /**
      * @Route("/frontnew/{id}", name="achat_front_new", methods={"GET", "POST"})
      */
@@ -74,9 +79,52 @@ class AchatController extends AbstractController
         $entityManager->remove($commande);
         $entityManager->flush();
 
+
         return $this->redirectToRoute('achatfront', [], Response::HTTP_SEE_OTHER);
 
+
+
     }
+
+
+
+    /**
+     * @Route("/tripardate", name="trierpardate", methods={"GET"})
+     */
+    public function trierpardate (AchatRepository $AchatRepository , Request $request): Response
+    {
+        return $this->render('/commande/achatfront.html.twig',[
+            'achats' => $this->getDoctrine()->getRepository(Achat::class)->findBy([], ['numeroClient' => 'DESC']),
+        ]);
+    }
+
+    /**
+     * @Route("/pdfd", name="pdfd", methods={"GET"})
+     */
+    public function pdfd (AchatRepository $AchatRepository , Request $request): Response
+    {
+            $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        $dompdf = new Dompdf($pdfOptions);
+        $achats = $AchatRepository->findAll();
+
+        $html = $this->renderView('/commande/achatfront.html.twig',[
+            'achats' => $achats,
+        ]);
+
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+        $dompdf->stream("MonFacture.pdf", [
+            "Attachment" => true
+        ]);
+    }
+
+
 
 
     /**

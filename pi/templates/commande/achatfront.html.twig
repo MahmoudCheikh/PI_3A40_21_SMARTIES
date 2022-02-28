@@ -36,6 +36,7 @@
 
                                     {% endif %}
                                 {% endfor %}
+                        <a href={{ path('pdfd') }}>Telecharger Votre Facture</a>
 
 
                             <tbody>
@@ -46,26 +47,34 @@
 
 
 
-
                             <tr>
                                 <td colspan="6" class="actions">
+
                                     <button type="submit" class="button" name="update_cart" value="Update cart">Confirmer L'achat</button>
                             <tr></tr>
-                            <div class="coupon">
-                                <label for="coupon_code">Coupon:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code" /> <button type="submit" class="button" name="apply_coupon" value="Apply coupon">Apply coupon</button>
-                            </div>
+
+                            <label for="site-search">Rechercher Le Nombre Du Commande:</label>
+
+                            <form action="" method="GET">
+                                <input type="search" id="site-search" name="search"
+                                       aria-label="Search through site content">
+                                <button type="submit">Search</button>
+                            </form>
                             <h2>Cart totals</h2>
+
 
                             <table cellspacing="0" class="shop_table shop_table_responsive">
 
-                               
+
 
 
                             {% else %} <h1>veuillez vous connecter</h1>
                             {% endif %}
+                                <a href={{ path('trierpardate') }}>Trier Vos Achats</a>
 
 
-            </section><!-- .comments-area -->
+
+                                </section><!-- .comments-area -->
     </main>
 
 {% endblock %}

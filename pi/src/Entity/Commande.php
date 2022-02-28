@@ -32,6 +32,7 @@ class Commande
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="nombre de produits is required")
+     * @Assert\Positive
      */
     private $nbProduits;
 

@@ -57,14 +57,26 @@ class CommandeController extends AbstractController
 
 
     /**
-     * @Route("/achatfront", name="achatfront",  methods={"GET"})
+     * @Route("/achatfront/", name="achatfront",  methods={"GET"})
      */
-    public function achatfront(AchatRepository $achatRepository, CommandeRepository $commandeRepository, ProduitRepository $produitRepository ,EntityManagerInterface $entityManager): Response
+    public function achatfront(AchatRepository $achatRepository, CommandeRepository $commandeRepository, ProduitRepository $produitRepository ,EntityManagerInterface $entityManager, Request $request): Response
     {
+
+
+        dump($request->get('search'));
+        if (null !=$request->get('search')){
+            return $this->render('/commande/achatfront.html.twig',[
+                'achats' => $this->getDoctrine()->getRepository(Achat::class)->findBy(['id' => $request->get('search')]),
+            ]);
+        }
         return $this->render('/commande/achatfront.html.twig', [
             'achats' => $achatRepository->findAll(),
             'Produits' => $produitRepository->findAll(),
+
         ]);
+
+
+
     }
 
     /**
