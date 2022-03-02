@@ -13,17 +13,20 @@ use App\Repository\ProduitRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use MercurySeries\FlashyBundle\FlashyNotifier;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use knp\Component\Pager\PaginatorInterface;
+
 
 
 
 /**
  * @Route("/commande")
  */
-class CommandeController extends AbstractController
+class CommandeController extends Controller
 {
 
     /**
@@ -59,7 +62,7 @@ class CommandeController extends AbstractController
     /**
      * @Route("/achatfront/", name="achatfront",  methods={"GET"})
      */
-    public function achatfront(AchatRepository $achatRepository, CommandeRepository $commandeRepository, ProduitRepository $produitRepository ,EntityManagerInterface $entityManager, Request $request): Response
+    public function achatfront(FlashyNotifier $flashy,AchatRepository $achatRepository, CommandeRepository $commandeRepository, ProduitRepository $produitRepository ,EntityManagerInterface $entityManager,Request $request): Response
     {
 
 
@@ -69,15 +72,27 @@ class CommandeController extends AbstractController
                 'achats' => $this->getDoctrine()->getRepository(Achat::class)->findBy(['id' => $request->get('search')]),
             ]);
         }
+
+        $achats =$achatRepository->findAll();
+        $achats = $this->get('knp_paginator')->paginate(
+            $achats,
+            $request->query->getInt('page',1),
+            9
+        );
+
+        $flashy->success('Achat effectué', '');
+
         return $this->render('/commande/achatfront.html.twig', [
-            'achats' => $achatRepository->findAll(),
+            'achats' => $achats,
             'Produits' => $produitRepository->findAll(),
 
         ]);
 
-
-
     }
+
+
+
+
 
     /**
      * @Route("/achatf/{id}", name="achat_delete_front", methods={"POST" , "GET"})
