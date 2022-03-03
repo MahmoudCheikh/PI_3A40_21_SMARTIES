@@ -50,6 +50,7 @@ class EmplacementController extends AbstractController
             'emplacement' => $emplacement,
         ]);
     }
+
     /**
      * @Route("/new", name="emplacement_new", methods={"GET", "POST"})
      */

@@ -6,15 +6,17 @@ use App\Entity\Stock;
 use App\Form\StockType;
 use App\Repository\StockRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 /**
  * @Route("/stock")
  */
-class StockController extends AbstractController
+class StockController extends Controller
 {
     /**
      * @Route("/", name="stock_index", methods={"GET"})
@@ -22,9 +24,38 @@ class StockController extends AbstractController
     public function index(StockRepository $stockRepository): Response
     {
 
-        return $this->render('stock/index.html.twig', [
+        return $this->render('stock/index.html.twig',[
             'stocks' => $stockRepository->findAll(),
         ]);
+    }
+    /**
+     * @Route("/pdf", name="excel", methods={"GET"})
+     */
+    public function excel(StockRepository $stockRepository): Response
+    {
+
+        $spreadsheet = new Spreadsheet();
+
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'stock');
+        $sheet->setTitle("Historique des Stocks");
+
+        // Create your Office 2007 Excel (XLSX Format)
+        $writer = new Xlsx($spreadsheet);
+        $stock = $stockRepository->findAll();
+        $html = $this->renderView('/stock/index.html.twig',[
+            'stocks' => $stock,
+        ]);
+
+        // Create a Temporary file in the system
+        $fileName = 'stock.xlsx';
+        $temp_file = tempnam(sys_get_temp_dir(), $fileName);
+
+        // Create the excel file in the tmp directory of the system
+        $writer->save($temp_file);
+
+        // Return the excel file as an attachment
+        return $this->file($temp_file, $fileName, ResponseHeaderBag::DISPOSITION_INLINE);
     }
 
     /**

@@ -46,7 +46,7 @@ class Stock
     private $disponibilite;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Produit::class)
+     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="Stock")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idProduit;

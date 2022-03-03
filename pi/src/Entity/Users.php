@@ -101,6 +101,12 @@ class Users implements UserInterface
      */
     private $locations;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Favoris::class, inversedBy="IdUser")
+     */
+    private $favoris;
+
+
     public function __construct()
     {
         $this->sujets = new ArrayCollection();
@@ -109,6 +115,7 @@ class Users implements UserInterface
         $this->Commandes = new ArrayCollection();
         $this->abonnements = new ArrayCollection();
         $this->locations = new ArrayCollection();
+        $this->IdProduit = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -440,4 +447,18 @@ class Users implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    public function getFavoris(): ?Favoris
+    {
+        return $this->favoris;
+    }
+
+    public function setFavoris(?Favoris $favoris): self
+    {
+        $this->favoris = $favoris;
+
+        return $this;
+    }
+
+
 }
