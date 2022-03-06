@@ -9,6 +9,7 @@ use App\Repository\CommandeRepository;
 use App\Repository\AccessoireRepository;
 use App\Repository\EmplacementRepository;
 use App\Repository\ProduitRepository;
+use App\Repository\SujetRepository;
 use App\Repository\VeloRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +29,7 @@ class SiteController extends AbstractController
     /**
      * @Route("/", name="site")
      */
-    public function front(): Response
+    public function front(ProduitRepository $produitRepository,SujetRepository $sujetRepository): Response
     {
 
         if($this->getUser()!= null){
@@ -38,7 +39,16 @@ class SiteController extends AbstractController
            return $this->redirectToRoute("siteback");
         }
         }
-        return $this->render('/base_front.html.twig');
+
+        $produits = $produitRepository->findAll();
+        $produits = array_slice($produits ,0 , 4);
+        $sujets= $sujetRepository->findAll();
+        $sujets = array_slice($sujets ,0 , 3);
+
+        return $this->render('/base_front.html.twig',[
+            'produits' => $produits,
+            'sujets'=>$sujets,
+        ]);
     }
 
     /**
