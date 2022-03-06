@@ -64,6 +64,8 @@ class MessageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $test = $sujetRepository->find($id);
+            $test->setnbReponses($test->getnbReponses()+1);
+            $entityManager->persist($test);
             $message->setIdSujet($test);
             $message->setDate(new \DateTime());
             $message->setIdUser($user);
@@ -151,6 +153,9 @@ class MessageController extends AbstractController
     {
         $sujet = $message->getIdSujet()->getId();
         if ($this->isCsrfTokenValid('delete'.$message->getId(), $request->request->get('_token'))) {
+            $sujet = $message->getIdSujet();
+            $sujet->setnbReponses($sujet->getnbReponses()-1);
+            $entityManager->persist($sujet);
             $entityManager->remove($message);
             $entityManager->flush();
         }

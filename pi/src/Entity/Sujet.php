@@ -22,8 +22,18 @@ class Sujet
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\JoinColumn(nullable=true)
+     *
      */
-    private $IdPost;
+    private $nbReponses;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $nbVues;
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="sujets")
@@ -74,14 +84,26 @@ class Sujet
         return $this->id;
     }
 
-    public function getIdPost(): ?int
+    public function getnbReponses(): ?int
     {
-        return $this->IdPost;
+        return $this->nbReponses;
     }
 
-    public function setIdPost(int $IdPost): self
+    public function setnbReponses(int $nbReponses): self
     {
-        $this->IdPost = $IdPost;
+        $this->nbReponses = $nbReponses;
+
+        return $this;
+    }
+
+    public function getnbVues(): ?int
+    {
+        return $this->nbVues;
+    }
+
+    public function setnbVues(int $nbVues): self
+    {
+        $this->nbVues = $nbVues;
 
         return $this;
     }

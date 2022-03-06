@@ -1,0 +1,123 @@
+{% extends 'mariem_front.html.twig' %}
+{% block body %}
+        {% for favoris in Produits %}
+            <div data-elementor-type="header" data-elementor-id="40" class="elementor elementor-40 elementor-location-header" data-elementor-settings="[]">
+            <div class="elementor-section-wrap">
+        <section
+                class="elementor-section elementor-top-section elementor-element elementor-element-e92bdd0 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                data-id="e92bdd0" data-element_type="section"
+                data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-background-overlay"></div>
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-row">
+                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4a06fea"
+                         data-id="4a06fea" data-element_type="column">
+                        <div class="elementor-column-wrap elementor-element-populated">
+                            <div class="elementor-widget-wrap">
+                                <div class="elementor-element elementor-element-e1e5f68 elementor-widget elementor-widget-elementskit-blog-posts"
+                                     data-id="e1e5f68" data-element_type="widget"
+                                     data-widget_type="elementskit-blog-posts.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="ekit-wid-con">
+                                            <div id="post-items--e1e5f68" class="row post-items">
+
+                                                <div class="col-md-12">
+
+                                                    <div class="elementskit-blog-block-post">
+                                                        <div class="row no-gutters">
+                                                            <div class="col-md-6 order-1">
+                                                                <a href="../2021/03/09/focus-ergo-mx514-gravel-bike-review/index.html"
+                                                                   class="elementskit-entry-thumb">
+                                                                    <img width="300" height="300"
+                                                                         src="{{ asset('img/bike/') ~ favoris.IdProduit.image }}"
+                                                                         alt="Focus Ergo MX-514 Gravel Bike Review"/>
+                                                                </a><!-- .elementskit-entry-thumb END -->
+                                                            </div>
+
+                                                            <div class="col-md-6 order-2">
+                                                                <div class="elementskit-post-body ">
+                                                                    <div class="elementskit-entry-header">
+
+                                                                        <div class="post-meta-list">
+                                                                                                                        <span class="post-cat">
+
+                                <i aria-hidden="true" class="fas fa-bookmark"></i>
+                                <a rel="category tag">PRIX </a> | <a rel="category tag">{{ favoris.IdProduit.prix }} &period; DT</a>
+                                                                </span>
+                                                                        </div>
+
+
+                                                                        <h2 class="entry-title">
+                                                                            <p style="color: #00c5de" >
+                                                                                {{ favoris.IdProduit.libelle }}                 </p><br>
+                                                                            <a >{{ favoris.IdProduit.description }}  </a>
+                                                                        </h2>
+                                                                        <span>&map; {{ favoris.IdProduit.type }}  </span>
+                                                                    </div><!-- .elementskit-entry-header END -->
+
+                                                                </div><!-- .elementskit-post-body END -->
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- .elementskit-blog-block-post .radius .gradient-bg END -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        {% endfor %}
+    <section
+            class="elementor-section elementor-top-section elementor-element elementor-element-0f089ef elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            data-id="0f089ef" data-element_type="section">
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-row">
+                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-86445c8"
+                     data-id="86445c8" data-element_type="column">
+                    <div class="elementor-column-wrap">
+                        <div class="elementor-widget-wrap">
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-6f99a9c"
+                     data-id="6f99a9c" data-element_type="column">
+                    <div class="elementor-column-wrap elementor-element-populated">
+                        <div class="elementor-widget-wrap">
+                            <div class="elementor-element elementor-element-251eb97 elementor-align-left elementor-widget elementor-widget-button"
+                                 data-id="251eb97" data-element_type="widget" data-widget_type="button.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-button-wrapper">
+                                        <a href="#" class="elementor-button-link elementor-button elementor-size-sm"
+                                           role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text"><div class="pagination">{{ knp_pagination_render(Produits) }}</div></span>
+		</span>
+                                        </a>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        &nbsp;
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </section>
+
+
+    </div>
+</div>
+{% endblock %}

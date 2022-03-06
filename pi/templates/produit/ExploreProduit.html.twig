@@ -840,10 +840,12 @@
                                             </button>
                                             <div id="ekit-megamenu-ergo-main-menu" class="elementskit-menu-container elementskit-menu-offcanvas-elements elementskit-navbar-nav-default elementskit_line_arrow ekit-nav-menu-one-page-yes">
                                                 <ul id="menu-ergo-main-menu" class="elementskit-navbar-nav elementskit-menu-po-center submenu-click-on-icon">
-                                                    <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path(("produitfront")) }} class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Produits<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
+                                                    <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-32 nav-item elementskit-dropdown-has relative_position elementskit-dropdown-menu-default_width elementskit-mobile-builder-content" data-vertical-menu=750px><a href={{ path(("velo")) }} class="ekit-menu-nav-link ekit-menu-dropdown-toggle">Produits<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i></a>
                                                         <ul class="elementskit-dropdown elementskit-submenu-panel">
+                                                            <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path(("velo")) }}" class=" dropdown-item ">VELOS</a>
+                                                            <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path(("accessoire")) }}" class=" dropdown-item ">ACCESSOIRES</a>
+                                                            <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path(("pdr")) }}" class=" dropdown-item ">PIECES DE RECHANGES</a>
                                                             <li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path(("mariem_f")) }}" class=" dropdown-item">LES SITES</a>
-                                                            <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item elementskit-mobile-builder-content" data-vertical-menu=750px><a href="{{ path(("produitfront")) }}" class=" dropdown-item ">LES PRODUITS</a>
 
                                                         </ul>
                                                     </li>
@@ -968,28 +970,38 @@
                                             {{ form_widget(form.nbProduits, {'attr': {'class': 'form-control , elementor-field elementor-size-lg  elementor-field-textual' , 'placeholder':'Nombre produit'}}) }}
                                             <br>
                                             <br>
-                                            <button class="btn">{{ button_label|default('Ajouter') }}</button>
+                                                <button type="submit" name="add-to-cart" value="1095" class="single_add_to_cart_button button alt" >{{ button_label|default('Ajouter') }}</button>
 
 
                                             {{ form_end(form) }}
+                                                <br><a type="submit" name="add-to-cart" value="1095" class="single_add_to_cart_button button alt"  href={{ path('favoris',{'id':produit.id}) }}>  FAVORIS</a><br>
+                                            {% if app.session.flashBag.has('FAVORIS') %}
+                                                <div class="alert alert-fail">
+                                                    {% for msg in app.session.flashBag.get('FAVORIS') %}
+                                                        {{ msg }}
+                                                    {% endfor %}
+
+
+                                                </div>
+                                            {% endif %}
                                             {% else %}
 
                                             <p>Vous devez vous connecter</p>
                                             {% endif %}
 
 
-
-
-                                            <br><center><button type="submit" name="add-to-cart" value="1095" class="single_add_to_cart_button button alt" onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/location/frontnew/'">location du produit</button></center><br>
-
                                         </div>
 
-                                    </div>
+
+
                                 </div>
                                 <div class="elementor-element elementor-element-cb50466 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="cb50466" data-element_type="widget" data-widget_type="divider.default">
                                     <div class="elementor-widget-container">
                                         <div class="elementor-divider">
-			<span class="elementor-divider-separator">
+                                            <span class="elementor-divider-separator">
+
+                                            <span class="elementor-divider-separator">
+
 						</span>
                                         </div>
                                     </div>
@@ -1020,7 +1032,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <center><h2><button type="submit" name="add-to-cart" value="1095" class="single_add_to_cart_button button alt" onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/produit/produitfront'">BACK</button></h2></center><br>
+
+                                <div class="elementor-add-to-cart elementor-product-simple">
+                                </div>
+                                <center><h2><button type="submit" name="add-to-cart" value="1095" class="single_add_to_cart_button button alt" onclick="window.location.href ='/PI_3A40_21_SMARTIES/pi/public/index.php/'">BACK</button></h2></center><br>
                             </div>
                         </div>
                     </div>
@@ -1066,6 +1081,9 @@
                                                             <div class="elementor-widget-container">
                                                                 <h2>Description</h2>
                                                                 <p>{{ produit.description }}</p>
+                                                                <h2>Qr CODE</h2>
+
+                                                                <img src="{{ qrCode }}" alt="qr-code">
                                                             </div>
                                                         </div>
 

@@ -56,6 +56,11 @@
                                                 {{ form_errors(registrationForm.adresse) }}
                                                 {{ form_widget(registrationForm.adresse, {'attr': {'size':"1", 'type':"text", 'class':"elementor-field elementor-size-sm  elementor-field-textual form-control" ,'placeholder':"Adresse"}}) }}
                                             </div>
+                                            <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
+                                                {{ form_errors(registrationForm.captcha) }}
+                                                {{ form_widget(registrationForm.captcha, {'attr': {'size':"1", 'placeholder':"Captcha"}}) }}
+                                            </div>
+
 
                                             <button class="btn">{{ button_label|default('Save') }}</button>
                                         </div>

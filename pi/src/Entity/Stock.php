@@ -46,7 +46,7 @@ class Stock
     private $disponibilite;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Produit::class)
+     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="Stock")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idProduit;
@@ -134,6 +134,10 @@ class Stock
     }
     public function __toString() {
         return $this->libelle;
+    }
+
+    public function __toString1() {
+        return $this->disponibilite;
     }
 
 }

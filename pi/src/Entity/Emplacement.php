@@ -31,7 +31,8 @@ class Emplacement
     private $capacite;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Stock::class)
+     * @ORM\ManyToOne(targetEntity=Stock::class, inversedBy="idEmplacement")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @ORM\JoinColumn(nullable=false)
      */
     private $Stock;

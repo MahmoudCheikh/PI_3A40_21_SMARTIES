@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -19,12 +20,14 @@ class Users implements UserInterface
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
+     * @Groups("post:read")
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups("post:read")
      * @Assert\NotBlank(message="email is required")
 
      */
@@ -32,11 +35,13 @@ class Users implements UserInterface
 
     /**
      * @ORM\Column(type="json")
+     * @Groups("post:read")
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
+     * @Groups("post:read")
      * @ORM\Column(type="string")
      */
     private $password;
@@ -45,29 +50,34 @@ class Users implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="nom user is required")
+     * @Groups("post:read")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="prenom user is required")
+     * @Groups("post:read")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="adresse user is required")
+     * @Groups("post:read")
      */
     private $adresse;
 
 
     /**
      * @ORM\Column(type="string", length=255 ,nullable=true)
+     * @Groups("post:read")
      */
     private $image;
 
     /**
      * @ORM\Column(type="string", length=255 ,nullable=true)
+     * @Groups("post:read")
      */
     private $role;
 
@@ -106,6 +116,10 @@ class Users implements UserInterface
      */
     private $participations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Favoris::class, mappedBy="IdUser", orphanRemoval=true)
+     */
+    private $favoris;
 
     public function __construct()
     {
@@ -116,6 +130,8 @@ class Users implements UserInterface
         $this->abonnements = new ArrayCollection();
         $this->locations = new ArrayCollection();
         $this->participations = new ArrayCollection();
+        $this->IdProduit = new ArrayCollection();
+        $this->favoris = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -461,6 +477,20 @@ class Users implements UserInterface
         if (!$this->participations->contains($participation)) {
             $this->participations[] = $participation;
             $participation->setIdUser($this);
+     
+    /**
+     *  @return Collection|Favoris[]
+     */ 
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(Favoris $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+            $favori->setIdUser($this);
         }
 
         return $this;
@@ -472,6 +502,19 @@ class Users implements UserInterface
             // set the owning side to null (unless already changed)
             if ($participation->getIdUser() === $this) {
                 $participation->setIdUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+            
+    public function removeFavori(Favoris $favori): self
+    {
+        if ($this->favoris->removeElement($favori)) {
+            // set the owning side to null (unless already changed)
+            if ($favori->getIdUser() === $this) {
+                $favori->setIdUser(null);
             }
         }
 
