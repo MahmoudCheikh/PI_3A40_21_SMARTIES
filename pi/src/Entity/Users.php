@@ -477,6 +477,9 @@ class Users implements UserInterface
         if (!$this->participations->contains($participation)) {
             $this->participations[] = $participation;
             $participation->setIdUser($this);
+        }
+        return $this;
+    }
      
     /**
      *  @return Collection|Favoris[]
