@@ -43,9 +43,18 @@
                         <th><a href={{ path('commande_update_front' , {'id' : commande.id , 'Commande': commande}) }}>Modifier
                         </th>
                         <th><a href={{ path('achat_front_new' , {'id': commande.id}) }}>Achat</th>
+
                     </tr>
+
+
                     {% endif %}
                     {% endfor %}
+
+
+                    <tr>
+                        <td colspan="9" class="actions">
+                            <a href={{ path('pdfc') }}>Telechrager Vos Factures</a></tr>
+                    <tr>
                     <tbody>
                     <tr class="woocommerce-cart-form__cart-item cart_item">
 
@@ -69,10 +78,20 @@
 
 
                         <tr>
+
                             <td colspan="6" class="actions">
 
 
                                 </section><!-- .comments-area -->
+
     </main>
+
+    <div id="div_chart"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <section style="place-items: center " > <script type="text/javascript">
+       {{ gc_draw(pieChart, 'div_chart') }}
+    </script></section>
+
+
     <header/>
 {% endblock %}

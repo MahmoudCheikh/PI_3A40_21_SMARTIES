@@ -78,8 +78,8 @@ class AchatController extends AbstractController
         $entityManager->remove($commande);
         $entityManager->flush();
 
-
-        return $this->redirectToRoute('achatfront', [], Response::HTTP_SEE_OTHER);
+        $flash = 1;
+        return $this->redirectToRoute('achatfront',['flash'=> 1], Response::HTTP_SEE_OTHER);
 
 
 
@@ -88,40 +88,40 @@ class AchatController extends AbstractController
 
 
     /**
-     * @Route("/tripardate", name="trierpardate", methods={"GET"})
+     * @Route("/tricc", name="tricc", methods={"GET"})
      */
-    public function trierpardate (AchatRepository $AchatRepository , Request $request): Response
+    public function tricc (AchatRepository $AchatRepository , Request $request): Response
     {
+        if (null !=$request->get('search')){
+            $achats =$this->getDoctrine()->getRepository(Achat::class)->findBy(['id' => $request->get('search')]);
+            return $this->render('/commande/achatfront.html.twig',[
+                'achats' => $achats,
+            ]);
+        }
+
         return $this->render('/commande/achatfront.html.twig',[
             'achats' => $this->getDoctrine()->getRepository(Achat::class)->findBy([], ['numeroClient' => 'DESC']),
+            'flash'=> $request->get('flash'),
+
         ]);
     }
 
-
-
     /**
-     * @Route("/pdfd", name="pdfd", methods={"GET"})
+     * @Route("/tri", name="tri", methods={"GET"})
      */
-    public function pdfd (AchatRepository $AchatRepository , Request $request): Response
+    public function tri (AchatRepository $AchatRepository , Request $request): Response
     {
-            $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
+        if (null !=$request->get('search')){
+            $achats =$this->getDoctrine()->getRepository(Achat::class)->findBy(['id' => $request->get('search')]);
+            return $this->render('/commande/achatfront.html.twig',[
+                'achats' => $achats,
+            ]);
+        }
 
-        $dompdf = new Dompdf($pdfOptions);
-        $achats = $AchatRepository->findAll();
+        return $this->render('/commande/achatfront.html.twig',[
+            'achats' => $this->getDoctrine()->getRepository(Achat::class)->findBy([], ['date' => 'ASC']),
+            'flash'=> $request->get('flash'),
 
-        $html = $this->renderView('/commande/achatfront.html.twig',[
-            'achats' => $achats,
-        ]);
-
-        $dompdf->loadHtml($html);
-
-        $dompdf->setPaper('A4', 'portrait');
-
-        $dompdf->render();
-
-        $dompdf->stream("MonFacture.pdf", [
-            "Attachment" => true
         ]);
     }
 

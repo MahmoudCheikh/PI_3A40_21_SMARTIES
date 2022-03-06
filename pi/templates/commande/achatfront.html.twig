@@ -13,8 +13,9 @@
 
 
     <link rel='stylesheet' id='hello-elementor-css'  href='../wp-content/themes/hello-elementor/style.min8066.css?ver=2.4.1' type='text/css' media='all' />
+    {% if flash %}
     {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
-
+{% endif %}
     <main class="site-main post-5 page type-page status-publish hentry" role="main">
         <header class="page-header">
 
@@ -46,7 +47,6 @@
 
                                     {% endif %}
                                 {% endfor %}
-                        <button href={{ path('pdfd') }}>Telecharger Votre Achats</button>
 
 
                             <tbody>
@@ -59,16 +59,19 @@
 
                             <tr>
                                 <td colspan="6" class="actions">
+                                    <a href={{ path('tricc') }}>Trier Par Nombre D'Achat</a></tr>
+                            <tr>
+                                <td colspan="6" class="actions">
+                            <a href={{ path('tri') }}>Trier Par Date</a></tr>
 
-                                    <a href={{ path('trierpardate') }}>Trier Vos Achats</a>
-                            <tr></tr>
+
 
                             <label for="site-search">Rechercher Le Nombre Du Commande:</label>
 
                             <form action="" method="GET">
                                 <input type="search" id="site-search" name="search"
                                        aria-label="Search through site content">
-                                <button type="submit">Search</button>
+                                <button type="submit">Rechercher Par Commande</button>
                             </form>
 
                             <h2>Vos Achats</h2>

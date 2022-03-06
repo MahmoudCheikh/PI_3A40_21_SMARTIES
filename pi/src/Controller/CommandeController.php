@@ -11,8 +11,11 @@ use App\Repository\AchatRepository;
 use App\Repository\CommandeRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\UsersRepository;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,9 +53,54 @@ class CommandeController extends Controller
 
     public function ahmed_a(CommandeRepository $CommandeRepository , ProduitRepository $produitRepository): Response
     {
+        $pieChart = new PieChart();
+
+        $sommeVelo = 0;
+        $sommePDR = 0;
+        $sommeAccessoire = 0;
+
+        $commande =$CommandeRepository->findAll();
+        foreach ($commande as $commande) {
+            if($this->getUser()->getId() == $commande->getIdUser()->getId()){
+                if ($commande->getIdProduit()->getType() == "Velo"){
+                    $sommeVelo = $sommeVelo +1;
+                }
+                if ($commande->getIdProduit()->getType() == "Accessoire"){
+                    $sommeAccessoire = $sommeAccessoire +1;
+                }
+                if ($commande->getIdProduit()->getType() == "Piece de Rechange"){
+                    $sommePDR = $sommePDR+1;
+                }
+            }
+
+        }
+
+        $pieChart->getData()->setArrayToDataTable(
+            [['Type', 'Nombre'],
+                ['Velo',     $sommeVelo],
+                ['Piece de rechange',      $sommePDR],
+                ['Accessoire',  $sommeAccessoire],
+            ]
+        );
+        $pieChart->getOptions()->setTitle('Mes Commandes');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setIs3D(true);
+        $pieChart->getOptions()->setWidth(1850);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#ACEB1E');
+        $pieChart->getOptions()->setColors(['#333', '#CB2326', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#CB2326', '#6AF9C4']);
+        $pieChart->getOptions()->setBackgroundColor("transparent");
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Montserrat');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+
+
+
         return $this->render('/commande/commandefront.html.twig', [
             'Commandes' => $CommandeRepository->findAll(),
             'Produits' => $produitRepository->findAll(),
+            'pieChart' => $pieChart,
+
 
         ]);
     }
@@ -66,12 +114,15 @@ class CommandeController extends Controller
     {
 
 
-        dump($request->get('search'));
+        //dump($request->get('search'));
         if (null !=$request->get('search')){
+            $achats =$this->getDoctrine()->getRepository(Achat::class)->findBy(['id' => $request->get('search')]);
             return $this->render('/commande/achatfront.html.twig',[
-                'achats' => $this->getDoctrine()->getRepository(Achat::class)->findBy(['id' => $request->get('search')]),
+                'achats' => $achats,
+                'flash'=> $request->get('flash'),
             ]);
         }
+        $flashy->success('Achat effectué', '');
 
         $achats =$achatRepository->findAll();
         $achats = $this->get('knp_paginator')->paginate(
@@ -80,17 +131,14 @@ class CommandeController extends Controller
             9
         );
 
-        $flashy->success('Achat effectué', '');
-
         return $this->render('/commande/achatfront.html.twig', [
             'achats' => $achats,
             'Produits' => $produitRepository->findAll(),
+            'flash'=> $request->get('flash'),
 
         ]);
 
     }
-
-
 
 
 
@@ -106,6 +154,7 @@ class CommandeController extends Controller
         dump($idC);
         return $this->redirectToRoute('achatfront', array('id' => $idC), Response::HTTP_SEE_OTHER);
     }
+
 
 
 
@@ -159,6 +208,47 @@ class CommandeController extends Controller
         ]);
     }
 
+    /**
+     * @Route ("/testpdf" , name="testpdf")
+     */
+public function testpdf(CommandeRepository $commandeRepository , ProduitRepository $produitRepository)
+    {
+
+    return $this->render('/commande/pdf.html.twig', [
+        'Commandes' => $commandeRepository->findAll(),
+        'Produits' => $produitRepository->findAll(),
+    ]);
+}
+
+
+
+    /**
+     * @Route("/pdfc", name="pdfc", methods={"GET"})
+     */
+        public function pdfc (AchatRepository $AchatRepository, CommandeRepository $commandeRepository , ProduitRepository $produitRepository, Request $request): Response
+     {
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        $dompdf = new Dompdf($pdfOptions);
+
+
+         $html = $this->render('/commande/pdf.html.twig', [
+             'Commandes' => $commandeRepository->findAll(),
+             'Produits' => $produitRepository->findAll(),
+         ]);
+
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+        $dompdf->stream("MyCommnade.pdf", [
+            "Attachment" => true
+        ]);
+
+    }
 
 
 
