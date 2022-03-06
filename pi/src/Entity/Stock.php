@@ -136,4 +136,8 @@ class Stock
         return $this->libelle;
     }
 
+    public function __toString1() {
+        return $this->disponibilite;
+    }
+
 }

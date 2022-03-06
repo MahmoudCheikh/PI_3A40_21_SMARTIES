@@ -2,13 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
 use App\Entity\Favoris;
+use App\Entity\Produit;
+use App\Form\CommandeFrontType;
 use App\Form\FavorisType;
 use App\Repository\FavorisRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\UsersRepository;
+use App\Repository\VeloRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/favoris")
  */
-class FavorisController extends AbstractController
+class FavorisController extends Controller
 {
     /**
      * @Route("/", name="favoris_index", methods={"GET"})
@@ -27,6 +31,29 @@ class FavorisController extends AbstractController
             'favoris' => $favorisRepository->findAll(),
         ]);
     }
+    /**
+     * @Route("/favori1", name="favoris1", methods={"GET"})
+     */
+    public function front(FavorisRepository $favorisRepository,Request $request): Response
+    {
+        $test = $favorisRepository->findAll();
+
+        $test = $this->get('knp_paginator')->paginate(
+            $test,
+            $request->query->getInt('page',1),3
+        );
+        /*if (null != $request->get('search')) {
+            $test = $this->getDoctrine()->getRepository(Favoris::class)->findBy(['IdProduit'->'libelle' => $request->get('search')]);
+            $test = $this->get('knp_paginator')->paginate($test, $request->query->getInt('page',1), 3);
+            return $this->render('/produit/favoris.html.twig', [
+                'Produits' => $test,
+            ]);
+        }*/
+        return $this->render('produit/favoris.html.twig', [
+            'Produits' => $test,
+        ]);
+    }
+
 
     /**
      * @Route("/new", name="favoris_new", methods={"GET", "POST"})
@@ -93,33 +120,4 @@ class FavorisController extends AbstractController
         return $this->redirectToRoute('favoris_index', [], Response::HTTP_SEE_OTHER);
     }
 
-
-    /**
-     * @Route("/{id}", name="favoris" , methods={"GET"})
-     */
-    public function favoris(ProduitRepository $produitRepository,UsersRepository $usersRepository , EntityManagerInterface $entityManager,$id): Response
-    {
-        $produit=$ProduitRepository->find($id);
-        $Favoris = new Favoris ();
-        $form = $this->createForm(FavorisType::class, $Favoris );
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = $usersRepository->find($this->getuser()->getid());
-            $Favoris ->setIdUser($user);
-            $Favoris ->setIdProduit($produit);
-            $entityManager->persist($Favoris );
-
-
-            $entityManager->flush();
-
-            return $this->redirectToRoute('favoris', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('/produit/favoris.html.twig', [
-            'produit'=> $produit,
-            'Favoris' => $Favoris ,
-            'form' => $form->createView(),
-        ]);
-
-    }
 }

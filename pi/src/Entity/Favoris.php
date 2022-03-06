@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\FavorisRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,23 +18,32 @@ class Favoris
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="favoris")
-     */
-    private $IdProduit;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Users::class, mappedBy="favoris")
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="favoris")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $IdUser;
 
-    public function __construct()
-    {
-        $this->IdUser = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="favoris")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $IdProduit;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getIdUser(): ?Users
+    {
+        return $this->IdUser;
+    }
+
+    public function setIdUser(?Users $IdUser): self
+    {
+        $this->IdUser = $IdUser;
+
+        return $this;
     }
 
     public function getIdProduit(): ?Produit
@@ -47,36 +54,6 @@ class Favoris
     public function setIdProduit(?Produit $IdProduit): self
     {
         $this->IdProduit = $IdProduit;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Users[]
-     */
-    public function getIdUser(): Collection
-    {
-        return $this->IdUser;
-    }
-
-    public function addIdUser(Users $idUser): self
-    {
-        if (!$this->IdUser->contains($idUser)) {
-            $this->IdUser[] = $idUser;
-            $idUser->setFavoris($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdUser(Users $idUser): self
-    {
-        if ($this->IdUser->removeElement($idUser)) {
-            // set the owning side to null (unless already changed)
-            if ($idUser->getFavoris() === $this) {
-                $idUser->setFavoris(null);
-            }
-        }
 
         return $this;
     }

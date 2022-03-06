@@ -112,10 +112,9 @@ class Users implements UserInterface
     private $locations;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Favoris::class, inversedBy="IdUser")
+     * @ORM\OneToMany(targetEntity=Favoris::class, mappedBy="IdUser", orphanRemoval=true)
      */
     private $favoris;
-
 
     public function __construct()
     {
@@ -126,6 +125,7 @@ class Users implements UserInterface
         $this->abonnements = new ArrayCollection();
         $this->locations = new ArrayCollection();
         $this->IdProduit = new ArrayCollection();
+        $this->favoris = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -458,17 +458,37 @@ class Users implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getFavoris(): ?Favoris
+    /**
+     * @return Collection|Favoris[]
+     */
+    public function getFavoris(): Collection
     {
         return $this->favoris;
     }
 
-    public function setFavoris(?Favoris $favoris): self
+    public function addFavori(Favoris $favori): self
     {
-        $this->favoris = $favoris;
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+            $favori->setIdUser($this);
+        }
 
         return $this;
     }
+
+    public function removeFavori(Favoris $favori): self
+    {
+        if ($this->favoris->removeElement($favori)) {
+            // set the owning side to null (unless already changed)
+            if ($favori->getIdUser() === $this) {
+                $favori->setIdUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 
 
 }

@@ -66,7 +66,7 @@ class Produit
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity=Favoris::class, mappedBy="IdProduit")
+     * @ORM\OneToMany(targetEntity=Favoris::class, mappedBy="IdProduit", orphanRemoval=true)
      */
     private $favoris;
 
