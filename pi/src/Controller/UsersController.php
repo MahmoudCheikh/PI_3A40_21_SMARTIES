@@ -149,7 +149,7 @@ class UsersController extends AbstractController
             $user->setImage("confirme");
             $entityManager->persist($user);
             $entityManager->flush();
-            return $this->render('/base_front.html.twig');
+            return $this->redirectToRoute('site');
         }
 
 
@@ -167,7 +167,7 @@ class UsersController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->render('/base_front.html.twig');
+        return  $this->redirectToRoute('site');
     }
 
     /**
