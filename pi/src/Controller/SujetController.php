@@ -8,7 +8,9 @@ use App\Form\SujetType;
 use App\Repository\SujetRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/sujet")
  */
-class SujetController extends AbstractController
+class SujetController extends Controller
 {
     /**
      * @Route("/", name="sujet_index", methods={"GET"})
@@ -31,10 +33,77 @@ class SujetController extends AbstractController
     /**
      * @Route("/front", name="sujet_front", methods={"GET"})
      */
-    public function indexfront(SujetRepository $sujetRepository): Response
+    public function indexfront(SujetRepository $sujetRepository,PaginatorInterface $paginator, Request $request): Response
     {
+        if (null != $request->get('search')) {
+            $sujets = $sujetRepository->findBy(['titre' => $request->get('search')]);
+            $sujets = $this->get('knp_paginator')->paginate($sujets, $request->query->getInt('page', 1), 5);
+            return $this->render('/sujet/sujettest.html.twig', [
+                'sujets' => $sujets,
+            ]);
+        }
+
+        $sujets = $sujetRepository->findAll();
+        $sujets = $this->get('knp_paginator')->paginate($sujets,$request->query->getInt('page',1),5);
         return $this->render('sujet/sujettest.html.twig', [
-            'sujets' => $sujetRepository->findAll(),
+            'sujets' => $sujets,
+        ]);
+    }
+
+    /**
+     * @Route("/frontdate", name="tridate", methods={"GET"})
+     */
+    public function indextridate(SujetRepository $sujetRepository,PaginatorInterface $paginator, Request $request): Response
+    {
+        if (null != $request->get('search')) {
+            $sujets = $sujetRepository->findBy(['titre' => $request->get('search')]);
+            $sujets = $this->get('knp_paginator')->paginate($sujets, $request->query->getInt('page', 1), 5);
+            return $this->render('/sujet/sujettest.html.twig', [
+                'sujets' => $sujets,
+            ]);
+        }
+        $sujets = $sujetRepository->findBy([], ['Date' => 'ASC']);
+        $sujets = $this->get('knp_paginator')->paginate($sujets,$request->query->getInt('page',1),5);
+        return $this->render('sujet/sujettest.html.twig', [
+            'sujets' => $sujets,
+        ]);
+    }
+
+    /**
+     * @Route("/frontvues", name="trivues", methods={"GET"})
+     */
+    public function indextrivues(SujetRepository $sujetRepository,PaginatorInterface $paginator, Request $request): Response
+    {
+        if (null != $request->get('search')) {
+            $sujets = $sujetRepository->findBy(['titre' => $request->get('search')]);
+            $sujets = $this->get('knp_paginator')->paginate($sujets, $request->query->getInt('page', 1), 5);
+            return $this->render('/sujet/sujettest.html.twig', [
+                'sujets' => $sujets,
+            ]);
+        }
+        $sujets = $sujetRepository->findBy([], ['nbVues' => 'DESC']);
+        $sujets = $this->get('knp_paginator')->paginate($sujets,$request->query->getInt('page',1),5);
+        return $this->render('sujet/sujettest.html.twig', [
+            'sujets' => $sujets,
+        ]);
+    }
+
+    /**
+     * @Route("/frontreponse", name="trireponse", methods={"GET"})
+     */
+    public function indextrireponse(SujetRepository $sujetRepository,PaginatorInterface $paginator, Request $request): Response
+    {
+        if (null != $request->get('search')) {
+            $sujets = $sujetRepository->findBy(['titre' => $request->get('search')]);
+            $sujets = $this->get('knp_paginator')->paginate($sujets, $request->query->getInt('page', 1), 5);
+            return $this->render('/sujet/sujettest.html.twig', [
+                'sujets' => $sujets,
+            ]);
+        }
+        $sujets = $sujetRepository->findBy([], ['nbReponses' => 'DESC']);
+        $sujets = $this->get('knp_paginator')->paginate($sujets,$request->query->getInt('page',1),5);
+        return $this->render('sujet/sujettest.html.twig', [
+            'sujets' => $sujets,
         ]);
     }
 
@@ -60,7 +129,6 @@ class SujetController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/newfront", name="sujet_new_front", methods={"GET", "POST"})
      */
@@ -76,7 +144,6 @@ class SujetController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $sujet->setIdUser($user);
-            $sujet->setIdPost(1);
             $entityManager->persist($sujet);
             $entityManager->flush();
 
@@ -102,13 +169,17 @@ class SujetController extends AbstractController
     /**
      * @Route("/front/{id}", name="sujet_show_front", methods={"GET"})
      */
-    public function showFront(Sujet $sujet): Response
+    public function showFront(Sujet $sujet,EntityManagerInterface $entityManager): Response
     {
+        $nb = $sujet->getnbVues();
+        $nb = $nb + 1;
+        $sujet->setnbVues($nb);
+        $entityManager->persist($sujet);
+        $entityManager->flush();
         return $this->render('sujet/SujetShowOne.html.twig', [
             'sujet' => $sujet,
         ]);
     }
-
 
     /**
      * @Route("/{id}/edit", name="sujet_edit", methods={"GET", "POST"})

@@ -135,7 +135,12 @@
                                         <div class="elementor-widget-container">
                                             <p>{{ sujet.contenu }}</p>
                                         </div>
-                                        {% if app.user %}
+                                        {% if (app.user)  and (app.user.image == 'banned') %}
+                                        <a href={{ path('app_logout')}}>
+                                            <span class="elementor-icon-list-text">Vous etes banni</span>
+                                        </a>
+
+                                        {% elseif app.user %}
                                         <a href={{ path('message_new_front', { 'sujet': sujet , 'id' : sujet.id }) }}>
                                             <span class="elementor-icon-list-text">Repondre</span>
                                         </a>
@@ -146,10 +151,10 @@
                                          class="elementor elementor-602 elementor-location-single post-524 page type-page status-publish hentry"
                                          data-elementor-settings="[]">
                                         <div class="elementor-section-wrap">
-                                            {% for msg in sujet.getMessages() %}
                                             <section
                                                     class="elementor-section elementor-top-section elementor-element elementor-element-2a15337 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
                                                     data-id="2a15337" data-element_type="section">
+                                            {% for msg in sujet.getMessages() %}
                                                 <div class="elementor-container elementor-column-gap-default">
                                                     <div class="elementor-row">
                                                         <div class="elementor-column elementor-col- elementor-top-column elementor-element elementor-element-0380e83"
@@ -193,7 +198,9 @@
                                                                                             <div class="elementor-testimonial-name">{{ msg.idUser.email }}</div>
                                                                                             <div class="elementor-testimonial-job">{{ msg.date|date("d/m/y") }}</div>
                                                                                             {% if app.user %}
-                                                                                                {% if app.user.id == msg.IdUser.id %}
+                                                                                                {% if app.user.image == 'banned' %}
+                                                                                                <a href=path("app_logout")>Vous etes banni</a>
+                                                                                                {% elseif app.user.id == msg.IdUser.id %}
                                                                                                     <span class="elementor-button-icon elementor-align-icon-right"></span>
                                                                                                     <form method="post" action="{{ path('message_front_edit', {'id': msg.id}) }}">
                                                                                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ msg.id) }}">

@@ -94,14 +94,21 @@
                                                                  data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <h3>REJOIGNEZ LA CONVERSATION</h3></div>
+                                                                    <span class="elementor-button-content-wrapper">
+                                                                        <a href={{ path('tridate') }}>Tri date</a>
+                                                                            <div class="elementor-widget-wrap"></div>
+                                                                        <a href={{ path('trivues') }}>Tri nombre vues</a>
+                                                                            <div class="elementor-widget-wrap"></div>
+                                                                        <a href={{ path('trireponse') }}>Tri nombre reponses</a>
+                                                                            <div class="elementor-widget-wrap"></div>
+                                                                    </span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </section>
                                 </div>
                             </div>
@@ -114,7 +121,18 @@
                                     <div class="elementor-element elementor-element-99bd057 elementor-align-center elementor-widget elementor-widget-button"
                                          data-id="99bd057" data-element_type="widget" data-widget_type="button.default">
                                         <div class="elementor-widget-container">
-                                            {% if app.user %}
+                                            {% if (app.user)  and (app.user.image == 'banned') %}
+                                                <div class="elementor-button-wrapper">
+                                                    <a href="{{ path("app_logout") }}"
+                                                       class="elementor-button-link elementor-button elementor-size-sm"
+                                                       role="button">
+						<span class="elementor-button-content-wrapper">
+
+						<span class="elementor-button-text">Vous etes banni</span>
+		</span>
+                                                    </a>
+                                                </div>
+                                            {% elseif app.user %}
                                                 <div class="elementor-button-wrapper">
                                                     <a href="{{ path("sujet_new_front") }}"
                                                        class="elementor-button-link elementor-button elementor-size-sm"
@@ -122,9 +140,12 @@
 						<span class="elementor-button-content-wrapper">
 
 						<span class="elementor-button-text">CREER UN POST</span>
+
 		</span>
                                                     </a>
+
                                                 </div>
+
                                             {% else %}
                                                 <div class="elementor-button-wrapper">
                                                     <a href="{{ path("app_login") }}"
@@ -145,8 +166,46 @@
                         </div>
                     </div>
                 </div>
+
             </section>
 
+            <section
+                    class="elementor-section elementor-top-section elementor-element elementor-element-330db02 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                    data-id="330db02" data-element_type="section">
+                <div class="elementor-container elementor-column-gap-default">
+                    <div class="elementor-row">
+                        <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-66fc9aa">
+                            <div class="elementor-column-wrap elementor-element-populated">
+                                <form action="" method="GET">
+                                    <input type="search" id="site-search"
+                                           name="search"
+                                           placeholder="recherche via le titre"
+                                           aria-label="Search through site content">
+                                    <button type="submit">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-38451a8">
+                            <div class="elementor-column-wrap elementor-element-populated">
+                                <div class="elementor-widget-wrap">
+                                    <div class="elementor-element elementor-element-eff454a elementor-widget elementor-widget-text-editor"
+                                         data-id="eff454a" data-element_type="widget"
+                                         data-widget_type="text-editor.default">
+                                        <div class="elementor-widget-container">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-f8484e9"
+                             data-id="f8484e9" data-element_type="column"
+                             data-settings="&quot;background_background&quot;:&quot;classic&quot;}">
+                            <div class="elementor-column-wrap elementor-element-populated">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {% for sujet in sujets %}
                 <section
@@ -189,7 +248,7 @@
                                                                             <li class="elementor-icon-list-item">
 											<span class="elementor-icon-list-icon">
 							<i aria-hidden="true" class="far fa-calendar-alt"></i>						</span>
-                                                                                <span class="elementor-icon-list-text">Posté le {{ sujet.date|date("d/M/y") }} , <br> {{ sujet.IdUser.email }}</span>
+                                                                                <span class="elementor-icon-list-text">Posté le {{ sujet.date|date("d/M/y") }} <br>par {{ sujet.IdUser.email }} <br>Vues: {{ sujet.nbVues }} <br> Reponses {{ sujet.nbReponses }}</span>
                                                                             </li>
                                                                         </ul>
                                                                     </div>
@@ -254,7 +313,9 @@
 						<span class="elementor-button-content-wrapper">
 
                             {% if app.user %}
-                                {% if app.user.id == sujet.IdUser.id %}
+                                {% if (app.user.image == 'banned') and ( app.user.id == sujet.IdUser.id ) %}
+                                    <a href={{ path('app_logout') }}>Vous etes banni</a>
+                                {% elseif app.user.id == sujet.IdUser.id %}
 
 
                                     <form method="post" action="{{ path('sujet_delete_front', {'id': sujet.id}) }}"
@@ -298,17 +359,12 @@
                                          data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
                                          data-widget_type="button.default">
                                         <div class="elementor-widget-container">
-                                            <div class="elementor-button-wrapper">
-                                                <a href="#"
-                                                   class="elementor-button-link elementor-button elementor-size-sm"
-                                                   role="button">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon elementor-align-icon-right">
-				<i aria-hidden="true" class="fas fa-arrow-right"></i>			</span>
-						<span class="elementor-button-text">Plus de sujets</span>
-		</span>
-                                                </a>
+
+                                            <div class="navigation">
+                                                {{ knp_pagination_render(sujets) }}
                                             </div>
+                                            </span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -316,9 +372,10 @@
                         </div>
                     </div>
                 </div>
-            </section>
-
-
         </div>
+        </section>
+
+
+    </div>
     </div>
 {% endblock %}

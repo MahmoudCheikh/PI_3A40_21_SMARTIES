@@ -11,7 +11,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/users")
@@ -92,6 +96,81 @@ class UsersController extends AbstractController
     }
 
     /**
+     * @Route("/resetpass/", name="resetpass", methods={"GET" ,  "POST"})
+     */
+    public function resetpass(MailerInterface $mailer ,Request $request , UsersRepository $usersRepository ,EntityManagerInterface $entityManager): Response
+    {
+        if (null !=$request->get('email')){
+            $user = $usersRepository->findBy(['email' => $request->get('email')]);
+            $user = array_shift($user);
+
+            if($user != null){
+                $string = $this->generateUrl('reset', [
+                    'id' => $user->getId(),
+                ]);
+
+                $user->setRole("reset");
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+
+                $string = "localhost".$string;
+                $email = (new Email())
+                    ->from('mahmoud.cheikh@esprit.tn')
+                    ->to('mahmoud.cheikh@esprit.tn')
+                    ->subject('Reinitialisation mot de passe!')
+                    ->html('<a href='.$string.'>reinitialiser votre mot de passe</a>');
+
+                $mailer->send($email);
+            }
+
+
+        }
+        return $this->render('Users/resetpass.html.twig');
+    }
+
+    /**
+     * @Route("/reset/{id}", name="reset", methods={"GET" , "POST"})
+     */
+    public function reset(UserPasswordEncoderInterface $userPasswordEncoder,Request $request,UsersRepository $usersRepository,int $id, EntityManagerInterface $entityManager): Response
+    {
+        if (null !=$request->get('pass')) {
+            $user = $usersRepository->find($id);
+
+            $user->setPassword(
+                $userPasswordEncoder->encodePassword(
+                    $user,
+                    $request->get('pass')
+                )
+            );
+            $user->setRole("non");
+            $entityManager->persist($user);
+            $entityManager->flush();
+            $user->setImage("confirme");
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return $this->render('/base_front.html.twig');
+        }
+
+
+
+        return $this->render('users/reset.html.twig' , ['userid'=>$id]);
+    }
+
+    /**
+     * @Route("/confirmer/{id}", name="confirm", methods={"GET" , "POST"})
+     */
+    public function confirm(UsersRepository $usersRepository,int $id, EntityManagerInterface $entityManager): Response
+    {
+        $user = $usersRepository->find($id);
+        $user->setImage("confirme");
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->render('/base_front.html.twig');
+    }
+
+    /**
      * @Route("/modifierfront", name="users_modifier_front", methods={"GET", "POST"})
      */
     public function modifierFront(Request $request, EntityManagerInterface $entityManager , UsersRepository $usersRepository): Response
@@ -135,6 +214,29 @@ class UsersController extends AbstractController
     }
 
     /**
+     * @Route("/ban/{id}", name="banUser", methods={"POST" , "GET"})
+     */
+    public function ban(Request $request, Users $user, EntityManagerInterface $entityManager): Response
+    {
+        $user->setImage("banned");
+        $entityManager->persist($user);
+        $entityManager->flush();
+        return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("/unban/{id}", name="unbanUser", methods={"POST" , "GET"})
+     */
+    public function unban(Request $request, Users $user, EntityManagerInterface $entityManager): Response
+    {
+        $user->setImage("confirme");
+        $entityManager->persist($user);
+        $entityManager->flush();
+        return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+    /**
      * @Route("/{id}", name="users_delete", methods={"POST"})
      */
     public function delete(Request $request, Users $user, EntityManagerInterface $entityManager): Response
@@ -146,4 +248,8 @@ class UsersController extends AbstractController
 
         return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+
+
 }

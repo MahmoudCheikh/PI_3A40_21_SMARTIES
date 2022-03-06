@@ -1,6 +1,6 @@
 {% extends 'base_front.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Reset password!{% endblock %}
 
 {% block body %}
 
@@ -34,7 +34,7 @@
                                             <div class="premium-dual-header-container">
                                                 <div class="premium-dual-header-first-container">
                                                     <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient">
-                                                        <span class="premium-dual-header-first-span">Connexion </span><span
+                                                        <span class="premium-dual-header-first-span">Reset </span><span
                                                                 class="premium-dual-header-second-header "></span></h2>
                                                 </div>
                                             </div>
@@ -46,7 +46,7 @@
                                          data-widget_type="text-editor.default">
                                         <div class="elementor-widget-container">
                                             <div class="elementor-text-editor elementor-clearfix">
-                                                <h2>Se connecter</h2></div>
+                                                <h2>Mot de passe oublié</h2></div>
                                         </div>
                                     </div>
                                     <div class="elementor-element elementor-element-c0e4942 elementor-widget elementor-widget-text-editor"
@@ -58,51 +58,36 @@
                                          data-settings="{&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}"
                                          data-widget_type="form.default">
                                         <div class="elementor-widget-container">
-                                            <form method="post" novalidate="novalidate">
-
-
+                                                <form action="" method="GET">
                                                 <div class="elementor-form-fields-wrapper elementor-labels-above">
                                                     <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
                                                         <label for="inputEmail"></label><input size="1"
                                                                                                class="elementor-field elementor-size-sm  elementor-field-textual form-control"
-                                                                                               placeholder="Email" type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                                                                                               placeholder="Email" type="email" name="email" id="inputEmail"
                                                                                                autocomplete="email" required autofocus></div>
-                                                    <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
-                                                        <label for="inputPassword"></label><input size="1"
-                                                                                                  class="elementor-field elementor-size-sm  elementor-field-textual form-control"
-                                                                                                  placeholder="Mot de passe" type="password" name="password" id="inputPassword" autocomplete="current-password"
-                                                                                                  required></div>
-                                                <div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
-                                                    <input type="hidden" name="_csrf_token"
-                                                           value="{{ csrf_token('authenticate') }}"
-                                                    >
-                                                    <button type="submit" class="elementor-button elementor-size-sm">
+                                                    <div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
+                                                        <button type="submit" class="elementor-button elementor-size-sm">
 
-															<span class=" elementor-button-icon">
-																										</span>
-                                                        <span class="elementor-button-text">LOGIN</span>
+															<span class=" elementor-button-icon"></span>
+                                                            <span class="elementor-button-text">RESET</span>
 
-                                                    </button>
-                                                    <a href={{ path("resetpass") }}>Mot de passe oublié</a>
+                                                        </button>
+
+
+                                                    </div>
 
                                                 </div>
 
+                                            </form>
                                         </div>
-                                        {% if error %}
-                                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                                        {% endif %}
-
-
-                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
         </div>
-        </section>
-    </div>
     </div>
 
 {% endblock %}
