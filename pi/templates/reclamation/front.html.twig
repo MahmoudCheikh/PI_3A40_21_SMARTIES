@@ -1,4 +1,13 @@
 {% extends 'base_front.html.twig' %}
+{% block testcss %}
+
+    <!-- Flashy depends on jQuery -->
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+{% endblock %}
 
 {% block title %}Reclamation{% endblock %}
 
@@ -7,13 +16,23 @@
     <div class="elementor-section elementor-top-section elementor-element elementor-element-5b549ae elementor-section-boxed elementor-section-height-default elementor-section-height-default">
 
             {% if app.user %}
-        <div class="elementor-row">
+                <link rel='stylesheet' id='hello-elementor-css'  href='../wp-content/themes/hello-elementor/style.min8066.css?ver=2.4.1' type='text/css' media='all' />
+
+                {%  if flash  %}
+                {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+                 {% endif %}
+                <div class="elementor-row">
                 <div class="elementor-container elementor-column-gap-default">
 
                     <p></p><a href={{ path("reclamation_front_new") }}>Envoyer une reclamation</a>
                 </div>
+
         </div>
-        <div class="elementor-container elementor-column-gap-default">
+
+
+            <a href={{ path('trid') }}>Trier Par Date</a></tr>
+
+            <div class="elementor-container elementor-column-gap-default">
                 <table class="table">
 
                     <thead>
@@ -37,6 +56,7 @@
                 </table>
         </div>
 
+                <a href={{ path('pdfr') }}>Voir Vos Reclamation en PDF</a>
 
 
 
@@ -44,9 +64,19 @@
             {% else %}
                 <p>Veuillez vous connecter</p>
             {% endif %}
+        <label for="site-search">Rechercher Le Nombre Du Commande:</label>
+
+        <form action="" method="GET">
+            <input type="search" id="site-search" name="search"
+                   aria-label="Search through site content">
+            <button type="submit">Rechercher Par Refernce</button>
+        </form>
+        <tr>
 
 
-        </div>
+            <td colspan="6" class="actions">
+                <a href={{ path('triha') }}>Trier Par Reference</a></tr>
+    </div>
     </div>
 
 {% endblock %}

@@ -20,8 +20,7 @@ class Reclamation
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="reclamations")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotBlank(message="user est requis")
-     */
+          */
     private $idUser;
 
     /**

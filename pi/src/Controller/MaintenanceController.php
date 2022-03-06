@@ -6,15 +6,16 @@ use App\Entity\Maintenance;
 use App\Form\MaintenanceType;
 use App\Repository\MaintenanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/maintenance")
  */
-class MaintenanceController extends AbstractController
+class MaintenanceController extends Controller
 {
     /**
      * @Route("/maintenance_front", name="maintenance_index" , methods={"GET"})
@@ -29,8 +30,15 @@ class MaintenanceController extends AbstractController
     /**
      * @Route("/front", name="maintenance_front" , methods={"GET"})
      */
-    public function front(MaintenanceRepository $maintenanceRepository): Response
+    public function front(MaintenanceRepository $maintenanceRepository,PaginatorInterface $paginator, Request $request): Response
     {
+        $maintenance = $maintenanceRepository->findAll();
+       // $maintenance = $this->get('knp_paginator')->paginate(
+        //    $maintenance,
+         //   $request->query->getInt('page',1),
+    //        8
+    //    );
+
         return $this->render('/maintenance/front.html.twig',[
             'maintenances' => $maintenanceRepository->findAll(),
         ]);

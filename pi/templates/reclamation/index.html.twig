@@ -19,6 +19,7 @@
             <tr>
                 <th>Id</th>
                 <th>Description</th>
+                <th>User</th>
                 <th>Date</th>
                 <th>Objet</th>
                 <th>actions</th>
@@ -29,6 +30,7 @@
             <tr>
                 <td>{{ reclamation.id }}</td>
                 <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.idUser }}</td>
                 <td>{{ reclamation.date ? reclamation.date|date('Y-m-d') : '' }}</td>
                 <td>{{ reclamation.objet }}</td>
                 <td>

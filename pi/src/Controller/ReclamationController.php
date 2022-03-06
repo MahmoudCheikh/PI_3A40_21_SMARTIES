@@ -12,7 +12,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\Validator\Constraints\Date;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 
 /**
  * @Route("/reclamation")
@@ -32,18 +36,110 @@ class ReclamationController extends AbstractController
     /**
      * @Route("/front", name="reclamation_front", methods={"GET"})
      */
-    public function front(ReclamationRepository $reclamationRepository): Response
+    public function front(FlashyNotifier $flashy,ReclamationRepository $reclamationRepository,Request $request): Response
     {
+        dump($request->get('search'));
+        if (null !=$request->get('search')){
+            $reclamations =$this->getDoctrine()->getRepository(Reclamation::class)->findBy(['id' => $request->get('search')]);
+            return $this->render('/reclamation/front.html.twig',[
+                'reclamations' => $reclamations,
+                'flash'=>$request->get('flash'),
+            ]);
+        }
+
+        $flashy->info('Reclamation Pasée', '');
+
         return $this->render('reclamation/front.html.twig', [
             'reclamations' => $reclamationRepository->findAll(),
+            'flash'=> $request->get('flash'),
         ]);
     }
+
+
+
+    /**
+     * @Route("/pdfr", name="pdfr", methods={"GET"})
+     */
+    public function pdfr (ReclamationRepository $reclamationRepository , Request $request): Response
+    {
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        $dompdf = new Dompdf($pdfOptions);
+        $reclamations = $reclamationRepository->findAll();
+
+        $html = $this->renderView('/reclamation/pdf.html.twig',[
+            'reclamations' => $reclamations,
+        ]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("Mes Reclamation.pdf", [
+            "Attachment" => true
+        ]);
+    }
+
+
+    /**
+     * @Route("/trihazem", name="trihazem", methods={"GET"})
+     */
+    public function trihazem (ReclamationRepository $reclamationRepository , Request $request): Response
+    {
+        return $this->render('/reclamation/front.html.twig',[
+            'reclamations' => $this->getDoctrine()->getRepository(Reclamation::class)->findBy([], ['id' => 'DESC']),
+            'flash'=> $request->get('flash'),
+
+        ]);
+    }
+
+
+    /**
+     * @Route("/triha", name="triha", methods={"GET"})
+     */
+    public function triha (ReclamationRepository $reclamationRepository , Request $request): Response
+    {
+
+        if (null !=$request->get('search')){
+            $reclamations =$this->getDoctrine()->getRepository(Reclamation::class)->findBy(['id' => $request->get('search')]);
+            return $this->render('/reclamation/front.html.twig',[
+                'reclamations' => $reclamations,
+            ]);
+        }
+        return $this->render('/reclamation/front.html.twig',[
+            'reclamations' => $this->getDoctrine()->getRepository(Reclamation::class)->findBy([], ['id' => 'DESC']),
+            'flash'=> $request->get('flash'),
+
+        ]);
+    }
+    /**
+     * @Route("/trid", name="trid", methods={"GET"})
+     */
+    public function trid (ReclamationRepository $reclamationRepository , Request $request): Response
+    {
+
+        if (null !=$request->get('search')){
+            $reclamations =$this->getDoctrine()->getRepository(Reclamation::class)->findBy(['id' => $request->get('search')]);
+            return $this->render('/reclamation/front.html.twig',[
+                'reclamations' => $reclamations,
+            ]);
+        }
+        return $this->render('/reclamation/front.html.twig',[
+            'reclamations' => $this->getDoctrine()->getRepository(Reclamation::class)->findBy([], ['date' => 'DESC']),
+            'flash'=> $request->get('flash'),
+        ]);
+    }
+
+
+
+
 
     /**
      * @Route("/newfront", name="reclamation_front_new", methods={"GET", "POST"})
      */
     public function newfront(Request $request, EntityManagerInterface $entityManager , UsersRepository $usersRepository): Response
     {
+
         $reclamation = new Reclamation();
         $form = $this->createForm(RelcamationFrontFormType::class, $reclamation);
         $form->handleRequest($request);
@@ -55,7 +151,9 @@ class ReclamationController extends AbstractController
             $entityManager->persist($reclamation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('reclamation_front', [], Response::HTTP_SEE_OTHER);
+            $flash =1;
+
+            return $this->redirectToRoute('reclamation_front', ['flash'=> 1], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('reclamation/new_front.html.twig', [

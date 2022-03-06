@@ -21,7 +21,6 @@ class Maintenance
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class)
-     * @Assert\NotBlank(message="le champs user est requis")
      */
     private $relation;
 
