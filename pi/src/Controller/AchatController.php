@@ -59,7 +59,6 @@ class AchatController extends AbstractController
     }
 
 
-
     /**
      * @Route("/frontnew/{id}", name="achat_front_new", methods={"GET", "POST"})
      */
@@ -98,6 +97,8 @@ class AchatController extends AbstractController
         ]);
     }
 
+
+
     /**
      * @Route("/pdfd", name="pdfd", methods={"GET"})
      */
@@ -123,9 +124,6 @@ class AchatController extends AbstractController
             "Attachment" => true
         ]);
     }
-
-
-
 
     /**
      * @Route("/{id}", name="achat_show", methods={"GET"})

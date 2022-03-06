@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Emplacement;
+use App\Entity\Produit;
 use App\Repository\AchatRepository;
 use App\Repository\CommandeRepository;
 use App\Repository\AccessoireRepository;
@@ -9,6 +11,7 @@ use App\Repository\EmplacementRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\VeloRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -68,9 +71,10 @@ class SiteController extends AbstractController
 
 
 
+    /*
     /**
      * @Route("/produitfront", name="mariem")
-     */
+     *//*
     public function mariem_e(ProduitRepository $ProduitRepository,VeloRepository $veloRepository,AccessoireRepository $accessoireRepository): Response
     {
         return $this->render('/produit/mariem_front.html.twig', [
@@ -79,7 +83,7 @@ class SiteController extends AbstractController
             'accessoires' => $accessoireRepository->findAll(),
         ]);
     }
-
+*/
 
     /**
      * @Route("/mahmoud/", name="mahmoud")
@@ -103,6 +107,15 @@ class SiteController extends AbstractController
     public function autre(): Response
     {
         return $this->render('/autre.html.twig');
+    }
+    /**
+     * @Route("/triparcapacite", name="triparcapacite", methods={"GET"})
+     */
+    public function triparcapacite (EmplacementRepository $emplacementRepository,Request $request):Response
+    {
+        return $this->render('/emplacement/site_front.html.twig',[
+            'emplacements' => $this->getDoctrine()->getRepository(Emplacement::class)->findBy([], ['capacite' => 'DESC']),
+        ]);
     }
 
 }
