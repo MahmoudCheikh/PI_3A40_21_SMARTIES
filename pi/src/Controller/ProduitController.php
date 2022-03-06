@@ -197,8 +197,6 @@ class ProduitController extends Controller
             $Commande->setIdUser($user);
             $Commande->setIdProduit($produit);
             $entityManager->persist($Commande);
-
-
             $entityManager->flush();
 
             return $this->redirectToRoute('commandefront', [], Response::HTTP_SEE_OTHER);

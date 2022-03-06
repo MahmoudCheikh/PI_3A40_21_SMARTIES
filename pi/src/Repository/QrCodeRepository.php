@@ -24,7 +24,7 @@ class QrCodeRepository{
 
     public function qrcode($query)
     {
-        $url = 'http://localhost/PI_3A40_21_SMARTIES/pi/public/index.php/produit/explore_produit/{id}/';
+        $url = 'http://localhost/PI_3A40_21_SMARTIES/pi/public/index.php/produit/explore_produit/';
 
         $objDateTime = new \DateTime('NOW');
         $dateString = $objDateTime->format('d-m-Y H:i:s');
@@ -41,8 +41,9 @@ class QrCodeRepository{
             ->labelText($dateString)
             ->labelAlignment(new LabelAlignmentCenter())
             ->labelMargin(new Margin(15, 5, 5, 5))
-
-
+            ->logoPath($path.'logo1.png')
+            ->logoResizeToWidth('200')
+            ->logoResizeToHeight('100')
             ->backgroundColor(new Color(255, 255, 255))
             ->build()
         ;
