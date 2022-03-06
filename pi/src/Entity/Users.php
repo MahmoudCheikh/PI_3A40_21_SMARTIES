@@ -101,6 +101,12 @@ class Users implements UserInterface
      */
     private $locations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="IdUser", orphanRemoval=true)
+     */
+    private $participations;
+
+
     public function __construct()
     {
         $this->sujets = new ArrayCollection();
@@ -109,6 +115,7 @@ class Users implements UserInterface
         $this->Commandes = new ArrayCollection();
         $this->abonnements = new ArrayCollection();
         $this->locations = new ArrayCollection();
+        $this->participations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -439,5 +446,35 @@ class Users implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Participation[]
+     */
+    public function getParticipations(): Collection
+    {
+        return $this->participations;
+    }
+
+    public function addParticipation(Participation $participation): self
+    {
+        if (!$this->participations->contains($participation)) {
+            $this->participations[] = $participation;
+            $participation->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipation(Participation $participation): self
+    {
+        if ($this->participations->removeElement($participation)) {
+            // set the owning side to null (unless already changed)
+            if ($participation->getIdUser() === $this) {
+                $participation->setIdUser(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -77,9 +77,17 @@ class Evenement
      */
     private $activites;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="IdEvent", orphanRemoval=true)
+     */
+    private $participations;
+
+
+
     public function __construct()
     {
         $this->activites = new ArrayCollection();
+        $this->participations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -205,4 +213,36 @@ class Evenement
     {
         return (string) $this->id;
     }
+
+    /**
+     * @return Collection|Participation[]
+     */
+    public function getParticipations(): Collection
+    {
+        return $this->participations;
+    }
+
+    public function addParticipation(Participation $participation): self
+    {
+        if (!$this->participations->contains($participation)) {
+            $this->participations[] = $participation;
+            $participation->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipation(Participation $participation): self
+    {
+        if ($this->participations->removeElement($participation)) {
+            // set the owning side to null (unless already changed)
+            if ($participation->getIdEvent() === $this) {
+                $participation->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }
