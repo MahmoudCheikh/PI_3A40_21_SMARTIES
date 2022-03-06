@@ -144,6 +144,8 @@ class SujetController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $sujet->setIdUser($user);
+            $sujet->setnbReponses(0);
+            $sujet->setnbVues(0);
             $entityManager->persist($sujet);
             $entityManager->flush();
 

@@ -12,10 +12,6 @@
                 <td>{{ sujet.id }}</td>
             </tr>
             <tr>
-                <th>IdPost</th>
-                <td>{{ sujet.IdPost }}</td>
-            </tr>
-            <tr>
                 <th>Date</th>
                 <td>{{ sujet.Date ? sujet.Date|date('Y-m-d') : '' }}</td>
             </tr>
@@ -26,6 +22,15 @@
             <tr>
                 <th>Contenu</th>
                 <td>{{ sujet.contenu }}</td>
+            </tr><tr>
+                <th>NbReponses</th>
+                <td>{{ sujet.nbReponses }}</td>
+            </tr><tr>
+                <th>NbVues</th>
+                <td>{{ sujet.nbVues }}</td>
+            </tr><tr>
+                <th>User</th>
+                <td>{{ sujet.IdUser.email }}</td>
             </tr>
         </tbody>
     </table>

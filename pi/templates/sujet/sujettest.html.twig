@@ -132,6 +132,17 @@
 		</span>
                                                     </a>
                                                 </div>
+                                            {% elseif (app.user)  and (app.user.image == 'non') %}
+                                                <div class="elementor-button-wrapper">
+                                                    <a href="{{ path("app_logout") }}"
+                                                       class="elementor-button-link elementor-button elementor-size-sm"
+                                                       role="button">
+						<span class="elementor-button-content-wrapper">
+
+						<span class="elementor-button-text">Vous devez confirmer votre compte</span>
+		</span>
+                                                    </a>
+                                                </div>
                                             {% elseif app.user %}
                                                 <div class="elementor-button-wrapper">
                                                     <a href="{{ path("sujet_new_front") }}"

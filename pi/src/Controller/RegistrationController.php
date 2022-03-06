@@ -48,8 +48,8 @@ class RegistrationController extends AbstractController
             $email = (new Email())
                 ->from('mahmoud.cheikh@esprit.tn')
                 ->to('mahmoud.cheikh@esprit.tn')
-                ->subject('Reinitialisation mot de passe!')
-                ->html('<a href='.$string.'>reinitialiser votre mot de passe</a>');
+                ->subject('Bienvenue sur notre site!')
+                ->html('<a href='.$string.'>confirmer votre compte</a>');
 
             $mailer->send($email);
 

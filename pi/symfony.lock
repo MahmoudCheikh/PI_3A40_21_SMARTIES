@@ -132,6 +132,7 @@
     },
     "league/csv": {
         "version": "9.8.0"
+    },
     "maennchen/zipstream-php": {
         "version": "2.1.0"
     },
