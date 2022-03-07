@@ -5,15 +5,24 @@
 {% block body %}
 
     <div class="elementor-section elementor-top-section elementor-element elementor-element-5b549ae elementor-section-boxed elementor-section-height-default elementor-section-height-default">
+            <form action="" method="GET">
+                <input type="search" id="site-search" name="search" placeholder="recherche via le type"
+                       aria-label="Search through site content">
 
+                <button type="submit">Search</button>
+
+            </form><br>
         {% if app.user %}
             <div class="elementor-row">
+               &nbsp; &nbsp; &nbsp; &nbsp; <a href={{ path('triabonnement') }}>Trier Les dates des locations </a>
                 <div class="elementor-container elementor-column-gap-default">
 
                     <p></p><a href={{ path("abonnement_front_new") }}>Acheter un abonnement</a>
                 </div>
             </div>
             <div class="elementor-container elementor-column-gap-default">
+
+
                 <table class="table">
 
                     <thead>

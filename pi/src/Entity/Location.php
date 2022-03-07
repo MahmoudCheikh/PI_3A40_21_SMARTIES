@@ -22,7 +22,7 @@ class Location
      * @ORM\Column(type="date")
      * @Assert\GreaterThan("today")
      */
-    private $date;
+        private $date;
 
     /**
      * @ORM\Column(type="time")

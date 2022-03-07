@@ -12,7 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
 /**
  * @Route("/location")
  */
@@ -27,6 +28,19 @@ class LocationController extends AbstractController
             'locations' => $locationRepository->findAll(),
         ]);
     }
+
+    /**
+     * @Route("/trilocationdate", name="trierpartypelocation", methods={"GET"})
+     */
+    public function trierpartype(LocationRepository  $locationRepository , Request $request): Response
+    {
+
+        $location = $locationRepository->findBy([], ['date' => 'ASC']);
+        return $this->render('/location/front.html.twig', [
+            'locations' => $location,
+        ]);
+    }
+
 
     /**
      * @Route("/new", name="location_new", methods={"GET", "POST"})
@@ -49,12 +63,56 @@ class LocationController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    /**
+     * @Route ("/pdfl" , name="pdfl")
+     */
+    public function pdfl(LocationRepository $locationRepository )
+    {
+
+        return $this->render('/commande/pdf.html.twig', [
+            'locations' => $locationRepository->findAll(),
+        ]);
+    }
+    /**
+     * @Route("/pdflocation", name="pdflocation", methods={"GET"})
+     */
+    public function pdflocation(LocationRepository $locationRepository , Request $request): Response
+    {
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        $dompdf = new Dompdf($pdfOptions);
+
+
+        $html = $this->render('/location/pdflocation.html.twig', [
+            'locations' => $locationRepository->findAll(),
+        ]);
+
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+        $dompdf->stream("MesLocations.pdf", [
+            "Attachment" => true
+        ]);
+
+    }
+
 
     /**
      * @Route("/front", name="location_front_index", methods={"GET"})
      */
-    public function indexfront(LocationRepository $locationRepository): Response
+    public function indexfront(LocationRepository $locationRepository, Request $request): Response
     {
+        if (null != $request->get('search') ) {
+
+            $location = $this->getDoctrine()->getRepository(Location::class)->findBy(['id' => $request->get('search')]);
+            return $this->render('/location/front.html.twig', [
+                'locations' => $location,
+            ]);
+        }
         return $this->render('location/front.html.twig', [
             'locations' => $locationRepository->findAll(),
         ]);
@@ -127,4 +185,6 @@ class LocationController extends AbstractController
 
         return $this->redirectToRoute('location_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }

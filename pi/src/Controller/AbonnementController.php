@@ -30,7 +30,18 @@ class AbonnementController extends AbstractController
             'abonnements' => $abonnementRepository->findAll(),
         ]);
     }
+    /**
+     * @Route("/triabonnement", name="triabonnement", methods={"GET"})
+     */
+    public function triabonnement(AbonnementRepository $abonnementRepository, Request $request): Response
+    {
 
+        $abonnement = $this->getDoctrine()->getRepository(Abonnement ::class)->findBy([], ['datef' => 'ASC']);
+
+        return $this->render('/abonnement/front.html.twig', [
+            'abonnements' => $abonnement,
+        ]);
+    }
     /**
      * @Route("/new", name="abonnement_new", methods={"GET", "POST"})
      */
@@ -56,8 +67,14 @@ class AbonnementController extends AbstractController
     /**
      * @Route("/front", name="abonnement_front_index", methods={"GET"})
      */
-    public function indexFront(AbonnementRepository $abonnementRepository): Response
+    public function indexFront(AbonnementRepository $abonnementRepository,Request $request): Response
     {
+        if (null != $request->get('search') ) {
+        $abonnement = $this->getDoctrine()->getRepository(Abonnement::class)->findBy(['type' => $request->get('search')]);
+        return $this->render('/abonnement/front.html.twig', [
+            'abonnements' => $abonnement,
+        ]);
+    }
         return $this->render('abonnement/front.html.twig', [
             'abonnements' => $abonnementRepository->findAll(),
         ]);

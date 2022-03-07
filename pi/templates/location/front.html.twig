@@ -5,10 +5,20 @@
 {% block body %}
 
     <div class="elementor-section elementor-top-section elementor-element elementor-element-5b549ae elementor-section-boxed elementor-section-height-default elementor-section-height-default">
+        <form action="" method="GET">
+            <input type="search" id="site-search" name="search" placeholder="recherche via le type"
+                   aria-label="Search through site content">
 
+            <button type="submit">Search</button>
+
+        </form><br>
         {% if app.user %}
             <div class="elementor-row">
             </div>
+            <div> <div>       &nbsp;  &nbsp;  &nbsp;  &nbsp;
+                    <a href={{ path('trierpartypelocation') }}>Trier Les dates des locations </a>
+                </div></div>
+
             <div class="elementor-container elementor-column-gap-default">
                 <table class="table">
 
@@ -31,8 +41,14 @@
                     {% endfor %}
                     </tbody>
                 </table>
-            </div>
 
+            </div>
+           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           &nbsp; &nbsp; &nbsp; 
+            <a href={{ path('pdflocation') }}>Telechrager Vos Locations</a></tr>
 
 
 

@@ -10,6 +10,7 @@ use App\Repository\CommandeRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,12 +91,14 @@ class AchatController extends AbstractController
     /**
      * @Route("/tricc", name="tricc", methods={"GET"})
      */
-    public function tricc (AchatRepository $AchatRepository , Request $request): Response
+    public function tricc (FlashyNotifier $flashy, AchatRepository $AchatRepository , Request $request): Response
     {
         if (null !=$request->get('search')){
             $achats =$this->getDoctrine()->getRepository(Achat::class)->findBy(['id' => $request->get('search')]);
             return $this->render('/commande/achatfront.html.twig',[
                 'achats' => $achats,
+                'flash' =>$flashy,
+
             ]);
         }
 
@@ -109,12 +112,13 @@ class AchatController extends AbstractController
     /**
      * @Route("/tri", name="tri", methods={"GET"})
      */
-    public function tri (AchatRepository $AchatRepository , Request $request): Response
+    public function tri (FlashyNotifier $flashy,AchatRepository $AchatRepository , Request $request): Response
     {
         if (null !=$request->get('search')){
             $achats =$this->getDoctrine()->getRepository(Achat::class)->findBy(['id' => $request->get('search')]);
             return $this->render('/commande/achatfront.html.twig',[
                 'achats' => $achats,
+                'flash' => $flashy,
             ]);
         }
 
