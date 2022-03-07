@@ -2,6 +2,9 @@
     "bacon/bacon-qr-code": {
         "version": "2.0.6"
     },
+    "chrisandchris/barcode-bundle": {
+        "version": "v2.0.0"
+    },
     "cmen/google-charts-bundle": {
         "version": "5.0.0"
     },
@@ -159,6 +162,9 @@
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
+    },
+    "nikitospush/barcode-bundle": {
+        "version": "v3.0.2"
     },
     "phar-io/manifest": {
         "version": "2.0.3"

@@ -32,6 +32,7 @@
                                 <td>Date D'Achat</td>
                                 <td>Nom Du Client</td>
                                 <td>Nombre Achetée</td>
+                            <td>Bar code</td>
 
                             </tr>
                                 <tr>
@@ -42,6 +43,7 @@
                                     <th class="Date">{{achat.date ? achat.date|date('Y-m-d') : '' }}</th>
                                     <th class="name">{{achat.nomClient}}</th>
                                     <th class="numeroClient">{{achat.numeroClient}}</th>
+                                    <th class="fa-barcode">{{ barcode({code: 'string to encode', type: 'c128', format: 'html',color: 'white' }) }}</th>
 
                                 </tr>
 

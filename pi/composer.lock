@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4583ef02a0b7c6f4528fc1e5a8b94967",
+    "content-hash": "b0000e565c81c49d4a8a615d548bdc72",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -59,6 +59,70 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.6"
             },
             "time": "2022-02-04T20:16:05+00:00"
+        },
+        {
+            "name": "chrisandchris/barcode-bundle",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chrisandchris/barcode-bundle.git",
+                "reference": "c008b7024ddf620621e6d6ea3d7869368a9d799a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chrisandchris/barcode-bundle/zipball/c008b7024ddf620621e6d6ea3d7869368a9d799a",
+                "reference": "c008b7024ddf620621e6d6ea3d7869368a9d799a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9|^7.0",
+                "symfony/framework-bundle": "^3.0|^4.0",
+                "symfony/options-resolver": "^3.0|^4.0",
+                "symfony/twig-bundle": "^3.0|^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SGK\\BarcodeBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU-LGPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Dinesh Rabara",
+                    "email": "dinesh.rabara@gmail.com"
+                },
+                {
+                    "name": "SHANG Guokan",
+                    "email": "shangguokan@hotmail.com",
+                    "homepage": "https://github.com/shangguokan"
+                }
+            ],
+            "description": "Symfony 3 & 4 Barcode Generator Bundle with Twig function extension",
+            "keywords": [
+                "barcode",
+                "bundle",
+                "flex",
+                "generator",
+                "qr code",
+                "qrcode",
+                "symfony",
+                "symfony3",
+                "symfony4",
+                "twig"
+            ],
+            "support": {
+                "issues": "https://github.com/chrisandchris/barcode-bundle/issues",
+                "source": "https://github.com/chrisandchris/barcode-bundle/tree/v2.0.0"
+            },
+            "abandoned": true,
+            "time": "2018-02-28T15:25:45+00:00"
         },
         {
             "name": "cmen/google-charts-bundle",
@@ -3033,6 +3097,57 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.2"
             },
             "time": "2021-11-30T19:35:32+00:00"
+        },
+        {
+            "name": "nikitospush/barcode-bundle",
+            "version": "v3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikitospush/barcode-bundle.git",
+                "reference": "856bcd62f5a13fd1d7a132b8a9fd7ee8417cce34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikitospush/barcode-bundle/zipball/856bcd62f5a13fd1d7a132b8a9fd7ee8417cce34",
+                "reference": "856bcd62f5a13fd1d7a132b8a9fd7ee8417cce34",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "symfony/framework-bundle": "^4.0|^5.0",
+                "symfony/options-resolver": "^4.0|^5.0",
+                "symfony/twig-bundle": "^4.0|^5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SGK\\BarcodeBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Symfony 4 & 5 Barcode Generator Bundle with Twig function extension",
+            "keywords": [
+                "barcode",
+                "bundle",
+                "flex",
+                "generator",
+                "qr code",
+                "qrcode",
+                "symfony",
+                "symfony4",
+                "symfony5",
+                "twig"
+            ],
+            "support": {
+                "source": "https://github.com/nikitospush/barcode-bundle/tree/v3.0.2"
+            },
+            "time": "2020-03-04T12:30:15+00:00"
         },
         {
             "name": "phenx/php-font-lib",
@@ -9228,22 +9343,23 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.3.8",
+            "version": "v2.14.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "972d8604a92b7054828b539f2febb0211dd5945c"
+                "reference": "66baa66f29ee30e487e05f1679903e36eb01d727"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/972d8604a92b7054828b539f2febb0211dd5945c",
-                "reference": "972d8604a92b7054828b539f2febb0211dd5945c",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/66baa66f29ee30e487e05f1679903e36eb01d727",
+                "reference": "66baa66f29ee30e487e05f1679903e36eb01d727",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
+                "php": ">=7.1.3",
                 "symfony/polyfill-ctype": "^1.8",
-                "symfony/polyfill-mbstring": "^1.3"
+                "symfony/polyfill-mbstring": "^1.3",
+                "symfony/polyfill-php72": "^1.8"
             },
             "require-dev": {
                 "psr/container": "^1.0",
@@ -9252,10 +9368,13 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "2.14-dev"
                 }
             },
             "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                },
                 "psr-4": {
                     "Twig\\": "src/"
                 }
@@ -9288,7 +9407,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.3.8"
+                "source": "https://github.com/twigphp/Twig/tree/v2.14.11"
             },
             "funding": [
                 {
@@ -9300,7 +9419,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-04T06:59:48+00:00"
+            "time": "2022-02-04T06:57:25+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -11499,5 +11618,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
