@@ -87,6 +87,7 @@ class ProduitController extends Controller
         $produit = $this->get('knp_paginator')->paginate($produit, $request->query->getInt('page', 1), 4);
         return $this->render('/produit/pdr.html.twig', [
             'Produits' => $produit,
+
         ]);
     }
 
@@ -126,6 +127,7 @@ class ProduitController extends Controller
             $produit = $this->get('knp_paginator')->paginate($produit, $request->query->getInt('page',1), 4);
             return $this->render('/produit/accessoire.html.twig', [
                 'Produits' => $produit,
+
             ]);
         }
         //render
@@ -138,7 +140,6 @@ class ProduitController extends Controller
      */
     public function mariem_pdr(ProduitRepository $ProduitRepository,Request $request): Response
     {
-
         //pagination
         $produit = $ProduitRepository->findBy(['type' => "Piece de Rechange"]);
         $produit = $this->get('knp_paginator')->paginate(
