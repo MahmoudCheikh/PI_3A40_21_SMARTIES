@@ -7,6 +7,7 @@ use App\Entity\Stock;
 use App\Form\CommandeFrontType;
 use App\Form\ProduitType;
 use App\Form\StockType;
+use App\Repository\EmplacementRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\QrCodeRepository;
 use App\Repository\StockRepository;
@@ -18,8 +19,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 /**
  * @Route("/stock")
  */
@@ -67,43 +68,44 @@ class StockController extends Controller
         return $list;
     }
     /**
-     * @Route("/csv", name="excel", methods={"GET"})
+     * @Route("/pdf", name="historique", methods={"GET"})
      */
-    public function excel(StockRepository $stockRepository): Response
+    public function historique(StockRepository $stockRepository,ProduitRepository $produitRepository ,EmplacementRepository $emplacementRepository ): Response
     {
-        $stock = $stockRepository->findAll(['prix' => $stockRepository ]);
-        $spreadsheet = new Spreadsheet();
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->set('isRemoteEnabled', TRUE);
+        $pdfOptions->set('image', '/public/img/logo.png');
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
 
-        $sheet = $spreadsheet->getActiveSheet()->setAutoFilter($spreadsheet->getActiveSheet()->calculateWorksheetDimension());
-
-        $sheet->setTitle('Stock');
-
-        $sheet->getCell('A1')->setValue('libelle');
-        $sheet->getCell('B1')->setValue('prix');
-        $sheet->getCell('C1')->setValue('diponibilite');
-        $sheet->getCell('D1')->setValue('produit');
-
-
-
-        // Increase row cursor after header write
-       $sheet->fromArray($stock,null, 'A2', true);
-      // $sheet->fromArray(,null, 'B2', true);
-
-        $writer = new Xlsx($spreadsheet);
-
-        // Create a Temporary file in the system
-        $fileName = 'Stock.xlsx';
-
-        $temp_file = tempnam(sys_get_temp_dir(), $fileName);
-
-        // Create the excel file in the tmp directory of the system
-        $writer->save($temp_file);
-        $sheet = $this->renderView('/stock/index.html.twig',[
-            'stocks' => $stock,
+        // Retrieve the HTML generated in our twig file
+        $html = $this->render('/stock/historique.html.twig', [
+            'stocks' => $stockRepository->findAll(),
+            'Produits' => $produitRepository->findAll(),
+            'emplacements' => $emplacementRepository->findAll(),
         ]);
 
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
 
-        return $this->file($temp_file, $fileName, ResponseHeaderBag::DISPOSITION_INLINE);
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Store PDF Binary Data
+        $output = $dompdf->output();
+
+        $dompdf->stream("historique.pdf", [
+            "Attachment" => true
+        ]);
+
+        // Send some text response
+       return $this->redirectToRoute('stock_index', [], Response::HTTP_SEE_OTHER);
+
     }
 
     /**
