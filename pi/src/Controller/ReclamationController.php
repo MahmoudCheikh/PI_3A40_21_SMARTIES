@@ -93,17 +93,17 @@ class ReclamationController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/triha", name="triha", methods={"GET"})
      */
-    public function triha (ReclamationRepository $reclamationRepository , Request $request): Response
+    public function triha (FlashyNotifier $flashy ,ReclamationRepository $reclamationRepository , Request $request): Response
     {
 
         if (null !=$request->get('search')){
             $reclamations =$this->getDoctrine()->getRepository(Reclamation::class)->findBy(['id' => $request->get('search')]);
             return $this->render('/reclamation/front.html.twig',[
                 'reclamations' => $reclamations,
+                'flash' =>$flashy,
             ]);
         }
         return $this->render('/reclamation/front.html.twig',[
@@ -112,6 +112,7 @@ class ReclamationController extends AbstractController
 
         ]);
     }
+
     /**
      * @Route("/trid", name="trid", methods={"GET"})
      */
@@ -129,10 +130,6 @@ class ReclamationController extends AbstractController
             'flash'=> $request->get('flash'),
         ]);
     }
-
-
-
-
 
     /**
      * @Route("/newfront", name="reclamation_front_new", methods={"GET", "POST"})
