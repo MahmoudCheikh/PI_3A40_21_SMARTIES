@@ -10,9 +10,6 @@
 {% endblock %}
 {% block body %}
 
-    {% if flash %}
-        {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
-    {% endif %}
         {% for favoris in Produits %}
             <div data-elementor-type="header" data-elementor-id="40" class="elementor elementor-40 elementor-location-header" data-elementor-settings="[]">
             <div class="elementor-section-wrap">
@@ -20,7 +17,11 @@
                 class="elementor-section elementor-top-section elementor-element elementor-element-e92bdd0 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
                 data-id="e92bdd0" data-element_type="section"
                 data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-            <div class="elementor-background-overlay"></div>
+
+
+            <div class="elementor-background-overlay">            {% if flash %}
+                    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+                {% endif %}</div>
             <div class="elementor-container elementor-column-gap-default">
                 <div class="elementor-row">
                     <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4a06fea"
