@@ -1011,7 +1011,8 @@
             </div>
         </section>
         {% for evenement in evenements %}
-
+            {% set leftD=date(evenement.getdateD()).diff(date("now")) %}
+            {% if leftD.days  >= 0 %}
         <section class="elementor-section elementor-top-section elementor-element elementor-element-f54bb5c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f54bb5c" data-element_type="section">
             <div class="elementor-background-overlay"></div>
             <div class="elementor-container elementor-column-gap-default">
@@ -1147,7 +1148,9 @@
                     </div>
                 </div>
             </div>
+
         </section>
+            {% endif %}
         {% endfor %}
         <section class="elementor-section elementor-top-section elementor-element elementor-element-8713d00 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="8713d00" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
             <div class="elementor-container elementor-column-gap-default">
