@@ -121,7 +121,7 @@ class FavorisController extends Controller
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('favoris_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('favoris1', [], Response::HTTP_SEE_OTHER);
     }
 
 }

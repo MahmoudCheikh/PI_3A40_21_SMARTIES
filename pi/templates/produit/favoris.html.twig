@@ -63,7 +63,7 @@
 
 
                                                                         <h2 class="entry-title">
-                                                                            <p style="color: #6c757d" >
+                                                                            <p style="color: #ff69b4" >
                                                                                 {{ favoris.IdProduit.libelle }}                 </p><br>
                                                                             <a >{{ favoris.IdProduit.description }}  </a>
                                                                         </h2>
@@ -72,17 +72,12 @@
 
                                                                     <div class="elementor-button-wrapper">
 		                                                                </span>
-
+                                                                        {{ include('favoris/_delete_form.html.twig') }}
                                                                         </a>
                                                                     </div>
-
                                                                 </div><!-- .elementskit-post-body END -->
                                                             </div>
-                                                        </div><br>
-                                                        <form method="post" action="{{ path('favoris1', {'id': favoris.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favoris.id) }}">
-                                                            <button class="btn btn-danger btn-xs fa fa-trash-o" style="color: #ac2925">delete</button>
-                                                        </form>
+                                                        </div>
                                                     </div><!-- .elementskit-blog-block-post .radius .gradient-bg END -->
 
                                                 </div>
