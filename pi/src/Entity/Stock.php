@@ -34,7 +34,13 @@ class Stock
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="le champs quantite de stock est requis")
-     * @Assert\Positive(message="quantite du stock doit etre positive")
+     * @Assert\LessThan(
+     *     value = 5000
+     * )
+     * @Assert\GreaterThan(
+     *     value = 5
+     * )
+     * @Assert\PositiveOrZero(message="quantite du stock doit etre positive")
      */
     private $quantite;
 

@@ -24,6 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use App\Repository\UsersRepository;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 
 
 
@@ -214,7 +215,7 @@ class ProduitController extends Controller
     /**
      * @Route("/favoris/{id}", name="favoris" , methods={"GET","POST"})
      */
-    public function favoris(FavorisRepository $favorisRepository,Request $request, EntityManagerInterface $entityManager, ProduitRepository $ProduitRepository,$id): Response
+    public function favoris(FlashyNotifier $flashy,FavorisRepository $favorisRepository,Request $request, EntityManagerInterface $entityManager, ProduitRepository $ProduitRepository,$id): Response
     {
 
         //$test = array_shift($test);
@@ -250,8 +251,13 @@ class ProduitController extends Controller
                 $fav,
                 $request->query->getInt('page',1),3
             );
+
+            $flash = 1;
+            dump($flash);
+            $flashy->success('favoris Ajouté', '');
             return $this->render('/produit/favoris.html.twig', [
                 'Produits' => $fav,
+                'flash'=> $request->get('flash'),
             ]);
 
         }

@@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 
 /**
  * @Route("/favoris")
@@ -42,15 +43,18 @@ class FavorisController extends Controller
             $test,
             $request->query->getInt('page',1),3
         );
-        /*if (null != $request->get('search')) {
-            $test = $this->getDoctrine()->getRepository(Favoris::class)->findBy(['IdProduit'->'libelle' => $request->get('search')]);
+        if (null != $request->get('search')) {
+            $test = $this->getDoctrine()->getRepository(Favoris::class)->findBy(['id' => $request->get('search')]);
             $test = $this->get('knp_paginator')->paginate($test, $request->query->getInt('page',1), 3);
             return $this->render('/produit/favoris.html.twig', [
                 'Produits' => $test,
+                'flash'=> $request->get('flash'),
             ]);
-        }*/
+        }
+        $flash = 1;
         return $this->render('produit/favoris.html.twig', [
             'Produits' => $test,
+            'flash'=> $request->get('flash'),
         ]);
     }
 

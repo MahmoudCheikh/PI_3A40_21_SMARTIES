@@ -127,6 +127,15 @@ class SiteController extends AbstractController
             'emplacements' => $this->getDoctrine()->getRepository(Emplacement::class)->findBy([], ['capacite' => 'DESC']),
         ]);
     }
+    /**
+     * @Route("/trirSites", name="trirSites", methods={"GET"})
+     */
+    public function trirSites(EmplacementRepository $emplacementRepository,Request $request):Response
+    {
+        return $this->render('/emplacement/site_front.html.twig',[
+            'emplacements' => $this->getDoctrine()->getRepository(Emplacement::class)->findBy([], ['lieu' => 'ASC']),
+        ]);
+    }
 
 
 
