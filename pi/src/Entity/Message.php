@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MessageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -15,17 +16,20 @@ class Message
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("post:read")
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="messages")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups ("post:read")
      */
     private $idUser;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups ("post:read")
      */
     private $Date;
 
@@ -39,6 +43,7 @@ class Message
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le contenu de votre message is required")
+     * @Groups ("post:read")
      * @Assert\Length(
      *      min = "5",
      *      max = "50",

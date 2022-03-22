@@ -6,6 +6,7 @@ use App\Repository\SujetRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -16,6 +17,7 @@ class Sujet
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
+     * @Groups ("post:read")
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -23,6 +25,7 @@ class Sujet
     /**
      * @ORM\Column(type="integer")
      * @ORM\JoinColumn(nullable=true)
+     * @Groups ("post:read")
      *
      */
     private $nbReponses;
@@ -30,6 +33,7 @@ class Sujet
     /**
      * @ORM\Column(type="integer")
      * @ORM\JoinColumn(nullable=true)
+     * @Groups ("post:read")
      */
     private $nbVues;
 
@@ -37,16 +41,19 @@ class Sujet
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="sujets")
+     * @Groups ("post:read")
      */
     private $idUser;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups ("post:read")
      */
     private $Date;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups ("post:read")
      * @Assert\NotBlank(message="le titre is required")
      * @Assert\Length(
      *      min = "5",
@@ -66,11 +73,13 @@ class Sujet
      *      maxMessage = "le contenu ne peut pas être plus long que {{ limit }} caractères"
      * )
      * @Assert\NotBlank(message="le contenu is required")
+     * @Groups ("post:read")
      */
     private $contenu;
 
     /**
      * @ORM\OneToMany(targetEntity=Message::class, mappedBy="idSujet")
+     * @Groups ("post:read")
      */
     private $messages;
 

@@ -11,15 +11,86 @@ use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/sujet")
  */
 class SujetController extends Controller
 {
+
+    /**
+     * @Route("/display",name="display_sujet" , methods={"POST","GET"})
+     */
+    public function display(Request $request, NormalizerInterface $normalizer): JsonResponse
+    {
+        $Sujet = $this->getDoctrine()->getManager()->getRepository(Sujet::class)->findAll();
+        $jsonContent = $normalizer->normalize($Sujet , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+    /**
+     * @Route("/display/{id}",name="display_single_sujet" , methods={"POST","GET"})
+     */
+    public function displaySingle(Request $request, NormalizerInterface $normalizer , $id): JsonResponse
+    {
+        $Sujet = $this->getDoctrine()->getManager()->getRepository(Sujet::class)->find($id);
+        $jsonContent = $normalizer->normalize($Sujet , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+    /**
+     * @Route("/ajoutmobile",name="ajoutMobile" , methods={"POST","GET"})
+     */
+    public function ajoutMobile(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $sujet = new Sujet();
+        $sujet->setTitre($request->get('titre'));
+        $sujet->setContenu($request->get('contenu'));
+        $sujet->setDate(new \DateTime());
+        $user = $usersRepository->find($request->get('idUser'));
+        $sujet->setIdUser($user);
+        $sujet->setnbReponses(0);
+        $sujet->setnbVues(0);
+        $em->persist($sujet);
+        $em->flush();
+        $jsonContent = $normalizer->normalize($sujet , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+    /**
+     * @Route("/modifiermobile/{id}",name="modifierMobile" , methods={"POST","GET"})
+     */
+    public function modMobile(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $sujet = $em->getRepository(Sujet::class)->find($id);
+        $sujet->setTitre($request->get('titre'));
+        $sujet->setContenu($request->get('contenu'));
+        $em->persist($sujet);
+        $em->flush();
+        $jsonContent = $normalizer->normalize($sujet , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+    /**
+     * @Route("/deletemobile/{id}",name="deleteMobile" , methods={"POST","GET"})
+     */
+    public function deleteMobile(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $sujet = $em->getRepository(Sujet::class)->find($id);
+        $em->remove($sujet);
+        $em->flush();
+        $jsonContent = $normalizer->normalize($sujet , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
     /**
      * @Route("/", name="sujet_index", methods={"GET"})
      */
@@ -252,6 +323,7 @@ class SujetController extends Controller
 
         return $this->redirectToRoute('sujet_front', [], Response::HTTP_SEE_OTHER);
     }
+
 
 }
 
