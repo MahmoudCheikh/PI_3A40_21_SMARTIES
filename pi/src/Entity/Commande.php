@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=CommandeRepository::class)
  */
@@ -14,18 +15,21 @@ class Commande
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("post:read")
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="Commandes")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups ("post:read")
      */
     private $idUser;
 
     /**
      * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="Commandes")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups ("post:read")
      */
     private $idProduit;
 
@@ -33,6 +37,7 @@ class Commande
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="nombre de produits is required")
      * @Assert\Positive
+     * @Groups ("post:read")
      */
     private $nbProduits;
 

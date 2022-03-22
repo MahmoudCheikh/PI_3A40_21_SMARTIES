@@ -18,10 +18,14 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 
 
@@ -31,6 +35,75 @@ use knp\Component\Pager\PaginatorInterface;
  */
 class CommandeController extends Controller
 {
+
+    /**
+     * @Route("/displayall",name="displayall" , methods={"POST","GET"})
+     */
+    public function displaya(Request $request, NormalizerInterface $normalizer): JsonResponse
+    {
+        $Commande = $this->getDoctrine()->getManager()->getRepository(Commande::class)->findAll();
+        $jsonContent = $normalizer->normalize($Commande , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+    /**
+     * @Route("/displaycommande/{id}",name="display_single_achat" , methods={"POST","GET"})
+     */
+    public function displayCommande(Request $request, NormalizerInterface $normalizer , $id): JsonResponse
+    {
+        $Commande = $this->getDoctrine()->getManager()->getRepository(Commande::class)->find($id);
+        $jsonContent = $normalizer->normalize($Commande , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+    /**
+     * @Route("/ajoutMobilecomm",name="ajoutMobilecomm" , methods={"POST","GET"})
+     */
+    public function ajoutMobilecommande(Request $request, NormalizerInterface $normalizer ,CommandeRepository $commandeRepository , UsersRepository $usersRepository , ProduitRepository $produitRepository): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $Commande = new Commande();
+        $user = $usersRepository->find($request->get('idUser'));
+        $Commande->setIdUser($user);
+        $Commande->setNbProduits($request->get('NbProduits'));
+        $produit = $produitRepository->find($request->get('idProduit'));
+        $Commande->setidProduit($produit);
+        $em->persist($Commande);
+        $em->flush();
+        $jsonContent = $normalizer->normalize($Commande , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+    /**
+     * @Route("/modifiermobilecomm/{id}",name="modifierMobilecomm" , methods={"POST","GET"})
+     */
+    public function modMobilecommande(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id ,  ProduitRepository $produitRepository): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $Commande = $em->getRepository(Commande::class)->find($id);
+        $produit = $produitRepository->find($request->get('idProduit'));
+        $Commande->setNbProduits($request->get('NbProduits'));
+        $Commande->setidProduit($produit);
+        $em->persist($Commande);
+        $em->flush();
+        $jsonContent = $normalizer->normalize($Commande , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+    /**
+     * @Route("/deletemobilecomm/{id}",name="deleteMobilecomm" , methods={"POST","GET"})
+     */
+    public function deleteMobilecommande(Request $request, NormalizerInterface $normalizer , $id): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $Commande = $em->getRepository(Commande::class)->find($id);
+        $em->remove($Commande);
+        $em->flush();
+        $jsonContent = $normalizer->normalize($Commande , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+
 
     /**
      * @Route("/", name="commande_index", methods={"GET"})
@@ -86,7 +159,7 @@ class CommandeController extends Controller
         $pieChart->getOptions()->setHeight(500);
         $pieChart->getOptions()->setIs3D(true);
         $pieChart->getOptions()->setWidth(1850);
-        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(false);
         $pieChart->getOptions()->getTitleTextStyle()->setColor('#ACEB1E');
         $pieChart->getOptions()->setColors(['#333', '#CB2326', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#CB2326', '#6AF9C4']);
         $pieChart->getOptions()->setBackgroundColor("transparent");
@@ -342,6 +415,8 @@ public function testpdf(CommandeRepository $commandeRepository , ProduitReposito
             'form' => $form->createView(),
         ]);
     }
+
+
 
 
 
