@@ -25,18 +25,21 @@ class Produit
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le champs de libelle du produit est requis")
+     * @Groups ("post: read")
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="L'image du produit est requis")
+     * @Groups ("post: read")
      */
     private $image;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le champs de la description du produit est requis")
+     * @Groups ("post: read")
      */
     private $description;
 
@@ -185,12 +188,12 @@ class Produit
         return (string) $this->libelle;
     }
 
-    public function getPrix(): ?int
+    public function getPrix()
     {
         return $this->prix;
     }
 
-    public function setPrix(int $prix): self
+    public function setPrix($prix): self
     {
         $this->prix = $prix;
 

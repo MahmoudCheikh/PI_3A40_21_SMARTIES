@@ -53,9 +53,16 @@ class Stock
 
     /**
      * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="Stock")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idProduit;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Emplacement::class, inversedBy="Emplacement")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $emplacement;
 
 
     public function getId(): ?int

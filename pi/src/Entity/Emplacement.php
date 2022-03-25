@@ -67,17 +67,7 @@ class Emplacement
         return $this;
     }
 
-    public function getIdProduit(): ?Produit
-    {
-        return $this->idProduit;
-    }
 
-    public function setIdProduit(?Produit $idProduit): self
-    {
-        $this->idProduit = $idProduit;
-
-        return $this;
-    }
 
     public function getStock(): ?Stock
     {

@@ -139,7 +139,57 @@ class StockController extends Controller
             'stock' => $stock,
         ]);
     }
+//    /**
+//     * @Route("/stat", name="stat" , methods={"GET"})
+//     */
 
+   /* public function stat(ProduitRepository $produitRepository  , StockRepository  $stockRepository): Response
+    {
+        $pieChart = new PieChart();
+
+        $sommeVelo = 0;
+        $sommePDR = 0;
+        $sommeAccessoire = 0;
+
+        $stock =$stockRepository->findAll();
+        foreach ($stock as $stock) {
+            if($this->getUser()->getId() == $stock->getIdUser()->getId()){
+                if ($stock->getIdProduit()->getType() == "Velo"){
+                    $sommeVelo = $sommeVelo +1;
+                }
+                if ($stock->getIdProduit()->getType() == "Accessoire"){
+                    $sommeAccessoire = $sommeAccessoire +1;
+                }
+                if ($stock->getIdProduit()->getType() == "Piece de Rechange"){
+                    $sommePDR = $sommePDR+1;
+                }
+            }
+
+        }
+
+        $pieChart->getData()->setArrayToDataTable(
+            [['Type', 'Nombre'],
+                ['Velo',     $sommeVelo],
+                ['Piece de rechange',      $sommePDR],
+                ['Accessoire',  $sommeAccessoire],
+            ]
+        );
+        $pieChart->getOptions()->setTitle('Country Populations');
+        $pieChart->getOptions()->setWidth(900);
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->getLegend()->setPosition('none');
+        $pieChart->getOptions()->setColors(['#e7711c']);
+        $pieChart->getOptions()->getPieChart()->setLastBucketPercentile(10);
+        $pieChart->getOptions()->getPieChart()->setBucketSize(10000000);
+
+        return $this->render('stock/index.html.twig', [
+            'pieChart' => $pieChart,
+            'stocks' => $stockRepository->findAll(),
+            'Produits' => $produitRepository->findAll(),
+        ]);
+
+    }
+*/
     /**
      * @Route("/{id}/edit", name="stock_edit", methods={"GET", "POST"})
      */

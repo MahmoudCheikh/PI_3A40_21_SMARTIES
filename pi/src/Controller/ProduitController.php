@@ -19,13 +19,15 @@ use App\Repository\StockRepository;
 use App\Repository\VeloRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use App\Repository\UsersRepository;
 use MercurySeries\FlashyBundle\FlashyNotifier;
-
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 
 /**
@@ -162,7 +164,6 @@ class ProduitController extends Controller
     }
 
 
-
     /**
      *
      * @Route("/", name="produit_index", methods={"GET"})
@@ -172,6 +173,7 @@ class ProduitController extends Controller
         /*return $this->render('Produit/index.html.twig', [
             'Produits' => $ProduitRepository->findAll(),
         ]);*/
+
 
         return $this->render('produit/index.html.twig', [
             'Produits' => $ProduitRepository->findAll(),
@@ -358,6 +360,7 @@ class ProduitController extends Controller
             'form' => $form->createView(),
         ]);
     }
+
 
     /**
      * @Route("/{id}", name="produit_delete", methods={"POST"})
