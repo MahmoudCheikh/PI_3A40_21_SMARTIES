@@ -24,17 +24,18 @@ class MessageController extends AbstractController
 {
 
     /**
-     * @Route("/display",name="display_message" , methods={"POST","GET"})
+         * @Route("/display/{id}",name="display_message" , methods={"POST","GET"})
      */
-    public function display(Request $request, NormalizerInterface $normalizer): JsonResponse
+    public function display(Request $request, NormalizerInterface $normalizer , int $id): JsonResponse
     {
-        $Message = $this->getDoctrine()->getManager()->getRepository(Message::class)->findAll();
+        $sujet = $this->getDoctrine()->getManager()->getRepository(Sujet::class)->find($id);
+        $Message = $this->getDoctrine()->getManager()->getRepository(Message::class)->findBy(['idSujet' => $sujet]);
         $jsonContent = $normalizer->normalize($Message , 'json' , ['groups'=>'post:read']);
         return new JsonResponse($jsonContent);
     }
 
     /**
-     * @Route("/display/{id}",name="display_single_message" , methods={"POST","GET"})
+     * @Route("/displaysingle/{id}",name="display_single_message" , methods={"POST","GET"})
      */
     public function displaySingle(Request $request, NormalizerInterface $normalizer , $id): JsonResponse
     {
