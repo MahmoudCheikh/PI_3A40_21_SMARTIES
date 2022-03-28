@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * @Route("/message")
@@ -43,7 +45,16 @@ class MessageController extends AbstractController
         $jsonContent = $normalizer->normalize($Sujet , 'json' , ['groups'=>'post:read']);
         return new JsonResponse($jsonContent);
     }
-
+    /**
+     * @Route("/affichage",name="affichage" , methods={"POST","GET"})
+     */
+    public function affichage(Request $request, NormalizerInterface $normalizer ): JsonResponse
+    {
+        //$sujet = $this->getDoctrine()->getManager()->getRepository(Sujet::class);
+        $Message = $this->getDoctrine()->getManager()->getRepository(Message::class)->findAll();
+        $jsonContent = $normalizer->normalize($Message , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
     /**
      * @Route("/ajoutmobile",name="ajout_mobile_message" , methods={"POST","GET"})
      */
@@ -64,17 +75,30 @@ class MessageController extends AbstractController
     }
 
     /**
-     * @Route("/modifiermobile/{id}",name="modifierMobileMessage" , methods={"POST","GET"})
+     * @Route("/modifiermobile",name="modifierMobileMessage" , methods={"POST","GET"})
      */
-    public function modMobile(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id, SujetRepository $sujetRepository): JsonResponse
+    public function modMobile(Request $request): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
-        $message = $em->getRepository(Message::class)->find($id);
-        $message->setContenu($request->get('contenu'));
+        $message = $this->getDoctrine()->getManager()
+            ->getRepository(Message::class)
+            ->find($request->get("id"));
+
+        $contenu = $request->query->get("contenu");
+        $idUser = $request->query->get("idUser");
+        $idSujet = $request->query->get("idSujet");
+
+        $message->setContenu($contenu);
+        $message->setIdUser($idUser);
+        $message->setIdSujet($idSujet);
+
         $em->persist($message);
         $em->flush();
-        $jsonContent = $normalizer->normalize($message , 'json' , ['groups'=>'post:read']);
-        return new JsonResponse($jsonContent);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($message);
+
+        return new JsonResponse("message a ete modifiee avec success.");
+
     }
 
     /**

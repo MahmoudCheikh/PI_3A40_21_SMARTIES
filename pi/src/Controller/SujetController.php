@@ -16,6 +16,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
 /**
  * @Route("/sujet")
  */
@@ -63,18 +66,29 @@ class SujetController extends Controller
     }
 
     /**
-     * @Route("/modifiermobile/{id}",name="modifierMobile" , methods={"POST","GET"})
+     * @Route("/modifiermobile",name="modifierMobile" , methods={"POST","GET"})
      */
-    public function modMobile(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id): JsonResponse
+    public function modMobile(Request $request): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
-        $sujet = $em->getRepository(Sujet::class)->find($id);
-        $sujet->setTitre($request->get('titre'));
-        $sujet->setContenu($request->get('contenu'));
+        $sujet = $this->getDoctrine()->getManager()
+            ->getRepository(Sujet::class)
+            ->find($request->get("id"));
+
+        $titre = $request->query->get("titre");
+        $contenu = $request->query->get("contenu");
+        $idUser = $request->query->get("idUser");
+
+        $sujet->setTitre($titre);
+        $sujet->setContenu($contenu);
+        $sujet->setIdUser($idUser);
+
         $em->persist($sujet);
         $em->flush();
-        $jsonContent = $normalizer->normalize($sujet , 'json' , ['groups'=>'post:read']);
-        return new JsonResponse($jsonContent);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($sujet);
+        return new JsonResponse("Sujet a ete modifiee avec success.");
+
     }
 
     /**
