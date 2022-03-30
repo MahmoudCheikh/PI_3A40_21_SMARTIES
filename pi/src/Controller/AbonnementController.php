@@ -9,15 +9,117 @@ use App\Repository\AbonnementRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @Route("/abonnement")
  */
 class AbonnementController extends AbstractController
 {
+    /********************Json for abonnement**********************/
+    /**
+     * @Route("/afficherA",name="afficherA")
+     */
+    public function afficherA(AbonnementRepository $repository, SerializerInterface  $serializer){
+        return $this->json(
+            json_decode(
+                $serializer->serialize(
+                    $repository->findAll(),
+                    'json',
+                    [AbstractNormalizer::IGNORED_ATTRIBUTES => ['idUser']]
+                ),
+                JSON_OBJECT_AS_ARRAY
+            )
+        );
+    }
+    /******************Ajouter Abonnement*****************************************/
+    /**
+     * @Route("/addA", name="addA")
+     */
+
+    public function ajouter(Request $request)
+    {
+        $abonnement = new Abonnement();
+        $type = $request->query->get("type");
+        $dateD = $request->query->get("dateD");
+        $dateF = $request->query->get("dateF");
+        $prix=$request->query->get("prix");
+        $em = $this->getDoctrine()->getManager();
+        $dateD = new \DateTime('now');
+        $dateF = new \DateTime('now');
+
+        $abonnement->setType($type);
+        $abonnement->setDated($dateD);
+        $abonnement->setDatef($dateF);
+        $abonnement->setPrix($prix);
+
+        $em->persist($abonnement);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($abonnement);
+        return new JsonResponse($formatted);
+    }
+    /******************delete Abonnement*****************************************/
+    /**
+     * @Route("/deleteA/{id}", name="deleteA")
+     */
+
+    public function deleteA(Request $request) {
+        $id = $request->get("id");
+
+        $em = $this->getDoctrine()->getManager();
+        $abonnement = $em->getRepository(Abonnement::class)->find($id);
+        if($abonnement!=null ) {
+            $em->remove($abonnement);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("abonnement a ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }
+        return new JsonResponse("id abonnement invalide.");
+
+
+    }
+    /******************Modifier event*****************************************/
+    /**
+     * @Route("/updateA", name="updateA")
+     */
+    public function modifierA(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $abonnement = $this->getDoctrine()->getManager()
+            ->getRepository(Abonnement::class)
+            ->find($request->get("id"));
+
+        $type = $request->query->get("type");
+        $dateD = $request->query->get("dateD");
+        $dateF = $request->query->get("dateF");
+        $prix=$request->query->get("prix");
+
+         $abonnement->setType($type);
+       // $abonnement->setDated($dateD);
+        //$abonnement->setDatef($dateF);
+        $abonnement->setPrix($prix);
+        $dateD = new \DateTime('now');
+        $dateF = new \DateTime('now');
+        $em->persist($abonnement);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($abonnement);
+        return new JsonResponse("Abonnement a ete modifiee avec success.");
+
+    }
+
     /**
      * @Route("/", name="abonnement_index", methods={"GET"})
      */

@@ -7,15 +7,107 @@ use App\Form\ActiviteType;
 use App\Repository\ActiviteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 /**
  * @Route("/activite")
  */
 class ActiviteController extends AbstractController
 {
+    /********************Json for activites**********************/
+    /**
+     * @Route("/afficherAct",name="afficherAct")
+     */
+    public function afficherAct(ActiviteRepository $repository, SerializerInterface  $serializer){
+
+
+       return $this->json(
+            json_decode(
+                $serializer->serialize(
+                    $repository->findAll(),
+                    'json',
+                    [AbstractNormalizer::IGNORED_ATTRIBUTES => ['idEvenement']]
+                ),
+                JSON_OBJECT_AS_ARRAY
+            )
+        );
+    }
+    /******************Ajouter Activite*****************************************/
+    /**
+     * @Route("/addAct", name="addAct")
+     */
+
+    public function ajouter(Request $request)
+    {
+        $activite = new Activite();
+        $nom = $request->query->get("nom");
+        $description = $request->query->get("description");
+        $image = $request->query->get("image");
+        $em = $this->getDoctrine()->getManager();
+
+        $activite->setNom($nom);
+        $activite->setDescription($description);
+        $activite->setImage($image);
+
+        $em->persist($activite);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($activite);
+        return new JsonResponse($formatted);
+    }
+    /******************delete Activite*****************************************/
+    /**
+     * @Route("/deleteAct/{id}", name="deleteAct")
+     */
+
+    public function deleteAct(Request $request) {
+        $id = $request->get("id");
+
+        $em = $this->getDoctrine()->getManager();
+        $activite = $em->getRepository(Activite::class)->find($id);
+        if($activite!=null ) {
+            $em->remove($activite);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("activite a ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }
+        return new JsonResponse("id activite invalide.");
+
+
+    }
+    /******************Modifier activite*****************************************/
+    /**
+     * @Route("/updateAct", name="updateAct")
+     */
+    public function modifierAct(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $activite = $this->getDoctrine()->getManager()
+            ->getRepository(Activite::class)
+            ->find($request->get("id"));
+
+        $nom = $request->query->get("nom");
+        $description = $request->query->get("description");
+        $image = $request->query->get("image");
+        $activite->setNom($nom);
+        $activite->setDescription($description);
+        $activite->setImage($image);
+        $em->persist($activite);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($activite);
+        return new JsonResponse("Activite a ete modifiee avec success.");
+
+    }
     /**
      * @Route("/", name="activite_index", methods={"GET"})
      */

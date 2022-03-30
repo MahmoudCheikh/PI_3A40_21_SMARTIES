@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Emplacement;
-use App\Entity\Favoris;
+use App\Entity\Evenement;
 use App\Entity\Produit;
 use App\Entity\Stock;
 use App\Repository\AchatRepository;
@@ -14,7 +14,6 @@ use App\Repository\ProduitRepository;
 use App\Repository\SujetRepository;
 use App\Repository\VeloRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +23,8 @@ use Symfony\Component\Serializer\Serializer;
 
 class SiteController extends AbstractController
 {
+
+
     /**
      * @Route("/test/", name="siteback")
      */

@@ -9,17 +9,135 @@ use App\Repository\ActiviteRepository;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @Route("/evenement")
  */
 class EvenementController extends Controller
 {
+   
+    /********************Json for events**********************/
+    /**
+     * @Route("/afficher",name="afficher")
+     */
+    public function afficher(EvenementRepository $repository, SerializerInterface  $serializer){
+
+        return $this->json(
+            json_decode(
+                $serializer->serialize(
+                    $repository->findAll(),
+                    'json',
+                    [AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER=> function ($object, $format, $context) {
+                        return $object->getActivites();
+                    },]
+                ),
+                JSON_OBJECT_AS_ARRAY
+            )
+        );
+    }
+    /******************Ajouter Evenement*****************************************/
+   /**
+     * @Route("/addEvent", name="addEvent")
+     */
+
+  public function ajouter(Request $request)
+    {
+        $evenement = new Evenement();
+        $nom = $request->query->get("nom");
+        $dateD = $request->query->get("dateD");
+        $dateF = $request->query->get("dateF");
+        $lieu = $request->query->get("lieu");
+        $type = $request->query->get("type");
+        $nb_participants = $request->query->get("nb_participants");
+        $nb_places = $request->query->get("nb_places");
+        $em = $this->getDoctrine()->getManager();
+       $dateD = new \DateTime('now');
+        $dateF = new \DateTime('now');
+
+        $evenement->setNom($nom);
+        $evenement->setDateD($dateD);
+        $evenement->setDateF($dateF);
+        $evenement->setLieu($lieu);
+        $evenement->setType($type);
+        $evenement->setNbParticipants($nb_participants);
+        $evenement->setNbPlaces($nb_places);
+
+        $em->persist($evenement);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($evenement);
+        return new JsonResponse($formatted);
+
+    }
+    /******************delete Evenement*****************************************/
+    /**
+     * @Route("/deleteEvent/{id}", name="delete_reclamation")
+     */
+
+    public function deleteEvent(Request $request) {
+        $id = $request->get("id");
+
+        $em = $this->getDoctrine()->getManager();
+        $evenement = $em->getRepository(Evenement::class)->find($id);
+        if($evenement!=null ) {
+            $em->remove($evenement);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("evenement a ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }
+        return new JsonResponse("id evenement invalide.");
+
+
+    }
+    /******************Modifier event*****************************************/
+    /**
+     * @Route("/updateEvent", name="updateEvent")
+     */
+    public function modifierEvent(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $evenement = $this->getDoctrine()->getManager()
+            ->getRepository(Evenement::class)
+            ->find($request->get("id"));
+
+        $nom = $request->query->get("nom");
+        $dateD = $request->query->get("dateD");
+        $dateF = $request->query->get("dateF");
+        $lieu = $request->query->get("lieu");
+        $type = $request->query->get("type");
+        $nb_participants = $request->query->get("nb_participants");
+        $nb_places = $request->query->get("nb_places");
+        $evenement->setNom($nom);
+       // $evenement->setDateD($dateD);
+        //$evenement->setDateF($dateF);
+        $evenement->setLieu($lieu);
+        $evenement->setType($type);
+        $evenement->setNbParticipants($nb_participants);
+        $evenement->setNbPlaces($nb_places);
+        $dateD = new \DateTime('now');
+        $dateF = new \DateTime('now');
+        $em->persist($evenement);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($evenement);
+        return new JsonResponse("Evenement a ete modifiee avec success.");
+
+    }
 
     /**
      * @Route("/evenement_front/", name="aziz" , methods={"GET"})
@@ -123,13 +241,13 @@ class EvenementController extends Controller
             $entityManager->persist($Evenement);
             $entityManager->flush();
             return $this->redirectToRoute('evenement_index', [], Response::HTTP_SEE_OTHER);
-
         }
 
         return $this->render('Evenement/new.html.twig', [
             'evenement' => $Evenement,
             'form' => $form->createView(),
         ]);
+
     }
 
 
