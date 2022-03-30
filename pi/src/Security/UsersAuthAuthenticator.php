@@ -29,7 +29,7 @@ class UsersAuthAuthenticator extends AbstractFormLoginAuthenticator implements P
     private $entityManager;
     private $urlGenerator;
     private $csrfTokenManager;
-    private $passwordEncoder;
+    public $passwordEncoder;
 
     public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
     {
