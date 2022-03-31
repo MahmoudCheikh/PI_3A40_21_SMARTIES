@@ -7,6 +7,7 @@ use App\Form\RegistrationFormType;
 use App\Security\UsersAuthAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -65,4 +66,23 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/registermobile" , name="register_mobile", methods={"GET"})
+     */
+    public function registermobile(Request $request,UserPasswordEncoderInterface $userPasswordEncoder,EntityManagerInterface $entityManager) : JsonResponse
+    {
+        $user = new Users();
+        $user->setNom($request->get("nom"));
+        $user->setPrenom($request->get("prenom"));
+        $user->setEmail($request->get("email"));
+        $user->setAdresse($request->get("adresse"));
+        $user->setImage("confirme");
+        $user->setPassword($userPasswordEncoder->encodePassword( $user, $request->get("password")));
+        $entityManager->persist($user);
+        $entityManager->flush();
+        return new JsonResponse(true);
+    }
+
+
 }

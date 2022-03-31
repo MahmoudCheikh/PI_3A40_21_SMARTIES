@@ -8,7 +8,9 @@ use App\Form\UsersFrontType;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Util\Json;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -129,6 +131,65 @@ class UsersController extends AbstractController
         return $this->render('Users/resetpass.html.twig');
     }
 
+    /**
+     * @Route("/resetmobile", name="resetmobile", methods={"GET"})
+     */
+    public function resetmobile(MailerInterface $mailer ,Request $request , UsersRepository $usersRepository ,EntityManagerInterface $entityManager): JsonResponse
+    {
+        if (null !=$request->get('email')){
+            $user = $usersRepository->findBy(['email' => $request->get('email')]);
+            $user = array_shift($user);
+
+            if($user != null){
+                $string = $this->generateUrl('reset', [
+                    'id' => $user->getId(),
+                ]);
+
+                $random = $random = random_int(100000000, 999999999);
+                $user->setRole($random);
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+
+                $string = "localhost".$string;
+                $email = (new Email())
+                    ->from('mahmoud.cheikh@esprit.tn')
+                    ->to('mahmoud.cheikh@esprit.tn')
+                    ->subject('Reinitialisation mot de passe!')
+                    ->html('<a href='.$string.'>votre code de reinitialisation est :'.$random.'</a>');
+
+                $mailer->send($email);
+                return new JsonResponse(true);
+            }
+            return new JsonResponse(false);
+        }
+        return new JsonResponse(false);
+    }
+
+    /**
+     * @Route("/resetpass", name="resetpass", methods={"GET" , "POST"})
+     */
+    public function mobilepassword(UserPasswordEncoderInterface $userPasswordEncoder,Request $request,UsersRepository $usersRepository, EntityManagerInterface $entityManager): JsonResponse
+    {
+        if (null !=$request->get('password')) {
+            $user = $usersRepository->findBy(['role' => $request->get('code')]);
+            $user = array_shift($user);
+
+            $user->setPassword(
+                $userPasswordEncoder->encodePassword(
+                    $user,
+                    $request->get('password')
+                )
+            );
+            $user->setRole("non");
+            $user->setImage("confirme");
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return new JsonResponse(true);
+        }
+
+        return new JsonResponse(false);
+    }
     /**
      * @Route("/reset/{id}", name="reset", methods={"GET" , "POST"})
      */
