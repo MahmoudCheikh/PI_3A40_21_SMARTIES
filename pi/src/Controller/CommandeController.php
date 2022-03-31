@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Achat;
 use App\Entity\Commande;
 use App\Entity\Produit;
+use App\Entity\Users;
 use App\Form\CommandeType;
 use App\Form\CommandeFrontType;
 use App\Repository\AchatRepository;
@@ -39,9 +40,10 @@ class CommandeController extends Controller
     /**
      * @Route("/displayall",name="displayall" , methods={"POST","GET"})
      */
-    public function displaya(Request $request, NormalizerInterface $normalizer): JsonResponse
+    public function displaya(Request $request, NormalizerInterface $normalizer, UsersRepository $usersRepository): JsonResponse
     {
-        $Commande = $this->getDoctrine()->getManager()->getRepository(Commande::class)->findAll();
+        $user = $usersRepository->find($request->get('idUser'));
+        $Commande = $this->getDoctrine()->getManager()->getRepository(Commande::class)->findBy(['idUser'=> $user]);
         $jsonContent = $normalizer->normalize($Commande , 'json' , ['groups'=>'post:read']);
         return new JsonResponse($jsonContent);
     }

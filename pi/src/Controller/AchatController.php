@@ -29,9 +29,10 @@ class AchatController extends AbstractController
     /**
      * @Route("/displayachats",name="displayachat" , methods={"POST","GET"})
      */
-    public function displayone(Request $request, NormalizerInterface $normalizer): JsonResponse
+    public function displayone(Request $request, NormalizerInterface $normalizer, UsersRepository $usersRepository): JsonResponse
     {
-        $achat = $this->getDoctrine()->getManager()->getRepository(Achat::class)->findAll();
+        $user = $usersRepository->find($request->get('idUser'));
+        $achat = $this->getDoctrine()->getManager()->getRepository(Achat::class)->findBy(['idUser'=> $user]);
         $jsonContent = $normalizer->normalize($achat , 'json' , ['groups'=>'post:read']);
         return new JsonResponse($jsonContent);
     }
