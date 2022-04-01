@@ -82,17 +82,56 @@ class EvenementController extends Controller
         return new JsonResponse($formatted);
 
     }
+
+    /**
+     * @Route("/recherche", name="recherche" , methods={"POST","GET"})
+     *
+     */
+    public function recherche(Request $request,NormalizerInterface $normalizer ): JsonResponse
+    {    $nom =$request->get("nom");
+        $event = $this->getDoctrine()->getManager()->getRepository(Evenement::class)->findBy(['nom' => $nom]);
+        $jsonContent = $normalizer->normalize($event , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+    /**
+     * @Route("/recherche1", name="recherche1" , methods={"POST","GET"})
+     *
+     */
+    public function recherche1(Request $request, SerializerInterface  $serializer, EvenementRepository $evenementRepository ): JsonResponse
+    {
+        $event = $evenementRepository->find($request->get('nom'));
+        return $this->json(
+            json_decode(
+                $serializer->serialize(
+                    $evenementRepository->findBy(['nom' => $event]),
+                    'json',
+                    [AbstractNormalizer::IGNORED_ATTRIBUTES => ['idEvenement']]
+                ),
+                JSON_OBJECT_AS_ARRAY
+            )
+        );
+    }
+
     /******************delete Evenement*****************************************/
     /**
      * @Route("/deleteEvent/{id}", name="delete_reclamation")
      */
 
-    public function deleteEvent(Request $request) {
+    public function deleteEvent(Request $request, MailerInterface $mailer) {
         $id = $request->get("id");
 
         $em = $this->getDoctrine()->getManager();
         $evenement = $em->getRepository(Evenement::class)->find($id);
         if($evenement!=null ) {
+
+                $email = (new Email())
+                    ->from('mohamedaziz.jaziri1@esprit.tn')
+                    ->to('mohamedaziz.jaziri1@esprit.tn')
+                    ->subject('Evenement Annulé')
+                    ->html('un evnement a été annulé go check it out ! ');
+
+                $mailer->send($email);
+
             $em->remove($evenement);
             $em->flush();
 
@@ -294,6 +333,7 @@ class EvenementController extends Controller
                 $email = (new Email())
                     ->from('mohamedaziz.jaziri1@esprit.tn')
                     ->to($item->getIdUser()->getEmail())
+
                     ->subject('Evenement Annulé')
                     ->html($this->renderView(
                         '/evenement/email.html.twig',[

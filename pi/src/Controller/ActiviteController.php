@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Activite;
 use App\Form\ActiviteType;
 use App\Repository\ActiviteRepository;
+use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -21,14 +23,33 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
  */
 class ActiviteController extends AbstractController
 {
+
+
     /********************Json for activites**********************/
     /**
      * @Route("/afficherAct",name="afficherAct")
      */
-    public function afficherAct(ActiviteRepository $repository, SerializerInterface  $serializer){
+    public function afficherAct(ActiviteRepository $repository,Request $request, SerializerInterface  $serializer, EvenementRepository $evenementRepository)
+    {
 
-
-       return $this->json(
+        $event = $evenementRepository->find($request->get('event'));
+        return $this->json(
+            json_decode(
+                $serializer->serialize(
+                    $repository->findBy(['idEvenement' => $event]),
+                    'json',
+                    [AbstractNormalizer::IGNORED_ATTRIBUTES => ['idEvenement']]
+                ),
+                JSON_OBJECT_AS_ARRAY
+            )
+        );
+    }
+    /********************Json for activites**********************/
+    /**
+     * @Route("/afficherActt",name="afficherActt")
+     */
+    public function afficherActt(ActiviteRepository $repository, SerializerInterface  $serializer){
+        return $this->json(
             json_decode(
                 $serializer->serialize(
                     $repository->findAll(),
@@ -43,25 +64,28 @@ class ActiviteController extends AbstractController
     /**
      * @Route("/addAct", name="addAct")
      */
+    public function ajouter(Request $request, NormalizerInterface $normalizer , EvenementRepository  $eventRepository): JsonResponse
+{
+$em = $this->getDoctrine()->getManager();
+$activite = new Activite();
+    /*$user = $usersRepository->find($request->get('idUser'));
+    $message->setIdUser($user);
+    $message->setDate(new \DateTime());*/
+$event = $eventRepository->find($request->get('idEvenement'));
+    $activite->setIdEvenement($event);
+    $nom = $request->query->get("nom");
+    $description = $request->query->get("description");
+    $image = $request->query->get("image");
+    $em = $this->getDoctrine()->getManager();
 
-    public function ajouter(Request $request)
-    {
-        $activite = new Activite();
-        $nom = $request->query->get("nom");
-        $description = $request->query->get("description");
-        $image = $request->query->get("image");
-        $em = $this->getDoctrine()->getManager();
-
-        $activite->setNom($nom);
-        $activite->setDescription($description);
-        $activite->setImage($image);
-
-        $em->persist($activite);
-        $em->flush();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($activite);
-        return new JsonResponse($formatted);
-    }
+    $activite->setNom($nom);
+    $activite->setDescription($description);
+    $activite->setImage($image);
+$em->persist($activite);
+$em->flush();
+$jsonContent = $normalizer->normalize("msg ajouté",'json', ['groups' => 'post:read']);
+return new JsonResponse($jsonContent);
+}
     /******************delete Activite*****************************************/
     /**
      * @Route("/deleteAct/{id}", name="deleteAct")
