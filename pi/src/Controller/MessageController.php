@@ -84,18 +84,12 @@ class MessageController extends AbstractController
             ->getRepository(Message::class)
             ->find($request->get("id"));
 
-        $contenu = $request->query->get("contenu");
-        $idUser = $request->query->get("idUser");
-        $idSujet = $request->query->get("idSujet");
+        $contenu = $request->get("contenu");
 
         $message->setContenu($contenu);
-        $message->setIdUser($idUser);
-        $message->setIdSujet($idSujet);
 
         $em->persist($message);
         $em->flush();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($message);
 
         return new JsonResponse("message a ete modifiee avec success.");
 
@@ -107,7 +101,7 @@ class MessageController extends AbstractController
     public function deleteMobile(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
-        $message = $em->getRepository(Message::class)->find($id);
+        $message = $em->getRepository(Message::class)->find($id); 
         $em->remove($message);
         $em->flush();
         $jsonContent = $normalizer->normalize($message , 'json' , ['groups'=>'post:read']);
