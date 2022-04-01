@@ -19,13 +19,58 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/achat")
  */
 class AchatController extends AbstractController
 {
+
+    /**
+     * @Route("/modifiermobileachat",name="modifierMobileachat" , )
+     */
+    public function modMobileachat(Request $request, NormalizerInterface $normalizer , AchatRepository $achatRepository): JsonResponse
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $achat = $achatRepository->find($request->get("id"));
+        $nomclient= $request->query->get("nomClient");
+        $numclient=$request->query->get("numeroClient");
+        $achat->setNomClient($nomclient);
+        $achat->setnumeroClient($numclient);
+        $em->persist($achat);
+        $em->flush();
+        return new JsonResponse("modif effectuer");
+    }
+
+    /**
+     * @Route("/deletemobileachat",name="deleteMobileachat" , methods={"POST","GET"})
+     */
+    public function deleteMobileachat(Request $request, NormalizerInterface $normalizer ): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $achat = $em->getRepository(Achat::class)->find($request->get('id'));
+        $em->remove($achat);
+        $em->flush();
+        $jsonContent = $normalizer->normalize($achat , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+    /********************Json for activites**********************/
+    /**
+     * @Route("/afficherAchat",name="afficherAchat")
+     */
+    public function afficherAchat(AchatRepository $repository, NormalizerInterface $normalizer){
+
+        $achat = $this->getDoctrine()->getManager()->getRepository(Achat::class)->findAll();
+        $jsonContent = $normalizer->normalize($achat , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
     /**
      * @Route("/displayachats",name="displayachat" , methods={"POST","GET"})
      */
@@ -55,10 +100,12 @@ class AchatController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $achat = new Achat();
         $achat->setDate(new \DateTime());
+        $nomclient=$request->query->get("nomClient");
+        $numclient=$request->query->get("numeroClient");
         $user = $usersRepository->find($request->get('idUser'));
         $achat->setIdUser($user);
-        $achat->setnumeroClient(0);
-        $achat->setnomClient(0);
+        $achat->setnumeroClient($numclient);
+        $achat->setnomClient($nomclient);
         $produit = $produitRepository->find($request->get('idProduit'));
         $achat->setidProduit($produit);
         $em->persist($achat);
@@ -67,33 +114,9 @@ class AchatController extends AbstractController
         return new JsonResponse($jsonContent);
     }
 
-    /**
-     * @Route("/modifiermobileachat/{id}",name="modifierMobileachat" , methods={"POST","GET"})
-     */
-    public function modMobileachat(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id ,  ProduitRepository $produitRepository): JsonResponse
-    {
-        $em = $this->getDoctrine()->getManager();
-        $achat = $em->getRepository(Achat::class)->find($id);
-        $produit = $produitRepository->find($request->get('idProduit'));
-        $achat->setidProduit($produit);
-        $em->persist($achat);
-        $em->flush();
-        $jsonContent = $normalizer->normalize($achat , 'json' , ['groups'=>'post:read']);
-        return new JsonResponse($jsonContent);
-    }
 
-    /**
-     * @Route("/deletemobileachat/{id}",name="deleteMobileachat" , methods={"POST","GET"})
-     */
-    public function deleteMobileachat(Request $request, NormalizerInterface $normalizer , $id): JsonResponse
-    {
-        $em = $this->getDoctrine()->getManager();
-        $achat = $em->getRepository(Achat::class)->find($id);
-        $em->remove($achat);
-        $em->flush();
-        $jsonContent = $normalizer->normalize($achat , 'json' , ['groups'=>'post:read']);
-        return new JsonResponse($jsonContent);
-    }
+
+
 
 
     /**

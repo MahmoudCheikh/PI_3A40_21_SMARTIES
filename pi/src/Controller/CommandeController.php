@@ -37,6 +37,17 @@ use Symfony\Component\Serializer\Serializer;
 class CommandeController extends Controller
 {
 
+    /********************Json for activites**********************/
+    /**
+     * @Route("/afficherCommande",name="afficherCommadne")
+     */
+    public function afficherCommande(CommandeRepository $commandeRepository, NormalizerInterface $normalizer){
+
+        $Commande = $this->getDoctrine()->getManager()->getRepository(Commande::class)->findAll();
+        $jsonContent = $normalizer->normalize($Commande , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
     /**
      * @Route("/displayall",name="displayall" , methods={"POST","GET"})
      */
@@ -61,7 +72,7 @@ class CommandeController extends Controller
     /**
      * @Route("/ajoutMobilecomm",name="ajoutMobilecomm" , methods={"POST","GET"})
      */
-    public function ajoutMobilecommande(Request $request, NormalizerInterface $normalizer ,CommandeRepository $commandeRepository , UsersRepository $usersRepository , ProduitRepository $produitRepository): JsonResponse
+    public function ajoutMobilecommande(Request $request, NormalizerInterface $normalizer ,CommandeRepository $commandeRepository,UsersRepository $usersRepository, ProduitRepository $produitRepository): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
         $Commande = new Commande();
@@ -69,23 +80,21 @@ class CommandeController extends Controller
         $Commande->setIdUser($user);
         $Commande->setNbProduits($request->get('NbProduits'));
         $produit = $produitRepository->find($request->get('idProduit'));
-        $Commande->setidProduit($produit);
+        $Commande->setIdProduit($produit);
         $em->persist($Commande);
         $em->flush();
-        $jsonContent = $normalizer->normalize($Commande , 'json' , ['groups'=>'post:read']);
+        $jsonContent = $normalizer->normalize("commande ajouté avec succés", 'json', ['groups' => 'post:read']);
         return new JsonResponse($jsonContent);
     }
 
     /**
-     * @Route("/modifiermobilecomm/{id}",name="modifierMobilecomm" , methods={"POST","GET"})
+     * @Route("/modifiermobilecomm",name="modifierMobilecomm" , methods={"POST","GET"})
      */
-    public function modMobilecommande(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id ,  ProduitRepository $produitRepository): JsonResponse
+    public function modMobilecommande(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository ,  ProduitRepository $produitRepository): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
-        $Commande = $em->getRepository(Commande::class)->find($id);
-        $produit = $produitRepository->find($request->get('idProduit'));
+        $Commande = $em->getRepository(Commande::class)->find($request->get('id'));
         $Commande->setNbProduits($request->get('NbProduits'));
-        $Commande->setidProduit($produit);
         $em->persist($Commande);
         $em->flush();
         $jsonContent = $normalizer->normalize($Commande , 'json' , ['groups'=>'post:read']);
