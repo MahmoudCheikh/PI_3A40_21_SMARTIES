@@ -3,16 +3,21 @@
 namespace App\Controller;
 
 use App\Entity\Reclamation;
+use App\Entity\Sujet;
 use App\Form\ReclamationType;
 use App\Form\RelcamationFrontFormType;
 use App\Repository\ReclamationRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use MercurySeries\FlashyBundle\FlashyNotifier;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Validator\Constraints\Date;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -23,6 +28,61 @@ use Dompdf\Options;
  */
 class ReclamationController extends AbstractController
 {
+
+
+
+    /**
+     * @Route("/ajoutmobile",name="ajoutMobile" , methods={"POST","GET"})
+     */
+    public function ajoutMobile(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation = new Reclamation();
+        $reclamation->setDescription($request->get('description'));
+        $reclamation->setObjet($request->get('objet'));
+        $reclamation->setDate(new \DateTime());
+        $user = $usersRepository->find($request->get('idUser'));
+        $reclamation->setIdUser($user);
+        $em->persist($reclamation);
+        $em->flush();
+        $jsonContent = $normalizer->normalize($reclamation , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+    /**
+     * @Route("/modifiermobile",name="modifierMobile" , methods={"POST","GET"})
+     */
+    public function modMobile(Request $request): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation = $this->getDoctrine()->getManager()
+            ->getRepository(Reclamation::class)
+            ->find($request->get("id"));
+
+        $description = $request->query->get("description");
+        $objet = $request->query->get("objet");
+
+        $reclamation->setTitre($description);
+        $reclamation->setContenu($objet);
+
+        $em->persist($reclamation);
+        $em->flush();
+        return new JsonResponse("Reclamation a ete modifiee avec success.");
+
+    }
+
+    /**
+     * @Route("/deletemobile/{id}",name="deleteMobile" , methods={"POST","GET"})
+     */
+    public function deleteMobile(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation = $em->getRepository(Reclamation::class)->find($id);
+        $em->remove($reclamation);
+        $em->flush();
+        return new JsonResponse(true);
+    }
+
     /**
      * @Route("/", name="reclamation_index", methods={"GET"})
      */
