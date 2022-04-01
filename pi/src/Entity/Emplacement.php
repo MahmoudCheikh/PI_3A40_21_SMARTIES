@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\EmplacementRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity(repositoryClass=EmplacementRepository::class)
  */
@@ -14,12 +16,14 @@ class Emplacement
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="l'emplacement est requis")
+     * @Groups ("post:read")
      */
     private $lieu;
 
@@ -27,6 +31,7 @@ class Emplacement
      * @ORM\Column(type="integer")
      * @Assert\Positive(message="capacité doit etre positive")
      * @Assert\NotBlank(message="la capacité du site est requis")
+     * @Groups ("post:read")
      */
     private $capacite;
 

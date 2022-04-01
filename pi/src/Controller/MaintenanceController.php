@@ -3,20 +3,119 @@
 namespace App\Controller;
 
 use App\Entity\Maintenance;
+use App\Entity\Produit;
 use App\Form\MaintenanceType;
 use App\Repository\MaintenanceRepository;
+use App\Repository\ProduitRepository;
+use App\Repository\ReclamationRepository;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/maintenance")
  */
 class MaintenanceController extends Controller
 {
+    //supprimer
+    /**
+     * @Route("/deleteMain/{id}", name="deleteMan")
+     */
+
+    public function deleteMan(Request $request) {
+        $id = $request->get("id");
+
+        $em = $this->getDoctrine()->getManager();
+        $main = $em->getRepository(Maintenance::class)->find($id);
+        if($main!=null ) {
+            $em->remove($main);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("maintenance a ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }
+        return new JsonResponse("id maintenance invalide.");
+    }
+    //update
+    /**
+     * @Route("/modifierMain",name="modifierMain" , methods={"POST","GET"})
+     */
+    public function modifierMain(Request $request , MaintenanceRepository  $maintenanceRepository): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $maintenance = new Maintenance();
+        $maintenance = $maintenanceRepository->find($request->get("id"));
+
+        $maintenance->setAdresse($request->get("adresse"));
+        $maintenance->setDescription($request->get("description"));
+        $maintenance->setEtat($request->get("etat"));
+        $em->persist($maintenance);
+        $em->flush();
+
+        return new JsonResponse("maintenance a ete modifiee avec success.");
+
+    }
+    //display
+    /**
+     * @Route("/displayall",name="displayall", methods={"POST","GET"})
+     */
+    public function displayall(Request $request, NormalizerInterface $normalizer,SerializerInterface  $serializer ): JsonResponse
+    {
+        $main = $this->getDoctrine()->getManager()->getRepository(Maintenance::class)->findAll();
+        /*$serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($produit);
+        return  new JsonResponse($formatted);*/
+        $jsonContent = $normalizer->normalize($main , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
+    //ajout mobile
+    /**
+     * @Route("/ajoutermaintenance",name="AjouterMaintenance")
+     */
+    public function AjouterMaintenance( NormalizerInterface $normalizer,Request $request , ReclamationRepository $reclamationRepository , ProduitRepository $produitRepository , UsersRepository  $usersRepository) :JsonResponse
+    {
+        $maintenance = new Maintenance();
+
+
+        $maintenance->setDescription($request->get("description"));
+        $maintenance->setAdresse($request->get("adresse"));
+        $maintenance->setEtat($request->get("etat"));
+
+        $maintenance->setDateDebut(new \DateTime());
+        $date = new \DateTime();
+        date_add($date, date_interval_create_from_date_string('30 days'));
+        $maintenance->setDateFin($date);
+
+        $user  = $usersRepository->find($request->get("idUser"));
+        $maintenance->setRelation($user);
+        $produit = $produitRepository->find($request->get("idProduit"));
+        $maintenance->setIdProduit($produit);
+        $reclamation = $reclamationRepository->find($request->get("reclamation"));
+        $maintenance->setReclamation($reclamation);
+
+
+        $em =$this->getDoctrine()->getManager();
+
+        $em->persist($maintenance);
+        $em->flush();
+
+
+        $jsonContent = $normalizer->normalize($maintenance , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+
     /**
      * @Route("/maintenance_front", name="maintenance_index" , methods={"GET"})
      */
@@ -119,6 +218,5 @@ class MaintenanceController extends Controller
 
         return $this->redirectToRoute('maintenance_index', [], Response::HTTP_SEE_OTHER);
     }
-
 
 }

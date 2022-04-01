@@ -3,16 +3,21 @@
 namespace App\Controller;
 
 use App\Entity\Reclamation;
+use App\Entity\Sujet;
 use App\Form\ReclamationType;
 use App\Form\RelcamationFrontFormType;
 use App\Repository\ReclamationRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use MercurySeries\FlashyBundle\FlashyNotifier;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Validator\Constraints\Date;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -23,6 +28,77 @@ use Dompdf\Options;
  */
 class ReclamationController extends AbstractController
 {
+    /**
+     * @Route("/ajoutRec",name="ajoutRec" , methods={"POST","GET"})
+     */
+    public function ajoutRec(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation = new Reclamation();
+        $reclamation->setDescription($request->get('description'));
+        $reclamation->setObjet($request->get('objet'));
+        $reclamation->setDate(new \DateTime());
+        $user = $usersRepository->find($request->get('idUser'));
+        $reclamation->setIdUser($user);
+        $em->persist($reclamation);
+        $em->flush();
+        $jsonContent = $normalizer->normalize($reclamation , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+    /**
+     * @Route("/afficherSingleRec/{id}",name="afficherSingleRec" , methods={"POST","GET"})
+     */
+    public function afficherSingleRec(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository ,$id): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation = $em->getRepository(Reclamation::class)->find($id);
+        $jsonContent = $normalizer->normalize($reclamation , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+    /**
+     * @Route("/afficherRec",name="afficherRec" , methods={"POST","GET"})
+     */
+    public function afficherRec(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation = $em->getRepository(Reclamation::class)->findAll();
+        $jsonContent = $normalizer->normalize($reclamation , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+    /**
+     * @Route("/modifierRec",name="modifierRec" , methods={"POST","GET"})
+     */
+    public function modifierRec(Request $request): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation = $this->getDoctrine()->getManager()
+            ->getRepository(Reclamation::class)
+            ->find($request->get("id"));
+
+        $description = $request->query->get("description");
+        $objet = $request->query->get("objet");
+
+        $reclamation->setDescription($description);
+        $reclamation->setObjet($objet);
+
+        $em->persist($reclamation);
+        $em->flush();
+        return new JsonResponse("Reclamation a ete modifiee avec success.");
+
+    }
+
+    /**
+     * @Route("/deleteRec/{id}",name="deleteRec" , methods={"POST","GET"})
+     */
+    public function deleteRec(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation = $em->getRepository(Reclamation::class)->find($id);
+        $em->remove($reclamation);
+        $em->flush();
+        return new JsonResponse(true);
+    }
+
     /**
      * @Route("/", name="reclamation_index", methods={"GET"})
      */

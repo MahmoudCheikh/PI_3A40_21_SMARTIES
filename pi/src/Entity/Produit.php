@@ -25,21 +25,21 @@ class Produit
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le champs de libelle du produit est requis")
-     * @Groups ("post: read")
+     * @Groups ("post:read")
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="L'image du produit est requis")
-     * @Groups ("post: read")
+     * @Groups ("post:read")
      */
     private $image;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le champs de la description du produit est requis")
-     * @Groups ("post: read")
+     * @Groups ("post:read")
      */
     private $description;
 
@@ -62,11 +62,13 @@ class Produit
      * @ORM\Column(type="float")
      * @Assert\NotBlank(message="le champs de prix du produit est requis")
      * @Assert\Positive(message="le champs de prix doit etre positive")
+     * @Groups ("post:read")
      */
     private $prix;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups ("post:read")
      */
     private $type;
 

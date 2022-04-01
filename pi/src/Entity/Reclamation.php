@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ReclamationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=ReclamationRepository::class)
@@ -13,6 +14,7 @@ class Reclamation
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
+     * @Groups ("post:read")
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -26,18 +28,21 @@ class Reclamation
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="description de la reclamation est requis")
+     * @Groups ("post:read")
      */
     private $description;
 
     /**
      * @ORM\Column(type="date")
      * @Assert\GreaterThan("today")
+     * @Groups ("post:read")
      */
     private $date;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="objet de réclamation est requis")
+     * @Groups ("post:read")
      */
     private $objet;
 

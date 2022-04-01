@@ -4,22 +4,31 @@ namespace App\Controller;
 
 use App\Entity\Emplacement;
 use App\Entity\Evenement;
+use App\Entity\Favoris;
+use App\Entity\Message;
 use App\Entity\Produit;
 use App\Entity\Stock;
+use App\Entity\Users;
 use App\Repository\AchatRepository;
 use App\Repository\CommandeRepository;
 use App\Repository\AccessoireRepository;
 use App\Repository\EmplacementRepository;
+use App\Repository\FavorisRepository;
 use App\Repository\ProduitRepository;
+use App\Repository\StockRepository;
 use App\Repository\SujetRepository;
+use App\Repository\UsersRepository;
 use App\Repository\VeloRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class SiteController extends AbstractController
 {
@@ -147,14 +156,16 @@ class SiteController extends AbstractController
 
     /********************Json for products**********************/
     /**
-     * @Route("/display",name="display")
+     * @Route("/display",name="display", methods={"POST","GET"})
      */
-    public function display(){
-
-        $produit = $this->getDoctrine()->getManager()->getRepository(Produit::class)->findAll();
-        $serializer = new Serializer([new ObjectNormalizer()]);
+    public function display(Request $request, NormalizerInterface $normalizer,SerializerInterface  $serializer ): JsonResponse
+    {
+       $produit = $this->getDoctrine()->getManager()->getRepository(Produit::class)->findAll();
+        /*$serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($produit);
-        return  new JsonResponse($formatted);
+        return  new JsonResponse($formatted);*/
+        $jsonContent = $normalizer->normalize($produit , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
     }
 
 
@@ -170,6 +181,7 @@ class SiteController extends AbstractController
         $prix = $request->query->get("prix");
         $image = $request->query->get("image");
 
+
         $em =$this->getDoctrine()->getManager();
 
         $prod->setLibelle($libelle);
@@ -177,6 +189,7 @@ class SiteController extends AbstractController
         $prod->setType($type);
         $prod->setPrix($prix);
         $prod->setImage($image);
+
         /*if ($imageFile) {
             $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
             $newFilename = $originalFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
@@ -222,7 +235,6 @@ class SiteController extends AbstractController
 
     /*************************************JSON UPDATE produit*******************************************************/
 
-    /******************Modifier Reclamation*****************************************/
     /**
      * @Route("/updateProduit", name="updateProduit")
      */
@@ -258,12 +270,14 @@ class SiteController extends AbstractController
     /**
      * @Route("/displayEmplacement",name="displayEmplacement")
      */
-    public function displayEmplacement(){
-
-        $Emplacement = $this->getDoctrine()->getManager()->getRepository(Emplacement::class)->findAll();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($Emplacement);
-        return  new JsonResponse($formatted);
+    public function displayEmplacement(Request $request, NormalizerInterface $normalizer,SerializerInterface  $serializer ): JsonResponse
+    {
+        $emp = $this->getDoctrine()->getManager()->getRepository(Emplacement::class)->findAll();
+        /*$serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($produit);
+        return  new JsonResponse($formatted);*/
+        $jsonContent = $normalizer->normalize($emp , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
     }
     /******************Modifier Emplacement*****************************************/
     /**
@@ -340,46 +354,36 @@ class SiteController extends AbstractController
     /**
      * @Route("/displayStock",name="displayStock")
      */
-    public function displayStock(){
-
+    public function displayStock(Request $request, NormalizerInterface $normalizer,SerializerInterface  $serializer ): JsonResponse
+    {
         $stock = $this->getDoctrine()->getManager()->getRepository(Stock::class)->findAll();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($stock);
-        return  new JsonResponse($formatted);
+        /*$serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($produit);
+        return  new JsonResponse($formatted);*/
+        $jsonContent = $normalizer->normalize($stock , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
     }
     /******************Modifier Emplacement*****************************************/
     /**
-     * @Route("/updateStock", name="updateStock")
+     * @Route("/updateStock", name="updateStock", methods={"POST","GET"})
      */
-    public function updateStock(Request $request) {
+    public function updateStock(Request $request , StockRepository  $stockRepository): JsonResponse
+    {
         $em = $this->getDoctrine()->getManager();
-        $stock = $this->getDoctrine()->getManager()
-            ->getRepository(Stock::class)
-            ->find($request->get("id"));
+        $stock = new Stock();
+        $stock = $stockRepository->find($request->get("id"));
 
-        $libelle = $request->query->get("libelle");
-        $prix = $request->query->get("prix");
-        $quantite = $request->query->get("quantite");
-        $disponibilite = $request->query->get("disponibilite");
-        $idProduit = $request->query->get("idProduit");
-
-        $stock->setLibelle($libelle);
-        $stock->getPrix($prix);
-        $stock->setQuantite($quantite);
-        $stock->setDisponibilite($disponibilite);
-        $stock->setIdProduit($idProduit);
-        //$Stock = $request->query->get("Stock");
-
-        //$emp->setStok($Stock);
+        $stock->setLibelle($request->get("libelle"));
+        $stock->setPrix($request->get("prix"));
+        $stock->setDisponibilite($request->get("disponibilite"));
 
         $em->persist($stock);
         $em->flush();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($stock);
-        return new JsonResponse("Emplacement a ete modifiee avec success.");
+
+        return new JsonResponse("stock a ete modifiee avec success.");
 
     }
-    /********************delete for Emplacement**********************/
+    /********************delete for stock**********************/
     /**
      * @Route("/deleteStock/{id}", name="deleteStock")
      */
@@ -404,45 +408,54 @@ class SiteController extends AbstractController
     /**
      * @Route("/AjouterStock",name="AjouterStock")
      */
-    public function AjouterStock(Request $request){
+    public function AjouterStock(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository, ProduitRepository $produitRepository): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
         $stock = new Stock();
-
-
+        /*$user = $usersRepository->find($request->get('idUser'));
+        $message->setIdUser($user);
+        $message->setDate(new \DateTime());*/
+        $produit = $produitRepository->find($request->get('idProduit'));
+        $stock->setIdProduit($produit);
         $libelle = $request->query->get("libelle");
         $prix = $request->query->get("prix");
         $quantite = $request->query->get("quantite");
         $disponibilite = $request->query->get("disponibilite");
-        $idProduit = $request->query->get("idProduit");
-
-        $em =$this->getDoctrine()->getManager();
 
         $stock->setLibelle($libelle);
         $stock->setPrix($prix);
         $stock->setQuantite($quantite);
         $stock->setDisponibilite($disponibilite);
-        $stock->setIdProduit($idProduit);
-
         $em->persist($stock);
         $em->flush();
-
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($stock);
-        return  new JsonResponse($formatted);
+        $jsonContent = $normalizer->normalize("msg ajouté",'json', ['groups' => 'post:read']);
+        return new JsonResponse($jsonContent);
     }
 
     /**************************************************FAVORIS***************************************************************************/
     /********************Json for favoris**********************/
     /**
-     * @Route("/displayFavoris",name="displayFavoris")
+     * @Route("/displayFavoris",name="displayFavoris", methods={"POST","GET"})
      */
-    public function displayFavoris(){
+    public function displayFavoris(SerializerInterface  $serializer,FavorisRepository $repository,Request $request, NormalizerInterface $normalizer ): JsonResponse
+    {
 
-        $favoris = $this->getDoctrine()->getManager()->getRepository(Favoris::class)->findAll();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($favoris);
-        return  new JsonResponse($formatted);
+        /*$produit = $this->getDoctrine()->getManager()->getRepository(Produit::class)->find($id);
+
+        $fav = $this->getDoctrine()->getManager()->getRepository(Favoris::class)->findBy(['IdProduit' => $produit]);
+        $jsonContent = $normalizer->normalize($fav , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);*/
+        return $this->json(
+            json_decode(
+                $serializer->serialize(
+                    $repository->findAll(),
+                    'json',
+                    ['groups'=>'post:read']
+                ),
+                JSON_OBJECT_AS_ARRAY
+            )
+        );
     }
-
 
     /********************Json for favoris**********************/
     /**

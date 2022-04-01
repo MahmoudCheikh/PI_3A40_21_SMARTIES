@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\StockRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=StockRepository::class)
@@ -15,12 +17,14 @@ class Stock
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le champs de libelle de stock est requis")
+     * @Groups ("post:read")
      */
     private $libelle;
 
@@ -28,6 +32,7 @@ class Stock
      * @ORM\Column(type="float")
      * @Assert\NotBlank(message="le champs de prix est requis")
      * @Assert\Positive(message="prix du stock doit etre positive")
+     * @Groups ("post:read")
      */
     private $prix;
 
@@ -41,6 +46,7 @@ class Stock
      *     value = 5
      * )
      * @Assert\PositiveOrZero(message="quantite du stock doit etre positive")
+     * @Groups ("post:read")
      */
     private $quantite;
 
@@ -48,6 +54,7 @@ class Stock
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le champs de disponibilité est requis")
      * @Assert\Choice(choices = {"Disponible", "Non Disponible"}, message = "Choisire disponibilite soit 'Disponible' soit 'Non Disponible'." )
+     * @Groups ("post:read")
      */
     private $disponibilite;
 
