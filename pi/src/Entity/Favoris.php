@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\FavorisRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=FavorisRepository::class)
@@ -14,18 +15,21 @@ class Favoris
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("post:read")
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="favoris")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=True)
+     * @Groups ("post:read")
      */
     private $IdUser;
 
     /**
      * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="favoris")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=True)
+     * @Groups ("post:read")
      */
     private $IdProduit;
 

@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\MaintenanceRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=MaintenanceRepository::class)
@@ -16,11 +16,13 @@ class Maintenance
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("post:read")
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class)
+     * @Groups ("post:read")
      */
     private $relation;
 
@@ -28,12 +30,14 @@ class Maintenance
      * @ORM\ManyToOne(targetEntity=Produit::class)
      * @ORM\JoinColumn(nullable=false)
      * @Assert\NotBlank(message="produit is required")
+     * @Groups ("post:read")
      */
     private $idProduit;
 
     /**
      * @ORM\Column(type="date")
      * @Assert\GreaterThan("today")
+     * @Groups ("post:read")
      */
     private $DateDebut;
 
@@ -42,24 +46,28 @@ class Maintenance
      * @Assert\Expression(
      *     "this.getDateDebut() < this.getDateFin()",
      *     message="La date fin ne doit pas être antérieure à la date début")
+     * @Groups ("post:read")
      */
     private $DateFin;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le champs de l'adresse est requis")
+     * @Groups ("post:read")
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le champs de l'etat est requis")
+     * @Groups ("post:read")
      */
     private $etat;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="le champs de description est requis")
+     * @Groups ("post:read")
      */
     private $description;
 

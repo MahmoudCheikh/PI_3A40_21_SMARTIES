@@ -28,13 +28,10 @@ use Dompdf\Options;
  */
 class ReclamationController extends AbstractController
 {
-
-
-
     /**
-     * @Route("/ajoutmobile",name="ajoutMobile" , methods={"POST","GET"})
+     * @Route("/ajoutRec",name="ajoutRec" , methods={"POST","GET"})
      */
-    public function ajoutMobile(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository): JsonResponse
+    public function ajoutRec(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
         $reclamation = new Reclamation();
@@ -48,11 +45,30 @@ class ReclamationController extends AbstractController
         $jsonContent = $normalizer->normalize($reclamation , 'json' , ['groups'=>'post:read']);
         return new JsonResponse($jsonContent);
     }
-
     /**
-     * @Route("/modifiermobile",name="modifierMobile" , methods={"POST","GET"})
+     * @Route("/afficherSingleRec/{id}",name="afficherSingleRec" , methods={"POST","GET"})
      */
-    public function modMobile(Request $request): JsonResponse
+    public function afficherSingleRec(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository ,$id): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation = $em->getRepository(Reclamation::class)->find($id);
+        $jsonContent = $normalizer->normalize($reclamation , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+    /**
+     * @Route("/afficherRec",name="afficherRec" , methods={"POST","GET"})
+     */
+    public function afficherRec(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation = $em->getRepository(Reclamation::class)->findAll();
+        $jsonContent = $normalizer->normalize($reclamation , 'json' , ['groups'=>'post:read']);
+        return new JsonResponse($jsonContent);
+    }
+    /**
+     * @Route("/modifierRec",name="modifierRec" , methods={"POST","GET"})
+     */
+    public function modifierRec(Request $request): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
         $reclamation = $this->getDoctrine()->getManager()
@@ -62,8 +78,8 @@ class ReclamationController extends AbstractController
         $description = $request->query->get("description");
         $objet = $request->query->get("objet");
 
-        $reclamation->setTitre($description);
-        $reclamation->setContenu($objet);
+        $reclamation->setDescription($description);
+        $reclamation->setObjet($objet);
 
         $em->persist($reclamation);
         $em->flush();
@@ -72,9 +88,9 @@ class ReclamationController extends AbstractController
     }
 
     /**
-     * @Route("/deletemobile/{id}",name="deleteMobile" , methods={"POST","GET"})
+     * @Route("/deleteRec/{id}",name="deleteRec" , methods={"POST","GET"})
      */
-    public function deleteMobile(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id): JsonResponse
+    public function deleteRec(Request $request, NormalizerInterface $normalizer , UsersRepository $usersRepository , $id): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
         $reclamation = $em->getRepository(Reclamation::class)->find($id);
