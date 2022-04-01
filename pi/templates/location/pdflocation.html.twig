@@ -5,16 +5,35 @@
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
 <head>
+    <style>
+        h2 {
+            color: indianred;
+            text-align: center;
+        }
+
+        table, td, th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th, td {
+            padding: 20px;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
 
 </head>
+
 <body>
-<table class="table">
+<h2> Votre location </h2>
+<table class="table" align="center" >
 
     <thead>
     <th>Reference</th>
     <th>Date</th>
     <th>Heure</th>
-    <th>Duree</th>
+    <th>Duree (en jours )</th>
     </thead>
     <tbody>
     {% for location in locations %}

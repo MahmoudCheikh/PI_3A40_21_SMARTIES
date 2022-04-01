@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\LocationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -14,24 +15,28 @@ class Location
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
+     * @Groups ("post:read")
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups ("post:read")
      * @Assert\GreaterThan("today")
      */
         private $date;
 
     /**
      * @ORM\Column(type="time")
+     * @Groups ("post:read")
      * @Assert\NotBlank(message="heure est requis")
      */
     private $heure;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups ("post:read")
      * @Assert\NotBlank(message="duree est requis")
      */
     private $duree;

@@ -8,12 +8,17 @@ use App\Form\LocationType;
 use App\Repository\AbonnementRepository;
 use App\Repository\LocationRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use phpDocumentor\Reflection\DocBlock\Serializer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+
 /**
  * @Route("/location")
  */
@@ -185,6 +190,10 @@ class LocationController extends AbstractController
 
         return $this->redirectToRoute('location_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+
+
 
 
 }

@@ -25,7 +25,32 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class AbonnementController extends AbstractController
 {
+    /**
+     * @Route("/deleteA/{id}", name="deleteA")
+     */
+
+    public function deleteA(Request $request) {
+        $id = $request->get("id");
+
+        $em = $this->getDoctrine()->getManager();
+        $abonnement = $em->getRepository(Abonnement::class)->find($id);
+        if($abonnement!=null ) {
+            $em->remove($abonnement);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("abonnement a ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }
+        return new JsonResponse("id abonnement invalide.");
+
+
+    }
     /********************Json for abonnement**********************/
+
+
+
     /**
      * @Route("/afficherA",name="afficherA")
      */
@@ -66,31 +91,12 @@ class AbonnementController extends AbstractController
         $em->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($abonnement);
+
         return new JsonResponse($formatted);
+
     }
     /******************delete Abonnement*****************************************/
-    /**
-     * @Route("/deleteA/{id}", name="deleteA")
-     */
 
-    public function deleteA(Request $request) {
-        $id = $request->get("id");
-
-        $em = $this->getDoctrine()->getManager();
-        $abonnement = $em->getRepository(Abonnement::class)->find($id);
-        if($abonnement!=null ) {
-            $em->remove($abonnement);
-            $em->flush();
-
-            $serialize = new Serializer([new ObjectNormalizer()]);
-            $formatted = $serialize->normalize("abonnement a ete supprimee avec success.");
-            return new JsonResponse($formatted);
-
-        }
-        return new JsonResponse("id abonnement invalide.");
-
-
-    }
     /******************Modifier event*****************************************/
     /**
      * @Route("/updateA", name="updateA")
